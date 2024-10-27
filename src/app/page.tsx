@@ -60,8 +60,7 @@ const Home = () => {
             </p>
             <Button variant={"white"}>Get Involved</Button>
           </div>
-          {/* <div></div>
-          <div></div> */}
+
           <div className="space-y-4 w-full sm:w-2/5 self-end">
             <h3 className="text-3xl text-white font-normal">
               NETWORK. GROW. BUILD.
@@ -279,12 +278,45 @@ const Home = () => {
             <div>
               <h4 className="text-5xl font-light">
                 {stat.value}
-                {stat.suffix} <br /> {stat.name}
+                <span className="text-primary">{stat.suffix}</span> <br />{" "}
+                {stat.name}
               </h4>
             </div>
-            <p className="w-1/3">{stat.description}</p>
+            <p className="w-1/3 text-right text-balance">{stat.description}</p>
           </div>
         ))}
+      </section>
+      {/* sponsor */}
+      <section className="container py-20 grid grid-cols-2 gap-5">
+        <div className="space-y-4">
+          <h1 className="text-5xl ">Sponsor a Code Spacer Today!</h1>
+          <Button>Donate Today</Button>
+        </div>
+        <div>
+          <p className="text-right text-lg">
+            A lack of resources should never stand in the way of reaching one’s
+            full potential. But for many tech talents, it does. When you sponsor
+            a Code Spacer you break that barrier and help someone to become a
+            step closer to fulfilling their dreams. Wouldn’t you like to take
+            that chance? If you donate as little as $5, you help a Code Spacer
+            get access to data for a month. A $150 - $200 donation opens the
+            door to tech training and mentorship, allowing a Code Spacer to
+            thrive. And with your continued generosity, we can get Code Spacers
+            laptops to ensure their careers are not put on hold because of a
+            lack of essential resources. Together, we can keep a Code Spacer’s
+            dream alive!
+          </p>
+        </div>
+        <div className="col-span-2 aspect-video relative">
+          <ImageCard
+            src={"/images/hackathon.png"}
+            className="w-1/2 absolute top-1/2 right-14 aspect-[6/4] -mt-20 rotate-[9deg] [&>#image-card]:h-[90%]"
+          />
+          <ImageCard
+            src={"/images/hackathon.png"}
+            className="w-1/2 absolute top-0 left-14 aspect-[6/4]  -rotate-3 [&>#image-card]:h-[90%]"
+          />
+        </div>
       </section>
     </>
   );

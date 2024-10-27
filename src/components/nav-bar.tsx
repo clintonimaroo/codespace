@@ -23,7 +23,7 @@ const links = [
 
 const NavBar = () => {
   return (
-    <nav className="container flex items-center justify-between h-16">
+    <nav className="container flex items-center justify-between py-8">
       <LogoLarge />
       <ul className="flex flex-row items-center gap-x-5">
         {links.map((link) => (

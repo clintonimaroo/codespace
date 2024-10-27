@@ -1,19 +1,27 @@
 import { cn } from "@/lib/utils";
+import Image, { ImageProps } from "next/image";
 import React from "react";
 
 const ImageCard = ({
   className,
+  src,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
+}: React.HTMLAttributes<HTMLDivElement> & { src?: ImageProps["src"] }) => {
   return (
     <div
-      className={cn(
-        "w-[280px] bg-white aspect-[10/11] shadow shadow-gray-100 p-2",
-        className
-      )}
+      className={cn("w-[280px] bg-white aspect-[10/11] shadow  p-2", className)}
       {...props}
     >
-      <div className="w-full aspect-square bg-gray-50"></div>
+      <div id="image-card" className="w-full h-4/5 bg-gray-50 relative">
+        {src && (
+          <Image
+            src={src}
+            layout="fill"
+            alt="image"
+            className="w-full h-full"
+          />
+        )}
+      </div>
     </div>
   );
 };
