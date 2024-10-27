@@ -141,3 +141,43 @@ export const brands = [
   "aws",
   "genztechies"
 ];
+
+export const links = [
+  { name: "About us", href: "/about" },
+  { name: "Donate", href: "/donate" },
+  { name: "Events", href: "/events" },
+  { name: "Shop", href: "/shop" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact us", href: "/contact" }
+];
+
+export const other_links = [
+  { name: "Brand Guidelines", href: "/brand-guidelines" },
+  { name: "Ambassador Program", href: "/ambassador-program" },
+  { name: "Press Feature", href: "/press-feature" }
+];
+
+export const socials = [
+  {
+    name: "twitter",
+    url: "https://twitter.com/codespaceafrica"
+  },
+  {
+    name: "instagram",
+    url: "https://instagram.com/codespaceafrica"
+  },
+  {
+    name: "linkedin",
+    url: "https://linkedin.com/company/codespaceafrica"
+  },
+  {
+    name: "github",
+    url: "https://github.com/codespaceafrica"
+  },
+
+  {
+    name: "facebook",
+    url: "https://facebook.com/codespaceafrica"
+  }
+];

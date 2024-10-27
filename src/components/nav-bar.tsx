@@ -2,24 +2,7 @@ import React from "react";
 import { LogoLarge } from "./brand";
 import { Button } from "./ui/button";
 import Link from "next/link";
-
-// About us
-// Donate
-// Events
-// Shop
-// Gallery
-// Blog
-// Contact us
-
-const links = [
-  { name: "About us", href: "/about" },
-  { name: "Donate", href: "/donate" },
-  { name: "Events", href: "/events" },
-  { name: "Shop", href: "/shop" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contact us", href: "/contact" }
-];
+import { links } from "@/data";
 
 const NavBar = () => {
   return (
