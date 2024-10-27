@@ -1,6 +1,8 @@
 import ImageCard from "@/components/image-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { what_we_do, WhatWeDo } from "@/data";
+import { cn } from "@/lib/utils";
 import { CirclePlayIcon } from "lucide-react";
 
 const Home = () => {
@@ -33,6 +35,7 @@ const Home = () => {
           <ImageCard className="w-2/5 absolute top-0 right-1/3 -rotate-6" />
         </div>
       </section>
+      {/* what we do */}
       <section className="container space-y-5 py-20">
         <Badge>
           <div className="size-1.5 rounded-full bg-primary" />
@@ -74,8 +77,58 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <section className="container py-20">
+        <div className="space-y-5">
+          <Badge>
+            <div className="size-1.5 rounded-full bg-primary" />
+            CODE SPACE
+          </Badge>
+          <h1 className="font-medium text-2xl leading-normal sm:w-4/5 ">
+            What We Do
+          </h1>
+          <p className="text-lg sm:w-4/5">
+            We are driving the future forward by ensuring that Gen Z tech
+            talents across Africa can access the resources they need to thrive.
+            We are on a mission to connect, empower, and accelerate the careers
+            of Africa’s next generation of tech leaders.
+          </p>
+          <p className="text-lg"> Here’s how we’re making that happen:</p>
+          <div className="grid grid-cols-3 gap-5">
+            {what_we_do.map((item) => (
+              <WhatWeDoCard {...item} key={item.title} />
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 };
 
 export default Home;
+
+const WhatWeDoCard = (props: WhatWeDo) => (
+  <div className="w-full space-y-3  flex flex-col">
+    <div className="size-14 text-white flex items-center justify-center bg-primary rounded-lg">
+      <props.icon size={30} />
+    </div>
+    <h3 className="text-xl font-medium">{props.title}</h3>
+    <p className="text-gray-600">{props.description}</p>
+    <Badge className="font-normal">{props.date}</Badge>
+    <div className="flex-grow" />
+    <div className="w-full flex flex-row items-center divide-x-2 ">
+      {props.stats.map((stat, i) => (
+        <div
+          key={i}
+          className={cn("flex-grow", {
+            "flex flex-col items-center justify-center": i !== 0
+          })}
+        >
+          <div>
+            <h4 className="text-xl font-semibold">{stat.value}</h4>
+            <p className="text-gray-600">{stat.name}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
