@@ -132,3 +132,12 @@ export const stats = [
 ];
 
 export type StatsType = (typeof stats)[number];
+
+export const brands = [
+  "couchbase",
+  "technext",
+  "theguardian",
+  "paystack",
+  "aws",
+  "genztechies"
+];

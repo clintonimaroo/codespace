@@ -1,9 +1,10 @@
 import ImageCard from "@/components/image-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { stats, what_we_do, WhatWeDo } from "@/data";
+import { brands, stats, what_we_do, WhatWeDo } from "@/data";
 import { cn } from "@/lib/utils";
 import { CirclePlayIcon } from "lucide-react";
+import Image from "next/image";
 
 const Home = () => {
   return (
@@ -316,6 +317,31 @@ const Home = () => {
             src={"/images/hackathon.png"}
             className="w-1/2 absolute top-0 left-14 aspect-[6/4]  -rotate-3 [&>#image-card]:h-[90%]"
           />
+        </div>
+      </section>
+      {/* Brands */}
+      <section className="container py-20 space-y-10">
+        <div className="space-y-5 flex flex-col items-center justify-center sm:w-2/5 mx-auto text-center">
+          <h3 className="text-3xl font-medium">
+            Brands we&apos;ve loved working with
+          </h3>
+          <p className="text-gray-600 text-lg">
+            When brands collaborate with us, they empower thousands of young
+            African tech talents. Here are the innovative brands that make our
+            mission even more rewarding!
+          </p>
+        </div>
+        <div className="flex-row items-center gap-10 grid grid-cols-2 md:grid-cols-6 content-center">
+          {brands.map((brand) => (
+            <div key={brand} className="relative w-full aspect-video">
+              <Image
+                src={`/images/brands/${brand}.png`}
+                alt={brand}
+                className="w-full h-full object-contain"
+                layout="fill"
+              />
+            </div>
+          ))}
         </div>
       </section>
     </>
