@@ -48,8 +48,8 @@ const Home = () => {
         </h1>
         <Button>Join us</Button>
       </section>
-      <section className="h-screen bg-cover py-20 bg-top bg-no-repeat bg-[url('/images/what-we-do-bg.svg')]">
-        <div className="container  h-full flex flex-col justify-between">
+      <section className="h-screen bg-[#5c5ad1] ">
+        <div className="container  h-full flex flex-col justify-between bg-cover py-20 bg-top bg-no-repeat bg-[url('/images/what-we-do-bg.svg')]">
           <div className="space-y-4 w-full sm:w-1/2">
             <h3 className="text-3xl text-white font-normal">Our Mission</h3>
             <p className="text-white w-full sm:w-4/5">
@@ -113,9 +113,9 @@ const WhatWeDoCard = (props: WhatWeDo) => (
     </div>
     <h3 className="text-xl font-medium">{props.title}</h3>
     <p className="text-gray-600">{props.description}</p>
-    <Badge className="font-normal">{props.date}</Badge>
     <div className="flex-grow" />
-    <div className="w-full flex flex-row items-center divide-x-2 ">
+    <Badge className="font-normal">{props.date}</Badge>
+    <div className="w-full flex flex-row items-center divide-x">
       {props.stats.map((stat, i) => (
         <div
           key={i}
@@ -124,7 +124,10 @@ const WhatWeDoCard = (props: WhatWeDo) => (
           })}
         >
           <div>
-            <h4 className="text-xl font-semibold">{stat.value}</h4>
+            <h4 className="text-xl font-semibold">
+              {stat.value}{" "}
+              <span className="text-primary text-base">{stat.suffix}</span>
+            </h4>
             <p className="text-gray-600">{stat.name}</p>
           </div>
         </div>
