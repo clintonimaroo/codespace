@@ -6,12 +6,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-//hsla(241, 56%, 59%, 1) - Primary
+/* hsla(241, 56%, 59%, 1) */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 224 71.4% 4.1%;
+    /* --foreground: 224 71.4% 4.1%; */
+    --foreground: 240 47% 9%;
     --card: 0 0% 100%;
     --card-foreground: 224 71.4% 4.1%;
     --popover: 0 0% 100%;
