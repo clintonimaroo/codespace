@@ -85,3 +85,50 @@ export const what_we_do = [
 ];
 
 export type WhatWeDo = (typeof what_we_do)[number];
+
+export const stats = [
+  {
+    name: "Locations",
+    value: 15,
+    suffix: "+",
+    description:
+      "Our community spans across more than 15 cities worldwide, connecting Gen Z technologists from diverse backgrounds."
+  },
+  {
+    name: "Members",
+    value: 1000,
+    suffix: "+",
+    description:
+      "With over 1,000 active members, Code Space is growing as a global hub for young innovators and tech enthusiasts."
+  },
+  {
+    name: "Challenge",
+    value: 1,
+    suffix: "",
+    description:
+      "We’ve successfully completed our first major challenge, pushing participants to innovate and build impactful tech solutions."
+  },
+  {
+    name: "Hackathons",
+    value: 2,
+    suffix: "",
+    description:
+      "We've hosted two dynamic hackathons where participants collaborated to solve real-world problems through technology."
+  },
+  {
+    name: "Physical Events",
+    value: 2,
+    suffix: "",
+    description:
+      "We've hosted two dynamic hackathons where participants collaborated to solve real-world problems through technology."
+  },
+  {
+    name: "Virtual Events",
+    value: 20,
+    suffix: "+",
+    description:
+      "Over 20 virtual events, including workshops, panels, and coding challenges, have kept our community engaged and learning year-round."
+  }
+];
+
+export type StatsType = (typeof stats)[number];
