@@ -1,11 +1,12 @@
+import BrandsSection from "@/components/brands-section";
 import GoalsCard from "@/components/goals-card";
 import HeroImageCards from "@/components/hero-image-cards";
 import ImageCard from "@/components/image-card";
+import JoinSection from "@/components/join-section";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { brands, stats, what_we_do } from "@/data";
+import { stats, what_we_do } from "@/data";
 import { CirclePlayIcon } from "lucide-react";
-import Image from "next/image";
 
 const Home = () => {
   return (
@@ -26,8 +27,8 @@ const Home = () => {
           </p>
           <div className="flex items-center gap-5">
             <Button>Join the Community</Button>
-            <Button variant={"ghost"}>
-              <CirclePlayIcon size={20} />
+            <Button variant={"ghost"} className="[&_svg]:size-6">
+              <CirclePlayIcon size={30} />
               Watch 2024 Events
             </Button>
           </div>
@@ -320,30 +321,9 @@ const Home = () => {
         </div>
       </section>
       {/* Brands */}
-      <section className="container py-20 space-y-10">
-        <div className="space-y-5 flex flex-col items-center justify-center sm:w-2/5 mx-auto text-center">
-          <h3 className="text-3xl font-medium">
-            Brands we&apos;ve loved working with
-          </h3>
-          <p className="text-gray-600 text-lg">
-            When brands collaborate with us, they empower thousands of young
-            African tech talents. Here are the innovative brands that make our
-            mission even more rewarding!
-          </p>
-        </div>
-        <div className="flex-row items-center gap-10 grid grid-cols-2 md:grid-cols-6 content-center">
-          {brands.map((brand) => (
-            <div key={brand} className="relative w-full aspect-video">
-              <Image
-                src={`/images/brands/${brand}.png`}
-                alt={brand}
-                className="w-full h-full object-contain"
-                layout="fill"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
+      <BrandsSection />
+      {/* Join the community */}
+      <JoinSection />
     </>
   );
 };

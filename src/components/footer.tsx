@@ -60,10 +60,9 @@ const Footer = () => {
               type="email"
               id="email"
               placeholder="Email"
-              className=" bg-gray-100 p-2 rounded-md outline-none h-full"
+              className=" bg-gray-100 p-2 rounded-md outline-none h-full w-3/4"
             />
-
-            <Button className="rounded-xl" size={"sm"}>
+            <Button className="rounded-xl w-1/4 !text-xs" size={"sm"}>
               Subscribe
             </Button>
           </div>
