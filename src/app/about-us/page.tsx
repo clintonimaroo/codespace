@@ -2,7 +2,7 @@ import GoalsCard from "@/components/goals-card";
 import HeroImageCards from "@/components/hero-image-cards";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { values } from "@/data";
+import { values, WhatWeDo } from "@/data";
 
 import React from "react";
 
@@ -66,8 +66,12 @@ const AboutUs = () => {
               Our Values
             </h1>
             <div className="grid grid-cols-3 gap-10">
-              {values.map((item: any) => (
-                <GoalsCard variant="dark" {...item} key={item.title} />
+              {values.map((item) => (
+                <GoalsCard
+                  variant="dark"
+                  {...(item as WhatWeDo)}
+                  key={item.title}
+                />
               ))}
             </div>
             <div className="!my-20 w-full flex justify-center">
