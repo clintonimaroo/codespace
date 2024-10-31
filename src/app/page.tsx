@@ -1,8 +1,9 @@
+import GoalsCard from "@/components/goals-card";
+import HeroImageCards from "@/components/hero-image-cards";
 import ImageCard from "@/components/image-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { brands, stats, what_we_do, WhatWeDo } from "@/data";
-import { cn } from "@/lib/utils";
+import { brands, stats, what_we_do } from "@/data";
 import { CirclePlayIcon } from "lucide-react";
 import Image from "next/image";
 
@@ -32,8 +33,7 @@ const Home = () => {
           </div>
         </div>
         <div className="w-full relative aspect-[16/10]">
-          <ImageCard className="w-2/5 bottom-0 right-0 absolute rotate-[8deg]" />
-          <ImageCard className="w-2/5 absolute top-0 right-1/3 -rotate-6" />
+          <HeroImageCards />
         </div>
       </section>
       {/* what we do */}
@@ -95,7 +95,7 @@ const Home = () => {
           <p className="text-lg"> Here’s how we’re making that happen:</p>
           <div className="grid grid-cols-3 gap-5">
             {what_we_do.map((item) => (
-              <WhatWeDoCard {...item} key={item.title} />
+              <GoalsCard {...item} key={item.title} />
             ))}
           </div>
           <div className="!my-20 w-full flex justify-center">
@@ -349,33 +349,3 @@ const Home = () => {
 };
 
 export default Home;
-
-const WhatWeDoCard = (props: WhatWeDo) => (
-  <div className="w-full space-y-3  flex flex-col">
-    <div className="size-14 text-white flex items-center justify-center bg-primary rounded-lg">
-      <props.icon size={30} />
-    </div>
-    <h3 className="text-xl font-medium">{props.title}</h3>
-    <p className="text-gray-600">{props.description}</p>
-    <div className="flex-grow" />
-    <Badge className="font-normal">{props.date}</Badge>
-    <div className="w-full flex flex-row items-center divide-x">
-      {props.stats.map((stat, i) => (
-        <div
-          key={i}
-          className={cn("flex-grow", {
-            "flex flex-col items-center justify-center": i !== 0
-          })}
-        >
-          <div>
-            <h4 className="text-xl font-semibold">
-              {stat.value}{" "}
-              <span className="text-primary text-base">{stat.suffix}</span>
-            </h4>
-            <p className="text-gray-600">{stat.name}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-);

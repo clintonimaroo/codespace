@@ -1,4 +1,48 @@
-import { MonitorPlayIcon, PuzzleIcon, TrophyIcon } from "lucide-react";
+import {
+  ChartAreaIcon,
+  CrownIcon,
+  GlobeIcon,
+  HandshakeIcon,
+  MonitorPlayIcon,
+  PuzzleIcon,
+  TrophyIcon,
+  UsersRoundIcon
+} from "lucide-react";
+
+export const values = [
+  {
+    title: "Impact",
+    description:
+      "Driving change through technology by empowering Gen Z to build innovative solutions for global challenges.",
+    icon: GlobeIcon
+  },
+  {
+    title: "Growth",
+    description:
+      "Fostering continuous learning and development for our members, enabling them to thrive in the evolving tech landscape.",
+    icon: ChartAreaIcon
+  },
+  {
+    title: "Inclusion",
+    description:
+      "Creating a diverse and welcoming community where everyone, regardless of background, has equal access to opportunities.",
+    icon: HandshakeIcon
+  },
+  {
+    title: "Leadership",
+    description:
+      "Equipping young people with the skills and mentorship needed to become tomorrow's tech leaders and innovators.",
+    icon: CrownIcon
+  },
+  {
+    title: "Collaboration",
+    description:
+      "Encouraging teamwork and knowledge-sharing to create impactful projects and build meaningful connections in the tech space.",
+    icon: UsersRoundIcon
+  }
+];
+
+export type ValueType = (typeof values)[number];
 
 export const what_we_do = [
   {
@@ -143,7 +187,7 @@ export const brands = [
 ];
 
 export const links = [
-  { name: "About us", href: "/about" },
+  { name: "About us", href: "/about-us" },
   { name: "Donate", href: "/donate" },
   { name: "Events", href: "/events" },
   { name: "Shop", href: "/shop" },
