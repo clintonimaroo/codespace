@@ -225,3 +225,18 @@ export const socials = [
     url: "https://facebook.com/codespaceafrica"
   }
 ];
+
+export const why_us = [
+  {
+    title: "Community Support",
+    content: ""
+  },
+  {
+    title: "Access to Resources and Tools",
+    content: ""
+  },
+  {
+    title: "Career Growth",
+    content: ""
+  }
+];

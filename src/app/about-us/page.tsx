@@ -1,8 +1,15 @@
 import GoalsCard from "@/components/goals-card";
 import HeroImageCards from "@/components/hero-image-cards";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger
+} from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { values, WhatWeDo } from "@/data";
+import { values, WhatWeDo, why_us } from "@/data";
+import { ArrowRightIcon } from "lucide-react";
 
 import React from "react";
 
@@ -74,9 +81,42 @@ const AboutUs = () => {
                 />
               ))}
             </div>
-            <div className="!my-20 w-full flex justify-center">
-              <Button className="mx-auto">Explore more</Button>
-            </div>
+          </div>
+        </section>
+        <section className="container py-20 space-y-10">
+          <h3 className="text-center text-white text-3xl">Why Roll with us?</h3>
+          <Accordion type="single">
+            {why_us.map((data, i) => (
+              <AccordionItem
+                value={i.toString()}
+                key={i}
+                className="border-white/10"
+              >
+                <AccordionTrigger
+                  className="flex items-center justify-between w-full "
+                  indicator={false}
+                >
+                  <h1 className="text-white text-4xl font-light">
+                    {data.title}
+                  </h1>
+                  <div className="size-11 rounded-full border-white border flex items-center justify-center">
+                    <ArrowRightIcon className="text-white" size={14} />
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent></AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </section>
+        <section className="container py-20">
+          <div className="space-y-5 flex flex-col items-center justify-center sm:w-1/2 mx-auto text-center">
+            <h3 className="text-4xl font-light text-white">Become a Member</h3>
+            <p className="text-gray-400 text-lg">
+              Be part of a community that prioritizes you, and your career
+              growth. Join us, and connect with thousands of African tech
+              talents on their journey.
+            </p>
+            <Button variant={"white"}>Join Us</Button>
           </div>
         </section>
       </section>
