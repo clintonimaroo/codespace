@@ -6,7 +6,12 @@ import {
   MonitorPlayIcon,
   PuzzleIcon,
   TrophyIcon,
-  UsersRoundIcon
+  UsersRoundIcon,
+  MailIcon,
+  XIcon,
+  FacebookIcon,
+  InstagramIcon,
+  LinkedinIcon
 } from "lucide-react";
 
 export const values = [
@@ -193,7 +198,7 @@ export const links = [
   { name: "Shop", href: "/shop" },
   { name: "Gallery", href: "/gallery" },
   { name: "Blog", href: "/blog" },
-  { name: "Contact us", href: "/contact" }
+  { name: "Contact us", href: "/contact-us" }
 ];
 
 export const other_links = [
@@ -204,25 +209,44 @@ export const other_links = [
 
 export const socials = [
   {
-    name: "twitter",
-    url: "https://twitter.com/codespaceafrica"
+    name: "email",
+    url: "mailto:hello@codespaceafrica.com",
+    description: "Email us if you’ve got inquiries.",
+    username: "hello@codespaceafrica.com",
+    icon: MailIcon
   },
   {
-    name: "instagram",
-    url: "https://instagram.com/codespaceafrica"
-  },
-  {
-    name: "linkedin",
-    url: "https://linkedin.com/company/codespaceafrica"
-  },
-  {
-    name: "github",
-    url: "https://github.com/codespaceafrica"
+    name: "x (formerly twitter)",
+    url: "https://twitter.com/codespaceafrica",
+    description: "Join the conversation! We’re buzzing with energy on X.",
+    username: "@codespaceafrica",
+    icon: XIcon
   },
 
   {
     name: "facebook",
-    url: "https://facebook.com/codespaceafrica"
+    url: "https://facebook.com/codespaceafrica",
+    description:
+      "Follow us on Facebook, and keep in touch with our vibrant community.",
+    username: "@codespaceafrica",
+    icon: FacebookIcon
+  },
+  {
+    name: "instagram",
+    url: "https://instagram.com/codespaceafrica",
+    description:
+      "Check out our engaging Reels on Instagram to see what we’re up to!",
+    username: "@codespaceafrica",
+    icon: InstagramIcon
+  },
+
+  {
+    name: "linkedin",
+    url: "https://linkedin.com/company/codespaceafrica",
+    description:
+      "Connect with us on LinkedIn for insights and professional updates!",
+    username: "@codespaceafrica",
+    icon: LinkedinIcon
   }
 ];
 

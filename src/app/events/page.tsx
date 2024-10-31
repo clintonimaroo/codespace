@@ -4,7 +4,7 @@ import BrandsSection from "@/components/brands-section";
 import JoinSection from "@/components/join-section";
 import { Badge } from "@/components/ui/badge";
 
-const Home = () => {
+const Events = () => {
   return (
     <>
       {/* Hero Section */}
@@ -46,4 +46,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Events;
