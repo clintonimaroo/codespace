@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "./ui/button";
+import { JoinUsImageCards } from "./image-cards";
 
 const JoinSection = () => {
   return (
@@ -12,7 +13,9 @@ const JoinSection = () => {
         </p>
         <Button className="w-fit">Join the community</Button>
       </div>
-      <div></div>
+      <div className="w-full aspect-[16/10]">
+        <JoinUsImageCards />
+      </div>
     </section>
   );
 };

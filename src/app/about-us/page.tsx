@@ -1,5 +1,5 @@
 import GoalsCard from "@/components/goals-card";
-import HeroImageCards from "@/components/hero-image-cards";
+import { HeroImageCards } from "@/components/image-cards";
 import {
   Accordion,
   AccordionContent,

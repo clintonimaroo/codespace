@@ -1,6 +1,6 @@
 import BrandsSection from "@/components/brands-section";
 import GoalsCard from "@/components/goals-card";
-import HeroImageCards from "@/components/hero-image-cards";
+import { HeroImageCards } from "@/components/image-cards";
 import ImageCard from "@/components/image-card";
 import JoinSection from "@/components/join-section";
 import { Badge } from "@/components/ui/badge";
