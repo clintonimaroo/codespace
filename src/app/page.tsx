@@ -46,7 +46,7 @@ const Home = () => {
         <h1 className="font-medium text-2xl leading-normal sm:w-4/5 ">
           At Code Space, we unite Gen Zs in tech across Africa, fostering a
           vibrant community where you can connect, share insights, and grow.
-          Don’t navigate your tech career alone—thrive with us.
+          Don&apos;t navigate your tech career alone—thrive with us.
         </h1>
         <Button>Join us</Button>
       </section>
@@ -68,11 +68,11 @@ const Home = () => {
               NETWORK. GROW. BUILD.
             </h3>
             <p className="text-white w-full ">
-              We’re all about empowering Code Spacers to thrive beyond Africa.
-              By connecting you to global opportunities and equipping you with
-              essential resources such as job opportunities, mentorship, tech
-              upskilling, data, laptops, and more, we help you unlock your full
-              potential and propel your career forward.
+              We&apos;re all about empowering Code Spacers to thrive beyond
+              Africa. By connecting you to global opportunities and equipping
+              you with essential resources such as job opportunities,
+              mentorship, tech upskilling, data, laptops, and more, we help you
+              unlock your full potential and propel your career forward.
             </p>
             <Button variant={"white"}>Get Involved</Button>
           </div>
@@ -91,9 +91,12 @@ const Home = () => {
             We are driving the future forward by ensuring that Gen Z tech
             talents across Africa can access the resources they need to thrive.
             We are on a mission to connect, empower, and accelerate the careers
-            of Africa’s next generation of tech leaders.
+            of Africa&apos;s next generation of tech leaders.
           </p>
-          <p className="text-lg"> Here’s how we’re making that happen:</p>
+          <p className="text-lg">
+            {" "}
+            Here&apos;s how we&apos;re making that happen:
+          </p>
           <div className="grid grid-cols-3 gap-5">
             {what_we_do.map((item) => (
               <GoalsCard {...item} key={item.title} />
@@ -296,17 +299,17 @@ const Home = () => {
         </div>
         <div>
           <p className="text-right text-lg">
-            A lack of resources should never stand in the way of reaching one’s
-            full potential. But for many tech talents, it does. When you sponsor
-            a Code Spacer you break that barrier and help someone to become a
-            step closer to fulfilling their dreams. Wouldn’t you like to take
-            that chance? If you donate as little as $5, you help a Code Spacer
-            get access to data for a month. A $150 - $200 donation opens the
-            door to tech training and mentorship, allowing a Code Spacer to
-            thrive. And with your continued generosity, we can get Code Spacers
-            laptops to ensure their careers are not put on hold because of a
-            lack of essential resources. Together, we can keep a Code Spacer’s
-            dream alive!
+            A lack of resources should never stand in the way of reaching
+            one&apos;s full potential. But for many tech talents, it does. When
+            you sponsor a Code Spacer you break that barrier and help someone to
+            become a step closer to fulfilling their dreams. Wouldn&apos;t you
+            like to take that chance? If you donate as little as $5, you help a
+            Code Spacer get access to data for a month. A $150 - $200 donation
+            opens the door to tech training and mentorship, allowing a Code
+            Spacer to thrive. And with your continued generosity, we can get
+            Code Spacers laptops to ensure their careers are not put on hold
+            because of a lack of essential resources. Together, we can keep a
+            Code Spacer&apos;s dream alive!
           </p>
         </div>
         <div className="col-span-2 aspect-video relative">

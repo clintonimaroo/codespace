@@ -18,11 +18,11 @@ const ContactUs = () => {
             CONTACT CODE SPACE
           </Badge>
           <h1 className="font-medium text-5xl leading-snug">
-            Let’s Stay Connected!
+            Let&apos;s Stay Connected!
           </h1>
           <p className="text-xl text-gray-600">
-            Code Space is home to all Gen Z tech talents, and we’d love to see
-            more of you.
+            Code Space is home to all Gen Z tech talents, and we&apos;d love to
+            see more of you.
           </p>
         </div>
       </section>
