@@ -6,6 +6,7 @@ import Link from "next/link";
 import { links } from "@/data";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { MenuIcon } from "lucide-react";
 
 const NavBar = () => {
   const pathname = usePathname();
@@ -14,7 +15,7 @@ const NavBar = () => {
       <Link href={"/"}>
         <LogoLarge />
       </Link>
-      <ul className="flex flex-row items-center gap-x-5">
+      <ul className="md:flex flex-row items-center gap-x-5 hidden ">
         {links.map((link) => (
           <li
             key={link.name}
@@ -26,7 +27,12 @@ const NavBar = () => {
           </li>
         ))}
       </ul>
-      <Button size={"sm"}>Join the Community</Button>
+      <Button size={"sm"} className="hidden sm:block">
+        Join the Community
+      </Button>
+      <Button size={"icon-sm"} variant={"ghost"} className="md:hidden">
+        <MenuIcon size={24} />
+      </Button>
     </nav>
   );
 };

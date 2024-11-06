@@ -7,33 +7,34 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { stats, what_we_do } from "@/data";
 import { CirclePlayIcon } from "lucide-react";
+import SpaceBadge from "@/components/space-badge";
 
 const Home = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="container grid grid-cols-2 gap-5 py-20 content-center">
-        <div className="space-y-5 flex-col flex  justify-center">
-          <Badge>
-            <div className="size-1.5 rounded-full bg-primary" />
-            Version 2.0
-          </Badge>
-          <h1 className="font-medium text-5xl leading-normal">
+      <section className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-5 md:py-20 content-center">
+        <div className="space-y-3 md:space-y-5 flex-col flex  justify-center">
+          <SpaceBadge>Version 2.0</SpaceBadge>
+          <h1 className="font-medium text-2xl md:text-5xl leading-normal">
             Building a Tech Career <br /> Alone is Hard.
           </h1>
           <p className="text-xl text-gray-600">
             But with us, the journey becomes a lot smoother <br /> for techies
             like you!
           </p>
-          <div className="flex items-center gap-5">
-            <Button>Join the Community</Button>
-            <Button variant={"ghost"} className="[&_svg]:size-6">
+          <div className="flex items-center gap-5 md:flex-row flex-col">
+            <Button className="w-full md:w-fit">Join the Community</Button>
+            <Button
+              variant={"ghost"}
+              className="[&_svg]:size-6 w-full md:w-fit"
+            >
               <CirclePlayIcon size={30} />
               Watch 2024 Events
             </Button>
           </div>
         </div>
-        <div className="w-full relative aspect-[16/10]">
+        <div className="w-full relative aspect-[16/10] ">
           <HeroImageCards />
         </div>
       </section>
