@@ -11,7 +11,7 @@ import { MenuIcon } from "lucide-react";
 const NavBar = () => {
   const pathname = usePathname();
   return (
-    <nav className="container flex items-center justify-between py-8">
+    <nav className="container flex items-center justify-between py-4 md:py-8">
       <Link href={"/"}>
         <LogoLarge />
       </Link>
