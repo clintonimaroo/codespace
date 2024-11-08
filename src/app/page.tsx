@@ -44,7 +44,7 @@ const Home = () => {
           <div className="size-1.5 rounded-full bg-primary" />
           WHAT DO WE DO?
         </Badge>
-        <h1 className="font-medium text-2xl leading-normal sm:w-4/5 ">
+        <h1 className="font-medium sm:text-2xl text-xl leading-normal sm:w-4/5 ">
           At Code Space, we unite Gen Zs in tech across Africa, fostering a
           vibrant community where you can connect, share insights, and grow.
           Don&apos;t navigate your tech career alone—thrive with us.
@@ -98,7 +98,7 @@ const Home = () => {
             {" "}
             Here&apos;s how we&apos;re making that happen:
           </p>
-          <div className="grid grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {what_we_do.map((item) => (
               <GoalsCard {...item} key={item.title} />
             ))}
@@ -109,12 +109,12 @@ const Home = () => {
         </div>
       </section>
       {/* Goals */}
-      <section className="container grid grid-cols-2 gap-5">
+      <section className="container grid grid-cols-1 md:grid-cols-2 gap-5">
         <h1 className="text-5xl font-semibold">Our Goals</h1>
         <div className="">
           <p className="">
             <svg
-              className="inline flex-shrink-0"
+              className="inline flex-shrink-0 md:scale-100 scale-50"
               width="44"
               height="39"
               viewBox="0 0 44 39"
@@ -132,7 +132,7 @@ const Home = () => {
                 stroke-width="3"
               />
             </svg>
-            <span className="p-3 text-2xl font-medium">
+            <span className="p-3 text-lg md:text-2xl font-medium">
               Our goal is to create a unified platform that connects tech-savvy
               teenagers from all over Africa. We aim to provide a space where
               they can come together to share opportunities, collaborate on
@@ -141,7 +141,7 @@ const Home = () => {
               enthusiasts and nurture their passion for innovation and growth.
             </span>
             <svg
-              className="inline flex-shrink-0 self-end"
+              className="inline flex-shrink-0 md:scale-100 scale-50 self-end"
               width="44"
               height="37"
               viewBox="0 0 44 37"
@@ -164,9 +164,9 @@ const Home = () => {
       </section>
       {/* milestones */}
       <section className="container py-20 space-y-20">
-        <div className="space-y-3 relative flex flex-col items-center justify-center text-center w-2/5 mx-auto">
+        <div className="space-y-3 relative flex flex-col items-center justify-center text-center w-full  sm:w-1/2  mx-auto">
           <svg
-            className="absolute right-0 top-0 scale-75"
+            className="absolute -right-10 sm:right-0 top-0 scale-50 sm:scale-75"
             width="130"
             height="130"
             viewBox="0 0 130 130"
@@ -265,12 +265,8 @@ const Home = () => {
               stroke-linejoin="round"
             />
           </svg>
-
-          <Badge>
-            <div className="size-1.5 rounded-full bg-primary" />
-            MILESTONES
-          </Badge>
-          <h3 className="text-3xl font-medium">Our Reach So Far</h3>
+          <SpaceBadge>MILESTONES</SpaceBadge>
+          <h3 className="text-2xl sm:text-3xl font-medium">Our Reach So Far</h3>
           <p>
             Your Tech Journey is much <br /> Smoother with Us!{" "}
           </p>
