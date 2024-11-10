@@ -275,27 +275,31 @@ const Home = () => {
         {stats.map((stat, i) => (
           <div
             key={i}
-            className="w-full flex flex-row border-b py-5 justify-between items-baseline"
+            className="w-full flex flex-col gap-5 md:flex-row border-b py-5 justify-between items-baseline"
           >
             <div>
-              <h4 className="text-5xl font-light">
+              <h4 className="text-3xl sm:text-5xl font-light">
                 {stat.value}
                 <span className="text-primary">{stat.suffix}</span> <br />{" "}
                 {stat.name}
               </h4>
             </div>
-            <p className="w-1/3 text-right text-balance">{stat.description}</p>
+            <p className="sm:w-1/3 sm:text-right text-balance">
+              {stat.description}
+            </p>
           </div>
         ))}
       </section>
       {/* sponsor */}
-      <section className="container py-20 grid grid-cols-2 gap-5">
-        <div className="space-y-4">
-          <h1 className="text-5xl ">Sponsor a Code Spacer Today!</h1>
+      <section className="container py-20 grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="space-y-4 flex flex-col items-center sm:items-start">
+          <h1 className="text-3xl text-center sm:text-left sm:text-5xl">
+            Sponsor a Code Spacer Today!
+          </h1>
           <Button>Donate Today</Button>
         </div>
         <div>
-          <p className="text-right text-lg">
+          <p className="md:text-right text-lg text-balance">
             A lack of resources should never stand in the way of reaching
             one&apos;s full potential. But for many tech talents, it does. When
             you sponsor a Code Spacer you break that barrier and help someone to
@@ -309,7 +313,7 @@ const Home = () => {
             Code Spacer&apos;s dream alive!
           </p>
         </div>
-        <div className="col-span-2 aspect-video relative">
+        <div className="col-span-1 sm:col-span-2 aspect-video relative">
           <ImageCard
             src={"/images/hackathon.png"}
             className="w-1/2 absolute top-1/2 right-14 aspect-[6/4] -mt-20 rotate-[9deg] [&>#image-card]:h-[90%]"

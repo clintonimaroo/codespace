@@ -53,7 +53,7 @@ export const what_we_do = [
   {
     title: "Hackathons",
     description:
-      "When passionate minds come together, they build amazing products for real people with real problems. Our hackathons aren&apos;t just for developers. They&apos;re for anyone with tech skills ready to turn ideas into products that make a difference.",
+      "When passionate minds come together, they build amazing products for real people with real problems. Our hackathons aren't just for developers. They're for anyone with tech skills ready to turn ideas into products that make a difference.",
     date: "2024",
 
     icon: TrophyIcon,
@@ -155,7 +155,7 @@ export const stats = [
     value: 1,
     suffix: "",
     description:
-      "We&apos;ve successfully completed our first major challenge, pushing participants to innovate and build impactful tech solutions."
+      "We've successfully completed our first major challenge, pushing participants to innovate and build impactful tech solutions."
   },
   {
     name: "Hackathons",
@@ -211,14 +211,14 @@ export const socials = [
   {
     name: "email",
     url: "mailto:hello@codespaceafrica.com",
-    description: "Email us if you&apos;ve got inquiries.",
+    description: "Email us if you've got inquiries.",
     username: "hello@codespaceafrica.com",
     icon: MailIcon
   },
   {
     name: "x (formerly twitter)",
     url: "https://twitter.com/codespaceafrica",
-    description: "Join the conversation! We&apos;re buzzing with energy on X.",
+    description: "Join the conversation! We're buzzing with energy on X.",
     username: "@codespaceafrica",
     icon: XIcon
   },
@@ -235,7 +235,7 @@ export const socials = [
     name: "instagram",
     url: "https://instagram.com/codespaceafrica",
     description:
-      "Check out our engaging Reels on Instagram to see what we&apos;re up to!",
+      "Check out our engaging Reels on Instagram to see what we're up to!",
     username: "@codespaceafrica",
     icon: InstagramIcon
   },
