@@ -197,7 +197,7 @@ export const links = [
   { name: "Events", href: "/events" },
   { name: "Shop", href: "/shop" },
   { name: "Gallery", href: "/gallery" },
-  { name: "Blog", href: "/blog" },
+  // { name: "Blog", href: "/blog" },
   { name: "Contact us", href: "/contact-us" }
 ];
 
