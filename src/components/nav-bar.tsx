@@ -12,6 +12,11 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const NavBar = () => {
   const pathname = usePathname();
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
   return (
     <nav className="container flex items-center justify-between py-4 md:py-8">
       <Link href={"/"}>
@@ -32,8 +37,8 @@ const NavBar = () => {
       <Button size={"sm"} className="hidden sm:block">
         Join the Community
       </Button>
-      <Sheet>
-        <SheetTrigger asChild>
+      <Sheet open={open} onOpenChange={setOpen}>
+        <SheetTrigger asChild onClick={() => setOpen(true)}>
           <Button size={"icon-sm"} variant={"ghost"} className="md:hidden">
             <MenuIcon size={24} />
           </Button>
