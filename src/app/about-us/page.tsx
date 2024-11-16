@@ -16,7 +16,7 @@ import React from "react";
 const AboutUs = () => {
   return (
     <>
-      <section className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-20 content-center">
+      <section className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-5 md:py-20 content-center">
         <div className="space-y-5 flex-col flex  justify-center">
           <Badge>
             <div className="size-1.5 rounded-full bg-primary" />
@@ -34,7 +34,7 @@ const AboutUs = () => {
         </div>
       </section>
       <section className="min-h-screen bg-foreground mb-20">
-        <section className="container  h-full flex flex-col justify-between bg-cover py-20 bg-top bg-no-repeat ">
+        <section className="container  h-full flex flex-col justify-between bg-cover py-10 md:py-20 bg-top bg-no-repeat gap-5">
           <div className="space-y-4 w-full sm:w-1/2">
             <h3 className="text-3xl text-white font-normal">Our Mission</h3>
             <p className="text-white w-full sm:w-4/5">
