@@ -16,14 +16,14 @@ import React from "react";
 const AboutUs = () => {
   return (
     <>
-      <section className="container grid grid-cols-2 gap-5 py-20 content-center">
+      <section className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-20 content-center">
         <div className="space-y-5 flex-col flex  justify-center">
           <Badge>
             <div className="size-1.5 rounded-full bg-primary" />
             ABOUT US
           </Badge>
 
-          <p className="text-2xl text-gray-800 text-balance leading-normal">
+          <p className="text-xl md:text-2xl text-gray-800 text-balance leading-normal">
             Code Space is a tech-driven community empowering Gen Z tech talents
             across Africa with resources, mentorship, and global opportunities,
             fostering a supportive ecosystem for growth and career success.
@@ -72,7 +72,7 @@ const AboutUs = () => {
             <h1 className="font-medium text-2xl leading-normal sm:w-4/5 text-white ">
               Our Values
             </h1>
-            <div className="grid grid-cols-3 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               {values.map((item) => (
                 <GoalsCard
                   variant="dark"
@@ -96,7 +96,7 @@ const AboutUs = () => {
                   className="flex items-center justify-between w-full "
                   indicator={false}
                 >
-                  <h1 className="text-white text-4xl font-light">
+                  <h1 className="text-white text-2xl md:text-4xl font-light text-left">
                     {data.title}
                   </h1>
                   <div className="size-11 rounded-full border-white border flex items-center justify-center">
