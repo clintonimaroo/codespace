@@ -27,7 +27,7 @@ const Brand = () => {
         </div>
       </section>
       {/* what we do */}
-      <section className="container space-y-2 ">
+      <section className="container space-y-2 py-5">
         <SpaceBadge>Logo usage</SpaceBadge>
         <h1 className="font-normal text-2xl leading-normal">Our Logo</h1>
         <p className="text-xl subtitle sm:w-4/5">
@@ -35,7 +35,7 @@ const Brand = () => {
           next generation of tech innovators. To ensure consistency, follow the
           guidelines below for proper usage.
         </p>
-        <div className="grid grid-cols-3 gap-10 !my-10">
+        <div className="grid grid-cols-3 gap-10 !my-5">
           <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-gray-50 p-10">
             <div className="w-4/5 h-full relative">
               <Image
@@ -68,11 +68,11 @@ const Brand = () => {
           </div>
         </div>
       </section>
-      <section className="container space-y-2 ">
+      <section className="container space-y-2 py-5">
         <SpaceBadge>Icons usage</SpaceBadge>
         <h1 className="font-normal text-2xl leading-normal">Icons Variation</h1>
 
-        <div className="grid grid-cols-3 gap-10 !my-10">
+        <div className="grid grid-cols-3 gap-10 !my-5">
           <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-gray-50 p-10">
             <div className="w-4/5 h-full relative">
               <Image
@@ -105,7 +105,7 @@ const Brand = () => {
           </div>
         </div>
       </section>
-      <section className="container space-y-2 ">
+      <section className="container space-y-2 py-5">
         <SpaceBadge>color usage</SpaceBadge>
         <h1 className="font-normal text-2xl leading-normal">Our Colors</h1>
         <p className="text-xl subtitle sm:w-4/5">
@@ -127,6 +127,28 @@ const Brand = () => {
           </div>
         </div>
       </section>
+      <section className="container space-y-2 ">
+        <SpaceBadge>Typography</SpaceBadge>
+        <h1 className="font-normal text-2xl leading-normal">Font Family</h1>
+        <p className="text-xl text-black font-light">
+          Typography plays a key role in shaping our voice and tone. We use
+          clean, modern fonts that are easy to read and align with our
+          forward-thinking values.
+        </p>
+
+        <div className="space-y-2 !my-5">
+          <h1 className="font-normal text-2xl leading-normal">Primary Font</h1>
+          <h2 className="text-xl">SF Pro Display</h2>
+          <p className="text-xl text-black font-light">
+            SF Pro Display is a modern, sans-serif typeface designed by Apple,
+            primarily for use across its platforms like iOS, macOS, and watchOS.
+            It’s a part of the San Francisco font family, which includes SF Pro
+            Text (for smaller sizes) and SF Compact (for tight spaces, like the
+            Apple Watch).
+          </p>
+        </div>
+      </section>
+      <section className="my-10"></section>
     </>
   );
 };
