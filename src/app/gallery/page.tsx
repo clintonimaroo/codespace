@@ -15,7 +15,7 @@ const Page = () => {
           <h1 className="font-medium text-3xl md:text-5xl leading-snug">
             CodeSpace Gallery
           </h1>
-          <p className="text-xl text-gray-600">Coming soon for gallery.</p>
+          <p className="text-xl subtitle">Coming soon for gallery.</p>
         </div>
       </section>
 

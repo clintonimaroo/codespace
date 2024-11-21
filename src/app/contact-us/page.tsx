@@ -17,7 +17,7 @@ const ContactUs = () => {
           <h1 className="font-medium text-3xl md:text-5xl leading-snug">
             Let&apos;s Stay Connected!
           </h1>
-          <p className="text-lg md:text-xl text-gray-600">
+          <p className="text-lg md:text-xl subtitle">
             Code Space is home to all Gen Z tech talents, and we&apos;d love to
             see more of you.
           </p>

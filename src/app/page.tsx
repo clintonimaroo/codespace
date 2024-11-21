@@ -19,7 +19,7 @@ const Home = () => {
           <h1 className="font-medium text-2xl md:text-5xl leading-normal">
             Building a Tech Career <br /> Alone is Hard.
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl subtitle">
             But with us, the journey becomes a lot smoother <br /> for techies
             like you!
           </p>

@@ -15,7 +15,7 @@ const Page = () => {
           <h1 className="font-medium text-3xl md:text-5xl leading-snug">
             CodeSpace Shop
           </h1>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl subtitle">
             Coming soon! Stay tuned for exciting products and offers.
           </p>
         </div>

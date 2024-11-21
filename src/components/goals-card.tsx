@@ -17,7 +17,7 @@ const GoalsCard = ({
     >
       {props.title}
     </h3>
-    <p className={variant === "dark" ? "text-gray-400" : "text-gray-600"}>
+    <p className={variant === "dark" ? "text-gray-400" : "subtitle"}>
       {props.description}
     </p>
     <div className="flex-grow" />
@@ -36,7 +36,7 @@ const GoalsCard = ({
                 {stat.value}{" "}
                 <span className="text-primary text-base">{stat.suffix}</span>
               </h4>
-              <p className="text-gray-600">{stat.name}</p>
+              <p className="subtitle">{stat.name}</p>
             </div>
           </div>
         ))}

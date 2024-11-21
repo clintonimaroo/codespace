@@ -10,7 +10,7 @@ const BrandsSection = () => {
         <h3 className="text-3xl font-medium">
           Brands we&apos;ve loved working with
         </h3>
-        <p className="text-gray-600 text-lg">
+        <p className="subtitle text-lg">
           When brands collaborate with us, they empower thousands of young
           African tech talents. Here are the innovative brands that make our
           mission even more rewarding!
