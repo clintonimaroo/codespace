@@ -264,3 +264,48 @@ export const why_us = [
     content: ""
   }
 ];
+
+export const past_events = [
+  {
+    image: "/images/events/hackathon.jpg",
+    title: "International Day of the Girl Child 2024",
+    description:
+      "The International Day of the Girl Child is celebrated on October 11th every year. As part of our mission to support women and girls in tech, we commemorated this day with a one-day virtual event. The theme: “Girls' Vision for the Future,” was a powerful call to action that highlighted the aspirations of young girls in tech and their role in shaping the future of technology.",
+    date: new Date().toISOString(),
+    location: "Virtual",
+    action_link: "/events/int",
+    action_text: "View Event"
+  },
+  {
+    image: "/images/events/codefest.jpg",
+    title: "CodeFest 2024",
+    description:
+      "CodeFest 2024 brought together coding enthusiasts from around the world for a weekend of innovation and collaboration. Participants worked on exciting projects, attended workshops, and networked with industry experts.",
+    date: new Date().toISOString(),
+    location: "New York, USA",
+    action_link: "/events/codefest",
+    action_text: "View Event"
+  },
+  {
+    image: "/images/events/techsummit.jpg",
+    title: "Tech Summit 2024",
+    description:
+      "Tech Summit 2024 was a premier event that showcased the latest advancements in technology. Attendees had the opportunity to hear from leading tech innovators, participate in panel discussions, and explore cutting-edge products.",
+    date: new Date().toISOString(),
+    location: "San Francisco, USA",
+    action_link: "/events/techsummit",
+    action_text: "View Event"
+  },
+  {
+    image: "/images/events/devcon.jpg",
+    title: "Developer Conference 2024",
+    description:
+      "The Developer Conference 2024 was a must-attend event for software developers. It featured hands-on coding sessions, technical talks, and networking opportunities with fellow developers and tech companies.",
+    date: new Date().toISOString(),
+    location: "Berlin, Germany",
+    action_link: "/events/devcon",
+    action_text: "View Event"
+  }
+];
+
+export type EventType = (typeof past_events)[number];
