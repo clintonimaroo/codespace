@@ -309,3 +309,16 @@ export const past_events = [
 ];
 
 export type EventType = (typeof past_events)[number];
+
+export const gallery = [
+  {
+    label: "Fuse Tech Fest 2024",
+    images: [
+      "1ZSW9J1bGXNahC5mOO6S-a3GmABghgDKi",
+      "1q08LFx75jYwG0Om0uTV757AxXZAtcwEg",
+      "1p4dZKvPk55MJdufnlxieOhbCS0_-_8Tz",
+      "10pusS6p85iF2QxqTGUfYmjQnFiy9a3_z",
+      "1DSZQ0pwoi2QQM22xY0U_T9yT3bIqOJpQ"
+    ]
+  }
+];
