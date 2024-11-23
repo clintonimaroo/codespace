@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Nanum+Pen+Script&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +8,41 @@ html,
 body {
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+}
+
+@font-face {
+  font-family: 'Canela Web';
+  src: url('https://www.harvard.edu/wp-content/themes/core/assets/fonts/theme/canela/Canela-Regular-Web.woff2') format('woff2');
+
+}
+
+@font-face {
+  font-family: 'GT America';
+  src: url('https://www.harvard.edu/wp-content/themes/core/assets/fonts/theme/gt-america/GT-America-Standard-Regular.woff2') format('woff2');
+
+}
+
+@font-face {
+  font-family: 'Curl';
+  src: url('https://fonts.gstatic.com/s/instrumentserif/v4/jizHRFtNs2ka5fXjeivQ4LroWlx-6zAjjH7M.woff2') format('woff2');
+
+}
+
+@font-face {
+  font-family: 'Stiff';
+  src: url('https://fonts.gstatic.com/s/instrumentsans/v1/pxiTypc9vsFDm051Uf6KVwgkfoSxQ0GsQv8ToedPibnr0SZe1Q.woff2') format('woff2');
+
+}
+
+@font-face {
+  font-family: "Google Sans";
+  src: url("https://fonts.gstatic.com/s/googlesans/v58/4UaRrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iq2vgCIhM907w.woff2") format("woff2");
+}
+
+* {
+  font-family: "Neue Haas Grotesk Display Pro", sans-serif !important;
+  @apply antialiased;
+
 }
 
 /* hsla(241, 56%, 59%, 1) */
@@ -79,5 +116,23 @@ body {
   .subtitle {
     @apply text-[#989898];
   }
+}
+
+.animated-heading span {
+  display: block;
+  opacity: 0;
+  animation: fadeInUp 1s forwards;
+}
+
+.animated-heading span:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.animated-heading span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.animated-heading span:nth-child(3) {
+  animation-delay: 0.3s;
 }
 /*  */

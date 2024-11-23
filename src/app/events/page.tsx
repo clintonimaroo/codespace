@@ -7,6 +7,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EventType, past_events, upcoming_events } from "@/data";
 import Link from "next/link";
+import classNames from 'classnames';
+
+type StatType = { value: number; suffix: string; name: string };
 
 const Events = () => {
   return (
@@ -36,7 +39,7 @@ const Events = () => {
         </p>
         <div className="w-full space-y-10 !mt-10">
           {upcoming_events.map((event) => (
-            <EventCard key={event.action_link} {...event} />
+            <UpcomingEvent key={event.action_link} {...event} />
           ))}
         </div>
       </section>
@@ -89,3 +92,51 @@ const EventCard = ({
     </div>
   );
 };
+
+const UpcomingEvent = ({
+  title,
+  date,
+  description,
+  action_link,
+  action_text,
+  location,
+  stats = [],
+}: EventType & { stats?: StatType[] }) => {
+  return (
+    <div className="w-full flex gap-10">
+      <div className="w-full max-w-sm flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 rounded-sm">
+        <div className="w-full h-full bg-gray-50"></div>
+      </div>
+      <div className="py-5 flex flex-col space-y-2 justify-around">
+        <h2 className="text-2xl font-normal">{title}</h2>
+        <p className="text-xl text-gray-700 font-light">{description}</p>
+        <p className="text-lg">Date <span className="text-gray-600 ml-2">{date}</span></p>
+        <p className="text-lg">Location <span className="text-gray-600 ml-2">{location}</span></p>
+        {stats && (
+          <div className="w-full max-w-xs flex flex-row items-center divide-x">
+            {stats.map((stat, i) => (
+              <div
+                key={i}
+                className={classNames("flex-grow", {
+                  "flex flex-col items-center justify-center": i !== 0
+                })}
+              >
+                <div>
+                  <h4 className="text-xl font-semibold">
+                    {stat.value}{" "}
+                    <span className="text-primary text-base">{stat.suffix}</span>
+                  </h4>
+                  <p className="subtitle">{stat.name}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        <Button asChild className="w-fit">
+          <Link href={action_link}>{action_text}</Link>
+        </Button>
+      </div>
+    </div>
+  );
+};
+
