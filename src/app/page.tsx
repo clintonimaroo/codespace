@@ -370,7 +370,6 @@ const EventCard = ({
   action_text,
   location,
   stats = [],
-  ...props
 }: EventType & { stats?: Stat[] }) => {
   return (
     <div className="w-full flex gap-10">
