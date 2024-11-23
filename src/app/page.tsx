@@ -5,9 +5,19 @@ import ImageCard from "@/components/image-card";
 import JoinSection from "@/components/join-section";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { stats, what_we_do } from "@/data";
+import { stats, upcoming_events, what_we_do } from "@/data";
 import { CirclePlayIcon } from "lucide-react";
 import SpaceBadge from "@/components/space-badge";
+import { EventType } from "@/data";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+
+interface Stat {
+  name: string;
+  value: number | string;
+  suffix: string;
+  description?: string;
+}
 
 const Home = () => {
   return (
@@ -17,7 +27,7 @@ const Home = () => {
         <div className="space-y-3 md:space-y-5 flex-col flex  justify-center">
           <SpaceBadge>Version 2.0</SpaceBadge>
           <h1 className="font-medium text-2xl md:text-5xl leading-normal">
-            Building a Tech Career <br /> Alone is Hard.
+            Connecting African Gen Zs for <br /> Growth, Impact, and Success.
           </h1>
           <p className="text-xl subtitle">
             But with us, the journey becomes a lot smoother <br /> for techies
@@ -162,6 +172,24 @@ const Home = () => {
           </p>
         </div>
       </section>
+      {/* Upcoming Events */}
+      <section className="container space-y-2 py-20">
+        <SpaceBadge>UPCOMING</SpaceBadge>
+        <h1 className="font-normal text-2xl leading-normal">Upcoming Events</h1>
+        <p className="text-xl subtitle sm:w-1/2">
+          Join us for our upcoming events at Code Space, where you can connect,
+          learn, and elevate your tech journey!
+        </p>
+        <div className="w-full space-y-10 !mt-10">
+          {upcoming_events.map((event) => (
+            <EventCard key={event.action_link} {...event} stats={event.stats || []} />
+          ))}
+        </div>
+      </section>
+
+      <div className="!my-18 w-full flex justify-center">
+        <Button className="mx-auto">View Events</Button>
+      </div>
       {/* milestones */}
       <section className="container py-20 space-y-20">
         <div className="space-y-3 relative flex flex-col items-center justify-center text-center w-full  sm:w-1/2  mx-auto">
@@ -272,9 +300,9 @@ const Home = () => {
           </p>
           <Button>Become a Member</Button>
         </div>
-        {stats.map((stat, i) => (
+        {stats.map((stat: Stat) => (
           <div
-            key={i}
+            key={stat.name}
             className="w-full flex flex-col gap-5 md:flex-row border-b py-5 justify-between items-baseline"
           >
             <div>
@@ -333,3 +361,51 @@ const Home = () => {
 };
 
 export default Home;
+
+const EventCard = ({
+  title,
+  date,
+  description,
+  action_link,
+  action_text,
+  location,
+  stats = [],
+  ...props
+}: EventType & { stats?: Stat[] }) => {
+  return (
+    <div className="w-full flex gap-10">
+      <div className="w-full max-w-sm flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 rounded-sm">
+        <div className="w-full h-full bg-gray-50"></div>
+      </div>
+      <div className="py-5 flex flex-col space-y-2 justify-around">
+        <h2 className="text-2xl font-normal">{title}</h2>
+        <p className="text-xl text-gray-700 font-light">{description}</p>
+        <p className="text-lg">Date <span className="text-gray-600 ml-2">{date}</span></p>
+        <p className="text-lg">Location <span className="text-gray-600 ml-2">{location}</span></p>
+        {stats && (
+          <div className="w-full max-w-xs flex flex-row items-center divide-x">
+            {stats.map((stat, i) => (
+              <div
+                key={i}
+                className={cn("flex-grow", {
+                  "flex flex-col items-center justify-center": i !== 0
+                })}
+              >
+                <div>
+                  <h4 className="text-xl font-semibold">
+                    {stat.value}{" "}
+                    <span className="text-primary text-base">{stat.suffix}</span>
+                  </h4>
+                  <p className="subtitle">{stat.name}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        <Button asChild className="w-fit">
+          <Link href={action_link}>{action_text}</Link>
+        </Button>
+      </div>
+    </div>
+  );
+};

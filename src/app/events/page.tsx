@@ -5,7 +5,7 @@ import JoinSection from "@/components/join-section";
 import SpaceBadge from "@/components/space-badge";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { EventType, past_events } from "@/data";
+import { EventType, past_events, upcoming_events } from "@/data";
 import Link from "next/link";
 
 const Events = () => {
@@ -35,7 +35,7 @@ const Events = () => {
           learn, and elevate your tech journey!
         </p>
         <div className="w-full space-y-10 !mt-10">
-          {past_events.map((event) => (
+          {upcoming_events.map((event) => (
             <EventCard key={event.action_link} {...event} />
           ))}
         </div>

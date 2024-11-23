@@ -210,16 +210,16 @@ export const other_links = [
 export const socials = [
   {
     name: "email",
-    url: "mailto:hello@codespaceafrica.com",
+    url: "mailto:hello@codespaces.org",
     description: "Email us if you've got inquiries.",
-    username: "hello@codespaceafrica.com",
+    username: "hello@codespaces.org",
     icon: MailIcon
   },
   {
     name: "x (formerly twitter)",
-    url: "https://twitter.com/codespaceafrica",
+    url: "https://twitter.com/CodeSpaceHQ",
     description: "Join the conversation! We're buzzing with energy on X.",
-    username: "@codespaceafrica",
+    username: "@CodeSpaceHQ",
     icon: XIcon
   },
 
@@ -233,10 +233,10 @@ export const socials = [
   },
   {
     name: "instagram",
-    url: "https://instagram.com/codespaceafrica",
+    url: "https://instagram.com/CodesSpace",
     description:
       "Check out our engaging Reels on Instagram to see what we're up to!",
-    username: "@codespaceafrica",
+    username: "@CodesSpace",
     icon: InstagramIcon
   },
 
@@ -262,6 +262,32 @@ export const why_us = [
   {
     title: "Career Growth",
     content: ""
+  }
+];
+
+export const upcoming_events = [
+  {
+    image: "/images/events/hackathon.jpg",
+    title: "Fusion Tech Fest 2024",
+    description: "Code Space co-organized Fusion Tech Fest 2024 with GenZTechies. Fusion Tech Fest 2024 was a groundbreaking event that brought together Africa’s brightest Gen Z tech innovators. The week-long festival offered immersive learning sessions and a high-energy hackathon, where participants collaborated to solve real-world challenges with creative tech solutions.",
+    date: "March 15-17, 2024",
+    location: "Online / Hybrid",
+    action_link: "/events/wix-studio-challenge",
+    action_text: "Register Now",
+    icon: MonitorPlayIcon,
+    stats: [
+      {
+        name: "Registered Participants",
+        value: 200,
+        suffix: "+"
+      },
+
+      {
+        name: "Judges",
+        value: 30,
+        suffix: "+"
+      }
+    ]
   }
 ];
 
