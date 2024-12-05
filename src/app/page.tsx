@@ -254,7 +254,7 @@ const Home = () => {
       {/* <div className="!my-18 w-full flex justify-center">
         <Button className="mx-auto">View Events</Button>
       </div> */}
-      
+
       {/* milestones */}
       <Container className="container py-20 space-y-20">
         <div className="space-y-3 relative flex flex-col items-center justify-center text-center w-full  sm:w-1/2  mx-auto">
@@ -407,14 +407,14 @@ const Home = () => {
             Code Spacer&apos;s dream alive!
           </p>
         </div>
-        <div className="col-span-1 sm:col-span-2 aspect-video relative">
+        <div className="col-span-1 sm:col-span-2 aspect-video relative mt-20"> 
           <ImageCard
             src={"/images/hackathon.png"}
             className="w-1/2 absolute top-1/2 right-14 aspect-[6/4] -mt-20 rotate-[9deg] [&>#image-card]:h-[90%]"
           />
           <ImageCard
             src={"/images/hackathon.png"}
-            className="w-1/2 absolute top-0 left-14 aspect-[6/4]  -rotate-3 [&>#image-card]:h-[90%]"
+            className="w-1/2 absolute top-0 left-14 aspect-[6/4] -rotate-3 [&>#image-card]:h-[90%]"
           />
         </div>
       </Container>

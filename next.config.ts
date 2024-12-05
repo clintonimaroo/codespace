@@ -4,7 +4,8 @@ const nextConfig: NextConfig = {
    images: {
     domains: [
       'pbs.twimg.com',
-      'i.postimg.cc'  
+      'i.postimg.cc',
+      'i.ibb.co' 
     ],
   },
 }

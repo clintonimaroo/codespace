@@ -22,14 +22,14 @@ const NavBar = () => {
     <>
       {/* Hackfest 2024 Banner */}
 
-      {/* 
-      <div className="w-full bg-gradient-to-r from-green-400 via-blue-400 to-[#6d6cd6]">
+      {/*
+      <div className="w-full bg-gradient-to-r from-[#6d6cd6] via-[#151440] to-[#feb800] font-bold">
         <Container>
           <Link
-            href="/hackfest-2023"
+            href="https://photos.app.goo.gl/7rsrtg3xNwd5VFqw5"
             className="w-full py-2 text-white text-center block hover:opacity-90 transition-opacity"
           >
-            View Hackfest 2023 Official Photos &gt;&gt;
+            View Fusion Hack Fest 2024 Official Photos &gt;&gt;
           </Link>
         </Container>
       </div>

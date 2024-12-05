@@ -12,8 +12,7 @@ const Footer = () => {
       <div className="col-span-2 w-full space-y-5 ">
         <LogoLarge />
         <p className="text-base text-gray-500">
-          We are a vibrant community for the tech-savvy Gen Z developers,
-          founders, designers, and tech enthusiasts across Africa.
+          Code Space is a nonprofit community fiscally sponsored by The Hack Foundation Nonprofit EIN: 81-2908499.
         </p>
       </div>
       <ul className="space-y-2 col-span-1">
