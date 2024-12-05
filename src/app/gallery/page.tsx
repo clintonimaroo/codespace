@@ -4,12 +4,14 @@ import JoinSection from "@/components/join-section";
 import SpaceBadge from "@/components/space-badge";
 import { cn } from "@/lib/utils";
 import React from "react";
+import Container from "@/components/container";
+
 
 const Page = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-5 md:py-20 content-center">
+      <Container className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-5 md:py-20 content-center">
         <div className="space-y-3 md:space-y-5 flex-col flex  justify-center">
           <SpaceBadge>CODE SPACE GALLERY</SpaceBadge>
           <h1 className="font-medium text-2xl md:text-5xl leading-normal">
@@ -23,14 +25,14 @@ const Page = () => {
         <div className="w-full relative aspect-[16/10] ">
           <HeroImageCards />
         </div>
-      </section>
+      </Container>
 
-      <section className="container gap-5 py-5 md:py-20 ">
+      <Container className="container gap-5 py-5 md:py-20 ">
         <h1 className="font-normal text-xl md:text-3xl leading-snug text-center">
           Events Highlight
         </h1>
-      </section>
-      <section className="container">
+      </Container>
+      <Container className="container">
         <div className="p-5 sm:p-8 bg-gray-50 rounded-lg space-y-10">
           <h1 className="text-2xl font-light">Fusion Tech fest 2024</h1>
           <div className="columns-1 gap-4 sm:columns-2 sm:gap-5 md:columns-3 lg:columns-4 [&>div:not(:first-child)]:mt-8">
@@ -40,7 +42,7 @@ const Page = () => {
           </div>
           <h1 className="text-xl font-light text-center">View more</h1>
         </div>
-      </section>
+      </Container>
 
       {/* Brands */}
       <BrandsSection />

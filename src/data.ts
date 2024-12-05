@@ -188,7 +188,10 @@ export const brands = [
   "theguardian",
   "paystack",
   "aws",
-  "genztechies"
+  "genztechies",
+  "vercel",
+  "wix-studio",
+  "kora"
 ];
 
 export const links = [
@@ -253,26 +256,31 @@ export const socials = [
 export const why_us = [
   {
     title: "Community Support",
-    content: ""
+    content: "Imagine running a marathon with no one to cheer you on or lift you when you stumble. Tough, right? We get it! With over a thousand Code Spacers by your side, you’ll be amazed at how much easier your tech journey becomes. From support and resources to mentorship opportunities and a network of like-minded people, this is what home should feel like. Welcome to a community that’s got your back every step of the way!"
   },
   {
     title: "Access to Resources and Tools",
-    content: ""
+    content: "We know what it feels like when you are on a tech journey but do not have access to essential resources. With the help of our donors who believe in us and your dreams, you can access resources such as data stipends, laptops, and tech courses, ensuring you have everything you need to succeed."
   },
   {
     title: "Career Growth",
-    content: ""
+    content: `Let’s kick off with one of our favorite quotes. Warning! It’s nothing techy. 
+
+> “If you want to go fast, go alone. If you want to go far, go together.”
+> 
+
+Code Spacers are young and passionate techies. With a community of like-minded people, you can participate in hackathons, tackle coding challenges, and skill-building workshops designed to sharpen your expertise. Plus, you can get guidance and support from seasoned industry professionals here to help you navigate your tech career path.`
   }
 ];
 
 export const upcoming_events = [
   {
-    image: "/images/events/hackathon.jpg",
-    title: "Fusion Tech Fest 2024",
-    description: "Code Space co-organized Fusion Tech Fest 2024 with GenZTechies. Fusion Tech Fest 2024 was a groundbreaking event that brought together Africa’s brightest Gen Z tech innovators. The week-long festival offered immersive learning sessions and a high-energy hackathon, where participants collaborated to solve real-world challenges with creative tech solutions.",
-    date: "March 15-17, 2024",
+    image: "https://pbs.twimg.com/media/GbuMEnOWEAgnWNW?format=jpg&name=large",
+    title: "AMA w/ Peace Itimi",
+    description: "​Join Peace Itimi for an exclusive AMA (Ask Me Anything) session, where she’ll dive into her journey in building brands and scaling companies in African and emerging markets, crafting impactful stories, and sharing insights from her roles as a growth strategist, educator, and content creator.",
+    date: "13th Nov, 2024",
     location: "Online / Hybrid",
-    action_link: "/events/wix-studio-challenge",
+    action_link: "https://lu.ma/5xebmpzu?locale=en-GB&tk=WuDgnL",
     action_text: "Register Now",
     icon: MonitorPlayIcon,
     stats: [
@@ -293,44 +301,54 @@ export const upcoming_events = [
 
 export const past_events = [
   {
-    image: "/images/events/hackathon.jpg",
+    image: "https://pbs.twimg.com/media/GauyZWqWQAAhoZt?format=jpg&name=large",
+    title: "Wix Studio Hack",
+    description:
+      "The International Day of the Girl Child is celebrated on October 11th every year. As part of our mission to support women and girls in tech, we commemorated this day with a one-day virtual event. The theme: “Girls' Vision for the Future,” was a powerful call to action that highlighted the aspirations of young girls in tech and their role in shaping the future of technology.",
+    date: new Date().toISOString(),
+    location: "Virtual",
+    action_link: "/events/wix-studio-hack",
+    action_text: "Watch the Replay!"
+  },
+  {
+    image: "https://pbs.twimg.com/media/GZldN7TXgAkXjGC?format=jpg&name=large",
     title: "International Day of the Girl Child 2024",
     description:
       "The International Day of the Girl Child is celebrated on October 11th every year. As part of our mission to support women and girls in tech, we commemorated this day with a one-day virtual event. The theme: “Girls' Vision for the Future,” was a powerful call to action that highlighted the aspirations of young girls in tech and their role in shaping the future of technology.",
     date: new Date().toISOString(),
     location: "Virtual",
     action_link: "/events/int",
-    action_text: "View Event"
+    action_text: "Watch the Replay!"
   },
   {
-    image: "/images/events/codefest.jpg",
-    title: "CodeFest 2024",
-    description:
-      "CodeFest 2024 brought together coding enthusiasts from around the world for a weekend of innovation and collaboration. Participants worked on exciting projects, attended workshops, and networked with industry experts.",
+    image: "https://pbs.twimg.com/media/GQGUYcLWIAAxkNn?format=jpg&name=medium",
+    title: "Fusion Tech Fest 2024",
+    description: 
+      "Code Space co-organized Fusion Tech Fest 2024 with GenZTechies. This groundbreaking event brought together Africa's brightest Gen Z tech innovators. The week-long festival offered immersive learning sessions and a high-energy hackathon, where participants collaborated to solve real-world challenges with creative tech solutions. The event concluded with an in-person conference in Lagos, featuring insightful keynotes, hands-on workshops, and invaluable networking opportunities.",
     date: new Date().toISOString(),
     location: "New York, USA",
     action_link: "/events/codefest",
-    action_text: "View Event"
+    action_text: "Experience the Event"
   },
   {
-    image: "/images/events/techsummit.jpg",
-    title: "Tech Summit 2024",
+    image: "https://pbs.twimg.com/media/F2eGF5sWoAA8vux?format=jpg&name=medium",
+    title: "Spacers HackConf 2023",
     description:
-      "Tech Summit 2024 was a premier event that showcased the latest advancements in technology. Attendees had the opportunity to hear from leading tech innovators, participate in panel discussions, and explore cutting-edge products.",
-    date: new Date().toISOString(),
+      "We launched our first-ever hackathon and conference in 2023. Spacers HackConf 2023 was a week-long hackathon, followed by a one-day conference held virtually. The conference had a remarkable lineup of speakers who shared their insightful knowledge, and the hackathon brought together visionary developers, designers, and tech enthusiasts from around the continent. This thought-provoking event allowed Spacers to learn, ideate, and build pan-African solutions.",
+    date: "2023",
     location: "San Francisco, USA",
     action_link: "/events/techsummit",
-    action_text: "View Event"
+    action_text: "Catch the Action"
   },
   {
-    image: "/images/events/devcon.jpg",
-    title: "Developer Conference 2024",
+    image: "https://i.postimg.cc/htQFDXQQ/PHOTO-2023-12-30-00-44-54-2.jpg",
+    title: "2023 End of Year Picnic",
     description:
-      "The Developer Conference 2024 was a must-attend event for software developers. It featured hands-on coding sessions, technical talks, and networking opportunities with fellow developers and tech companies.",
-    date: new Date().toISOString(),
+      "There’s one thing you need to know about Code Spacers, although we are career-driven, we never slack when it comes to having fun! Our 2023 End of Year Picnic was a blast, filled with unforgettable moments, goal-sharing, and plenty of games. Of course, we captured the fun with some amazing pictures along the way!",
+    date: "2023",
     location: "Berlin, Germany",
     action_link: "/events/devcon",
-    action_text: "View Event"
+    action_text: "See What You Missed"
   }
 ];
 

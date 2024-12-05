@@ -8,6 +8,9 @@ import { Button } from "@/components/ui/button";
 import { EventType, past_events, upcoming_events } from "@/data";
 import Link from "next/link";
 import classNames from 'classnames';
+import Image from "next/image";
+import Container from "@/components/container";
+
 
 type StatType = { value: number; suffix: string; name: string };
 
@@ -15,7 +18,7 @@ const Events = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="container gap-5 py-5 md:py-20 ">
+      <Container className="container gap-5 py-5 md:py-20 ">
         <div className="space-y-5 flex-col flex  justify-center items-center text-center sm:w-1/2 mx-auto">
           <Logo className="scale-75" />
           <SpaceBadge>CODE SPACE EVENTS</SpaceBadge>
@@ -28,9 +31,9 @@ const Events = () => {
             our past sessions.
           </p>
         </div>
-      </section>
+      </Container>
       {/* what we do */}
-      <section className="container space-y-2 py-20">
+      <Container className="container space-y-2 py-20">
         <SpaceBadge>UPCOMING</SpaceBadge>
         <h1 className="font-normal text-2xl leading-normal">Upcoming Events</h1>
         <p className="text-xl subtitle sm:w-1/2">
@@ -42,9 +45,9 @@ const Events = () => {
             <UpcomingEvent key={event.action_link} {...event} />
           ))}
         </div>
-      </section>
+      </Container>
 
-      <section className="container space-y-2">
+      <Container className="container space-y-2">
         <SpaceBadge>PAST</SpaceBadge>
         <h1 className="font-normal text-2xl leading-normal">Past Events</h1>
         <p className="text-xl subtitle sm:w-4/6">
@@ -57,7 +60,7 @@ const Events = () => {
             <EventCard key={event.action_link} {...event} />
           ))}
         </div>
-      </section>
+      </Container>
 
       {/* Brands */}
       <BrandsSection />
@@ -74,12 +77,20 @@ const EventCard = ({
   date,
   description,
   action_link,
-  action_text
+  action_text,
+  image 
 }: EventType) => {
   return (
     <div className="w-full flex gap-10">
-      <div className="w-full max-w-sm flex-shrink-0 drop-shadow-md shadow-gray-50/45  aspect-square bg-white p-3 rounded-sm">
-        <div className="w-full h-full bg-gray-50"></div>
+      <div className="w-full max-w-sm flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 rounded-sm">
+        <div className="w-full h-full relative">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover rounded-sm"
+          />
+        </div>
       </div>
       <div className="py-5 flex flex-col space-y-2 justify-around">
         <h2 className="text-2xl font-normal">{title}</h2>
@@ -100,12 +111,20 @@ const UpcomingEvent = ({
   action_link,
   action_text,
   location,
+  image, 
   stats = [],
 }: EventType & { stats?: StatType[] }) => {
   return (
     <div className="w-full flex gap-10">
       <div className="w-full max-w-sm flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 rounded-sm">
-        <div className="w-full h-full bg-gray-50"></div>
+        <div className="w-full h-full relative">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover rounded-sm"
+          />
+        </div>
       </div>
       <div className="py-5 flex flex-col space-y-2 justify-around">
         <h2 className="text-2xl font-normal">{title}</h2>
@@ -139,4 +158,3 @@ const UpcomingEvent = ({
     </div>
   );
 };
-

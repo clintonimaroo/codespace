@@ -5,13 +5,15 @@ import JoinSection from "@/components/join-section";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import Container from "@/components/container";
+
 
 import React from "react";
 
 const Donate = () => {
   return (
     <>
-      <section className="container grid grid-cols-1 md:grid-cols-2 gap-5 pt-5 md:pt-20 content-center">
+      <Container className="container grid grid-cols-1 md:grid-cols-2 gap-5 pt-5 md:pt-20 content-center">
         <div className="space-y-5 flex-col flex  justify-center">
           <Badge>
             <div className="size-1.5 rounded-full bg-primary" />
@@ -40,7 +42,7 @@ const Donate = () => {
         <div className="w-full relative aspect-[16/10]">
           <HeroImageCards />
         </div>
-      </section>
+      </Container>
       <BrandsSection />
       <JoinSection />
     </>

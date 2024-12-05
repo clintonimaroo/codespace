@@ -5,12 +5,14 @@ import JoinSection from "@/components/join-section";
 import SpaceBadge from "@/components/space-badge";
 import { socials } from "@/data";
 import Link from "next/link";
+import Container from "@/components/container";
+
 
 const ContactUs = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="container gap-5 py-5 md:py-20 ">
+      <Container className="container gap-5 py-5 md:py-20 ">
         <div className="space-y-5 flex-col flex  justify-center items-center text-center sm:w-1/2 mx-auto">
           <Logo className="scale-75" />
           <SpaceBadge>CONTACT CODE SPACE</SpaceBadge>
@@ -22,8 +24,8 @@ const ContactUs = () => {
             see more of you.
           </p>
         </div>
-      </section>
-      <section className="container grid grid-cols-2 md:grid-cols-3 gap-10">
+      </Container>
+      <Container className="container grid grid-cols-2 md:grid-cols-3 gap-10">
         {socials.map((social) => (
           <div
             key={social.name}
@@ -44,7 +46,7 @@ const ContactUs = () => {
             </div>
           </div>
         ))}
-      </section>
+      </Container>
 
       {/* Brands */}
       <BrandsSection />

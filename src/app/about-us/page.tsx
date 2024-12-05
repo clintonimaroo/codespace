@@ -10,13 +10,15 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { values, WhatWeDo, why_us } from "@/data";
 import { ArrowRightIcon } from "lucide-react";
+import Container from "@/components/container";
+
 
 import React from "react";
 
 const AboutUs = () => {
   return (
     <>
-      <section className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-5 md:py-20 content-center">
+      <Container className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-5 md:py-20 content-center">
         <div className="space-y-5 flex-col flex  justify-center">
           <Badge>
             <div className="size-1.5 rounded-full bg-primary" />
@@ -32,9 +34,9 @@ const AboutUs = () => {
         <div className="w-full relative aspect-[16/10]">
           <HeroImageCards />
         </div>
-      </section>
+      </Container>
       <section className="min-h-screen bg-foreground mb-20">
-        <section className="container  h-full flex flex-col justify-between bg-cover py-10 md:py-20 bg-top bg-no-repeat gap-5">
+        <Container className="container  h-full flex flex-col justify-between bg-cover py-10 md:py-20 bg-top bg-no-repeat gap-5">
           <div className="space-y-4 w-full sm:w-1/2">
             <h3 className="text-3xl text-white font-normal">Our Mission</h3>
             <p className="text-white w-full sm:w-4/5">
@@ -61,9 +63,9 @@ const AboutUs = () => {
               Get Involved
             </Button>
           </div>
-        </section>
+        </Container>
         {/* Values */}
-        <section className="container py-20 w-full">
+        <Container className="container py-20 w-full">
           <div className="space-y-5">
             <Badge>
               <div className="size-1.5 rounded-full bg-primary" />
@@ -82,8 +84,8 @@ const AboutUs = () => {
               ))}
             </div>
           </div>
-        </section>
-        <section className="container py-20 space-y-10">
+        </Container>
+        <Container className="container py-20 space-y-10">
           <h3 className="text-center text-white text-3xl">Why Roll with us?</h3>
           <Accordion type="single">
             {why_us.map((data, i) => (
@@ -93,7 +95,7 @@ const AboutUs = () => {
                 className="border-white/10"
               >
                 <AccordionTrigger
-                  className="flex items-center justify-between w-full "
+                  className="flex items-center justify-between w-full"
                   indicator={false}
                 >
                   <h1 className="text-white text-2xl md:text-4xl font-light text-left">
@@ -103,11 +105,13 @@ const AboutUs = () => {
                     <ArrowRightIcon className="text-white" size={14} />
                   </div>
                 </AccordionTrigger>
-                <AccordionContent></AccordionContent>
+                <AccordionContent className="text-white/80">
+                  {data.content}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
-        </section>
+        </Container>
         <section className="container py-20">
           <div className="space-y-5 flex flex-col items-center justify-center sm:w-1/2 mx-auto text-center">
             <h3 className="text-4xl font-light text-white">Become a Member</h3>

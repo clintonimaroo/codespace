@@ -1,5 +1,4 @@
 import { brands } from "@/data";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
 
@@ -16,22 +15,43 @@ const BrandsSection = () => {
           mission even more rewarding!
         </p>
       </div>
-      <div className="flex items-center gap-10 content-center justify-center flex-wrap">
-        {brands.map((brand) => (
-          <div
-            key={brand}
-            className={cn("relative w-24 h-16", {
-              "w-16 h-10": brand === "aws" || brand === "genztechies"
-            })}
-          >
-            <Image
-              src={`/images/brands/${brand}.png`}
-              alt={brand}
-              className={"w-full h-full object-contain"}
-              layout="fill"
-            />
+      <div className="max-w-4xl mx-auto overflow-hidden">
+        <div className="flex animate-marquee">
+          {/* First set */}
+          <div className="flex shrink-0">
+            {brands.map((brand) => (
+              <div
+                key={brand}
+                className="relative flex-shrink-0 h-7 mx-6"
+              >
+                <Image
+                  src={`/images/brands/${brand}.png`}
+                  alt={brand}
+                  className="h-7 w-auto object-contain"
+                  width={170}
+                  height={31}
+                />
+              </div>
+            ))}
           </div>
-        ))}
+          {/* Second set */}
+          <div className="flex shrink-0">
+            {brands.map((brand) => (
+              <div
+                key={`${brand}-2`}
+                className="relative flex-shrink-0 h-7 mx-6"
+              >
+                <Image
+                  src={`/images/brands/${brand}.png`}
+                  alt={brand}
+                  className="h-7 w-auto object-contain"
+                  width={170}
+                  height={31}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

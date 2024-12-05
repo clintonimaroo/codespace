@@ -18,7 +18,7 @@ const ImageCard = ({
             src={src}
             layout="fill"
             alt="image"
-            className="w-full h-full"
+            className="w-full h-full object-cover"
           />
         )}
       </div>

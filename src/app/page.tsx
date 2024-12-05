@@ -1,3 +1,5 @@
+"use client";
+
 import BrandsSection from "@/components/brands-section";
 import GoalsCard from "@/components/goals-card";
 import { HeroImageCards } from "@/components/image-cards";
@@ -11,6 +13,12 @@ import SpaceBadge from "@/components/space-badge";
 import { EventType } from "@/data";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { useEffect, useRef, useState } from 'react';
+import Container from "@/components/container";
+import Image from "next/image";
+
+
+
 
 interface Stat {
   name: string;
@@ -19,19 +27,75 @@ interface Stat {
   description?: string;
 }
 
+interface AnimatedValueProps {
+  value: number | string;
+  suffix?: string;
+}
+
+const AnimatedValue = ({ value, suffix = "" }: AnimatedValueProps) => {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let start = 0;
+    const end = Number(value);
+    const duration = 2000;
+    const increment = (end / duration) * 16;
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start > end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [value, isVisible]);
+
+  return (
+    <span ref={ref} className="inline-flex">
+      {count}
+      <span className="text-primary">{suffix}</span>
+    </span>
+  );
+};
+
 const Home = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-5 md:py-20 content-center">
+      <Container className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-5 md:py-20 content-center">
         <div className="space-y-3 md:space-y-5 flex-col flex  justify-center">
           <SpaceBadge>Version 2.0</SpaceBadge>
-          <h1 className="font-medium text-2xl md:text-5xl leading-normal">
+          <h1 className="font-medium text-2xl md:text-4xl leading-normal">
             Connecting African Gen Zs for <br /> Growth, Impact, and Success.
           </h1>
           <p className="text-xl subtitle">
-            But with us, the journey becomes a lot smoother <br /> for techies
-            like you!
+            At Code Space, we unite Gen Zs in tech across Africa, creating a vibrant community where you can thrive. Here, you can connect with like-minded peers, share insights, and gain the support you need to grow, build, and accelerate your career. Don’t navigate your tech career alone. 
           </p>
           <div className="flex items-center gap-5 md:flex-row flex-col">
             <Button className="w-full md:w-fit">Join the Community</Button>
@@ -47,9 +111,9 @@ const Home = () => {
         <div className="w-full relative aspect-[16/10] ">
           <HeroImageCards />
         </div>
-      </section>
+      </Container>
       {/* what we do */}
-      <section className="container space-y-5 py-20">
+      <Container className="container space-y-5 py-20">
         <Badge>
           <div className="size-1.5 rounded-full bg-primary" />
           WHAT DO WE DO?
@@ -60,9 +124,9 @@ const Home = () => {
           Don&apos;t navigate your tech career alone—thrive with us.
         </h1>
         <Button>Join us</Button>
-      </section>
+      </Container>
       <section className="h-screen bg-[#5c5ad1] ">
-        <div className="container  h-full flex flex-col justify-between bg-cover py-20 bg-top bg-no-repeat bg-[url('/images/what-we-do-bg.svg')]">
+        <Container className=" h-full flex flex-col justify-between bg-cover py-20 bg-top bg-no-repeat bg-[url('/images/what-we-do-bg.svg')]">
           <div className="space-y-4 w-full sm:w-1/2">
             <h3 className="text-3xl text-white font-normal">Our Mission</h3>
             <p className="text-white w-full sm:w-4/5">
@@ -87,9 +151,9 @@ const Home = () => {
             </p>
             <Button variant={"white"}>Get Involved</Button>
           </div>
-        </div>
+        </Container>
       </section>
-      <section className="container py-20 w-full">
+      <Container className="container py-20 w-full">
         <div className="space-y-5">
           <Badge>
             <div className="size-1.5 rounded-full bg-primary" />
@@ -117,9 +181,9 @@ const Home = () => {
             <Button className="mx-auto">Explore more</Button>
           </div>
         </div>
-      </section>
+      </Container>
       {/* Goals */}
-      <section className="container grid grid-cols-1 md:grid-cols-2 gap-5">
+      <Container className="container grid grid-cols-1 md:grid-cols-2 gap-5">
         <h1 className="text-5xl font-semibold">Our Goals</h1>
         <div className="">
           <p className="">
@@ -171,9 +235,9 @@ const Home = () => {
             </svg>
           </p>
         </div>
-      </section>
+      </Container>
       {/* Upcoming Events */}
-      <section className="container space-y-2 py-20">
+      <Container className="container space-y-2 py-20">
         <SpaceBadge>UPCOMING</SpaceBadge>
         <h1 className="font-normal text-2xl leading-normal">Upcoming Events</h1>
         <p className="text-xl subtitle sm:w-1/2">
@@ -185,13 +249,14 @@ const Home = () => {
             <EventCard key={event.action_link} {...event} stats={event.stats || []} />
           ))}
         </div>
-      </section>
+      </Container>
 
-      <div className="!my-18 w-full flex justify-center">
+      {/* <div className="!my-18 w-full flex justify-center">
         <Button className="mx-auto">View Events</Button>
-      </div>
+      </div> */}
+      
       {/* milestones */}
-      <section className="container py-20 space-y-20">
+      <Container className="container py-20 space-y-20">
         <div className="space-y-3 relative flex flex-col items-center justify-center text-center w-full  sm:w-1/2  mx-auto">
           <svg
             className="absolute -right-10 sm:right-0 top-0 scale-50 sm:scale-75"
@@ -300,26 +365,27 @@ const Home = () => {
           </p>
           <Button>Become a Member</Button>
         </div>
-        {stats.map((stat: Stat) => (
-          <div
-            key={stat.name}
-            className="w-full flex flex-col gap-5 md:flex-row border-b py-5 justify-between items-baseline"
-          >
-            <div>
-              <h4 className="text-3xl sm:text-5xl font-light">
-                {stat.value}
-                <span className="text-primary">{stat.suffix}</span> <br />{" "}
-                {stat.name}
-              </h4>
+        {/* milestones */}
+       
+          {stats.map((stat: Stat) => (
+            <div
+              key={stat.name}
+              className="w-full flex flex-col gap-5 md:flex-row border-b py-5 justify-between items-baseline"
+            >
+              <div>
+                <h4 className="text-3xl sm:text-5xl font-light">
+                  <AnimatedValue value={stat.value} suffix={stat.suffix} /> <br />
+                  {stat.name}
+                </h4>
+              </div>
+              <p className="sm:w-1/3 sm:text-right text-balance">
+                {stat.description}
+              </p>
             </div>
-            <p className="sm:w-1/3 sm:text-right text-balance">
-              {stat.description}
-            </p>
-          </div>
-        ))}
-      </section>
+          ))}
+      </Container>
       {/* sponsor */}
-      <section className="container py-20 grid grid-cols-1 md:grid-cols-2 gap-5">
+      <Container className="container py-20 grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="space-y-4 flex flex-col items-center sm:items-start">
           <h1 className="text-3xl text-center sm:text-left sm:text-5xl">
             Sponsor a Code Spacer Today!
@@ -351,7 +417,7 @@ const Home = () => {
             className="w-1/2 absolute top-0 left-14 aspect-[6/4]  -rotate-3 [&>#image-card]:h-[90%]"
           />
         </div>
-      </section>
+      </Container>
       {/* Brands */}
       <BrandsSection />
       {/* Join the community */}
@@ -369,12 +435,20 @@ const EventCard = ({
   action_link,
   action_text,
   location,
+  image,
   stats = [],
 }: EventType & { stats?: Stat[] }) => {
   return (
     <div className="w-full flex gap-10">
       <div className="w-full max-w-sm flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 rounded-sm">
-        <div className="w-full h-full bg-gray-50"></div>
+        <div className="w-full h-full relative">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover rounded-sm"
+          />
+        </div>
       </div>
       <div className="py-5 flex flex-col space-y-2 justify-around">
         <h2 className="text-2xl font-normal">{title}</h2>
