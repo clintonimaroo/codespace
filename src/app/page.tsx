@@ -13,12 +13,9 @@ import SpaceBadge from "@/components/space-badge";
 import { EventType } from "@/data";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 import Container from "@/components/container";
 import Image from "next/image";
-
-
-
 
 interface Stat {
   name: string;
@@ -95,7 +92,11 @@ const Home = () => {
             Connecting African Gen Zs for <br /> Growth, Impact, and Success.
           </h1>
           <p className="text-xl subtitle">
-            At Code Space, we unite Gen Zs in tech across Africa, creating a vibrant community where you can thrive. Here, you can connect with like-minded peers, share insights, and gain the support you need to grow, build, and accelerate your career. Don’t navigate your tech career alone. 
+            At Code Space, we unite Gen Zs in tech across Africa, creating a
+            vibrant community where you can thrive. Here, you can connect with
+            like-minded peers, share insights, and gain the support you need to
+            grow, build, and accelerate your career. Don’t navigate your tech
+            career alone.
           </p>
           <div className="flex items-center gap-5 md:flex-row flex-col">
             <Button className="w-full md:w-fit">Join the Community</Button>
@@ -189,8 +190,8 @@ const Home = () => {
           <p className="">
             <svg
               className="inline flex-shrink-0 md:scale-100 scale-50"
-              width="44"
-              height="39"
+              width={44}
+              height={39}
               viewBox="0 0 44 39"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -198,14 +199,15 @@ const Home = () => {
               <path
                 d="M42.3073 26.5394C41.6247 21.8601 38.511 19.1986 33.9421 19.2595C32.2878 17.2195 30.142 12.3965 34.793 3.21808C25.8023 9.59195 17.034 36.9141 34.793 35.7998C39.1164 35.5285 42.99 31.2188 42.3073 26.5394Z"
                 stroke="#989898"
-                stroke-width="3"
+                strokeWidth={3}
               />
               <path
                 d="M19.5587 28.9339C19.5756 24.2048 16.8898 21.1094 12.3625 20.4897C11.0282 18.2262 9.98222 10.3848 15.9389 2C6.10522 6.96549 -6.96916 35.433 10.7581 36.9737C15.0738 37.3488 19.5418 33.6631 19.5587 28.9339Z"
                 stroke="#989898"
-                stroke-width="3"
+                strokeWidth={3}
               />
             </svg>
+
             <span className="p-3 text-lg md:text-2xl font-medium">
               Our goal is to create a unified platform that connects tech-savvy
               teenagers from all over Africa. We aim to provide a space where
@@ -225,12 +227,12 @@ const Home = () => {
               <path
                 d="M1.91287 11.0323C2.58806 15.6605 5.66778 18.2929 10.1868 18.2327C11.8231 20.2504 14.787 25.2871 10.1868 34.3653C19.0794 28.061 26.9104 0.770927 9.34526 1.87303C5.06901 2.14135 1.23769 6.40405 1.91287 11.0323Z"
                 stroke="#989898"
-                stroke-width="3"
+                strokeWidth="3"
               />
               <path
                 d="M24.5167 9.81324C24.5001 14.4907 27.1565 17.5523 31.6344 18.1652C32.9542 20.404 34.1208 26.955 28.229 35.2482C37.9555 30.3369 50.7551 3.38517 33.2212 1.86133C28.9527 1.49035 24.5334 5.13578 24.5167 9.81324Z"
                 stroke="#989898"
-                stroke-width="3"
+                strokeWidth="3"
               />
             </svg>
           </p>
@@ -246,7 +248,11 @@ const Home = () => {
         </p>
         <div className="w-full space-y-10 !mt-10">
           {upcoming_events.map((event) => (
-            <EventCard key={event.action_link} {...event} stats={event.stats || []} />
+            <EventCard
+              key={event.action_link}
+              {...event}
+              stats={event.stats || []}
+            />
           ))}
         </div>
       </Container>
@@ -269,93 +275,93 @@ const Home = () => {
             <path
               d="M35.2439 63.4598C35.5513 61.1617 41.9779 51.1104 42.78 50.6427C45.1561 49.2566 78.4211 50.3359 82.9727 53.0965C84.7606 54.1807 91.686 67.3308 91.686 68.9246C91.686 69.9315 74.772 70.745 71.8444 70.8909C68.4657 71.0596 61.1207 70.5906 53.7591 68.9246C47.7268 67.559 41.8206 65.6756 35.5513 64.9489C35.4025 64.9314 39.0821 71.0664 42.78 76.3756C44.5048 78.8531 56.2282 101.145 57.8509 101.877C59.4733 102.61 88.2072 71.7216 91.9629 69.0504"
               stroke="#5B5AD1"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M71.5878 71.4255C67.6849 79.7273 60.6737 95.5743 59.4731 100.325"
               stroke="#5B5AD1"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M54.7012 71.03C55.9345 80.7992 57.6083 90.6223 58.7393 100.325"
               stroke="#5B5AD1"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M57.2706 49.2566C54.9771 55.7514 55.6567 63.0853 54.7012 69.8421"
               stroke="#5B5AD1"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M70.4866 50.8401C71.119 56.706 70.3159 67.5324 72.3222 71.4256"
               stroke="#5B5AD1"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               opacity="0.503384"
               d="M25.0928 49.2563C22.4589 47.4749 20.134 45.7661 19.825 45.6936"
               stroke="#5B5AD1"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               opacity="0.503384"
               d="M41.8516 34.213C40.7808 32.085 41.8516 32.3729 40.1155 29.4038"
               stroke="#5B5AD1"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               opacity="0.503384"
               d="M69.0313 36.1926C68.6069 33.6173 69.0355 30.8256 69.1883 28.2749"
               stroke="#5B5AD1"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               opacity="0.503384"
               d="M89.9434 42.1307C91.9626 40.5473 92.5398 39.818 93.9815 38.9639"
               stroke="#5B5AD1"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               opacity="0.503384"
               d="M106.463 65.4874C108.299 64.9928 108.915 65.0952 110.135 64.4978"
               stroke="#5B5AD1"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               opacity="0.503384"
               d="M96.9192 95.1782C97.861 96.1418 98.6524 97.2771 99.489 98.3454"
               stroke="#5B5AD1"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               opacity="0.503384"
               d="M21.6605 74.7883C21.1568 75.3854 20.434 75.5849 19.825 75.9808"
               stroke="#5B5AD1"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
           <SpaceBadge>MILESTONES</SpaceBadge>
@@ -366,23 +372,23 @@ const Home = () => {
           <Button>Become a Member</Button>
         </div>
         {/* milestones */}
-       
-          {stats.map((stat: Stat) => (
-            <div
-              key={stat.name}
-              className="w-full flex flex-col gap-5 md:flex-row border-b py-5 justify-between items-baseline"
-            >
-              <div>
-                <h4 className="text-3xl sm:text-5xl font-light">
-                  <AnimatedValue value={stat.value} suffix={stat.suffix} /> <br />
-                  {stat.name}
-                </h4>
-              </div>
-              <p className="sm:w-1/3 sm:text-right text-balance">
-                {stat.description}
-              </p>
+
+        {stats.map((stat: Stat) => (
+          <div
+            key={stat.name}
+            className="w-full flex flex-col gap-5 md:flex-row border-b py-5 justify-between items-baseline"
+          >
+            <div>
+              <h4 className="text-3xl sm:text-5xl font-light">
+                <AnimatedValue value={stat.value} suffix={stat.suffix} /> <br />
+                {stat.name}
+              </h4>
             </div>
-          ))}
+            <p className="sm:w-1/3 sm:text-right text-balance">
+              {stat.description}
+            </p>
+          </div>
+        ))}
       </Container>
       {/* sponsor */}
       <Container className="container py-20 grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -407,7 +413,7 @@ const Home = () => {
             Code Spacer&apos;s dream alive!
           </p>
         </div>
-        <div className="col-span-1 sm:col-span-2 aspect-video relative mt-20"> 
+        <div className="col-span-1 sm:col-span-2 aspect-video relative mt-20">
           <ImageCard
             src={"/images/hackathon.png"}
             className="w-1/2 absolute top-1/2 right-14 aspect-[6/4] -mt-20 rotate-[9deg] [&>#image-card]:h-[90%]"
@@ -453,21 +459,27 @@ const EventCard = ({
       <div className="py-5 flex flex-col space-y-2 justify-around">
         <h2 className="text-2xl font-normal">{title}</h2>
         <p className="text-xl text-gray-700 font-light">{description}</p>
-        <p className="text-lg">Date <span className="text-gray-600 ml-2">{date}</span></p>
-        <p className="text-lg">Location <span className="text-gray-600 ml-2">{location}</span></p>
+        <p className="text-lg">
+          Date <span className="text-gray-600 ml-2">{date}</span>
+        </p>
+        <p className="text-lg">
+          Location <span className="text-gray-600 ml-2">{location}</span>
+        </p>
         {stats && (
           <div className="w-full max-w-xs flex flex-row items-center divide-x">
             {stats.map((stat, i) => (
               <div
                 key={i}
                 className={cn("flex-grow", {
-                  "flex flex-col items-center justify-center": i !== 0
+                  "flex flex-col items-center justify-center": i !== 0,
                 })}
               >
                 <div>
                   <h4 className="text-xl font-semibold">
                     {stat.value}{" "}
-                    <span className="text-primary text-base">{stat.suffix}</span>
+                    <span className="text-primary text-base">
+                      {stat.suffix}
+                    </span>
                   </h4>
                   <p className="subtitle">{stat.name}</p>
                 </div>

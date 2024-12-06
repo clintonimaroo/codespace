@@ -16,7 +16,7 @@ const ImageCard = ({
         {src && (
           <Image
             src={src}
-            layout="fill"
+            fill
             alt="image"
             className="w-full h-full object-cover"
           />

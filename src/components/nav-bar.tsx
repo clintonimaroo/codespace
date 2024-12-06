@@ -7,7 +7,13 @@ import { links } from "@/data";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { MenuIcon } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import Container from "@/components/container";
 
 const NavBar = () => {
@@ -36,7 +42,7 @@ const NavBar = () => {
       */}
 
       {/* NavBar */}
-      <Container className="container flex items-center justify-between py-4 md:py-8">
+      <Container className="container flex items-center justify-between py-4 md:pb-8 md:pt-4">
         <Link href={"/"}>
           <LogoLarge />
         </Link>
@@ -45,7 +51,7 @@ const NavBar = () => {
             <li
               key={link.name}
               className={cn({
-                "text-primary": pathname.startsWith(link.href)
+                "text-primary": pathname.startsWith(link.href),
               })}
             >
               <Link href={link.href}>{link.name}</Link>
@@ -56,6 +62,9 @@ const NavBar = () => {
           Join the Community
         </Button>
         <Sheet open={open} onOpenChange={setOpen}>
+          <VisuallyHidden.Root>
+            <SheetTitle>Menu</SheetTitle>
+          </VisuallyHidden.Root>
           <SheetTrigger asChild onClick={() => setOpen(true)}>
             <Button size={"icon-sm"} variant={"ghost"} className="md:hidden">
               <MenuIcon size={24} />
@@ -70,7 +79,7 @@ const NavBar = () => {
                 <li
                   key={link.name}
                   className={cn({
-                    "text-primary": pathname.startsWith(link.href)
+                    "text-primary": pathname.startsWith(link.href),
                   })}
                 >
                   <Link href={link.href}>{link.name}</Link>
