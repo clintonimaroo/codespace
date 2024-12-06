@@ -46,7 +46,7 @@ const NavBar = () => {
         <Link href={"/"}>
           <LogoLarge />
         </Link>
-        <ul className="md:flex flex-row items-center gap-x-5 hidden">
+        <ul className="lg:flex flex-row items-center gap-x-5 hidden">
           {links.map((link) => (
             <li
               key={link.name}
@@ -54,11 +54,13 @@ const NavBar = () => {
                 "text-primary": pathname.startsWith(link.href),
               })}
             >
-              <Link href={link.href}>{link.name}</Link>
+              <Link className="hover:text-primary" href={link.href}>
+                {link.name}
+              </Link>
             </li>
           ))}
         </ul>
-        <Button size={"sm"} className="hidden sm:block">
+        <Button size={"sm"} className="hidden lg:block">
           Join the Community
         </Button>
         <Sheet open={open} onOpenChange={setOpen}>
@@ -66,26 +68,34 @@ const NavBar = () => {
             <SheetTitle>Menu</SheetTitle>
           </VisuallyHidden.Root>
           <SheetTrigger asChild onClick={() => setOpen(true)}>
-            <Button size={"icon-sm"} variant={"ghost"} className="md:hidden">
+            <Button
+              size="icon-sm"
+              variant="ghost"
+              className="lg:hidden bg-primary hover:bg-primary/95 hover:text-white  text-white"
+            >
               <MenuIcon size={24} />
             </Button>
           </SheetTrigger>
-          <SheetContent>
-            <Link href={"/"}>
-              <LogoLarge />
-            </Link>
-            <ul className="flex flex-col gap-5 my-5">
-              {links.map((link) => (
-                <li
-                  key={link.name}
-                  className={cn({
-                    "text-primary": pathname.startsWith(link.href),
-                  })}
-                >
-                  <Link href={link.href}>{link.name}</Link>
-                </li>
-              ))}
-            </ul>
+          <SheetContent className="flex flex-col justify-between">
+            <div className="flex flex-col space-y-10">
+              <Link href={"/"}>
+                <LogoLarge />
+              </Link>
+              <ul className="flex flex-col gap-5 my-5">
+                {links.map((link) => (
+                  <li
+                    key={link.name}
+                    className={cn({
+                      "text-primary": pathname.startsWith(link.href),
+                    })}
+                  >
+                    <Link className="hover:text-primary" href={link.href}>
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
             <Button size={"default"} className="w-full">
               Join the Community
             </Button>

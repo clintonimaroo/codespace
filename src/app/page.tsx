@@ -85,13 +85,13 @@ const Home = () => {
   return (
     <>
       {/* Hero Section */}
-      <Container className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-5 md:py-20 content-center">
+      <Container className="container grid grid-cols-1 lg:grid-cols-2 gap-5 py-5 md:py-20 content-center">
         <div className="space-y-3 md:space-y-5 flex-col flex  justify-center">
           <SpaceBadge>Version 2.0</SpaceBadge>
-          <h1 className="font-medium text-2xl md:text-4xl leading-normal">
+          <h1 className="font-medium text-xl sm:text-3xl md:text-4xl leading-normal">
             Connecting African Gen Zs for <br /> Growth, Impact, and Success.
           </h1>
-          <p className="text-xl subtitle">
+          <p className="text-base sm:text-lg md:text-xl subtitle">
             At Code Space, we unite Gen Zs in tech across Africa, creating a
             vibrant community where you can thrive. Here, you can connect with
             like-minded peers, share insights, and gain the support you need to
@@ -109,7 +109,7 @@ const Home = () => {
             </Button>
           </div>
         </div>
-        <div className="w-full relative aspect-[16/10] ">
+        <div className="w-full relative aspect-[16/10] mt-8 lg:mt-0">
           <HeroImageCards />
         </div>
       </Container>
@@ -119,14 +119,14 @@ const Home = () => {
           <div className="size-1.5 rounded-full bg-primary" />
           WHAT DO WE DO?
         </Badge>
-        <h1 className="font-medium sm:text-2xl text-xl leading-normal sm:w-4/5 ">
-          At Code Space, we unite Gen Zs in tech across Africa, fostering a
+        <h1 className="font-medium sm:text-2xl text-xl leading-normal sm:w-4/5">
+          At Code Space, we unite Gen&nbsp;Zs in tech across Africa, fostering a
           vibrant community where you can connect, share insights, and grow.
           Don&apos;t navigate your tech career alone—thrive with us.
         </h1>
         <Button>Join us</Button>
       </Container>
-      <section className="h-screen bg-[#5c5ad1] ">
+      <section className="h-screen bg-[#5c5ad1]">
         <Container className=" h-full flex flex-col justify-between bg-cover py-20 bg-top bg-no-repeat bg-[url('/images/what-we-do-bg.svg')]">
           <div className="space-y-4 w-full sm:w-1/2">
             <h3 className="text-3xl text-white font-normal">Our Mission</h3>
