@@ -88,7 +88,7 @@ const Home = () => {
       <Container className="container grid grid-cols-1 lg:grid-cols-2 gap-5 py-5 md:py-20 content-center">
         <div className="space-y-3 md:space-y-5 flex-col flex  justify-center">
           <SpaceBadge>Version 2.0</SpaceBadge>
-          <h1 className="font-medium text-xl sm:text-3xl md:text-4xl leading-normal">
+          <h1 className="font-medium text-2xl sm:text-3xl md:text-4xl leading-normal">
             Connecting African Gen Zs for <br /> Growth, Impact, and Success.
           </h1>
           <p className="text-base sm:text-lg md:text-xl subtitle">
@@ -113,24 +113,26 @@ const Home = () => {
           <HeroImageCards />
         </div>
       </Container>
+
       {/* what we do */}
       <Container className="container space-y-5 py-20">
         <Badge>
           <div className="size-1.5 rounded-full bg-primary" />
           WHAT DO WE DO?
         </Badge>
-        <h1 className="font-medium sm:text-2xl text-xl leading-normal sm:w-4/5">
+        <h1 className="sm:text-2xl text-xl leading-normal sm:w-4/5">
           At Code Space, we unite Gen&nbsp;Zs in tech across Africa, fostering a
           vibrant community where you can connect, share insights, and grow.
           Don&apos;t navigate your tech career alone—thrive with us.
         </h1>
         <Button>Join us</Button>
       </Container>
-      <section className="h-screen bg-[#5c5ad1]">
+
+      <section className="min-h-screen bg-[#5c5ad1]">
         <Container className=" h-full flex flex-col justify-between bg-cover py-20 bg-top bg-no-repeat bg-[url('/images/what-we-do-bg.svg')]">
-          <div className="space-y-4 w-full sm:w-1/2">
+          <div className="space-y-4 w-full md:max-w-sm lg:max-w-md">
             <h3 className="text-3xl text-white font-normal">Our Mission</h3>
-            <p className="text-white w-full sm:w-4/5">
+            <p className="text-white w-full sm:text-lg">
               We are a nonprofit community empowering Gen Z through mentorship,
               education, and global tech opportunities. We believe in the power
               of technology to change the world, and we are here to help the
@@ -139,11 +141,11 @@ const Home = () => {
             <Button variant={"white"}>Get Involved</Button>
           </div>
 
-          <div className="space-y-4 w-full sm:w-2/5 self-end">
+          <div className="space-y-4 w-full md:max-w-sm lg:max-w-md self-end mt-16">
             <h3 className="text-3xl text-white font-normal">
               NETWORK. GROW. BUILD.
             </h3>
-            <p className="text-white w-full ">
+            <p className="text-white w-full sm:text-lg">
               We&apos;re all about empowering Code Spacers to thrive beyond
               Africa. By connecting you to global opportunities and equipping
               you with essential resources such as job opportunities,
