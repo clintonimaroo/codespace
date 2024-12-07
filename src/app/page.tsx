@@ -186,58 +186,57 @@ const Home = () => {
         </div>
       </Container>
       {/* Goals */}
-      <Container className="container grid grid-cols-1 md:grid-cols-2 gap-5">
-        <h1 className="text-5xl font-semibold">Our Goals</h1>
-        <div className="">
-          <p className="">
-            <svg
-              className="inline flex-shrink-0 md:scale-100 scale-50"
-              width={44}
-              height={39}
-              viewBox="0 0 44 39"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M42.3073 26.5394C41.6247 21.8601 38.511 19.1986 33.9421 19.2595C32.2878 17.2195 30.142 12.3965 34.793 3.21808C25.8023 9.59195 17.034 36.9141 34.793 35.7998C39.1164 35.5285 42.99 31.2188 42.3073 26.5394Z"
-                stroke="#989898"
-                strokeWidth={3}
-              />
-              <path
-                d="M19.5587 28.9339C19.5756 24.2048 16.8898 21.1094 12.3625 20.4897C11.0282 18.2262 9.98222 10.3848 15.9389 2C6.10522 6.96549 -6.96916 35.433 10.7581 36.9737C15.0738 37.3488 19.5418 33.6631 19.5587 28.9339Z"
-                stroke="#989898"
-                strokeWidth={3}
-              />
-            </svg>
+      <Container className="container grid grid-cols-1 md:grid-cols-3 gap-5">
+        <h1 className="md:text-5xl text-4xl col-span-1">Our Goals</h1>
+        <div className="flex col-span-2">
+          <svg
+            className="inline flex-shrink-0 md:scale-100 scale-50"
+            width={44}
+            height={39}
+            viewBox="0 0 44 39"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M42.3073 26.5394C41.6247 21.8601 38.511 19.1986 33.9421 19.2595C32.2878 17.2195 30.142 12.3965 34.793 3.21808C25.8023 9.59195 17.034 36.9141 34.793 35.7998C39.1164 35.5285 42.99 31.2188 42.3073 26.5394Z"
+              stroke="#989898"
+              strokeWidth={3}
+            />
+            <path
+              d="M19.5587 28.9339C19.5756 24.2048 16.8898 21.1094 12.3625 20.4897C11.0282 18.2262 9.98222 10.3848 15.9389 2C6.10522 6.96549 -6.96916 35.433 10.7581 36.9737C15.0738 37.3488 19.5418 33.6631 19.5587 28.9339Z"
+              stroke="#989898"
+              strokeWidth={3}
+            />
+          </svg>
 
-            <span className="p-3 text-lg md:text-2xl font-medium">
-              Our goal is to create a unified platform that connects tech-savvy
-              teenagers from all over Africa. We aim to provide a space where
-              they can come together to share opportunities, collaborate on
-              impressive projects, and forge meaningful relationships. By
-              fostering this community, we strive to empower young african tech
-              enthusiasts and nurture their passion for innovation and growth.
-            </span>
-            <svg
-              className="inline flex-shrink-0 md:scale-100 scale-50 self-end"
-              width="44"
-              height="37"
-              viewBox="0 0 44 37"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1.91287 11.0323C2.58806 15.6605 5.66778 18.2929 10.1868 18.2327C11.8231 20.2504 14.787 25.2871 10.1868 34.3653C19.0794 28.061 26.9104 0.770927 9.34526 1.87303C5.06901 2.14135 1.23769 6.40405 1.91287 11.0323Z"
-                stroke="#989898"
-                strokeWidth="3"
-              />
-              <path
-                d="M24.5167 9.81324C24.5001 14.4907 27.1565 17.5523 31.6344 18.1652C32.9542 20.404 34.1208 26.955 28.229 35.2482C37.9555 30.3369 50.7551 3.38517 33.2212 1.86133C28.9527 1.49035 24.5334 5.13578 24.5167 9.81324Z"
-                stroke="#989898"
-                strokeWidth="3"
-              />
-            </svg>
+          <p className="p-2 text-lg md:text-2xl">
+            Our goal is to create a unified platform that connects tech-savvy
+            teenagers from all over Africa. We aim to provide a space where they
+            can come together to share opportunities, collaborate on impressive
+            projects, and forge meaningful relationships. By fostering this
+            community, we strive to empower young african tech enthusiasts and
+            nurture their passion for innovation and growth.
           </p>
+
+          <svg
+            className="inline flex-shrink-0 md:scale-100 scale-50 self-end"
+            width="44"
+            height="37"
+            viewBox="0 0 44 37"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.91287 11.0323C2.58806 15.6605 5.66778 18.2929 10.1868 18.2327C11.8231 20.2504 14.787 25.2871 10.1868 34.3653C19.0794 28.061 26.9104 0.770927 9.34526 1.87303C5.06901 2.14135 1.23769 6.40405 1.91287 11.0323Z"
+              stroke="#989898"
+              strokeWidth="3"
+            />
+            <path
+              d="M24.5167 9.81324C24.5001 14.4907 27.1565 17.5523 31.6344 18.1652C32.9542 20.404 34.1208 26.955 28.229 35.2482C37.9555 30.3369 50.7551 3.38517 33.2212 1.86133C28.9527 1.49035 24.5334 5.13578 24.5167 9.81324Z"
+              stroke="#989898"
+              strokeWidth="3"
+            />
+          </svg>
         </div>
       </Container>
       {/* Upcoming Events */}
@@ -447,15 +446,10 @@ const EventCard = ({
   stats = [],
 }: EventType & { stats?: Stat[] }) => {
   return (
-    <div className="w-full flex gap-10">
-      <div className="w-full max-w-sm flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 rounded-sm">
+    <div className="w-full flex md:flex-row flex-col gap-10">
+      <div className="w-full max-w-sm mx-auto flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3">
         <div className="w-full h-full relative">
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover rounded-sm"
-          />
+          <Image src={image} alt={title} fill className="object-cover" />
         </div>
       </div>
       <div className="py-5 flex flex-col space-y-2 justify-around">
