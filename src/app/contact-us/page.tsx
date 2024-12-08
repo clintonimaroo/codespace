@@ -7,7 +7,6 @@ import { socials } from "@/data";
 import Link from "next/link";
 import Container from "@/components/container";
 
-
 const ContactUs = () => {
   return (
     <>
@@ -25,7 +24,7 @@ const ContactUs = () => {
           </p>
         </div>
       </Container>
-      <Container className="container grid grid-cols-2 md:grid-cols-3 gap-10">
+      <Container className="container grid grid-cols-2 md:grid-cols-3 md:gap-10 gap-2">
         {socials.map((social) => (
           <div
             key={social.name}
@@ -33,13 +32,15 @@ const ContactUs = () => {
           >
             <social.icon size={20} />
             <div className="space-y-2">
-              <h4 className="font-medium text-xl capitalize ">{social.name}</h4>
-              <p className="text-gray-500 text-sm md:text-base font-normal">
+              <h4 className="font-medium text-sm md:text-xl capitalize ">
+                {social.name}
+              </h4>
+              <p className="text-gray-500 text-xs sm:text-sm md:text-base font-normal">
                 {social.description}
               </p>
               <Link
                 href={social.url}
-                className="underline  font-normal md:text-base text-sm line-clamp-1"
+                className="underline font-normal md:text-base text-xs sm:text-sm line-clamp-1 text-[#0C0C21]"
               >
                 {social.username}
               </Link>

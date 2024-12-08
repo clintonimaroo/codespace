@@ -129,7 +129,7 @@ const Home = () => {
       </Container>
 
       <section className="h-full bg-[#5c5ad1] flex items-center">
-        <Container className="h-full flex flex-col bg-contain py-20 bg-top bg-no-repeat bg-[url('/images/what-we-do-bg.svg')]">
+        <Container className="h-full flex flex-col bg-cover py-20 bg-top bg-no-repeat bg-[url('/images/what-we-do-bg.svg')]">
           <div className="space-y-4 w-full md:max-w-sm lg:max-w-md">
             <h3 className="text-3xl text-white font-normal">Our Mission</h3>
             <p className="text-white w-full sm:text-lg">
