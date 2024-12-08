@@ -17,7 +17,7 @@ import JoinSection from "@/components/join-section";
 const Brand = () => {
   return (
     <>
-      <div className="container mx-auto py-10 md:py-20 px-4 md:px-0">
+      <div className="container mx-auto py-10 md:py-20 px-6 md:px-0">
         <div className="space-y-5 flex-col flex justify-center items-center text-center w-full md:w-1/2 mx-auto">
           <LogoSvg className="scale-75" />
           <SpaceBadge>Code Space Brand Guidelines</SpaceBadge>
@@ -32,7 +32,7 @@ const Brand = () => {
         </div>
       </div>
 
-      <Container className="py-10 md:py-20 space-y-10 md:space-y-20 px-4 md:px-0">
+      <Container className="py-10 md:py-20 space-y-10 md:space-y-20 px-6 md:px-0">
         {/* Logo Usage */}
         <div className="space-y-5">
           <SpaceBadge>Logo usage</SpaceBadge>

@@ -212,7 +212,7 @@ export const other_links = [
 
 export const socials = [
   {
-    name: "email",
+    name: "Email us",
     url: "mailto:hello@codespaces.org",
     description: "Email us if you've got inquiries.",
     username: "hello@codespaces.org",
@@ -228,10 +228,10 @@ export const socials = [
 
   {
     name: "facebook",
-    url: "https://facebook.com/codespaceafrica",
+    url: "https://www.facebook.com/share/15hbaU6ZpC/?mibextid=LQQJ4d",
     description:
       "Follow us on Facebook, and keep in touch with our vibrant community.",
-    username: "@codespaceafrica",
+    username: "@CodeSpace",
     icon: FacebookIcon
   },
   {
@@ -245,10 +245,10 @@ export const socials = [
 
   {
     name: "linkedin",
-    url: "https://linkedin.com/company/codespaceafrica",
+    url: "https://www.linkedin.com/company/codespacehq",
     description:
       "Connect with us on LinkedIn for insights and professional updates!",
-    username: "@codespaceafrica",
+    username: "@CodeSpace",
     icon: LinkedinIcon
   }
 ];
