@@ -7,10 +7,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { EventType, past_events, upcoming_events } from "@/data";
 import Link from "next/link";
-import classNames from 'classnames';
+import classNames from "classnames";
 import Image from "next/image";
 import Container from "@/components/container";
-
 
 type StatType = { value: number; suffix: string; name: string };
 
@@ -78,10 +77,10 @@ const EventCard = ({
   description,
   action_link,
   action_text,
-  image 
+  image,
 }: EventType) => {
   return (
-    <div className="w-full flex gap-10">
+    <div className="w-full flex md:flex-row flex-col gap-10">
       <div className="w-full max-w-sm flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 rounded-sm">
         <div className="w-full h-full relative">
           <Image
@@ -111,39 +110,45 @@ const UpcomingEvent = ({
   action_link,
   action_text,
   location,
-  image, 
+  image,
   stats = [],
 }: EventType & { stats?: StatType[] }) => {
   return (
-    <div className="w-full flex gap-10">
-      <div className="w-full max-w-sm flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 rounded-sm">
+    <div className="w-full flex md:flex-row flex-col gap-10">
+      <div className="w-full md:max-w-sm max-w-full lg:max-h-full mx-auto flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 md:max-h-[440px] object-cover">
         <div className="w-full h-full relative">
           <Image
             src={image}
             alt={title}
             fill
-            className="object-cover rounded-sm"
+            className="object-cover h-full w-auto"
           />
         </div>
       </div>
       <div className="py-5 flex flex-col space-y-2 justify-around">
         <h2 className="text-2xl font-normal">{title}</h2>
         <p className="text-xl text-gray-700 font-light">{description}</p>
-        <p className="text-lg">Date <span className="text-gray-600 ml-2">{date}</span></p>
-        <p className="text-lg">Location <span className="text-gray-600 ml-2">{location}</span></p>
+        <p className="text-lg">
+          Date <span className="text-gray-600 ml-2">{date}</span>
+        </p>
+        <p className="text-lg">
+          Location <span className="text-gray-600 ml-2">{location}</span>
+        </p>
         {stats && (
           <div className="w-full max-w-xs flex flex-row items-center divide-x">
             {stats.map((stat, i) => (
               <div
                 key={i}
                 className={classNames("flex-grow", {
-                  "flex flex-col items-center justify-center": i !== 0
+                  "flex flex-col items-center justify-center": i !== 0,
                 })}
               >
                 <div>
                   <h4 className="text-xl font-semibold">
                     {stat.value}{" "}
-                    <span className="text-primary text-base">{stat.suffix}</span>
+                    <span className="text-primary text-base">
+                      {stat.suffix}
+                    </span>
                   </h4>
                   <p className="subtitle">{stat.name}</p>
                 </div>
