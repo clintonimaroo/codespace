@@ -18,20 +18,20 @@ const buttonVariants = cva(
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline"
+        link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
         default: "h-12  px-4 py-2 text-sm sm:text-base sm:px-5",
         sm: "h-9 sm:h-11  px-3 text-xs sm:text-sm sm:px-4",
         lg: "h-12  sm:h-14 px-8 text-base sm:text-lg sm:px-10",
         icon: "size-10 sm:size-12 text-sm sm:text-base",
-        "icon-sm": "size-9 sm:size-11 text-sm sm:text-base"
-      }
+        "icon-sm": "size-9 sm:size-11 text-sm sm:text-base",
+      },
     },
     defaultVariants: {
       variant: "default",
-      size: "default"
-    }
+      size: "default",
+    },
   }
 );
 

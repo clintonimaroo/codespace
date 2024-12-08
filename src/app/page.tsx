@@ -165,7 +165,7 @@ const Home = () => {
           <h1 className="font-medium text-2xl leading-normal sm:w-4/5 ">
             What We Do
           </h1>
-          <p className="text-lg sm:w-4/5">
+          <p className="text-lg sm:max-w-lg">
             We are driving the future forward by ensuring that Gen Z tech
             talents across Africa can access the resources they need to thrive.
             We are on a mission to connect, empower, and accelerate the careers
@@ -175,7 +175,7 @@ const Home = () => {
             {" "}
             Here&apos;s how we&apos;re making that happen:
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-5">
             {what_we_do.map((item) => (
               <GoalsCard {...item} key={item.title} />
             ))}
@@ -447,12 +447,17 @@ const EventCard = ({
 }: EventType & { stats?: Stat[] }) => {
   return (
     <div className="w-full flex md:flex-row flex-col gap-10">
-      <div className="w-full max-w-sm mx-auto flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3">
+      <div className="w-full md:max-w-sm max-w-full lg:max-h-full mx-auto flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 md:max-h-[440px] object-cover">
         <div className="w-full h-full relative">
-          <Image src={image} alt={title} fill className="object-cover" />
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover h-full w-auto"
+          />
         </div>
       </div>
-      <div className="py-5 flex flex-col space-y-2 justify-around">
+      <div className="py-5 flex flex-col space-y-4">
         <h2 className="text-2xl font-normal">{title}</h2>
         <p className="text-xl text-gray-700 font-light">{description}</p>
         <p className="text-lg">
