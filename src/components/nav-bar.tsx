@@ -72,7 +72,7 @@ const NavBar = () => {
             <Button
               size="icon-sm"
               variant="ghost"
-              className="lg:hidden bg-primary hover:bg-primary/95 hover:text-white text-white w-12 h-12 rounded-2xl"
+              className="lg:hidden bg-primary hover:bg-primary/95 hover:text-white  text-white"
             >
               <MenuIcon size={24} />
             </Button>
