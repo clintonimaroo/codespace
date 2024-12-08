@@ -6,7 +6,7 @@ import Link from "next/link";
 import { links } from "@/data";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, X } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -46,6 +46,7 @@ const NavBar = () => {
         <Link href={"/"}>
           <LogoLarge />
         </Link>
+
         <ul className="lg:flex flex-row items-center gap-x-5 hidden">
           {links.map((link) => (
             <li
@@ -71,34 +72,52 @@ const NavBar = () => {
             <Button
               size="icon-sm"
               variant="ghost"
-              className="lg:hidden bg-primary hover:bg-primary/95 hover:text-white  text-white"
+              className="lg:hidden bg-primary hover:bg-primary/95 hover:text-white text-white w-12 h-12 rounded-2xl"
             >
               <MenuIcon size={24} />
             </Button>
           </SheetTrigger>
-          <SheetContent className="flex flex-col justify-between">
-            <div className="flex flex-col space-y-10">
-              <Link href={"/"}>
-                <LogoLarge />
-              </Link>
-              <ul className="flex flex-col gap-5 my-5">
-                {links.map((link) => (
-                  <li
-                    key={link.name}
-                    className={cn({
-                      "text-primary": pathname.startsWith(link.href),
-                    })}
-                  >
-                    <Link className="hover:text-primary" href={link.href}>
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+          <SheetContent
+            side="top"
+            className="w-full h-[100dvh] border-0 p-0"
+          >
+            <div className="flex flex-col h-full bg-white">
+              <div className="flex justify-between items-center p-4">
+                <Link href="/" onClick={() => setOpen(false)}>
+                  <LogoLarge />
+                </Link>
+                <Button
+                  size="icon-sm"
+                  variant="ghost"
+                  onClick={() => setOpen(false)}
+                  className="bg-primary hover:bg-primary/95 hover:text-white text-white w-12 h-12 rounded-2xl"
+                >
+                  <X size={24} />
+                </Button>
+              </div>
+              <div className="flex flex-col items-center space-y-16 pt-20">
+                <nav className="space-y-12 text-center">
+                  {links.map((link) => (
+                    <div key={link.name}>
+                      <Link
+                        href={link.href}
+                        className={cn(
+                          "block text-2xl hover:text-primary transition-colors",
+                          pathname.startsWith(link.href)
+                            ? "text-primary"
+                            : "text-black"
+                        )}
+                      >
+                        {link.name}
+                      </Link>
+                    </div>
+                  ))}
+                </nav>
+                <Button size="lg" className="w-[80%] rounded-full py-6">
+                  Join the Community
+                </Button>
+              </div>
             </div>
-            <Button size={"default"} className="w-full">
-              Join the Community
-            </Button>
           </SheetContent>
         </Sheet>
       </Container>
