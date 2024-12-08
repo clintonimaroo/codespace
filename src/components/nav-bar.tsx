@@ -77,10 +77,7 @@ const NavBar = () => {
               <MenuIcon size={24} />
             </Button>
           </SheetTrigger>
-          <SheetContent
-            side="top"
-            className="w-full h-[100dvh] border-0 p-0"
-          >
+          <SheetContent side="top" className="w-full h-[100dvh] border-0 p-0">
             <div className="flex flex-col h-full bg-white">
               <div className="flex justify-between items-center p-4">
                 <Link href="/" onClick={() => setOpen(false)}>
