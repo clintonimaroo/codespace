@@ -104,7 +104,7 @@ const Home = () => {
               variant={"ghost"}
               className="[&_svg]:size-6 w-full md:w-fit"
             >
-              <CirclePlayIcon size={30} />
+              <CirclePlayIcon strokeWidth={1.5} size={30} />
               Watch 2024 Events
             </Button>
           </div>

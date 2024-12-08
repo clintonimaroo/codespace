@@ -8,11 +8,11 @@ const GoalsCard = ({
 }: WhatWeDo & { variant?: "light" | "dark" }) => (
   <div className="w-full space-y-3  flex flex-col">
     <div className="size-14 text-white flex items-center justify-center bg-primary rounded-lg">
-      <props.icon size={30} />
+      <props.icon strokeWidth={1} size={30} />
     </div>
     <h3
       className={cn("text-xl font-medium", {
-        "text-white": variant === "dark"
+        "text-white": variant === "dark",
       })}
     >
       {props.title}
@@ -28,7 +28,7 @@ const GoalsCard = ({
           <div
             key={i}
             className={cn("flex-grow", {
-              "flex flex-col items-center justify-center": i !== 0
+              "flex flex-col items-center justify-center": i !== 0,
             })}
           >
             <div>
