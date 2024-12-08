@@ -5,11 +5,11 @@ import React from "react";
 const BrandsSection = () => {
   return (
     <section className="container py-20 space-y-10">
-      <div className="space-y-5 flex flex-col items-center justify-center sm:w-2/5 mx-auto text-center">
+      <div className="space-y-5 flex flex-col items-center justify-center mx-auto text-center">
         <h3 className="text-3xl font-medium">
           Brands we&apos;ve loved working with
         </h3>
-        <p className="subtitle text-lg">
+        <p className="subtitle md:text-lg max-w-lg">
           When brands collaborate with us, they empower thousands of young
           African tech talents. Here are the innovative brands that make our
           mission even more rewarding!
@@ -20,10 +20,7 @@ const BrandsSection = () => {
           {/* First set */}
           <div className="flex shrink-0">
             {brands.map((brand) => (
-              <div
-                key={brand}
-                className="relative flex-shrink-0 h-7 mx-6"
-              >
+              <div key={brand} className="relative flex-shrink-0 h-7 mx-6">
                 <Image
                   src={`/images/brands/${brand}.png`}
                   alt={brand}

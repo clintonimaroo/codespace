@@ -128,8 +128,8 @@ const Home = () => {
         <Button>Join us</Button>
       </Container>
 
-      <section className="min-h-screen bg-[#5c5ad1]">
-        <Container className=" h-full flex flex-col justify-between bg-cover py-20 bg-top bg-no-repeat bg-[url('/images/what-we-do-bg.svg')]">
+      <section className="h-full bg-[#5c5ad1] flex items-center">
+        <Container className="h-full flex flex-col bg-contain py-20 bg-top bg-no-repeat bg-[url('/images/what-we-do-bg.svg')]">
           <div className="space-y-4 w-full md:max-w-sm lg:max-w-md">
             <h3 className="text-3xl text-white font-normal">Our Mission</h3>
             <p className="text-white w-full sm:text-lg">
@@ -264,9 +264,9 @@ const Home = () => {
 
       {/* milestones */}
       <Container className="container py-20 space-y-20">
-        <div className="space-y-3 relative flex flex-col items-center justify-center text-center w-full  sm:w-1/2  mx-auto">
+        <div className="space-y-3 relative flex flex-col items-center justify-center text-center w-full sm:w-3/4 md:w-1/2 mx-auto">
           <svg
-            className="absolute -right-10 sm:right-0 top-0 scale-50 sm:scale-75"
+            className="absolute -right-10 sm:-right-10 top-0 scale-50 sm:scale-75 md:scale-100"
             width="130"
             height="130"
             viewBox="0 0 130 130"
@@ -367,40 +367,39 @@ const Home = () => {
           </svg>
           <SpaceBadge>MILESTONES</SpaceBadge>
           <h3 className="text-2xl sm:text-3xl font-medium">Our Reach So Far</h3>
-          <p>
-            Your Tech Journey is much <br /> Smoother with Us!{" "}
+          <p className="text-lg sm:text-xl">
+            Your Tech Journey is much <br /> Smoother with Us!
           </p>
-          <Button>Become a Member</Button>
+          <Button className="w-fit">Become a Member</Button>
         </div>
         {/* milestones */}
 
         {stats.map((stat: Stat) => (
           <div
             key={stat.name}
-            className="w-full flex flex-col gap-5 md:flex-row border-b py-5 justify-between items-baseline"
+            className="w-full flex flex-col gap-5 md:flex-row border-b py-5 justify-between items-start md:items-end"
           >
-            <div>
-              <h4 className="text-3xl sm:text-5xl font-light">
-                <AnimatedValue value={stat.value} suffix={stat.suffix} /> <br />
-                {stat.name}
-              </h4>
-            </div>
-            <p className="sm:w-1/3 sm:text-right text-balance">
+            <h4 className="text-3xl sm:text-5xl font-light">
+              <AnimatedValue value={stat.value} suffix={stat.suffix} /> <br />
+              {stat.name}
+            </h4>
+
+            <p className="w-full md:max-w-md lg:max-w-lg md:text-right text-balance text-lg font-light">
               {stat.description}
             </p>
           </div>
         ))}
       </Container>
       {/* sponsor */}
-      <Container className="container py-20 grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="space-y-4 flex flex-col items-center sm:items-start">
-          <h1 className="text-3xl text-center sm:text-left sm:text-5xl">
-            Sponsor a Code Spacer Today!
-          </h1>
-          <Button>Donate Today</Button>
-        </div>
-        <div>
-          <p className="md:text-right text-lg text-balance">
+      <Container className="container pb-20 gap-5">
+        <div className="flex md:flex-row flex-col justify-between">
+          <div className="space-y-4 flex flex-col items-center sm:items-start">
+            <h1 className="text-3xl text-center sm:text-left">
+              Sponsor a Code Spacer
+            </h1>
+            <Button className="font-normal">Donate Today</Button>
+          </div>
+          <p className="md:text-right sm:text-left sm:mx-0 text-lg text-balance font-light lg:max-w-lg mx-auto text-center mt-8 md:mt-0 md:max-w-md">
             A lack of resources should never stand in the way of reaching
             one&apos;s full potential. But for many tech talents, it does. When
             you sponsor a Code Spacer you break that barrier and help someone to
@@ -414,7 +413,7 @@ const Home = () => {
             Code Spacer&apos;s dream alive!
           </p>
         </div>
-        <div className="col-span-1 sm:col-span-2 aspect-video relative mt-20">
+        <div className="w-full aspect-video relative mt-20">
           <ImageCard
             src={"/images/hackathon.png"}
             className="w-1/2 absolute top-1/2 right-14 aspect-[6/4] -mt-20 rotate-[9deg] [&>#image-card]:h-[90%]"
