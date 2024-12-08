@@ -12,38 +12,38 @@ import LogoWhite from "@/assets/images/logo-white.png";
 import LogoBlack from "@/assets/images/logo-black.png";
 import Container from "@/components/container";
 import BrandsSection from "@/components/brands-section";
+import JoinSection from "@/components/join-section";
 
 const Brand = () => {
   return (
     <>
-      {/* Header section outside Container */}
-      <div className="container mx-auto py-20">
-        <div className="space-y-5 flex-col flex justify-center items-center text-center sm:w-1/2 mx-auto">
+      <div className="container mx-auto py-10 md:py-20 px-4 md:px-0">
+        <div className="space-y-5 flex-col flex justify-center items-center text-center w-full md:w-1/2 mx-auto">
           <LogoSvg className="scale-75" />
           <SpaceBadge>Code Space Brand Guidelines</SpaceBadge>
           <div className="flex justify-center">
-            <h1 className="font-medium text-3xl md:text-5xl leading-snug">
+            <h1 className="font-medium text-2xl md:text-3xl lg:text-5xl leading-snug">
               Code Space Brand Guidelines
             </h1>
           </div>
-          <p className="text-xl subtitle font-normal">
+          <p className="text-lg md:text-xl subtitle font-normal">
             Maintaining consistency and authenticity in every interaction.
           </p>
         </div>
       </div>
 
-      <Container className="py-20 space-y-20">
+      <Container className="py-10 md:py-20 space-y-10 md:space-y-20 px-4 md:px-0">
         {/* Logo Usage */}
         <div className="space-y-5">
           <SpaceBadge>Logo usage</SpaceBadge>
-          <h1 className="font-normal text-2xl leading-normal">Our Logo</h1>
-          <p className="text-xl subtitle sm:w-4/5">
+          <h1 className="font-normal text-xl md:text-2xl leading-normal">Our Logo</h1>
+          <p className="text-lg md:text-xl subtitle w-full sm:w-4/5">
             The Code Space logo represents our vision to connect and empower the
             next generation of tech innovators. To ensure consistency, follow
             the guidelines below for proper usage.
           </p>
-          <div className="grid grid-cols-3 gap-10 mt-10">
-            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-gray-50 p-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 mt-10">
+            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-gray-50 p-5 md:p-10">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={560}
@@ -54,7 +54,7 @@ const Brand = () => {
                 />
               </div>
             </div>
-            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-primary p-10">
+            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-primary p-5 md:p-10">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={920}
@@ -65,7 +65,7 @@ const Brand = () => {
                 />
               </div>
             </div>
-            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-gray-50 p-10">
+            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-gray-50 p-5 md:p-10">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={920}
@@ -82,11 +82,11 @@ const Brand = () => {
         {/* Icons Usage */}
         <div className="space-y-5">
           <SpaceBadge>Icons usage</SpaceBadge>
-          <h1 className="font-normal text-2xl leading-normal">
+          <h1 className="font-normal text-xl md:text-2xl leading-normal">
             Icons Variation
           </h1>
-          <div className="grid grid-cols-3 gap-10 mt-10">
-            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-gray-50 p-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 mt-10">
+            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-gray-50 p-5 md:p-10">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={280}
@@ -97,7 +97,7 @@ const Brand = () => {
                 />
               </div>
             </div>
-            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-primary p-10">
+            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-primary p-5 md:p-10">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={280}
@@ -108,7 +108,7 @@ const Brand = () => {
                 />
               </div>
             </div>
-            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-gray-50 p-10">
+            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-gray-50 p-5 md:p-10">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={280}
@@ -125,21 +125,21 @@ const Brand = () => {
         {/* Colors */}
         <div className="space-y-5">
           <SpaceBadge>color usage</SpaceBadge>
-          <h1 className="font-normal text-2xl leading-normal">Our Colors</h1>
-          <p className="text-xl subtitle sm:w-4/5">
+          <h1 className="font-normal text-xl md:text-2xl leading-normal">Our Colors</h1>
+          <p className="text-lg md:text-xl subtitle w-full sm:w-4/5">
             Our color palette reflects our bold and vibrant mission. These
             colors are used across all brand assets and communications.
           </p>
-          <div className="grid grid-cols-3 gap-10 mt-10">
-            <div className="w-full aspect-video rounded-xl flex flex-col text-white font-light text-xl text-center items-center justify-center relative bg-[#5B5AD1] p-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 mt-10">
+            <div className="w-full aspect-video rounded-xl flex flex-col text-white font-light text-lg md:text-xl text-center items-center justify-center relative bg-[#5B5AD1] p-5 md:p-10">
               <p>#5B5AD1</p>
               <p>Primary</p>
             </div>
-            <div className="w-full aspect-video rounded-xl flex flex-col text-white font-light text-xl text-center items-center justify-center relative bg-[#0C0C21] p-10">
+            <div className="w-full aspect-video rounded-xl flex flex-col text-white font-light text-lg md:text-xl text-center items-center justify-center relative bg-[#0C0C21] p-5 md:p-10">
               <p>#0C0C21</p>
               <p>Secondary</p>
             </div>
-            <div className="w-full aspect-video rounded-xl flex flex-col text-white font-light text-xl text-center items-center justify-center relative bg-[#55B76F] p-10">
+            <div className="w-full aspect-video rounded-xl flex flex-col text-white font-light text-lg md:text-xl text-center items-center justify-center relative bg-[#55B76F] p-5 md:p-10">
               <p>#55B76F</p>
               <p>Tertiary</p>
             </div>
@@ -151,10 +151,10 @@ const Brand = () => {
           <SpaceBadge>Typography</SpaceBadge>
           <div className="space-y-10">
             <div>
-              <h1 className="font-normal text-2xl leading-normal">
+              <h1 className="font-normal text-xl md:text-2xl leading-normal">
                 Font Family
               </h1>
-              <p className="text-xl text-black font-light">
+              <p className="text-lg md:text-xl text-black font-light">
                 Typography plays a key role in shaping our voice and tone. We
                 use clean, modern fonts that are easy to read and align with our
                 forward-thinking values.
@@ -162,11 +162,11 @@ const Brand = () => {
             </div>
 
             <div className="space-y-2">
-              <h2 className="font-normal text-2xl leading-normal">
+              <h2 className="font-normal text-xl md:text-2xl leading-normal">
                 Primary Font
               </h2>
-              <h3 className="text-xl">SF Pro Display</h3>
-              <p className="text-xl text-black font-light">
+              <h3 className="text-lg md:text-xl">SF Pro Display</h3>
+              <p className="text-lg md:text-xl text-black font-light">
                 SF Pro Display is a modern, sans-serif typeface designed by
                 Apple, primarily for use across its platforms like iOS, macOS,
                 and watchOS. It&apos;s a part of the San Francisco font family,
@@ -182,20 +182,20 @@ const Brand = () => {
           <SpaceBadge>TONE</SpaceBadge>
           <div className="space-y-10">
             <div>
-              <h2 className="font-normal text-2xl leading-normal">
+              <h2 className="font-normal text-xl md:text-2xl leading-normal">
                 Tone of Voice
               </h2>
-              <p className="text-xl text-black font-light">
+              <p className="text-lg md:text-xl text-black font-light">
                 Our tone of voice is friendly, motivational, and empowering. We
                 aim to inspire and uplift young technologists.
               </p>
             </div>
 
             <div>
-              <h2 className="font-normal text-2xl leading-normal">
+              <h2 className="font-normal text-xl md:text-2xl leading-normal">
                 Guidelines
               </h2>
-              <div className="space-y-2 text-xl font-light">
+              <div className="space-y-2 text-lg md:text-xl font-light">
                 <p className="text-black">
                   • Be Inclusive: Use language that resonates with a diverse,
                   global audience.
@@ -211,8 +211,8 @@ const Brand = () => {
             </div>
 
             <div>
-              <h2 className="font-normal text-2xl leading-normal">Examples</h2>
-              <div className="space-y-2 text-xl font-light">
+              <h2 className="font-normal text-xl md:text-2xl leading-normal">Examples</h2>
+              <div className="space-y-2 text-lg md:text-xl font-light">
                 <p className="text-black">
                   • Before: &ldquo;Sign up for our program.&rdquo;
                 </p>
@@ -227,16 +227,16 @@ const Brand = () => {
 
         {/* Brand Materials Usage */}
         <div className="bg-[#5b5ad1] rounded-lg">
-          <div className="p-10 md:p-20 space-y-10">
+          <div className="p-6 md:p-10 lg:p-20 space-y-8 md:space-y-10">
             <div className="flex flex-col items-center text-center">
               <SpaceBadge>INFO</SpaceBadge>
-              <h3 className="text-3xl text-white mt-4 font-normal">
+              <h3 className="text-2xl md:text-3xl text-white mt-4 font-normal">
                 Use Of Our Brand Materials
               </h3>
             </div>
 
             <div>
-              <h3 className="text-3xl text-white font-normal">
+              <h3 className="text-2xl md:text-3xl text-white font-normal">
                 General Guidelines
               </h3>
               <p className="text-white mt-4">
@@ -250,9 +250,9 @@ const Brand = () => {
               </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-6 md:space-y-8">
               <div>
-                <h3 className="text-2xl text-white font-normal mb-2">
+                <h3 className="text-xl md:text-2xl text-white font-normal mb-2">
                   Advertising, Promotional, and Sales Materials
                 </h3>
                 <p className="text-white">
@@ -265,7 +265,7 @@ const Brand = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl text-white font-normal mb-2">
+                <h3 className="text-xl md:text-2xl text-white font-normal mb-2">
                   Educational and Instructional Use
                 </h3>
                 <p className="text-white">
@@ -278,7 +278,7 @@ const Brand = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl text-white font-normal mb-2">
+                <h3 className="text-xl md:text-2xl text-white font-normal mb-2">
                   Products, Websites, Names, and Logos
                 </h3>
                 <p className="text-white">
@@ -297,6 +297,8 @@ const Brand = () => {
 
       {/* Brands */}
       <BrandsSection />
+      {/* Join the community */}
+      <JoinSection />
     </>
   );
 };
