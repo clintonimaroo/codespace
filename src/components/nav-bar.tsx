@@ -95,8 +95,8 @@ const NavBar = () => {
                   <X size={24} />
                 </Button>
               </div>
-              <div className="flex flex-col items-center px-4">
-                <nav className="space-y-6 text-center w-full">
+              <div className="flex flex-col px-4">
+                <nav className="space-y-6">
                   {links.map((link) => (
                     <div key={link.name}>
                       <Link
