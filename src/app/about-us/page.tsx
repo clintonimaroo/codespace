@@ -4,14 +4,13 @@ import {
   Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger
+  AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { values, WhatWeDo, why_us } from "@/data";
 import { ArrowRightIcon } from "lucide-react";
 import Container from "@/components/container";
-
 
 import React from "react";
 
@@ -36,7 +35,7 @@ const AboutUs = () => {
         </div>
       </Container>
       <section className="min-h-screen bg-foreground mb-20">
-        <Container className="container  h-full flex flex-col justify-between bg-cover py-10 md:py-20 bg-top bg-no-repeat gap-5">
+        <Container className="container  h-full flex flex-col justify-between bg-cover py-10 md:py-20 bg-top bg-no-repeat gap-x-5 gap-y-12">
           <div className="space-y-4 w-full sm:w-1/2">
             <h3 className="text-3xl text-white font-normal">Our Mission</h3>
             <p className="text-white w-full sm:w-4/5">
@@ -113,7 +112,7 @@ const AboutUs = () => {
           </Accordion>
         </Container>
         <section className="container py-20">
-          <div className="space-y-5 flex flex-col items-center justify-center sm:w-1/2 mx-auto text-center">
+          <div className="space-y-5 flex flex-col items-center justify-center max-w-xl mx-auto text-center">
             <h3 className="text-4xl font-light text-white">Become a Member</h3>
             <p className="text-gray-400 text-lg">
               Be part of a community that prioritizes you, and your career

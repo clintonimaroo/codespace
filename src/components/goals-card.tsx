@@ -6,12 +6,12 @@ const GoalsCard = ({
   variant = "light",
   ...props
 }: WhatWeDo & { variant?: "light" | "dark" }) => (
-  <div className="w-full space-y-3  flex flex-col">
-    <div className="size-14 text-white flex items-center justify-center bg-primary rounded-lg">
+  <div className="w-full">
+    <div className="size-14 text-white flex items-center justify-center bg-primary rounded-lg mb-6">
       <props.icon strokeWidth={1} size={30} />
     </div>
     <h3
-      className={cn("text-xl font-medium", {
+      className={cn("text-2xl font-medium mb-2", {
         "text-white": variant === "dark",
       })}
     >

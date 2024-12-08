@@ -21,9 +21,9 @@ const HeroImageCards = ({ className }: { className?: string }) => {
 
 const JoinUsImageCards = () => (
   <div className="w-36 md:w-48 relative h-full ml-auto">
-    <ImageCard className="w-full right-36 absolute -bottom-16 -rotate-[4deg]" />
+    <ImageCard className="w-full right-32 absolute -bottom-16 -rotate-[4deg]" />
     <ImageCard className="w-full right-0 absolute rotate-[4deg] top-1/2 -translate-y-1/2" />
-    <ImageCard className="w-full absolute right-24 md:right-32 -top-16 -rotate-[4deg]" />
+    <ImageCard className="w-full absolute right-32 -top-16 -rotate-[4deg]" />
   </div>
 );
 
