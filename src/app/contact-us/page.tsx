@@ -5,7 +5,7 @@ import SpaceBadge from "@/components/space-badge";
 import { socials } from "@/data";
 import Link from "next/link";
 import Container from "@/components/container";
-import MessageForm from "@/components/form";
+import MessageForm from "@/components/message-form";
 
 const ContactUs = () => {
   return (
