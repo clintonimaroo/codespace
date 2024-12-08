@@ -72,7 +72,7 @@ const NavBar = () => {
             <Button
               size="icon-sm"
               variant="ghost"
-              className="lg:hidden bg-primary hover:bg-primary/95 hover:text-white  text-white"
+              className="lg:hidden bg-primary hover:bg-primary/95 hover:text-white text-white"
             >
               <MenuIcon size={24} />
             </Button>
@@ -90,13 +90,13 @@ const NavBar = () => {
                   size="icon-sm"
                   variant="ghost"
                   onClick={() => setOpen(false)}
-                  className="bg-primary hover:bg-primary/95 hover:text-white text-white w-12 h-12 rounded-2xl"
+                  className="bg-primary hover:bg-primary/95 hover:text-white text-white"
                 >
                   <X size={24} />
                 </Button>
               </div>
-              <div className="flex flex-col items-center space-y-16 pt-20">
-                <nav className="space-y-12 text-center">
+              <div className="flex flex-col items-center px-4">
+                <nav className="space-y-6 text-center w-full">
                   {links.map((link) => (
                     <div key={link.name}>
                       <Link
@@ -113,7 +113,7 @@ const NavBar = () => {
                     </div>
                   ))}
                 </nav>
-                <Button size="lg" className="w-[80%] rounded-full py-6">
+                <Button size="lg" className="w-full rounded-xl mt-8">
                   Join the Community
                 </Button>
               </div>
