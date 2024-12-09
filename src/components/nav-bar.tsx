@@ -28,7 +28,7 @@ const NavBar = () => {
     <>
       {/* Hackfest 2024 Banner */}
 
-      {/*
+      
       <div className="w-full bg-gradient-to-r from-[#6d6cd6] via-[#151440] to-[#feb800] font-bold">
         <Container>
           <Link
@@ -39,7 +39,7 @@ const NavBar = () => {
           </Link>
         </Container>
       </div>
-      */}
+    
 
       {/* NavBar */}
       <Container className="container flex items-center justify-between py-4 md:pb-8 md:pt-4">
