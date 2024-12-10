@@ -28,7 +28,7 @@ const NavBar = () => {
     <>
       {/* Hackfest 2024 Banner */}
 
-      
+      {/*
       <div className="w-full bg-[#6d6cd6] text-sm">
         <Container>
           <Link
@@ -40,7 +40,7 @@ const NavBar = () => {
           </Link>
         </Container>
       </div>
-       
+      */}
 
       {/* NavBar */}
       <Container className="container flex items-center justify-between py-4 md:pb-8 md:pt-4">
