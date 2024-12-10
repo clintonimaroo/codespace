@@ -28,18 +28,19 @@ const NavBar = () => {
     <>
       {/* Hackfest 2024 Banner */}
 
-      {/*
-      <div className="w-full bg-gradient-to-r from-[#6d6cd6] via-[#151440] to-[#feb800] font-bold">
+      
+      <div className="w-full bg-[#6d6cd6] text-sm">
         <Container>
           <Link
             href="https://photos.app.goo.gl/7rsrtg3xNwd5VFqw5"
             className="w-full py-2 text-white text-center block hover:opacity-90 transition-opacity"
+            style={{ fontSize: '14px', lineHeight: '20px', fontWeight: 600 }}
           >
-            View Fusion Hack Fest 2024 Official Photos &gt;&gt;
+            We&apos;ve rebranded our website 🎉 Discover what&apos;s new here 👀.
           </Link>
         </Container>
       </div>
-       */}
+       
 
       {/* NavBar */}
       <Container className="container flex items-center justify-between py-4 md:pb-8 md:pt-4">
