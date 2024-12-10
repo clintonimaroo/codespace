@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "@/components/nav-bar";
 import Footer from "@/components/footer";
+import SmoothScroll from "@/components/smoothscroll";
 
 const sfProDisplay = localFont({
   src: [
@@ -46,8 +47,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${sfProDisplay.className}  antialiased`}>
+    <html lang="en" className="lenis lenis-smooth">
+      <body className={`${sfProDisplay.className} antialiased`}>
+        <SmoothScroll />
         <NavBar />
         {children}
         <Footer />

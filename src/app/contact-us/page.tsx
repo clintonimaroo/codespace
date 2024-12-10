@@ -26,7 +26,7 @@ const ContactUs = () => {
       </Container>
 
       <Container className="container px-6 md:px-0 mb-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {socials.map((social) => (
             <div
               key={social.name}
@@ -35,7 +35,8 @@ const ContactUs = () => {
               <social.icon size={24} className="text-black" />
               <div className="space-y-2">
                 <h4 className="font-normal text-xl capitalize-first">
-                  {social.name.charAt(0).toUpperCase() + social.name.slice(1).toLowerCase()}
+                  {social.name === 'twitter' ? 'X (Formerly Twitter)' :
+                    social.name.charAt(0).toUpperCase() + social.name.slice(1).toLowerCase()}
                 </h4>
                 <p className="text-[#6B7280] text-base/relaxed">
                   {social.description}
@@ -44,7 +45,7 @@ const ContactUs = () => {
                   href={social.url}
                   className="text-black underline font-normal text-base"
                 >
-                  {social.username}
+                  {social.name === 'email' ? 'hello@codespaces.org' : '@codespace'}
                 </Link>
               </div>
             </div>
