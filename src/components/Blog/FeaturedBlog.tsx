@@ -1,6 +1,4 @@
-import { SVGProps } from "react";
-
-export default function FeaturedBlog(props: SVGProps<SVGSVGElement>) {
+export default function FeaturedBlog() {
   return (
     <div className="max-w-[620px]">
       <h3 className="text-3xl font-medium mb-6">Featured Blog</h3>
