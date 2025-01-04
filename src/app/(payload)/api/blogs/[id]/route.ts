@@ -1,12 +1,8 @@
 import { NextResponse } from "next/server";
 
-interface RouteParams {
-  id: string;
-}
-
 export async function GET(
   request: Request,
-  { params }: { params: RouteParams }
+  { params }: { params: { id: string } }
 ) {
   try {
     const payload = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/blogs/${params.id}`);
