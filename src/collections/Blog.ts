@@ -81,6 +81,18 @@ export const Blog: CollectionConfig = {
       label: "Excerpt",
       type: "textarea",
       required: true,
+      admin: {
+        position: "sidebar",
+      },
+    },
+    {
+      name: "isFeatured",
+      label: "Set as featured post",
+      type: "checkbox",
+      defaultValue: false,
+      admin: {
+        position: "sidebar",
+      },
     },
     {
       name: "author",
