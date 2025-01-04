@@ -2,6 +2,22 @@ import { CollectionConfig } from "payload";
 
 export const Blog: CollectionConfig = {
   slug: "blog",
+  hooks: {
+    beforeChange: [
+      ({ req, operation, data }) => {
+        if (req.user) {
+          if (operation === "create") {
+            data.author = req.user.id;
+            data.updatedBy = req.user.id;
+          } else if (operation === "update") {
+            data.updatedBy = req.user.id;
+          }
+
+          return data;
+        }
+      },
+    ],
+  },
   admin: {
     useAsTitle: "title",
   },
@@ -59,6 +75,32 @@ export const Blog: CollectionConfig = {
       label: "Content",
       type: "richText",
       required: true,
+    },
+    {
+      name: "author",
+      type: "relationship",
+      access: {
+        update: () => false,
+      },
+      relationTo: "users",
+      admin: {
+        readOnly: true,
+        position: "sidebar",
+        condition: (data) => !!data?.author,
+      },
+    },
+    {
+      name: "updatedBy",
+      type: "relationship",
+      access: {
+        update: () => false,
+      },
+      relationTo: "users",
+      admin: {
+        readOnly: true,
+        position: "sidebar",
+        condition: (data) => !!data?.updatedBy,
+      },
     },
   ],
 };

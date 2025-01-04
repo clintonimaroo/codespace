@@ -118,6 +118,8 @@ export interface Blog {
     };
     [k: string]: unknown;
   };
+  author?: (string | null) | User;
+  updatedBy?: (string | null) | User;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -224,6 +226,8 @@ export interface BlogSelect<T extends boolean = true> {
   title?: T;
   featuredImage?: T;
   content?: T;
+  author?: T;
+  updatedBy?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;

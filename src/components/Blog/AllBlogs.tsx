@@ -1,5 +1,6 @@
 import { BlogsAPIResponse } from "@/types";
 import Pagination from "./Pagination";
+import { formatDate } from "@/lib/utils";
 
 export default function AllBlogs({
   blogs,
@@ -18,7 +19,7 @@ export default function AllBlogs({
               <div className="flex items-center gap-x-[5.5px] text-neutral text-lg">
                 <p>Clinton Imaro</p>
                 <div className="h-[3px] w-[3px] rounded-full bg-neutral" />
-                <p>11 Oct 2024</p>
+                <p>{formatDate(blog.createdAt)}</p>
               </div>
 
               <h3 className="text-xl font-medium">{blog.title}</h3>
