@@ -7,9 +7,38 @@ export const Blog: CollectionConfig = {
   },
   access: {
     read: () => true,
-    create: () => true,
-    update: () => true,
-    delete: () => true,
+    create: ({ req: { user } }) => {
+      if (user) return true;
+
+      return {
+        _status: {
+          equals: "published",
+        },
+      };
+    },
+    update: ({ req: { user } }) => {
+      if (user) return true;
+
+      return {
+        _status: {
+          equals: "published",
+        },
+      };
+    },
+    delete: ({ req: { user } }) => {
+      if (user) return true;
+
+      return {
+        _status: {
+          equals: "published",
+        },
+      };
+    },
+  },
+  versions: {
+    drafts: {
+      autosave: true,
+    },
   },
   fields: [
     {
