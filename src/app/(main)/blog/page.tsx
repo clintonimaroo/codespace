@@ -1,11 +1,9 @@
-import AllBlogs from "@/components/Blog/AllBlogs";
-import FeatureSection from "@/components/Blog/FeatureSection";
-// import BlogHeader from "@/components/Blog/Header";
 import BrandsSection from "@/components/brands-section";
 import SpaceBadge from "@/components/space-badge";
 import JoinSection from "@/components/join-section";
 import { Logo } from "@/components/brand";
 import Container from "@/components/container";
+import Blog from "@/components/Blog/Index";
 
 export default function BlogPage() {
   return (
@@ -26,8 +24,7 @@ export default function BlogPage() {
       </section>
 
       <Container className="container space-y-2 py-20">
-        <FeatureSection />
-        <AllBlogs />
+        <Blog />
       </Container>
 
       <BrandsSection />

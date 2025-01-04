@@ -1,7 +1,7 @@
 export default function RecentBlogs() {
   return (
     <>
-      <h3 className="text-3xl font-medium mb-6">Recent Blogs</h3>
+      <h3 className="text-3xl font-medium mb-3">Recent Blogs</h3>
       <div className="flex flex-col gap-y-8">
         {Array(5)
           .fill(5)
