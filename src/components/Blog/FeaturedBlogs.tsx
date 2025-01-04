@@ -1,5 +1,5 @@
-import { formatDate } from "@/lib/utils";
 import { BlogsAPIResponse } from "@/types";
+import { formatDate } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,12 +9,14 @@ export default function FeaturedBlogs({
   blogs: BlogsAPIResponse | undefined;
 }) {
   return (
-    <div className="grid grid-cols-2">
-      {blogs?.docs.map((blog) => (
+    <div className="max-w-xl">
+      <h3 className="text-3xl font-medium mb-4">Featured Posts</h3>
+
+      {blogs?.docs.slice(0).map((blog) => (
         <div key={blog.id} className="relative">
           {blog.featuredImage && (
             <Image
-              className="h-96 bg-[#f8f8f8] rounded-[10px] w-full object-cover"
+              className="h-[420px] bg-[#f8f8f8] rounded-[22px] w-full object-cover"
               src={blog.featuredImage.url}
               width={blog.featuredImage.width}
               height={blog.featuredImage.height}
@@ -41,7 +43,7 @@ export default function FeaturedBlogs({
 
             <Link
               href={`/blog/${blog.id}`}
-              className="group text-primary hover:text-primary w-fit rounded-full mt-4 flex items-center space-x-2"
+              className="bg-primary py-4 px-8 rounded-full group text-white w-fit mt-4 flex items-center space-x-2"
             >
               <span>Read More</span>
               <svg
@@ -49,7 +51,7 @@ export default function FeaturedBlogs({
                 height={10}
                 viewBox="0 0 14 10"
                 fill="none"
-                className="rotate-180 transition-all duration-300 transform -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
+                className="rotate-180 transition-all  duration-300 transform group-hover:translate-x-2 group-hover:opacity-100"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path

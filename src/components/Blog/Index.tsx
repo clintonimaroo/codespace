@@ -4,6 +4,7 @@ import AllBlogs from "./AllBlogs";
 import useSwr from "swr";
 import { fetcher } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";
+import FeaturedBlogs from "./FeaturedBlogs";
 
 export default function Blog() {
   const router = useRouter();
@@ -104,6 +105,7 @@ export default function Blog() {
 
   return (
     <div className="px-2 xs:px-4 sm:px-8 md:px-14 max-w-7xl mx-auto">
+      <FeaturedBlogs blogs={data} />
       <AllBlogs blogs={data} />
       <div className="w-full h-px bg-[#A6A6A6]/30 my-14" />
       {renderPagination()}
