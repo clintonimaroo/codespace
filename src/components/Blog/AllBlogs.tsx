@@ -14,11 +14,12 @@ export default function AllBlogs({
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogs?.docs.map((blog) => (
-          <div key={blog.id}>
+          <div key={blog.id} className="relative">
             <Image
-              className="h-[250px] bg-[#f8f8f8] rounded-[22px] w-full"
+              className="h-[250px] bg-[#f8f8f8] rounded-[22px] w-auto"
               src={blog.featuredImage.url}
-              fill
+              width={blog.featuredImage.width}
+              height={blog.featuredImage.height}
               alt={blog.featuredImage.alt}
             />
             <div className="flex flex-col gap-y-1 mt-5">
