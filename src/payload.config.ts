@@ -1,7 +1,5 @@
 // storage-adapter-import-placeholder
-// @ts-expect-error types not available
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
-// @ts-expect-error types not available
 import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import path from "path";
