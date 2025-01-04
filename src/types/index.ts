@@ -32,6 +32,8 @@ interface FeaturedImage {
 }
 
 interface Doc {
+  updatedBy: Author;
+  author: Author;
   id: string;
   title: string;
   featuredImage: FeaturedImage;
@@ -41,6 +43,16 @@ interface Doc {
   createdAt: string;
   updatedAt: string;
   _status: string;
+}
+
+interface Author {
+  id: string;
+  email: string;
+  createdAt: string;
+  updatedAt: string;
+  name: string;
+  username: string;
+  loginAttempts: number;
 }
 
 export interface BlogsAPIResponse {

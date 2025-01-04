@@ -1,6 +1,7 @@
 import { BlogsAPIResponse } from "@/types";
 import Pagination from "./Pagination";
 import { formatDate } from "@/lib/utils";
+import Image from "next/image";
 
 export default function AllBlogs({
   blogs,
@@ -14,10 +15,15 @@ export default function AllBlogs({
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogs?.docs.map((blog) => (
           <div key={blog.id}>
-            <div className="h-[250px] bg-[#f8f8f8] rounded-[22px]"></div>
+            <Image
+              className="h-[250px] bg-[#f8f8f8] rounded-[22px] w-full"
+              src={blog.featuredImage.url}
+              fill
+              alt={blog.featuredImage.alt}
+            />
             <div className="flex flex-col gap-y-1 mt-5">
               <div className="flex items-center gap-x-[5.5px] text-neutral text-lg">
-                <p>Clinton Imaro</p>
+                <p>{blog.author.name}</p>
                 <div className="h-[3px] w-[3px] rounded-full bg-neutral" />
                 <p>{formatDate(blog.createdAt)}</p>
               </div>
