@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
+import typography from '@tailwindcss/typography';
 
 const config: Config = {
   darkMode: ["class"],
@@ -8,7 +9,6 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-
   theme: {
     container: {
       center: true,
@@ -64,6 +64,33 @@ const config: Config = {
           "5": "hsl(var(--chart-5))",
         },
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            color: 'var(--tw-prose-body)',
+            maxWidth: '65ch',
+            p: {
+              color: 'var(--tw-prose-body)',
+            },
+            h1: {
+              color: 'var(--tw-prose-headings)',
+              fontWeight: '700',
+            },
+            h2: {
+              color: 'var(--tw-prose-headings)',
+              fontWeight: '600',
+            },
+            h3: {
+              color: 'var(--tw-prose-headings)',
+              fontWeight: '600',
+            },
+            a: {
+              color: 'var(--tw-prose-links)',
+              textDecoration: 'underline',
+            },
+          },
+        },
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -71,20 +98,12 @@ const config: Config = {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
@@ -93,6 +112,10 @@ const config: Config = {
       },
     },
   },
-  plugins: [tailwindcssAnimate],
+  plugins: [
+    tailwindcssAnimate,
+    typography,
+  ],
 };
+
 export default config;

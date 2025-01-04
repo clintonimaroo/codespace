@@ -77,6 +77,12 @@ export const Blog: CollectionConfig = {
       required: true,
     },
     {
+      name: "excerpt",
+      label: "Excerpt",
+      type: "textarea",
+      required: true,
+    },
+    {
       name: "author",
       type: "relationship",
       access: {
