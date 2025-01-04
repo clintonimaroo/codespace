@@ -7,7 +7,6 @@ export default function Pagination() {
           height={10}
           viewBox="0 0 14 10"
           fill="none"
-          className="rotate-180"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -15,38 +14,38 @@ export default function Pagination() {
             fill="black"
           />
         </svg>
-        <span className="text-neutral">Previous</span>
+        <span>Previous</span>
       </button>
 
       <div className="flex items-center gap-x-2">
         <button className="w-11 h-11 rounded-xl bg-primary text-[#F8F8F8]">
           1
         </button>
-        <button className="w-11 h-11 rounded-xl border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all text-neutral bg-[#F8F8F8]">
+        <button className="w-11 h-11 rounded-xl border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all bg-[#F8F8F8]">
           2
         </button>
-        <button className="w-11 h-11 rounded-xl border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all text-neutral bg-[#F8F8F8]">
+        <button className="w-11 h-11 rounded-xl border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all bg-[#F8F8F8]">
           3
         </button>
-        <button className="w-11 h-11 rounded-xl border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all text-neutral bg-[#F8F8F8]">
+        <button className="w-11 h-11 rounded-xl border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all bg-[#F8F8F8]">
           ...
         </button>
-        <button className="w-11 h-11 rounded-xl border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all text-neutral bg-[#F8F8F8]">
+        <button className="w-11 h-11 rounded-xl border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all bg-[#F8F8F8]">
           7
         </button>
-        <button className="w-11 h-11 rounded-xl border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all text-neutral bg-[#F8F8F8]">
+        <button className="w-11 h-11 rounded-xl border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all bg-[#F8F8F8]">
           8
         </button>
-        <button className="w-11 h-11 rounded-xl border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all text-neutral bg-[#F8F8F8]">
+        <button className="w-11 h-11 rounded-xl border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all bg-[#F8F8F8]">
           9
         </button>
-        <button className="w-11 h-11 rounded-xl border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all text-neutral bg-[#F8F8F8]">
+        <button className="w-11 h-11 rounded-xl border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all bg-[#F8F8F8]">
           10
         </button>
       </div>
 
       <button className="bg-[#F8F8F8] h-11 py-3 px-6 flex items-center gap-x-3 border border-[#E3E3E3] rounded-lg">
-        <span className="text-neutral">Next</span>
+        <span>Next</span>
         <svg
           width={14}
           height={10}
