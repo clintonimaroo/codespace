@@ -15,7 +15,7 @@ export interface StatType {
   description?: string;
 }
 
-interface FeaturedImage {
+export interface FeaturedImage {
   id: string;
   alt: string;
   filename: string;
@@ -31,7 +31,17 @@ interface FeaturedImage {
   thumbnailURL: string | null;
 }
 
-interface Doc {
+export interface Author {
+  id: string;
+  email: string;
+  createdAt: string;
+  updatedAt: string;
+  name: string;
+  username: string;
+  loginAttempts: number;
+}
+
+export interface Doc {
   updatedBy: Author;
   author: Author;
   id: string;
@@ -43,16 +53,7 @@ interface Doc {
   createdAt: string;
   updatedAt: string;
   _status: string;
-}
-
-interface Author {
-  id: string;
-  email: string;
-  createdAt: string;
-  updatedAt: string;
-  name: string;
-  username: string;
-  loginAttempts: number;
+  excerpt?: string;
 }
 
 export interface BlogsAPIResponse {

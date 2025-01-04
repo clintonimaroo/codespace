@@ -2,6 +2,7 @@ import { BlogsAPIResponse } from "@/types";
 import Pagination from "./Pagination";
 import { formatDate } from "@/lib/utils";
 import Image from "next/image";
+import Link from 'next/link';
 
 export default function AllBlogs({
   blogs,
@@ -15,29 +16,33 @@ export default function AllBlogs({
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogs?.docs.map((blog) => (
           <div key={blog.id} className="relative">
-            <Image
-              className="h-[250px] bg-[#f8f8f8] rounded-[22px] w-auto"
-              src={blog.featuredImage.url}
-              width={blog.featuredImage.width}
-              height={blog.featuredImage.height}
-              alt={blog.featuredImage.alt}
-            />
+            {blog.featuredImage && (
+              <Image
+                className="h-[250px] bg-[#f8f8f8] rounded-[10px] w-auto"
+                src={blog.featuredImage.url}
+                width={blog.featuredImage.width}
+                height={blog.featuredImage.height}
+                alt={blog.featuredImage.alt || blog.title}
+              />
+            )}
             <div className="flex flex-col gap-y-1 mt-5">
               <div className="flex items-center gap-x-[5.5px] text-neutral text-lg">
-                <p>{blog.author.name}</p>
+                <p>{blog.author?.name || 'Anonymous'}</p>
                 <div className="h-[3px] w-[3px] rounded-full bg-neutral" />
                 <p>{formatDate(blog.createdAt)}</p>
               </div>
 
               <h3 className="text-xl font-medium">{blog.title}</h3>
               <p className="text-lg text-neutral">
-                A practical guide for Gen Z coders on the most popular tools
-                used in the industry.
+                {blog.excerpt || 'A practical guide for Gen Z coders on the most popular tools used in the industry.'}
               </p>
 
-              <button className="bg-primary px-5 py-4 text-white w-fit rounded-full mt-4">
+              <Link
+                href={`/blog/${blog.id}`}
+                className="bg-primary px-5 py-4 text-white w-fit rounded-full mt-4"
+              >
                 Read More
-              </button>
+              </Link>
             </div>
           </div>
         ))}
