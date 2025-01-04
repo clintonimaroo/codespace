@@ -41,7 +41,7 @@ export default function AllBlogs({
               </p>
               <Link
                 href={`/blog/${blog.id}`}
-                className="bg-primary py-2 px-8 rounded-full group text-white w-fit mt-4 flex items-center space-x-2"
+                className="bg-primary py-3 px-8 rounded-full group text-white w-fit mt-4 flex items-center space-x-2"
               >
                 <span>Read More</span>
                 <svg
