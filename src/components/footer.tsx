@@ -8,7 +8,7 @@ import Container from "@/components/container";
 
 const Footer = () => {
   return (
-    <Container className="container grid grid-cols-2 md:grid-cols-7 gap-10">
+    <Container  className="container grid grid-cols-2 md:grid-cols-7 gap-10">
       <div className="col-span-2 w-full space-y-5 ">
         <LogoLarge />
         <p className="text-base text-gray-500">

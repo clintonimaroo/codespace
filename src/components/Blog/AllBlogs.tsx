@@ -11,8 +11,8 @@ export default function AllBlogs({
   return (
     <div className="mt-20">
       <h3 className="text-3xl font-medium mb-6">All Blogs</h3>
-      <div className="grid grid-cols-3">
-        {blogs?.docs.map((blog) => (
+      <div className="grid grid-cols-3 gap-8">
+        {blogs?.docs?.length ? blogs.docs.map((blog) => (
           <div key={blog.id} className="relative">
             {blog.featuredImage && (
               <Image
@@ -23,27 +23,25 @@ export default function AllBlogs({
                 alt={blog.featuredImage.alt || blog.title}
               />
             )}
-            <div className="flex flex-col gap-y-1 mt-5 max-w-xl">
+            <div className="flex flex-col gap-y-1 mt-5">
               <div className="flex items-center gap-x-[5.5px] text-neutral text-lg">
                 <p>{blog.author?.name || "Anonymous"}</p>
                 <div className="h-[3px] w-[3px] rounded-full bg-neutral" />
                 <p>{formatDate(blog.createdAt)}</p>
               </div>
-
               <Link
                 href={`/blog/${blog.id}`}
-                className="text-2xl font-medium hover:text-primary"
+                className="text-2xl font-medium hover:text-primary line-clamp-2"
               >
                 {blog.title}
               </Link>
-              <p className="text-lg text-neutral">
+              <p className="text-lg text-neutral line-clamp-2">
                 {blog.excerpt ||
                   "A practical guide for Gen Z coders on the most popular tools used in the industry."}
               </p>
-
               <Link
                 href={`/blog/${blog.id}`}
-                className="bg-primary py-4 px-8 rounded-full group text-white w-fit mt-4 flex items-center space-x-2"
+                className="bg-primary py-2 px-8 rounded-full group text-white w-fit mt-4 flex items-center space-x-2"
               >
                 <span>Read More</span>
                 <svg
@@ -62,7 +60,9 @@ export default function AllBlogs({
               </Link>
             </div>
           </div>
-        ))}
+        )) : (
+          <p>No blogs available.</p>
+        )}
       </div>
     </div>
   );

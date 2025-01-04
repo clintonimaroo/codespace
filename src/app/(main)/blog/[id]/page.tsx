@@ -28,6 +28,19 @@ const formatDate = (dateString: string) => {
     }).replace(',', '');
 };
 
+const SubscribeCard = () => {
+    return (
+        <div className="bg-primary mt-12 rounded-[10px] p-12 text-center h-[300px] flex flex-col justify-center font-sora">
+            <h3 className="text-3xl font-medium text-white mb-4">Looking to Connect with Other Gen-Zs<br /> in Tech?</h3>
+
+            <button className="bg-white text-primary px-6 py-3 rounded-full font-medium mt-4 hover:bg-gray-100 transition-colors flex items-center gap-2 mx-auto font-sora">
+                Join the Community
+                <span>↗</span>
+            </button>
+        </div>
+    );
+};
+
 const renderContent = (content: ContentNode) => {
     const tableOfContents: string[] = [];
 
@@ -43,8 +56,8 @@ const renderContent = (content: ContentNode) => {
     return (
         <div className="flex gap-8">
             <div className="w-64 shrink-0">
-                <div className="sticky top-8 border rounded-lg p-4 bg-white">
-                    <h3 className="font-medium mb-4">Table of Content</h3>
+                <div className="sticky top-8  rounded-lg p-4 bg-white">
+                    <h3 className="font-medium mb-4">On this page</h3>
                     {tableOfContents.map((heading, i) => (
                         <a
                             key={i}
@@ -82,6 +95,8 @@ export default function BlogPage() {
     if (error) return <div>Failed to load</div>;
     if (!blog) return <div>Loading...</div>;
 
+    console.log(blog);
+
     return (
         <Container className="container space-y-2 py-20">
             <div className="max-w-7xl mx-auto py-8">
@@ -96,7 +111,7 @@ export default function BlogPage() {
                 <div className="mt-8">
                     <h1 className="text-4xl font-medium text-black">{blog.title}</h1>
                     <div className="flex items-center gap-x-[5.5px] text-gray text-lg mt-2">
-                        <p>{blog.author.name}</p>
+                        <p>{blog.author?.name || 'Unknown Author'}</p>
                         <div className="h-[3px] w-[3px] rounded-full bg-secondary" />
                         <p>{formatDate(blog.createdAt)}</p>
                     </div>
@@ -115,6 +130,20 @@ export default function BlogPage() {
 
                 <div className="mt-8">
                     {renderContent(blog.content.root)}
+                </div>
+
+                {/* Share article section */}
+                <div className="flex gap-14 mt-12">
+                    <div className="w-[232px]">
+                        <h4 className="text-[#101828] mt-10 mb-4">Share article</h4>
+                        <div className="flex gap-4">
+                            <a href="#" className="text-primary hover:underline">Twitter ↗</a>
+                            <a href="#" className="text-primary hover:underline">LinkedIn ↗</a>
+                        </div>
+                    </div>
+                    <div className="flex-1">
+                        <SubscribeCard />
+                    </div>
                 </div>
             </div>
         </Container>
