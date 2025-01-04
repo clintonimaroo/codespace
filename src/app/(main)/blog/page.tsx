@@ -10,7 +10,7 @@ export default function BlogPage() {
     <>
       {/* Hero Section */}
       <section className="container gap-5 py-5 md:py-20 ">
-        <div className="space-y-5 flex-col flex  justify-center items-center text-center sm:w-1/2 mx-auto">
+        <div className="space-y-5 flex-col flex justify-center items-center text-center sm:w-1/2 mx-auto">
           <Logo className="scale-75" />
           <SpaceBadge>CODE SPACE BLOG</SpaceBadge>
           <h1 className="font-medium text-3xl md:text-5xl leading-snug">
@@ -23,7 +23,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <Container className="container space-y-2 py-20">
+      <Container className="container space-y-2 pb-10">
         <Blog />
       </Container>
 

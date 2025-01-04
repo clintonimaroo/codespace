@@ -120,6 +120,7 @@ export interface Blog {
     };
     [k: string]: unknown;
   };
+  excerpt: string;
   author?: (string | null) | User;
   updatedBy?: (string | null) | User;
   updatedAt: string;
@@ -230,6 +231,7 @@ export interface BlogSelect<T extends boolean = true> {
   title?: T;
   featuredImage?: T;
   content?: T;
+  excerpt?: T;
   author?: T;
   updatedBy?: T;
   updatedAt?: T;

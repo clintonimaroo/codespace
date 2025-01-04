@@ -1,7 +1,6 @@
 "use client";
 import { BlogsAPIResponse } from "@/types";
 import AllBlogs from "./AllBlogs";
-import FeatureSection from "./FeatureSection";
 import useSwr from "swr";
 import { fetcher } from "@/lib/utils";
 
@@ -15,7 +14,6 @@ export default function Blog() {
   if (isLoading) return <div>loading...</div>;
   return (
     <>
-      <FeatureSection blogs={data} />
       <AllBlogs blogs={data} />
     </>
   );
