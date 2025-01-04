@@ -8,7 +8,7 @@ import {
   TrophyIcon,
   UsersRoundIcon,
   MailIcon,
-  XIcon,
+  Twitter,
   FacebookIcon,
   InstagramIcon,
   LinkedinIcon
@@ -195,19 +195,25 @@ export const brands = [
 ];
 
 export const links = [
-  { name: "About us", href: "/about-us" },
+  { name: "Our Initiatives", href: "/about-us" },
   { name: "Donate", href: "/donate" },
   { name: "Events", href: "/events" },
-  { name: "Shop", href: "/shop" },
   { name: "Gallery", href: "/gallery" },
-  // { name: "Blog", href: "/blog" },
+  { name: "Blog", href: "/blog" },
   { name: "Contact us", href: "/contact-us" }
 ];
 
+export const quick_links = [
+  { name: "Our Initiatives", href: "/about-us" },
+  { name: "Donate", href: "/donate" },
+  { name: "Brand Guideline", href: "/brand-guidelines" },
+  { name: "Privacy Policy", href: "/privacy-policy" },
+  { name: "Terms and Condition", href: "/terms" }
+];
+
 export const other_links = [
-  { name: "Brand Guidelines", href: "/brand-guidelines" },
-  { name: "Ambassador Program", href: "/ambassador-program" },
-  { name: "Press Feature", href: "/press-feature" }
+  { name: "Ambassador", href: "/ambassador-program" },
+  { name: "Press", href: "/press" }
 ];
 
 export const socials = [
@@ -223,7 +229,7 @@ export const socials = [
     url: "https://twitter.com/CodeSpaceHQ",
     description: "Join the conversation! We're buzzing with energy on X.",
     username: "@CodeSpaceHQ",
-    icon: XIcon
+    icon: Twitter
   },
 
   {

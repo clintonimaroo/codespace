@@ -1,7 +1,7 @@
 import React from "react";
 import { LogoLarge } from "./brand";
 import { Button } from "./ui/button";
-import { links, other_links, socials } from "@/data";
+import { other_links, quick_links, socials } from "@/data";
 import Link from "next/link";
 import Container from "@/components/container";
 
@@ -29,7 +29,7 @@ const Footer = () => {
       </ul>
       <ul className="space-y-2">
         <li className="text-primary text-lg font-medium mb-3">Quick Links</li>
-        {links.map((social) => (
+        {quick_links.map((social) => (
           <li key={social.name} className="hover:text-primary">
             <Link href={social.href} className="capitalize">
               {social.name}
@@ -71,8 +71,7 @@ const Footer = () => {
       </div>
       <div className="col-span-2 md:col-span-7 py-5 border-t">
         <p className="text-center text-gray-500 font-normal">
-          Code Space | All Rights Reserved | Copyright{" "}
-          {new Date().getFullYear()}
+          Copyright ©{" "} {new Date().getFullYear()} Code Space |  All rights reserved.
         </p>
       </div>
     </Container>

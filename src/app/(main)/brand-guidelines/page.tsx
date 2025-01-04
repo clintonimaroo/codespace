@@ -23,7 +23,7 @@ const Brand = () => {
           <SpaceBadge>Code Space Brand Guidelines</SpaceBadge>
           <div className="flex justify-center">
             <h1 className="font-medium text-2xl md:text-3xl lg:text-5xl leading-snug">
-              Code Space Brand Guidelines
+              Design Assets & Guidelines
             </h1>
           </div>
           <p className="text-lg md:text-xl subtitle font-normal">
@@ -39,8 +39,7 @@ const Brand = () => {
           <h1 className="font-normal text-xl md:text-2xl leading-normal">Our Logo</h1>
           <p className="text-lg md:text-xl subtitle w-full sm:w-4/5">
             The Code Space logo represents our vision to connect and empower the
-            next generation of tech innovators. To ensure consistency, follow
-            the guidelines below for proper usage.
+            next generation of tech innovators. To ensure consistency. Download our logo on both white and color backgrounds. We just ask you to please not make any changes.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 mt-10">
             <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-gray-50 p-5 md:p-10">
@@ -128,7 +127,9 @@ const Brand = () => {
           <h1 className="font-normal text-xl md:text-2xl leading-normal">Our Colors</h1>
           <p className="text-lg md:text-xl subtitle w-full sm:w-4/5">
             Our color palette reflects our bold and vibrant mission. These
-            colors are used across all brand assets and communications.
+            colors are used across all brand assets and communications. We like to keep our Code Space brand feeling happy, playful and friendly by using the following color palette.
+
+
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 mt-10">
             <div className="w-full aspect-video rounded-xl flex flex-col text-white font-light text-lg md:text-xl text-center items-center justify-center relative bg-[#5B5AD1] p-5 md:p-10">
