@@ -30,7 +30,10 @@ const formatDate = (dateString: string) => {
 
 const SubscribeCard = () => {
     return (
-        <div className="bg-primary mt-12 rounded-[10px] p-12 text-center h-[300px] flex flex-col justify-center font-sora">
+        <div
+            className="mt-12 rounded-[10px] p-12 text-center h-[300px] flex flex-col justify-center font-sora"
+            style={{ backgroundImage: 'url(https://i.postimg.cc/htZ2Q45M/subscribe-bg.png)', backgroundSize: 'cover' }}
+        >
             <h3 className="text-3xl font-medium text-white mb-4">Looking to Connect with Other Gen-Zs<br /> in Tech?</h3>
 
             <button className="bg-white text-primary px-6 py-3 rounded-full font-medium mt-4 hover:bg-gray-100 transition-colors flex items-center gap-2 mx-auto font-sora">
@@ -70,7 +73,7 @@ const renderContent = (content: ContentNode) => {
                 </div>
             </div>
 
-            <div className="flex-1">
+            <div className="font-['Duplicate_Sans','DM_Sans',sans-serif]">
                 {content.children?.map((block, i) => {
                     switch (block.type) {
                         case 'paragraph':
