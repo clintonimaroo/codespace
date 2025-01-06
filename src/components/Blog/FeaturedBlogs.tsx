@@ -42,7 +42,7 @@ export default function FeaturedBlogs({
                 </div>
                 <Link
                   href={`/blog/${blog.id}`}
-                  className="text-2xl font-medium hover:text-primary block mt-2 line-clamp-2"
+                  className="text-2xl font-bold hover:text-primary block mt-2 line-clamp-2"
                 >
                   {blog.title}
                 </Link>

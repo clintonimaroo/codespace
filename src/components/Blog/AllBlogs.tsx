@@ -31,7 +31,7 @@ export default function AllBlogs({
               </div>
               <Link
                 href={`/blog/${blog.id}`}
-                className="text-2xl font-medium hover:text-primary line-clamp-2"
+                className="text-2xl font-bold hover:text-primary line-clamp-2"
               >
                 {blog.title}
               </Link>
