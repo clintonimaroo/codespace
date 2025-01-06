@@ -17,8 +17,7 @@ export default function BlogPage() {
             The Code Space Blog
           </h1>
           <p className="text-xl subtitle max-w-xl">
-            Stay updated with the latest news, insights, and stories from the
-            world of tech.
+            Stay updated with the latest news, Insights, stories, and updates from the heart of our community.
           </p>
         </div>
       </section>
