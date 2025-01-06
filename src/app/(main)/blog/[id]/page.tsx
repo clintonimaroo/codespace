@@ -34,7 +34,7 @@ const SubscribeCard = () => {
             className="mt-12 rounded-[10px] p-12 text-center h-[300px] flex flex-col justify-center font-sora"
             style={{ backgroundImage: 'url(https://i.postimg.cc/htZ2Q45M/subscribe-bg.png)', backgroundSize: 'cover' }}
         >
-            <h3 className="text-3xl font-medium text-white mb-4">Looking to Connect with Other Gen-Zs<br /> in Tech?</h3>
+            <h3 className="text-3xl font-bold text-white mb-4">Looking to Connect with Other Gen-Zs<br /> in Tech?</h3>
 
             <button className="bg-white text-primary px-6 py-3 rounded-full font-medium mt-4 hover:bg-gray-100 transition-colors flex items-center gap-2 mx-auto font-sora">
                 Join the Community
@@ -59,7 +59,7 @@ const renderContent = (content: ContentNode) => {
     return (
         <div className="flex gap-8">
             <div className="w-64 shrink-0">
-                <div className="sticky top-8  rounded-lg p-4 bg-white">
+                <div className="sticky top-8  rounded-lg bg-white">
                     <h3 className="font-medium mb-4">On this page</h3>
                     {tableOfContents.map((heading, i) => (
                         <a
@@ -112,7 +112,7 @@ export default function BlogPage() {
                 </Link>
 
                 <div className="mt-8">
-                    <h1 className="text-4xl font-medium text-black">{blog.title}</h1>
+                    <h1 className="text-4xl font-bold text-black">{blog.title}</h1>
                     <div className="flex items-center gap-x-[5.5px] text-gray text-lg mt-2">
                         <p>{blog.author?.name || 'Unknown Author'}</p>
                         <div className="h-[3px] w-[3px] rounded-full bg-secondary" />
@@ -120,7 +120,7 @@ export default function BlogPage() {
                     </div>
                 </div>
 
-                <div className="mt-8 h-[400px] bg-[#f8f8f8] rounded-[22px] relative overflow-hidden">
+                <div className="mt-8 h-[550px] bg-[#f8f8f8] rounded-[22px] relative overflow-hidden">
                     {blog.featuredImage && (
                         <Image
                             src={blog.featuredImage.url}
