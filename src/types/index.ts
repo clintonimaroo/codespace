@@ -41,19 +41,33 @@ export interface Author {
   loginAttempts: number;
 }
 
+export interface Block {
+  type: string;
+  children?: Child[];
+}
+
+export interface Child {
+  text: string;
+}
+
+export interface Content {
+  root: {
+    children: Block[];
+  };
+}
+
 export interface Doc {
-  updatedBy: Author;
-  author: Author;
   id: string;
   title: string;
-  featuredImage: FeaturedImage;
-  content: {
-    root: Record<string, unknown>;
+  content: Content;
+  author?: {
+    name: string;
   };
   createdAt: string;
-  updatedAt: string;
-  _status: string;
-  excerpt?: string;
+  featuredImage?: {
+    url: string;
+    alt?: string;
+  };
 }
 
 export interface BlogsAPIResponse {

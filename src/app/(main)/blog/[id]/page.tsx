@@ -7,17 +7,19 @@ import { fetcher } from "@/lib/utils";
 import Image from "next/image";
 import Container from "@/components/container";
 
+interface Child {
+    type: string;
+    text: string;
+}
+
+interface Block {
+    type: string;
+    text?: string;
+    children?: Child[];
+}
+
 interface ContentNode {
-    children?: {
-        type: string;
-        text?: string;
-        children?: {
-            type: string;
-            text: string;
-        }[];
-        format?: string;
-        direction?: string;
-    }[];
+    children?: Block[];
 }
 
 const formatDate = (dateString: string) => {
@@ -132,7 +134,7 @@ export default function BlogPage() {
                 </div>
 
                 <div className="mt-8">
-                    {renderContent(blog.content.root)}
+                    {renderContent(blog.content.root as ContentNode)}
                 </div>
 
                 {/* Share article section */}
