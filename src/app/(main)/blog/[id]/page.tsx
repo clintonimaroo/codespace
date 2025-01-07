@@ -95,7 +95,14 @@ const renderContent = (content: ContentNode) => {
 
 export default function BlogPage() {
     const params = useParams();
-    const { data: blog, error } = useSWR<Doc>(`/api/blog/${params.id}`, fetcher);
+    const { data: blog, error } = useSWR<Doc>(
+        params?.id ? `/api/blog/${params.id}` : null,
+        fetcher
+    );
+
+    if (!params || !params.id) {
+        return <div>Invalid blog ID</div>;
+    }
 
     if (error) return <div>Failed to load</div>;
     if (!blog) return <div>Loading...</div>;
