@@ -3,12 +3,13 @@ import payload from 'payload';
 
 export async function GET(
     request: Request,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
     try {
+        const id = (await params).id
         const blog = await payload.findByID({
             collection: 'blog',
-            id: params.id,
+            id,
         });
 
         if (!blog) {
