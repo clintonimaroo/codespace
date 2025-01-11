@@ -28,8 +28,8 @@ export default function FeaturedBlogs({
                 <Image
                   className="h-full bg-[#f8f8f8] w-full object-cover"
                   src={blog.featuredImage.url}
-                  width={blog.featuredImage.width}
-                  height={blog.featuredImage.height}
+                  width={1200}
+                  height={800}
                   alt={blog.featuredImage.alt || blog.title}
                 />
               )}
