@@ -33,12 +33,12 @@ const formatDate = (dateString: string) => {
 const SubscribeCard = () => {
     return (
         <div
-            className="mt-8 md:mt-12 rounded-xl md:rounded-[10px] p-6 md:p-12 text-center min-h-[280px] md:h-[300px] flex flex-col justify-center font-sora"
+            className="mt-12 rounded-[10px] p-12 text-center h-[300px] flex flex-col justify-center font-sora"
             style={{ backgroundImage: 'url(https://i.postimg.cc/htZ2Q45M/subscribe-bg.png)', backgroundSize: 'cover' }}
         >
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Looking to Connect with Other Gen-Zs<br className="hidden md:block" /> in Tech?</h3>
+            <h3 className="text-3xl font-bold text-white mb-4">Looking to Connect with Other Gen-Zs<br /> in Tech?</h3>
 
-            <button className="bg-white text-primary px-4 md:px-6 py-3 rounded-full font-medium mt-4 hover:bg-gray-100 transition-colors flex items-center gap-2 mx-auto font-sora">
+            <button className="bg-white text-primary px-6 py-3 rounded-full font-medium mt-4 hover:bg-gray-100 transition-colors flex items-center gap-2 mx-auto font-sora">
                 Join the Community
                 <span>↗</span>
             </button>
@@ -59,9 +59,9 @@ const renderContent = (content: ContentNode) => {
     });
 
     return (
-        <div className="flex flex-col md:flex-row gap-8">
-            <div className="w-full md:w-64 md:shrink-0 order-2 md:order-1">
-                <div className="sticky top-8 rounded-lg bg-white">
+        <div className="flex gap-8">
+            <div className="w-64 shrink-0">
+                <div className="sticky top-8  rounded-lg bg-white">
                     <h3 className="font-medium mb-4">On this page</h3>
                     {tableOfContents.map((heading, i) => (
                         <a
@@ -75,7 +75,7 @@ const renderContent = (content: ContentNode) => {
                 </div>
             </div>
 
-            <div className="font-['Duplicate_Sans','DM_Sans',sans-serif] order-1 md:order-2">
+            <div className="font-['Duplicate_Sans','DM_Sans',sans-serif]">
                 {content.children?.map((block, i) => {
                     switch (block.type) {
                         case 'paragraph':
@@ -83,7 +83,7 @@ const renderContent = (content: ContentNode) => {
                         case 'heading':
                             const headingText = block.children?.map(child => child.text).join('');
                             const id = headingText?.toLowerCase().replace(/\s+/g, '-');
-                            return <h2 key={i} id={id} className="text-xl md:text-2xl font-medium my-4 md:my-6 text-black">{headingText}</h2>;
+                            return <h2 key={i} id={id} className="text-2xl font-medium my-6 text-black">{headingText}</h2>;
                         default:
                             return block.children?.map((child, j) => <p key={`${i}-${j}`} className="mb-4 text-neutral">{child.text}</p>);
                     }
@@ -92,6 +92,8 @@ const renderContent = (content: ContentNode) => {
         </div>
     );
 };
+
+
 
 export default function BlogPage() {
     const params = useParams();
@@ -110,8 +112,8 @@ export default function BlogPage() {
     console.log(blog);
 
     return (
-        <Container className="container space-y-2 py-6 md:py-20">
-            <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 md:py-8">
+        <Container className="container space-y-2 py-20">
+            <div className="max-w-7xl mx-auto py-8">
                 <Link
                     href="/blog"
                     className="text-neutral text-[15px] flex items-center gap-2 w-fit relative z-10"
@@ -120,16 +122,16 @@ export default function BlogPage() {
                     <span className="text-[#667085]">Back</span>
                 </Link>
 
-                <div className="mt-6 md:mt-8">
-                    <h1 className="text-3xl md:text-4xl font-bold text-black">{blog.title}</h1>
-                    <div className="flex items-center gap-x-[5.5px] text-gray text-base md:text-lg mt-2">
+                <div className="mt-8">
+                    <h1 className="text-4xl font-bold text-black">{blog.title}</h1>
+                    <div className="flex items-center gap-x-[5.5px] text-gray text-lg mt-2">
                         <p>{blog.author?.name || 'Anonymous'}</p>
                         <div className="h-[3px] w-[3px] rounded-full bg-secondary" />
                         <p>{formatDate(blog.createdAt)}</p>
                     </div>
                 </div>
 
-                <div className="mt-6 md:mt-8 h-[300px] md:h-[550px] bg-[#f8f8f8] rounded-xl md:rounded-[22px] relative overflow-hidden">
+                <div className="mt-8 h-[550px] bg-[#f8f8f8] rounded-[22px] relative overflow-hidden">
                     {blog.featuredImage && (
                         <Image
                             src={blog.featuredImage.url}
@@ -140,14 +142,14 @@ export default function BlogPage() {
                     )}
                 </div>
 
-                <div className="mt-6 md:mt-8">
+                <div className="mt-8">
                     {renderContent(blog.content.root as ContentNode)}
                 </div>
 
                 {/* Share article section */}
-                <div className="flex flex-col md:flex-row gap-6 md:gap-14 mt-8 md:mt-12">
-                    <div className="w-full md:w-[232px]">
-                        <h4 className="text-[#101828] mt-6 md:mt-10 mb-4">Share article</h4>
+                <div className="flex gap-14 mt-12">
+                    <div className="w-[232px]">
+                        <h4 className="text-[#101828] mt-10 mb-4">Share article</h4>
                         <div className="flex gap-4">
                             <a href="#" className="text-primary hover:underline">Twitter ↗</a>
                             <a href="#" className="text-primary hover:underline">LinkedIn ↗</a>
