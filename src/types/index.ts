@@ -1,4 +1,3 @@
-import type { Media } from '../payload-types';
 
 export interface EventType {
   image: string;
@@ -65,7 +64,10 @@ export interface Doc {
     name: string;
   };
   createdAt: string;
-  featuredImage?: Media;  // Use the Media type from payload-types
+  featuredImage?: {
+    url: string;
+    alt?: string;
+  };
   excerpt?: string;
 }
 
