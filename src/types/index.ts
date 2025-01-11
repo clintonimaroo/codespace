@@ -1,3 +1,5 @@
+import type { Media } from '../payload-types';
+
 export interface EventType {
   image: string;
   title: string;
@@ -55,7 +57,6 @@ export interface Content {
     children: Block[];
   };
 }
-
 export interface Doc {
   id: string;
   title: string;
@@ -64,10 +65,7 @@ export interface Doc {
     name: string;
   };
   createdAt: string;
-  featuredImage?: {
-    url: string;
-    alt?: string;
-  };  // Simplified version since we only need url and alt
+  featuredImage?: Media;  // Use the Media type from payload-types
   excerpt?: string;
 }
 
