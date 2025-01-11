@@ -10,20 +10,18 @@ export default function FeaturedBlogs({
   blogs: BlogsAPIResponse | undefined;
 }) {
   return (
-    <div className="mt-20">
+    <div className="mt-8 md:mt-20 px-4 md:px-0">
       <div className="flex justify-between items-center">
-        <h3 className="text-3xl font-medium">Featured</h3>
+        <h3 className="text-2xl md:text-3xl font-medium">Featured</h3>
         <Link href="#footer" className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
-          <span className="font-bold">Subscribe to the Mono blog</span>
-          <span className="font-bold">
-            <MailIcon size={20} />
-          </span>
+          <span className="text-sm md:text-base font-bold">Subscribe to the Mono blog</span>
+          <MailIcon size={20} />
         </Link>
       </div>
       {blogs?.docs?.length ? (
-        <div className="grid grid-cols-1 gap-8 mt-6">
+        <div className="grid grid-cols-1 gap-6 md:gap-8 mt-4 md:mt-6">
           {blogs.docs.slice(0, 1).map((blog) => (
-            <div key={blog.id} className="relative rounded-[22px] overflow-hidden h-[450px]">
+            <div key={blog.id} className="relative rounded-xl md:rounded-[22px] overflow-hidden h-[300px] md:h-[450px]">
               {blog.featuredImage && (
                 <Image
                   className="h-full bg-[#f8f8f8] w-full object-cover"
@@ -34,21 +32,21 @@ export default function FeaturedBlogs({
                 />
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 p-8 text-white">
-                <div className="flex items-center gap-x-[5.5px] text-lg">
+              <div className="absolute bottom-0 left-0 p-4 md:p-8 text-white">
+                <div className="flex items-center gap-x-[5.5px] text-base md:text-lg">
                   <p>{blog.author?.name || "Anonymous"}</p>
                   <div className="h-[3px] w-[3px] rounded-full bg-white" />
                   <p>{formatDate(blog.createdAt)}</p>
                 </div>
                 <Link
                   href={`/blog/${blog.id}`}
-                  className="text-2xl font-bold hover:text-primary block mt-2 line-clamp-2"
+                  className="text-xl md:text-2xl font-bold hover:text-primary block mt-2 line-clamp-2"
                 >
                   {blog.title}
                 </Link>
                 <Link
                   href={`/blog/${blog.id}`}
-                  className="bg-primary py-3 px-6 rounded-full group text-white w-fit mt-4 flex items-center space-x-2"
+                  className="bg-primary py-2 md:py-3 px-4 md:px-6 rounded-full group text-white w-fit mt-4 flex items-center space-x-2 text-sm md:text-base"
                 >
                   <span>Read More</span>
                   <svg
@@ -56,7 +54,7 @@ export default function FeaturedBlogs({
                     height={10}
                     viewBox="0 0 14 10"
                     fill="none"
-                    className="rotate-180 transition-all  duration-300 transform group-hover:translate-x-2 group-hover:opacity-100"
+                    className="rotate-180 transition-all duration-300 transform group-hover:translate-x-2"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
