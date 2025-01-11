@@ -108,6 +108,15 @@ export const Blog: CollectionConfig = {
       },
     },
     {
+      name: "published",
+        label: "Published",
+        type: "checkbox",
+        defaultValue: false,
+        admin: {
+        position: "sidebar",
+      },
+    },
+    {
       name: "updatedBy",
       type: "relationship",
       access: {
