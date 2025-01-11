@@ -18,8 +18,8 @@ export default function AllBlogs({
               <Image
                 className="h-64 bg-[#f8f8f8] rounded-[10px] w-full object-cover"
                 src={blog.featuredImage.url}
-                width={blog.featuredImage.width}
-                height={blog.featuredImage.height}
+                width={500}  // Add default width
+                height={400} // Add default height
                 alt={blog.featuredImage.alt || blog.title}
               />
             )}
