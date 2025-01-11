@@ -64,10 +64,8 @@ export interface Doc {
     name: string;
   };
   createdAt: string;
-  featuredImage?: {
-    url: string;
-    alt?: string;
-  };
+  featuredImage?: FeaturedImage;
+  excerpt?: string;
 }
 
 export interface BlogsAPIResponse {
