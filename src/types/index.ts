@@ -64,7 +64,10 @@ export interface Doc {
     name: string;
   };
   createdAt: string;
-  featuredImage?: FeaturedImage;
+  featuredImage?: {
+    url: string;
+    alt?: string;
+  };  // Simplified version since we only need url and alt
   excerpt?: string;
 }
 
