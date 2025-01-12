@@ -92,11 +92,7 @@ const Home = () => {
             Connecting African Gen Zs for <br /> Growth, Impact, and Success.
           </h1>
           <p className="text-base sm:text-lg md:text-xl subtitle">
-            At Code Space, we unite Gen Zs in tech across Africa, creating a
-            vibrant community where you can thrive. Here, you can connect with
-            like-minded peers, share insights, and gain the support you need to
-            grow, build, and accelerate your career. Don’t navigate your tech
-            career alone.
+            We unite Gen Zs in tech across Africa, creating a vibrant community where you can thrive with like-minded peers, share insights, and gain support to grow, build, and accelerate your career. 
           </p>
           <div className="flex items-center gap-5 md:flex-row flex-col">
             <Button className="w-full md:w-fit">Join the Community</Button>
@@ -114,19 +110,7 @@ const Home = () => {
         </div>
       </Container>
 
-      {/* what we do */}
-      <Container className="container space-y-5 py-20">
-        <Badge>
-          <div className="size-1.5 rounded-full bg-primary" />
-          WHAT DO WE DO?
-        </Badge>
-        <h1 className="sm:text-2xl text-xl leading-normal sm:w-4/5">
-          At Code Space, we unite Gen&nbsp;Zs in tech across Africa, fostering a
-          vibrant community where you can connect, share insights, and grow.
-          Don&apos;t navigate your tech career alone—thrive with us.
-        </h1>
-        <Button>Join us</Button>
-      </Container>
+
 
       <section className="h-full bg-[#5c5ad1] flex items-center">
         <Container className="h-full flex flex-col bg-cover py-20 bg-top bg-no-repeat bg-[url('/images/what-we-do-bg.svg')]">

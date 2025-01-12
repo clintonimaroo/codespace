@@ -15,7 +15,7 @@ export default function FeaturedBlogs({
       <div className="flex justify-between items-center">
         <h3 className="text-black text-lg md:text-xl font-medium">Featured</h3>
         <Link href="#footer" className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
-          <span className="text-sm md:text-base font-bold">Subscribe to the Code Space blog</span>
+          <span className="text-sm md:text-base font-bold">Subscribe to our blog</span>
           <MailIcon size={20} />
         </Link>
       </div>
