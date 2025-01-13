@@ -127,15 +127,15 @@ interface PageProps {
   params: {
     id: string;
   };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 export default async function BlogPage({ params }: PageProps) {
-  if (!params || !params.id) {
-    return <div>Invalid blog ID</div>;
-  }
-
   const blog = await getBlog(params.id);
 
+  if (!blog) {
+    return "Blog not found";
+  }
   return (
     <Container className="container space-y-2 py-8 md:py-20 px-4 md:px-0">
       <div className="max-w-7xl mx-auto py-4 md:py-8">
