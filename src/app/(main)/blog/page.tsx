@@ -8,7 +8,9 @@ async function getBlogs(
   currentPage: number,
   limit: number
 ): Promise<BlogsAPIResponse> {
-  const BASE_URL = process.env.BASE_URL;
+  const BASE_URL = process.env.VERCEL_URL
+    ? process.env.VERCEL_URL
+    : process.env.BASE_URL;
 
   const response = await fetch(
     `${BASE_URL}/api/blog?page=${currentPage}&limit=${limit}`

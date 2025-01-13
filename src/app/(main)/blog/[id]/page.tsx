@@ -116,7 +116,10 @@ const renderContent = (content: ContentNode) => {
 };
 
 async function getBlog(id: string): Promise<Doc> {
-  const BASE_URL = process.env.BASE_URL;
+  const BASE_URL = process.env.VERCEL_URL
+    ? process.env.VERCEL_URL
+    : process.env.BASE_URL;
+
   const response = await fetch(`${BASE_URL}/api/blog/${id}`);
   const data = await response.json();
 
