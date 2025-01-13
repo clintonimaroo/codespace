@@ -9,8 +9,10 @@ async function getBlogs(
   currentPage: number,
   limit: number
 ): Promise<BlogsAPIResponse> {
+  const BASE_URL = process.env.BASE_URL;
+
   const response = await fetch(
-    `http://localhost:3000/api/blog?page=${currentPage}&limit=${limit}`
+    `${BASE_URL}/api/blog?page=${currentPage}&limit=${limit}`
   );
   const data = await response.json();
 

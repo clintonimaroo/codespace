@@ -115,7 +115,8 @@ const renderContent = (content: ContentNode) => {
 };
 
 async function getBlog(id: string): Promise<any> {
-  const response = await fetch(`http://localhost:3000/api/blog/${id}`);
+  const BASE_URL = process.env.BASE_URL;
+  const response = await fetch(`${BASE_URL}/api/blog/${id}`);
   const data = await response.json();
 
   return data;
