@@ -18,11 +18,13 @@ async function getBlogs(
   return data;
 }
 
-interface PageProps {
-  searchParams: { [key: string]: string | string[] | undefined };
+type Props = {
+  searchParams?: {
+    page?: string;
+  };
 }
 
-export default async function BlogPage({ searchParams }: PageProps) {
+export default async function BlogPage({ searchParams }: Props) {
   const LIMIT = 10;
   const currentPage = Number(searchParams?.page) || 1;
 
