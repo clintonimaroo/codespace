@@ -1,4 +1,3 @@
-
 export interface EventType {
   image: string;
   title: string;
