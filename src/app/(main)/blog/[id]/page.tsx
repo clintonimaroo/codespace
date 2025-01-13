@@ -123,14 +123,7 @@ async function getBlog(id: string): Promise<Doc> {
   return data;
 }
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-export default async function BlogPage({ params }: PageProps) {
+export default async function BlogPage({ params }: any) {
   const blog = await getBlog(params.id);
 
   if (!blog) {
