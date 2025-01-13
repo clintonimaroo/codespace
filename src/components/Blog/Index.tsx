@@ -99,7 +99,7 @@ export default function Blog({
   };
 
   return (
-    <div className="px-2 xs:px-4 sm:px-8 md:px-14 max-w-7xl mx-auto">
+    <div>
       <FeaturedBlogs blogs={blogs} />
       <AllBlogs blogs={blogs} />
       <div className="w-full h-px bg-[#A6A6A6]/30 my-14" />
