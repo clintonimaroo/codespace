@@ -88,11 +88,13 @@ const Home = () => {
       <Container className="container grid grid-cols-1 lg:grid-cols-2 gap-5 py-5 md:py-20 content-center">
         <div className="space-y-3 md:space-y-5 flex-col flex  justify-center">
           <SpaceBadge>Version 2.0</SpaceBadge>
-          <h1 className="font-medium text-2xl sm:text-3xl md:text-4xl leading-normal">
-            Connecting African Gen Zs for <br /> Growth, Impact, and Success.
+          <h1 className="font-medium text-2xl sm:text-3xl md:text-5xl leading-normal">
+            Connecting African Gen Zs for Growth, Impact, and Success.
           </h1>
           <p className="text-base sm:text-lg md:text-xl subtitle">
-            We unite Gen Zs in tech across Africa, creating a vibrant community where you can thrive with like-minded peers, share insights, and gain support to grow, build, and accelerate your career. 
+            We unite Gen Zs in tech across Africa, creating a vibrant community
+            where you can thrive with like-minded peers, share insights, and
+            gain support to grow, build, and accelerate your career.
           </p>
           <div className="flex items-center gap-5 md:flex-row flex-col">
             <Button className="w-full md:w-fit">Join the Community</Button>
@@ -109,8 +111,6 @@ const Home = () => {
           <HeroImageCards />
         </div>
       </Container>
-
-
 
       <section className="h-full bg-[#5c5ad1] flex items-center">
         <Container className="h-full flex flex-col bg-cover py-20 bg-top bg-no-repeat bg-[url('/images/what-we-do-bg.svg')]">
