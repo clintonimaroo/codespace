@@ -19,12 +19,13 @@ async function getBlogs(
 }
 
 type Props = {
-  searchParams?: {
+  searchParams?: Promise<{
     page?: string;
-  };
-}
+  }>;
+};
 
-export default async function BlogPage({ searchParams }: Props) {
+export default async function BlogPage(props: Props) {
+  const searchParams = await props.searchParams;
   const LIMIT = 10;
   const currentPage = Number(searchParams?.page) || 1;
 
