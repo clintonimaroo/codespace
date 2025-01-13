@@ -1,20 +1,18 @@
 "use client";
 import { BlogsAPIResponse } from "@/types";
 import AllBlogs from "./AllBlogs";
-import useSwr from "swr";
-import { fetcher } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 import FeaturedBlogs from "./FeaturedBlogs";
 
-export default function Blog() {
+export default function Blog({
+  blogs,
+  currentPage,
+}: {
+  blogs: BlogsAPIResponse;
+  currentPage: number;
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const currentPage = Number(searchParams.get("page")) || 1;
-
-  const { isLoading, data, error } = useSwr<BlogsAPIResponse>(
-    `/api/blog?page=${currentPage}&limit=10`,
-    fetcher
-  );
 
   const handlePageChange = (page: number) => {
     const params = new URLSearchParams(searchParams);
@@ -23,14 +21,14 @@ export default function Blog() {
   };
 
   const renderPagination = () => {
-    if (!data?.totalPages) return null;
+    if (!blogs?.totalPages) return null;
 
     const pages = [];
     const maxVisible = 7;
     const halfVisible = Math.floor(maxVisible / 2);
 
     let start = Math.max(1, currentPage - halfVisible);
-    const end = Math.min(data.totalPages, start + maxVisible - 1);
+    const end = Math.min(blogs.totalPages, start + maxVisible - 1);
 
     if (end - start + 1 < maxVisible) {
       start = Math.max(1, end - maxVisible + 1);
@@ -56,7 +54,7 @@ export default function Blog() {
       <div className="flex items-center justify-between w-full">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
-          disabled={!data.hasPrevPage}
+          disabled={!blogs.hasPrevPage}
           className="bg-[#F8F8F8] h-11 py-3 px-6 flex items-center gap-x-3 border border-[#E3E3E3] rounded-lg disabled:opacity-50"
         >
           <svg
@@ -78,7 +76,7 @@ export default function Blog() {
 
         <button
           onClick={() => handlePageChange(currentPage + 1)}
-          disabled={!data.hasNextPage}
+          disabled={!blogs.hasNextPage}
           className="bg-[#F8F8F8] h-11 py-3 px-6 flex items-center gap-x-3 border border-[#E3E3E3] rounded-lg disabled:opacity-50"
         >
           <span>Next</span>
@@ -100,13 +98,10 @@ export default function Blog() {
     );
   };
 
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
-
   return (
     <div className="px-2 xs:px-4 sm:px-8 md:px-14 max-w-7xl mx-auto">
-      <FeaturedBlogs blogs={data} />
-      <AllBlogs blogs={data} />
+      <FeaturedBlogs blogs={blogs} />
+      <AllBlogs blogs={blogs} />
       <div className="w-full h-px bg-[#A6A6A6]/30 my-14" />
       {renderPagination()}
     </div>
