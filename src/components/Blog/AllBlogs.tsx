@@ -19,7 +19,7 @@ export default function AllBlogs({
             <div key={blog.id} className="relative">
               {blog.featuredImage && (
                 <Image
-                  className="aspect-square bg-[#f8f8f8] rounded-xl md:rounded-[10px] w-full object-cover"
+                  className="aspect-[4/3] bg-[#f8f8f8] rounded-xl md:rounded-[10px] w-full object-cover"
                   src={blog.featuredImage.url}
                   width={800}
                   height={600}

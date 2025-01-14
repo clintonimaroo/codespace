@@ -31,7 +31,7 @@ const formatDate = (dateString: string) => {
 const SubscribeCard = () => {
   return (
     <div
-      className="mt-12 rounded-[10px] p-6 md:p-12 text-center min-h-[250px] md:h-[300px] flex flex-col justify-center font-sora"
+      className="mt-12 rounded-[10px] p-6 md:p-12 text-center min-h-[250px] md:h-[300px] flex flex-col justify-center"
       style={{
         backgroundImage: "url(https://i.postimg.cc/htZ2Q45M/subscribe-bg.png)",
         backgroundSize: "cover",
@@ -42,7 +42,7 @@ const SubscribeCard = () => {
         <br className="hidden md:block" /> in Tech?
       </h3>
 
-      <button className="bg-white text-primary px-4 md:px-6 py-3 rounded-full font-medium mt-4 hover:bg-gray-100 transition-colors flex items-center gap-2 mx-auto font-sora">
+      <button className="bg-white text-primary px-4 md:px-6 py-3 rounded-full font-medium mt-4 hover:bg-gray-100 transition-colors flex items-center gap-2 mx-auto">
         Join the Community
         <span>↗</span>
       </button>
@@ -79,7 +79,7 @@ const renderContent = (content: ContentNode) => {
         </div>
       </div>
 
-      <div className="font-['DM_Sans',sans-serif]">
+      <div>
         {content.children?.map((block, i) => {
           switch (block.type) {
             case "paragraph":
@@ -128,7 +128,11 @@ export default async function BlogPage({ params }: any) {
   const blog = await getBlog(params.id);
 
   if (!blog) {
-    return "Blog not found";
+    return (
+      <div className="h-screen flex flex-col items-center justify-center">
+        <p>Blog not found</p>
+      </div>
+    );
   }
   return (
     <Container className="container space-y-2 py-8 md:py-20 px-4 md:px-0">
