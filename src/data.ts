@@ -188,10 +188,15 @@ export const brands = [
   "theguardian",
   "paystack",
   "aws",
+  "pallax",
   "genztechies",
   "vercel",
   "wix-studio",
-  "kora"
+  "kora",
+  "pallax",
+  "tuliban",
+  "ntit-community",
+  "inside-the-tech"
 ];
 
 export const links = [
