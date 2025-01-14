@@ -30,7 +30,6 @@ export default async function BlogPage(props: Props) {
   const currentPage = Number(searchParams?.page) || 1;
 
   const blogs = await getBlogs(currentPage, LIMIT);
-  console.log(blogs);
 
   if (blogs.totalDocs < 1)
     return (

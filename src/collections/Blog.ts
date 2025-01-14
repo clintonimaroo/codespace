@@ -24,6 +24,7 @@ export const Blog: CollectionConfig = {
   access: {
     read: ({ req }) => {
       if (req.user) return true;
+      console.log(req);
 
       return {
         _status: {
@@ -108,6 +109,7 @@ export const Blog: CollectionConfig = {
       type: "relationship",
       access: {
         update: () => false,
+        read: () => true,
       },
       relationTo: "users",
       admin: {
@@ -115,15 +117,7 @@ export const Blog: CollectionConfig = {
         position: "sidebar",
         condition: (data) => !!data?.author,
       },
-    },
-    {
-      name: "published",
-      label: "Published",
-      type: "checkbox",
-      defaultValue: false,
-      admin: {
-        position: "sidebar",
-      },
+      required: true,
     },
     {
       name: "updatedBy",
@@ -137,6 +131,7 @@ export const Blog: CollectionConfig = {
         position: "sidebar",
         condition: (data) => !!data?.updatedBy,
       },
+      required: true,
     },
   ],
 };
