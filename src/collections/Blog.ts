@@ -22,7 +22,15 @@ export const Blog: CollectionConfig = {
     useAsTitle: "title",
   },
   access: {
-    read: () => true,
+    read: ({ req }) => {
+      if (req.user) return true;
+
+      return {
+        _status: {
+          equals: "published",
+        },
+      };
+    },
     create: ({ req: { user } }) => {
       if (user) return true;
 
@@ -54,6 +62,7 @@ export const Blog: CollectionConfig = {
   versions: {
     drafts: {
       autosave: true,
+      schedulePublish: true,
     },
   },
   fields: [
@@ -109,10 +118,10 @@ export const Blog: CollectionConfig = {
     },
     {
       name: "published",
-        label: "Published",
-        type: "checkbox",
-        defaultValue: false,
-        admin: {
+      label: "Published",
+      type: "checkbox",
+      defaultValue: false,
+      admin: {
         position: "sidebar",
       },
     },
