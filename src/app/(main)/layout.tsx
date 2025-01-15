@@ -47,13 +47,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="lenis lenis-smooth">
-      <body className={`${duplicateSans.className} antialiased`}>
-        <SmoothScroll />
-        <NavBar />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <main
+      className={`${duplicateSans.className} antialiased lenis lenis-smooth`}
+    >
+      <SmoothScroll />
+      <NavBar />
+      {children}
+      <Footer />
+    </main>
   );
 }
