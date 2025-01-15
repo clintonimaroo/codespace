@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     "Building a Tech Career Alone is Hard. But with us, the journey becomes a lot smoother for techies like you!",
 };
 
-export default function RootLayout({
+export default function MainLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
