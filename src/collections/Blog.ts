@@ -24,7 +24,6 @@ export const Blog: CollectionConfig = {
   access: {
     read: ({ req }) => {
       if (req.user) return true;
-      console.log(req);
 
       return {
         _status: {

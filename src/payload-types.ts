@@ -420,6 +420,7 @@ export interface TaskSchedulePublish {
       value: string | Blog;
     } | null;
     global?: string | null;
+    user?: (string | null) | User;
   };
   output?: unknown;
 }
