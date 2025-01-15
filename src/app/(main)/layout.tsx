@@ -41,19 +41,21 @@ export const metadata: Metadata = {
     "Building a Tech Career Alone is Hard. But with us, the journey becomes a lot smoother for techies like you!",
 };
 
-export default function MainLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <main
-      className={`${duplicateSans.className} antialiased lenis lenis-smooth`}
-    >
-      <SmoothScroll />
-      <NavBar />
-      {children}
-      <Footer />
-    </main>
+    <html lang="en">
+      <body
+        className={`${duplicateSans.className} antialiased lenis lenis-smooth`}
+      >
+        <SmoothScroll />
+        <NavBar />
+        {children}
+        <Footer />
+      </body>
+    </html>
   );
 }
