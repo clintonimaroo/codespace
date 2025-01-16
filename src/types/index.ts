@@ -68,19 +68,50 @@ export interface Pagination {
   nextPage: number | null;
 }
 
+export interface LexicalNode {
+  type: string;
+  format?: number;
+  style?: string;
+  text?: string;
+  children?: LexicalNode[];
+  version?: number;
+  url?: string;
+  tag?: string;
+  listType?: 'number' | 'bullet';
+}
+
+export interface LexicalContent {
+  root: {
+    children: LexicalNode[];
+    direction: null | 'ltr' | 'rtl';
+    format: string;
+    indent: number;
+    type: string;
+    version: number;
+  };
+}
+
+export interface Media {
+  id: string;
+  url: string;
+  alt?: string;
+}
+
+export interface Author {
+  id: string;
+  name: string;
+}
+
 export interface BlogDoc {
   id: string;
   title: string;
-  content: Content;
-  author?: {
-    name: string;
-  };
+  content: LexicalContent;
+  featuredImage: Media;
+  author?: Author;
   createdAt: string;
-  featuredImage?: {
-    url: string;
-    alt?: string;
-  };
-  excerpt?: string;
+  updatedAt: string;
+  excerpt: string;
+  isFeatured: boolean;
 }
 
 export interface Event {

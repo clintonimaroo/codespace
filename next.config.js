@@ -1,25 +1,26 @@
 import { withPayload } from "@payloadcms/next/withPayload";
 
 const nextConfig = {
-  images: {
+images: {
     remotePatterns: [
-      {
+    {
         protocol: "https",
         hostname: "pbs.twimg.com",
-      },
-      {
+    },
+    {
         protocol: "https",
         hostname: "i.postimg.cc",
-      },
-      {
+    },
+    {
         protocol: "https",
         hostname: "i.ibb.co",
-      },
+    },
     ],
-  },
-  experimental: {
+},
+experimental: {
     reactCompiler: false,
-  },
+},
 };
 
 export default withPayload(nextConfig);
+

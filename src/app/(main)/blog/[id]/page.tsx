@@ -2,21 +2,7 @@ import Link from "next/link";
 import Container from "@/components/container";
 import Image from "next/image";
 import { BlogDoc } from "@/types";
-
-interface Child {
-  type: string;
-  text: string;
-}
-
-interface Block {
-  type: string;
-  text?: string;
-  children?: Child[];
-}
-
-interface ContentNode {
-  children?: Block[];
-}
+import { LexicalRenderer } from "@/components/lexical-renderer";
 
 const formatDate = (dateString: string) => {
   return new Date(dateString)
@@ -50,71 +36,6 @@ const SubscribeCard = () => {
   );
 };
 
-const renderContent = (content: ContentNode) => {
-  const tableOfContents: string[] = [];
-
-  content.children?.forEach((block) => {
-    if (block.type === "heading") {
-      const headingText = block.children?.map((child) => child.text).join("");
-      if (headingText) {
-        tableOfContents.push(headingText);
-      }
-    }
-  });
-
-  return (
-    <div className="flex flex-col md:flex-row gap-8">
-      <div className="w-full md:w-64 md:shrink-0">
-        <div className="sticky top-8 rounded-lg bg-white">
-          <h3 className="font-medium mb-4">On this page</h3>
-          {tableOfContents.map((heading, i) => (
-            <a
-              key={i}
-              href={`#${heading.toLowerCase().replace(/\s+/g, "-")}`}
-              className="block text-sm text-neutral hover:text-primary mb-2"
-            >
-              {heading}
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        {content.children?.map((block, i) => {
-          switch (block.type) {
-            case "paragraph":
-              return (
-                <p key={i} className="mb-4 text-neutral">
-                  {block.children?.map((child) => child.text).join("")}
-                </p>
-              );
-            case "heading":
-              const headingText = block.children
-                ?.map((child) => child.text)
-                .join("");
-              const id = headingText?.toLowerCase().replace(/\s+/g, "-");
-              return (
-                <h2
-                  key={i}
-                  id={id}
-                  className="text-2xl font-medium my-6 text-black"
-                >
-                  {headingText}
-                </h2>
-              );
-            default:
-              return block.children?.map((child, j) => (
-                <p key={`${i}-${j}`} className="mb-4 text-neutral">
-                  {child.text}
-                </p>
-              ));
-          }
-        })}
-      </div>
-    </div>
-  );
-};
-
 async function getBlog(id: string): Promise<BlogDoc> {
   const BASE_URL = process.env.BASE_URL;
 
@@ -134,6 +55,7 @@ export default async function BlogPage({ params }: any) {
       </div>
     );
   }
+
   return (
     <Container className="container space-y-2 py-8 md:py-20 px-4 md:px-0">
       <div className="max-w-7xl mx-auto py-4 md:py-8">
@@ -168,7 +90,7 @@ export default async function BlogPage({ params }: any) {
         </div>
 
         <div className="mt-6 md:mt-8">
-          {renderContent(blog.content.root as ContentNode)}
+          <LexicalRenderer content={blog.content} />
         </div>
 
         {/* Share article section */}
