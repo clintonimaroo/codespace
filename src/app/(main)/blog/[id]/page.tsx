@@ -16,17 +16,17 @@ const formatDate = (dateString: string) => {
     .replace(",", "");
 };
 
-type Props = Promise<{
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}>;
+type Props = {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 
 // Generate metadata for social sharing
 export async function generateMetadata(
   props: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const params = (await props).params;
+  const params = await props.params;
   const blog = await getBlog(params.id);
 
   if (!blog) {
@@ -90,7 +90,7 @@ async function getBlog(id: string): Promise<BlogDoc> {
 }
 
 export default async function BlogPage(props: Props) {
-  const params = (await props).params;
+  const params = await props.params;
   const blog = await getBlog(params.id);
 
   if (!blog) {
