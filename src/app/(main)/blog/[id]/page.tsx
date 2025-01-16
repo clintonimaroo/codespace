@@ -3,6 +3,7 @@ import Container from "@/components/container";
 import Image from "next/image";
 import { BlogDoc } from "@/types";
 import { LexicalRenderer } from "@/components/lexical-renderer";
+import { ArrowUpRight } from "lucide-react";
 
 const formatDate = (dateString: string) => {
   return new Date(dateString)
@@ -28,9 +29,9 @@ const SubscribeCard = () => {
         <br className="hidden md:block" /> in Tech?
       </h3>
 
-      <button className="bg-white text-primary px-4 md:px-6 py-3 rounded-full font-medium mt-4 hover:bg-gray-100 transition-colors flex items-center gap-2 mx-auto">
+      <button className="bg-white text-primary px-4 md:px-6 py-3 rounded-full font-medium mt-4 hover:bg-gray-100 transition-colors flex items-center gap-2 mx-auto group">
         Join the Community
-        <span>↗</span>
+        <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
       </button>
     </div>
   );
@@ -98,11 +99,13 @@ export default async function BlogPage({ params }: any) {
           <div className="w-full md:w-[232px]">
             <h4 className="text-[#101828] mt-6 md:mt-10 mb-4">Share article</h4>
             <div className="flex gap-4">
-              <a href="#" className="text-primary hover:underline">
-                Twitter ↗
+              <a href="#" className="text-primary hover:underline flex items-center gap-1 group">
+                Twitter
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
-              <a href="#" className="text-primary hover:underline">
-                LinkedIn ↗
+              <a href="#" className="text-primary hover:underline flex items-center gap-1 group">
+                LinkedIn
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
             </div>
           </div>
