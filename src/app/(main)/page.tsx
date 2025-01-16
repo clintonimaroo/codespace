@@ -16,7 +16,6 @@ import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 import Container from "@/components/container";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 interface Stat {
   name: string;
@@ -82,91 +81,38 @@ const AnimatedValue = ({ value, suffix = "" }: AnimatedValueProps) => {
   );
 };
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
-
-const staggerChildren = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
-const scaleOnHover = {
-  hover: { scale: 1.05, transition: { duration: 0.2 } }
-};
-
 const Home = () => {
   return (
     <>
       {/* Hero Section */}
       <Container className="container grid grid-cols-1 lg:grid-cols-2 gap-5 py-10 md:py-32 content-center">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="space-y-3 md:space-y-5 flex-col flex justify-center"
-        >
-          <motion.div whileHover={{ scale: 1.05 }}>
-            <SpaceBadge>Version 2.0</SpaceBadge>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="font-medium text-2xl sm:text-3xl md:text-5xl leading-normal"
-          >
+        <div className="space-y-3 md:space-y-5 flex-col flex justify-center">
+          <SpaceBadge>Version 2.0</SpaceBadge>
+          <h1 className="font-medium text-2xl sm:text-3xl md:text-5xl leading-normal">
             Connecting African Gen Zs for Growth, Impact, and Success.
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="text-base sm:text-lg md:text-xl subtitle"
-          >
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl subtitle">
             We unite Gen Zs in tech across Africa, creating a vibrant community
             where you can thrive with like-minded peers, share insights, and
             gain support to grow, build, and accelerate your career.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            className="flex items-center gap-5 md:flex-row flex-col"
-          >
-            <motion.div variants={scaleOnHover}>
-              <Button className="w-full md:w-fit">Join the Community</Button>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button variant={"ghost"} className="[&_svg]:size-6 w-full md:w-fit">
-                <CirclePlayIcon strokeWidth={1.5} size={30} />
-                Watch 2024 Events
-              </Button>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="w-full relative aspect-[16/10] mt-8 lg:mt-0"
-        >
+          </p>
+          <div className="flex items-center gap-5 md:flex-row flex-col">
+            <Button className="w-full md:w-fit">Join the Community</Button>
+            <Button
+              variant={"ghost"}
+              className="[&_svg]:size-6 w-full md:w-fit"
+            >
+              <CirclePlayIcon strokeWidth={1.5} size={30} />
+              Watch 2024 Events
+            </Button>
+          </div>
+        </div>
+        <div className="w-full relative aspect-[16/10] mt-8 lg:mt-0">
           <HeroImageCards />
-        </motion.div>
+        </div>
       </Container>
 
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
-        className="h-full bg-[#5c5ad1] flex items-center"
-      >
+      <section className="h-full bg-[#5c5ad1] flex items-center">
         <Container className="h-full flex flex-col bg-cover py-20 bg-top bg-no-repeat bg-[url('/images/what-we-do-bg.svg')]">
           <div className="space-y-4 w-full md:max-w-sm lg:max-w-md">
             <h3 className="text-3xl text-white font-normal">Our Mission</h3>
@@ -193,21 +139,13 @@ const Home = () => {
             <Button variant={"white"}>Get Involved</Button>
           </div>
         </Container>
-      </motion.section>
+      </section>
       <Container className="container py-20 w-full">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerChildren}
-          className="space-y-5"
-        >
-          <motion.div variants={fadeInUp}>
-            <Badge>
-              <div className="size-1.5 rounded-full bg-primary" />
-              CODE SPACE
-            </Badge>
-          </motion.div>
+        <div className="space-y-5">
+          <Badge>
+            <div className="size-1.5 rounded-full bg-primary" />
+            CODE SPACE
+          </Badge>
           <h1 className="font-medium text-2xl leading-normal sm:w-4/5 ">
             What We Do
           </h1>
@@ -221,28 +159,15 @@ const Home = () => {
             {" "}
             Here&apos;s how we&apos;re making that happen:
           </p>
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-5"
-          >
-            {what_we_do.map((item, index) => (
-              <motion.div
-                key={`${item.title}-${index}`}
-                variants={fadeInUp}
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.2 }}
-              >
-                <GoalsCard {...item} />
-              </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-5">
+            {what_we_do.map((item) => (
+              <GoalsCard {...item} key={item.title} />
             ))}
-          </motion.div>
-          <motion.div
-            variants={fadeInUp}
-            whileHover={{ scale: 1.05 }}
-            className="!my-20 w-full flex justify-center"
-          >
+          </div>
+          <div className="!my-20 w-full flex justify-center">
             <Button className="mx-auto">Explore more</Button>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </Container>
       {/* Goals */}
       <Container className="container grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -504,18 +429,8 @@ const EventCard = ({
   stats = [],
 }: EventType & { stats?: Stat[] }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.3 }}
-      className="w-full flex md:flex-row flex-col gap-10"
-    >
-      <motion.div
-        whileHover={{ scale: 1.02 }}
-        className="w-full md:max-w-sm max-w-full lg:max-h-full mx-auto flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 md:max-h-[440px] object-cover"
-      >
+    <div className="w-full flex md:flex-row flex-col gap-10">
+      <div className="w-full md:max-w-sm max-w-full lg:max-h-full mx-auto flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 md:max-h-[440px] object-cover">
         <div className="w-full h-full relative">
           <Image
             src={image}
@@ -524,7 +439,7 @@ const EventCard = ({
             className="object-cover h-full w-auto"
           />
         </div>
-      </motion.div>
+      </div>
       <div className="py-5 flex flex-col space-y-4">
         <h2 className="text-2xl font-normal">{title}</h2>
         <p className="text-xl text-gray-700 font-light">{description}</p>
@@ -560,6 +475,6 @@ const EventCard = ({
           <Link href={action_link}>{action_text}</Link>
         </Button>
       </div>
-    </motion.div>
+    </div>
   );
 };
