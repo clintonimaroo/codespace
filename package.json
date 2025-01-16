@@ -2,7 +2,6 @@
   "name": "website",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
@@ -38,9 +37,7 @@
     "styled-jsx": "^5.1.6",
     "swr": "^2.3.0",
     "tailwind-merge": "^2.5.4",
-    "tailwindcss-animate": "^1.0.7",
-    "framer-motion": "^11.18.0"
-    
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
