@@ -1,6 +1,5 @@
 import { Logo } from "@/components/brand";
 import BrandsSection from "@/components/brands-section";
-
 import JoinSection from "@/components/join-section";
 import SpaceBadge from "@/components/space-badge";
 import { Badge } from "@/components/ui/badge";
@@ -11,6 +10,29 @@ import classNames from "classnames";
 import Image from "next/image";
 import Container from "@/components/container";
 import { type UpcomingEvent, type UpcomingEvents } from "@/types";
+
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  const day = date.getDate();
+  const month = date.toLocaleString("en-US", { month: "short" });
+  const year = date.getFullYear();
+
+  const daySuffix = (day: number) => {
+    if (day > 3 && day < 21) return "th";
+    switch (day % 10) {
+      case 1:
+        return "st";
+      case 2:
+        return "nd";
+      case 3:
+        return "rd";
+      default:
+        return "th";
+    }
+  };
+
+  return `${day}${daySuffix(day)} ${month}, ${year}`;
+};
 
 async function getUpcomingEvents() {
   const BASE_URL = process.env.BASE_URL;
@@ -128,7 +150,8 @@ const UpcomingEvent = ({ event }: { event: UpcomingEvent }) => {
         <h2 className="text-2xl font-normal">{event?.eventTitle}</h2>
         <p className="text-xl text-gray-700 font-light">{event?.description}</p>
         <p className="text-lg">
-          Date <span className="text-gray-600 ml-2">{event?.date}</span>
+          Date{" "}
+          <span className="text-gray-600 ml-2">{formatDate(event?.date)}</span>
         </p>
         <p className="text-lg">
           Location <span className="text-gray-600 ml-2">{event?.location}</span>
@@ -154,7 +177,7 @@ const UpcomingEvent = ({ event }: { event: UpcomingEvent }) => {
           </div>
         )}
         <Button asChild className="w-fit">
-          <Link href="/events">Explore More</Link>
+          <Link href={event?.eventLink}>{event?.callToAction}</Link>
         </Button>
       </div>
     </div>
