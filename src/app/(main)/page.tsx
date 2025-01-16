@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 import Container from "@/components/container";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface Stat {
   name: string;
@@ -86,30 +87,61 @@ const Home = () => {
     <>
       {/* Hero Section */}
       <Container className="container grid grid-cols-1 lg:grid-cols-2 gap-5 py-10 md:py-32 content-center">
-        <div className="space-y-3 md:space-y-5 flex-col flex justify-center">
-          <SpaceBadge>Version 2.0</SpaceBadge>
-          <h1 className="font-medium text-2xl sm:text-3xl md:text-5xl leading-normal">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="space-y-3 md:space-y-5 flex-col flex justify-center"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <SpaceBadge>Version 2.0</SpaceBadge>
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="font-medium text-2xl sm:text-3xl md:text-5xl leading-normal"
+          >
             Connecting African Gen Zs for Growth, Impact, and Success.
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl subtitle">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="text-base sm:text-lg md:text-xl subtitle"
+          >
             We unite Gen Zs in tech across Africa, creating a vibrant community
             where you can thrive with like-minded peers, share insights, and
             gain support to grow, build, and accelerate your career.
-          </p>
-          <div className="flex items-center gap-5 md:flex-row flex-col">
-            <Button className="w-full md:w-fit">Join the Community</Button>
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="flex items-center gap-5 md:flex-row flex-col"
+          >
+            <Button className="w-full md:w-fit hover:scale-105 transition-transform">Join the Community</Button>
             <Button
               variant={"ghost"}
-              className="[&_svg]:size-6 w-full md:w-fit"
+              className="[&_svg]:size-6 w-full md:w-fit hover:scale-105 transition-transform"
             >
               <CirclePlayIcon strokeWidth={1.5} size={30} />
               Watch 2024 Events
             </Button>
-          </div>
-        </div>
-        <div className="w-full relative aspect-[16/10] mt-8 lg:mt-0">
+          </motion.div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="w-full relative aspect-[16/10] mt-8 lg:mt-0"
+        >
           <HeroImageCards />
-        </div>
+        </motion.div>
       </Container>
 
       <section className="h-full bg-[#5c5ad1] flex items-center">

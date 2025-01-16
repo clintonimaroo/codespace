@@ -16,9 +16,14 @@ const formatDate = (dateString: string) => {
     .replace(",", "");
 };
 
+type Props = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
 // Generate metadata for social sharing
 export async function generateMetadata(
-  { params }: { params: { id: string } },
+  { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const blog = await getBlog(params.id);
@@ -41,10 +46,7 @@ export async function generateMetadata(
       type: "article",
       publishedTime: blog.createdAt,
       authors: blog.author?.name ? [blog.author.name] : undefined,
-      images: [
-        blog.featuredImage?.url || "",
-        ...previousImages
-      ],
+      images: [blog.featuredImage?.url || "", ...previousImages],
     },
     twitter: {
       card: "summary_large_image",
@@ -86,7 +88,7 @@ async function getBlog(id: string): Promise<BlogDoc> {
   return data;
 }
 
-export default async function BlogPage({ params }: { params: { id: string } }) {
+export default async function BlogPage({ params }: Props) {
   const blog = await getBlog(params.id);
 
   if (!blog) {
