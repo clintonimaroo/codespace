@@ -4,6 +4,7 @@ import Image from "next/image";
 import { BlogDoc } from "@/types";
 import { LexicalRenderer } from "@/components/lexical-renderer";
 import { ArrowUpRight } from "lucide-react";
+import { Metadata, ResolvingMetadata } from "next";
 
 const formatDate = (dateString: string) => {
   return new Date(dateString)
@@ -14,6 +15,45 @@ const formatDate = (dateString: string) => {
     })
     .replace(",", "");
 };
+
+// Generate metadata for social sharing
+export async function generateMetadata(
+  { params }: { params: { id: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const blog = await getBlog(params.id);
+
+  if (!blog) {
+    return {
+      title: "Blog Not Found",
+      description: "The requested blog post could not be found.",
+    };
+  }
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: blog.title,
+    description: blog.excerpt || "Read this article on Code Space",
+    openGraph: {
+      title: blog.title,
+      description: blog.excerpt || "Read this article on Code Space",
+      type: "article",
+      publishedTime: blog.createdAt,
+      authors: blog.author?.name ? [blog.author.name] : undefined,
+      images: [
+        blog.featuredImage?.url || "",
+        ...previousImages
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blog.title,
+      description: blog.excerpt || "Read this article on Code Space",
+      images: [blog.featuredImage?.url || ""],
+    },
+  };
+}
 
 const SubscribeCard = () => {
   return (
@@ -46,7 +86,7 @@ async function getBlog(id: string): Promise<BlogDoc> {
   return data;
 }
 
-export default async function BlogPage({ params }: any) {
+export default async function BlogPage({ params }: { params: { id: string } }) {
   const blog = await getBlog(params.id);
 
   if (!blog) {
@@ -56,6 +96,13 @@ export default async function BlogPage({ params }: any) {
       </div>
     );
   }
+
+  // Prepare sharing URLs
+  const currentUrl = `${process.env.NEXT_PUBLIC_APP_URL}/blog/${params.id}`;
+  const encodedUrl = encodeURIComponent(currentUrl);
+  const encodedTitle = encodeURIComponent(blog.title);
+  const twitterShareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
+  const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
 
   return (
     <Container className="container space-y-2 py-8 md:py-20 px-4 md:px-0">
@@ -99,11 +146,21 @@ export default async function BlogPage({ params }: any) {
           <div className="w-full md:w-[232px]">
             <h4 className="text-[#101828] mt-6 md:mt-10 mb-4">Share article</h4>
             <div className="flex gap-4">
-              <a href="#" className="text-primary hover:underline flex items-center gap-1 group">
+              <a
+                href={twitterShareUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline flex items-center gap-1 group"
+              >
                 Twitter
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
-              <a href="#" className="text-primary hover:underline flex items-center gap-1 group">
+              <a
+                href={linkedInShareUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline flex items-center gap-1 group"
+              >
                 LinkedIn
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>

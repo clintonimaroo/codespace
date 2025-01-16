@@ -6,6 +6,7 @@ import { socials } from "@/data";
 import Link from "next/link";
 import Container from "@/components/container";
 import MessageForm from "@/components/message-form";
+import FAQSection from "@/components/faq-section";
 
 const ContactUs = () => {
   return (
@@ -55,6 +56,9 @@ const ContactUs = () => {
 
       {/* Message Form */}
       <MessageForm />
+
+      {/* FAQ Section */}
+      <FAQSection />
 
       {/* Brands */}
       <BrandsSection />

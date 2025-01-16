@@ -70,6 +70,13 @@ const extractTableOfContents = (nodes: LexicalNode[]): TableOfContentsItem[] => 
     return toc;
 };
 
+const resolveUrl = (url: string) => {
+    if (!url || url === '#') return '#';
+    if (url.startsWith('/')) return url;
+    if (url.startsWith('http://') || url.startsWith('https://')) return url;
+    return `https://${url}`;
+};
+
 const renderNode = (node: LexicalNode): JSX.Element | string | null => {
     switch (node.type) {
         case 'text': {
@@ -127,16 +134,18 @@ const renderNode = (node: LexicalNode): JSX.Element | string | null => {
         }
 
         case 'link': {
-            const url = node.fields?.url?.url || node.url || '#';
+            const rawUrl = node.fields?.url?.url || node.url || '#';
+            const url = resolveUrl(rawUrl);
             const target = node.fields?.target || node.target;
             const rel = node.fields?.rel || node.rel;
+            const isExternal = url.startsWith('http');
 
             return (
                 <a
                     href={url}
                     className="text-primary no-underline hover:opacity-80 transition-opacity"
-                    target={target || (url.startsWith('http') ? "_blank" : undefined)}
-                    rel={rel || (url.startsWith('http') ? "noopener noreferrer" : undefined)}
+                    target={target || (isExternal ? "_blank" : undefined)}
+                    rel={rel || (isExternal ? "noopener noreferrer" : undefined)}
                 >
                     {node.children?.map((child, i) => (
                         <Fragment key={i}>{renderNode(child)}</Fragment>
