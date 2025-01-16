@@ -18,12 +18,12 @@ const formatDate = (dateString: string) => {
 
 type Props = {
   params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Record<string, string | string[] | undefined>;
 };
 
 // Generate metadata for social sharing
 export async function generateMetadata(
-  { params }: Props,
+  { params }: { params: { id: string } },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const blog = await getBlog(params.id);
