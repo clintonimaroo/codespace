@@ -31,33 +31,6 @@ export const Blog: CollectionConfig = {
         },
       };
     },
-    create: ({ req: { user } }) => {
-      if (user) return true;
-
-      return {
-        _status: {
-          equals: "published",
-        },
-      };
-    },
-    update: ({ req: { user } }) => {
-      if (user) return true;
-
-      return {
-        _status: {
-          equals: "published",
-        },
-      };
-    },
-    delete: ({ req: { user } }) => {
-      if (user) return true;
-
-      return {
-        _status: {
-          equals: "published",
-        },
-      };
-    },
   },
   versions: {
     drafts: {

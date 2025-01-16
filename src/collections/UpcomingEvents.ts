@@ -7,21 +7,6 @@ export const UpcomingEvents: CollectionConfig = {
   },
   access: {
     read: () => true,
-    create: ({ req: { user } }) => {
-      if (user) return true;
-
-      return false;
-    },
-    update: ({ req: { user } }) => {
-      if (user) return true;
-
-      return false;
-    },
-    delete: ({ req: { user } }) => {
-      if (user) return true;
-
-      return false;
-    },
   },
   fields: [
     {

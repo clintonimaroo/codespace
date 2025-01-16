@@ -16,6 +16,7 @@ export interface Config {
     blog: Blog;
     gallery: Gallery;
     'upcoming-events': UpcomingEvent;
+    'past-events': PastEvent;
     'payload-jobs': PayloadJob;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -28,6 +29,7 @@ export interface Config {
     blog: BlogSelect<false> | BlogSelect<true>;
     gallery: GallerySelect<false> | GallerySelect<true>;
     'upcoming-events': UpcomingEventsSelect<false> | UpcomingEventsSelect<true>;
+    'past-events': PastEventsSelect<false> | PastEventsSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -171,6 +173,22 @@ export interface UpcomingEvent {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "past-events".
+ */
+export interface PastEvent {
+  id: string;
+  eventTitle: string;
+  description: string;
+  coverImage: string | Media;
+  date: string;
+  location: string;
+  callToAction?: string | null;
+  recapLink: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-jobs".
  */
 export interface PayloadJob {
@@ -287,6 +305,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'upcoming-events';
         value: string | UpcomingEvent;
+      } | null)
+    | ({
+        relationTo: 'past-events';
+        value: string | PastEvent;
       } | null)
     | ({
         relationTo: 'payload-jobs';
@@ -409,6 +431,21 @@ export interface UpcomingEventsSelect<T extends boolean = true> {
   location?: T;
   callToAction?: T;
   eventLink?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "past-events_select".
+ */
+export interface PastEventsSelect<T extends boolean = true> {
+  eventTitle?: T;
+  description?: T;
+  coverImage?: T;
+  date?: T;
+  location?: T;
+  callToAction?: T;
+  recapLink?: T;
   updatedAt?: T;
   createdAt?: T;
 }
