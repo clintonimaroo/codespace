@@ -4,12 +4,16 @@ import JoinSection from "@/components/join-section";
 import SpaceBadge from "@/components/space-badge";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { EventType, past_events } from "@/data";
 import Link from "next/link";
 import classNames from "classnames";
 import Image from "next/image";
 import Container from "@/components/container";
-import { type UpcomingEvent, type UpcomingEvents } from "@/types";
+import {
+  PastEvent,
+  PastEvents,
+  type UpcomingEvent,
+  type UpcomingEvents,
+} from "@/types";
 
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
@@ -34,6 +38,15 @@ const formatDate = (dateString: string) => {
   return `${day}${daySuffix(day)} ${month}, ${year}`;
 };
 
+async function getPastEvents() {
+  const BASE_URL = process.env.BASE_URL;
+
+  const response = await fetch(`${BASE_URL}/api/past-events`);
+  const data: PastEvents = await response.json();
+
+  return data;
+}
+
 async function getUpcomingEvents() {
   const BASE_URL = process.env.BASE_URL;
 
@@ -45,6 +58,7 @@ async function getUpcomingEvents() {
 
 export default async function Events() {
   const upcomingEvents = await getUpcomingEvents();
+  const pastEvents = await getPastEvents();
 
   return (
     <>
@@ -87,8 +101,8 @@ export default async function Events() {
           never know, you might discover a fresh insight or two!
         </p>
         <div className="w-full space-y-10 !mt-10">
-          {past_events.map((event) => (
-            <EventCard key={event.action_link} {...event} />
+          {pastEvents?.docs?.map((event) => (
+            <EventCard key={event.id} event={event} />
           ))}
         </div>
       </Container>
@@ -101,32 +115,27 @@ export default async function Events() {
   );
 }
 
-const EventCard = ({
-  title,
-  date,
-  description,
-  action_link,
-  action_text,
-  image,
-}: EventType) => {
+const EventCard = ({ event }: { event: PastEvent }) => {
   return (
     <div className="w-full flex md:flex-row flex-col gap-10">
       <div className="w-full max-w-sm flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 rounded-sm">
         <div className="w-full h-full relative">
           <Image
-            src={image}
-            alt={title}
+            src={event?.coverImage?.url}
+            alt={event?.eventTitle}
             fill
             className="object-cover rounded-sm"
           />
         </div>
       </div>
       <div className="py-5 flex flex-col space-y-2 justify-around">
-        <h2 className="text-2xl font-normal">{title}</h2>
-        <p className="text-xl text-gray-700 font-light">{description}</p>
-        <Badge>{new Date(date).getFullYear()}</Badge>
+        <h2 className="text-2xl font-normal">{event?.eventTitle}</h2>
+        <p className="text-xl text-gray-700 font-light">{event?.description}</p>
+        <Badge>{formatDate(event?.date)}</Badge>
         <Button asChild className="w-fit">
-          <Link href={action_link}>{action_text}</Link>
+          <Link href={event?.recapLink}>
+            {event?.callToAction || "Watch the replay!"}
+          </Link>
         </Button>
       </div>
     </div>

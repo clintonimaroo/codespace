@@ -91,7 +91,6 @@ export interface Event {
   description: string;
   location: string;
   callToAction?: string;
-  eventLink: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -104,7 +103,16 @@ export type UpcomingEvent = {
       id: string;
     },
   ];
+  eventLink: string;
 } & Event;
+
+export type PastEvent = {
+  recapLink: string;
+} & Event;
+
+export type PastEvents = {
+  docs: PastEvent[];
+} & Pagination;
 
 export type UpcomingEvents = {
   docs: UpcomingEvent[];
