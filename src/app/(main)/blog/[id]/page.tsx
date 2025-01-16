@@ -16,18 +16,18 @@ const formatDate = (dateString: string) => {
     .replace(",", "");
 };
 
-type Props = {
-  params: Promise<{ id: string }>;
+type Props = Promise<{
+  params: { id: string };
   searchParams: Record<string, string | string[] | undefined>;
-};
+}>;
 
 // Generate metadata for social sharing
 export async function generateMetadata(
-  { params }: { params: Promise<{ id: string }> },
+  props: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const resolvedParams = await params;
-  const blog = await getBlog(resolvedParams.id);
+  const { params } = await props;
+  const blog = await getBlog(params.id);
 
   if (!blog) {
     return {
@@ -89,9 +89,9 @@ async function getBlog(id: string): Promise<BlogDoc> {
   return data;
 }
 
-export default async function BlogPage({ params }: Props) {
-  const resolvedParams = await params;
-  const blog = await getBlog(resolvedParams.id);
+export default async function BlogPage(props: Props) {
+  const { params } = await props;
+  const blog = await getBlog(params.id);
 
   if (!blog) {
     return (
@@ -102,7 +102,7 @@ export default async function BlogPage({ params }: Props) {
   }
 
   // Prepare sharing URLs
-  const currentUrl = `${process.env.NEXT_PUBLIC_APP_URL}/blog/${resolvedParams.id}`;
+  const currentUrl = `${process.env.NEXT_PUBLIC_APP_URL}/blog/${params.id}`;
   const encodedUrl = encodeURIComponent(currentUrl);
   const encodedTitle = encodeURIComponent(blog.title);
   const twitterShareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
