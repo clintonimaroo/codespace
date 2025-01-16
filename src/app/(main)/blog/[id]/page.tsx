@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Container from "@/components/container";
 import Image from "next/image";
-import { Doc } from "@/types";
+import { BlogDoc } from "@/types";
 
 interface Child {
   type: string;
@@ -115,7 +115,7 @@ const renderContent = (content: ContentNode) => {
   );
 };
 
-async function getBlog(id: string): Promise<Doc> {
+async function getBlog(id: string): Promise<BlogDoc> {
   const BASE_URL = process.env.BASE_URL;
 
   const response = await fetch(`${BASE_URL}/api/blog/${id}`);

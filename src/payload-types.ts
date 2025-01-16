@@ -168,6 +168,11 @@ export interface UpcomingEvent {
   location: string;
   callToAction?: string | null;
   eventLink: string;
+  stats: {
+    statTitle?: string | null;
+    statValue?: number | null;
+    id?: string | null;
+  }[];
   updatedAt: string;
   createdAt: string;
 }
@@ -181,7 +186,6 @@ export interface PastEvent {
   description: string;
   coverImage: string | Media;
   date: string;
-  location: string;
   callToAction?: string | null;
   recapLink: string;
   updatedAt: string;
@@ -431,6 +435,13 @@ export interface UpcomingEventsSelect<T extends boolean = true> {
   location?: T;
   callToAction?: T;
   eventLink?: T;
+  stats?:
+    | T
+    | {
+        statTitle?: T;
+        statValue?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -443,7 +454,6 @@ export interface PastEventsSelect<T extends boolean = true> {
   description?: T;
   coverImage?: T;
   date?: T;
-  location?: T;
   callToAction?: T;
   recapLink?: T;
   updatedAt?: T;

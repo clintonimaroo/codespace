@@ -55,7 +55,20 @@ export interface Content {
     children: Block[];
   };
 }
-export interface Doc {
+
+export interface Pagination {
+  totalDocs: number;
+  limit: number;
+  totalPages: number;
+  page: number;
+  pagingCounter: number;
+  hasPrevPage: boolean;
+  hasNextPage: boolean;
+  prevPage: number | null;
+  nextPage: number | null;
+}
+
+export interface BlogDoc {
   id: string;
   title: string;
   content: Content;
@@ -70,15 +83,18 @@ export interface Doc {
   excerpt?: string;
 }
 
-export interface BlogsAPIResponse {
-  docs: Doc[];
-  totalDocs: number;
-  limit: number;
-  totalPages: number;
-  page: number;
-  pagingCounter: number;
-  hasPrevPage: boolean;
-  hasNextPage: boolean;
-  prevPage: number | null;
-  nextPage: number | null;
+export interface UpcomingEvents extends Pagination {
+  id: string;
+  eventTitle: string;
+  date: string;
+  description: string;
+  location: string;
+  callToAction?: string;
+  eventLink: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface BlogsAPIResponse extends Pagination {
+  docs: BlogDoc[];
 }

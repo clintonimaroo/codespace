@@ -31,7 +31,7 @@ export const UpcomingEvents: CollectionConfig = {
     {
       name: "description",
       label: "Description",
-      type: "text",
+      type: "textarea",
       required: true,
     },
     {
@@ -50,6 +50,24 @@ export const UpcomingEvents: CollectionConfig = {
       label: "Event Link",
       type: "text",
       required: true,
+    },
+    {
+      name: "stats",
+      label: "Event Stats",
+      type: "array",
+      required: true,
+      fields: [
+        {
+          name: "statTitle",
+          label: "Stat Title",
+          type: "text",
+        },
+        {
+          name: "statValue",
+          label: "Stat Value",
+          type: "number",
+        },
+      ],
     },
   ],
 };

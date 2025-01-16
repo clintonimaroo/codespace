@@ -35,12 +35,6 @@ export const PastEvents: CollectionConfig = {
       required: true,
     },
     {
-      name: "location",
-      label: "Location",
-      type: "text",
-      required: true,
-    },
-    {
       name: "callToAction",
       label: "Call To Action",
       type: "text",
