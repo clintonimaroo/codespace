@@ -41,7 +41,9 @@ const formatDate = (dateString: string) => {
 async function getPastEvents() {
   const BASE_URL = process.env.BASE_URL;
 
-  const response = await fetch(`${BASE_URL}/api/past-events`);
+  const response = await fetch(`${BASE_URL}/api/past-events`, {
+    next: { revalidate: 0 },
+  });
   const data: PastEvents = await response.json();
 
   return data;
@@ -50,7 +52,9 @@ async function getPastEvents() {
 async function getUpcomingEvents() {
   const BASE_URL = process.env.BASE_URL;
 
-  const response = await fetch(`${BASE_URL}/api/upcoming-events`);
+  const response = await fetch(`${BASE_URL}/api/upcoming-events`, {
+    next: { revalidate: 0 },
+  });
   const data: UpcomingEvents = await response.json();
 
   return data;
