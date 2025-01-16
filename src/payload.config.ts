@@ -1,4 +1,4 @@
-// import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
+import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
@@ -34,5 +34,14 @@ export default buildConfig({
     url: process.env.DATABASE_URI || "",
   }),
   sharp,
-  plugins: [payloadCloudPlugin()],
+  plugins: [
+    payloadCloudPlugin(),
+    vercelBlobStorage({
+      enabled: true,
+      collections: {
+        media: true,
+      },
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+    }),
+  ],
 });
