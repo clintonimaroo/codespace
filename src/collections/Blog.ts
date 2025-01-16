@@ -31,6 +31,24 @@ export const Blog: CollectionConfig = {
         },
       };
     },
+<<<<<<< Updated upstream
+=======
+    create: ({ req: { user } }) => {
+      if (user) return true;
+
+      return false;
+    },
+    update: ({ req: { user } }) => {
+      if (user) return true;
+
+      return false;
+    },
+    delete: ({ req: { user } }) => {
+      if (user) return true;
+
+      return false;
+    },
+>>>>>>> Stashed changes
   },
   versions: {
     drafts: {
