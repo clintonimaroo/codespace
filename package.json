@@ -1,8 +1,8 @@
 {
   "name": "website",
   "version": "0.1.0",
-"private": true,
-"type": "module",
+  "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
@@ -15,8 +15,8 @@
     "@payloadcms/next": "^3.13.0",
     "@payloadcms/payload-cloud": "^3.14.0",
     "@payloadcms/plugin-cloud-storage": "^3.16.0",
-    "@payloadcms/richtext-lexical": "3.14.0",
-    "@payloadcms/storage-vercel-blob": "3.14.0",
+    "@payloadcms/richtext-lexical": "3.13.0",
+    "@payloadcms/storage-vercel-blob": "3.13.0",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-separator": "^1.1.0",
