@@ -5,15 +5,25 @@ import JoinSection from "@/components/join-section";
 import SpaceBadge from "@/components/space-badge";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { EventType, past_events, upcoming_events } from "@/data";
+import { EventType, past_events } from "@/data";
 import Link from "next/link";
 import classNames from "classnames";
 import Image from "next/image";
 import Container from "@/components/container";
+import { type UpcomingEvent, type UpcomingEvents } from "@/types";
 
-type StatType = { value: number; suffix: string; name: string };
+async function getUpcomingEvents() {
+  const BASE_URL = process.env.BASE_URL;
 
-const Events = () => {
+  const response = await fetch(`${BASE_URL}/api/upcoming-events`);
+  const data: UpcomingEvents = await response.json();
+
+  return data;
+}
+
+export default async function Events() {
+  const upcomingEvents = await getUpcomingEvents();
+
   return (
     <>
       {/* Hero Section */}
@@ -40,8 +50,8 @@ const Events = () => {
           learn, and elevate your tech journey!
         </p>
         <div className="w-full space-y-10 !mt-10">
-          {upcoming_events.map((event) => (
-            <UpcomingEvent key={event.action_link} {...event} />
+          {upcomingEvents?.docs?.map((event) => (
+            <UpcomingEvent key={event.id} event={event} />
           ))}
         </div>
       </Container>
@@ -67,9 +77,7 @@ const Events = () => {
       <JoinSection />
     </>
   );
-};
-
-export default Events;
+}
 
 const EventCard = ({
   title,
@@ -103,40 +111,31 @@ const EventCard = ({
   );
 };
 
-const UpcomingEvent = ({
-  title,
-  date,
-  description,
-  action_link,
-  action_text,
-  location,
-  image,
-  stats = [],
-}: EventType & { stats?: StatType[] }) => {
+const UpcomingEvent = ({ event }: { event: UpcomingEvent }) => {
   return (
     <div className="w-full flex md:flex-row flex-col gap-10">
       <div className="w-full md:max-w-sm max-w-full lg:max-h-full mx-auto flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 md:max-h-[440px] object-cover">
         <div className="w-full h-full relative">
           <Image
-            src={image}
-            alt={title}
+            src={event?.coverImage.url}
+            alt={event?.eventTitle}
             fill
             className="object-cover h-full w-auto"
           />
         </div>
       </div>
       <div className="py-5 flex flex-col space-y-2 justify-around">
-        <h2 className="text-2xl font-normal">{title}</h2>
-        <p className="text-xl text-gray-700 font-light">{description}</p>
+        <h2 className="text-2xl font-normal">{event?.eventTitle}</h2>
+        <p className="text-xl text-gray-700 font-light">{event?.description}</p>
         <p className="text-lg">
-          Date <span className="text-gray-600 ml-2">{date}</span>
+          Date <span className="text-gray-600 ml-2">{event?.date}</span>
         </p>
         <p className="text-lg">
-          Location <span className="text-gray-600 ml-2">{location}</span>
+          Location <span className="text-gray-600 ml-2">{event?.location}</span>
         </p>
-        {stats && (
+        {event?.stats && (
           <div className="w-full max-w-xs flex flex-row items-center divide-x">
-            {stats.map((stat, i) => (
+            {event?.stats?.map((stat, i) => (
               <div
                 key={i}
                 className={classNames("flex-grow", {
@@ -145,19 +144,17 @@ const UpcomingEvent = ({
               >
                 <div>
                   <h4 className="text-xl font-semibold">
-                    {stat.value}{" "}
-                    <span className="text-primary text-base">
-                      {stat.suffix}
-                    </span>
+                    {stat.statValue}{" "}
+                    <span className="text-primary text-base">+</span>
                   </h4>
-                  <p className="subtitle">{stat.name}</p>
+                  <p className="subtitle">{stat.statTitle}</p>
                 </div>
               </div>
             ))}
           </div>
         )}
         <Button asChild className="w-fit">
-          <Link href={action_link}>{action_text}</Link>
+          <Link href="/events">Explore More</Link>
         </Button>
       </div>
     </div>

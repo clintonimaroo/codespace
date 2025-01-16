@@ -56,6 +56,9 @@ export const UpcomingEvents: CollectionConfig = {
       label: "Event Stats",
       type: "array",
       required: true,
+      admin: {
+        position: "sidebar",
+      },
       fields: [
         {
           name: "statTitle",

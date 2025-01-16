@@ -83,9 +83,10 @@ export interface BlogDoc {
   excerpt?: string;
 }
 
-export interface UpcomingEvents extends Pagination {
+export interface Event {
   id: string;
   eventTitle: string;
+  coverImage: FeaturedImage;
   date: string;
   description: string;
   location: string;
@@ -94,6 +95,20 @@ export interface UpcomingEvents extends Pagination {
   createdAt: string;
   updatedAt: string;
 }
+
+export type UpcomingEvent = {
+  stats: [
+    {
+      statTitle: string;
+      statValue: number;
+      id: string;
+    },
+  ];
+} & Event;
+
+export type UpcomingEvents = {
+  docs: UpcomingEvent[];
+} & Pagination;
 
 export interface BlogsAPIResponse extends Pagination {
   docs: BlogDoc[];
