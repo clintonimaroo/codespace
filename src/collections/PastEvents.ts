@@ -1,9 +1,9 @@
 import { CollectionConfig } from "payload";
 
-export const Gallery: CollectionConfig = {
-  slug: "gallery",
+export const PastEvents: CollectionConfig = {
+  slug: "past-events",
   admin: {
-    useAsTitle: "event",
+    useAsTitle: "eventTitle",
   },
   access: {
     read: () => true,
@@ -25,14 +25,20 @@ export const Gallery: CollectionConfig = {
   },
   fields: [
     {
-      name: "event",
-      label: "Event",
+      name: "eventTitle",
+      label: "Event Title",
       type: "text",
       required: true,
     },
     {
+      name: "description",
+      label: "Description",
+      type: "textarea",
+      required: true,
+    },
+    {
       name: "coverImage",
-      label: "Cover Image",
+      label: "Event Cover Image",
       type: "upload",
       required: true,
       relationTo: "media",
@@ -44,8 +50,19 @@ export const Gallery: CollectionConfig = {
       required: true,
     },
     {
-      name: "albumLink",
-      label: "Album Link",
+      name: "location",
+      label: "Location",
+      type: "text",
+      required: true,
+    },
+    {
+      name: "callToAction",
+      label: "Call To Action",
+      type: "text",
+    },
+    {
+      name: "recapLink",
+      label: "Recap Link",
       type: "text",
       required: true,
     },

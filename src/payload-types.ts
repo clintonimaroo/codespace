@@ -14,6 +14,8 @@ export interface Config {
     users: User;
     media: Media;
     blog: Blog;
+    gallery: Gallery;
+    'upcoming-events': UpcomingEvent;
     'payload-jobs': PayloadJob;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -24,6 +26,8 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     blog: BlogSelect<false> | BlogSelect<true>;
+    gallery: GallerySelect<false> | GallerySelect<true>;
+    'upcoming-events': UpcomingEventsSelect<false> | UpcomingEventsSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -138,6 +142,35 @@ export interface Blog {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gallery".
+ */
+export interface Gallery {
+  id: string;
+  event: string;
+  coverImage: string | Media;
+  date: string;
+  albumLink: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "upcoming-events".
+ */
+export interface UpcomingEvent {
+  id: string;
+  eventTitle: string;
+  coverImage: string | Media;
+  date: string;
+  description: string;
+  location: string;
+  callToAction?: string | null;
+  eventLink: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-jobs".
  */
 export interface PayloadJob {
@@ -248,6 +281,14 @@ export interface PayloadLockedDocument {
         value: string | Blog;
       } | null)
     | ({
+        relationTo: 'gallery';
+        value: string | Gallery;
+      } | null)
+    | ({
+        relationTo: 'upcoming-events';
+        value: string | UpcomingEvent;
+      } | null)
+    | ({
         relationTo: 'payload-jobs';
         value: string | PayloadJob;
       } | null);
@@ -343,6 +384,33 @@ export interface BlogSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gallery_select".
+ */
+export interface GallerySelect<T extends boolean = true> {
+  event?: T;
+  coverImage?: T;
+  date?: T;
+  albumLink?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "upcoming-events_select".
+ */
+export interface UpcomingEventsSelect<T extends boolean = true> {
+  eventTitle?: T;
+  coverImage?: T;
+  date?: T;
+  description?: T;
+  location?: T;
+  callToAction?: T;
+  eventLink?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

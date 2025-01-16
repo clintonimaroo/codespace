@@ -1,6 +1,6 @@
 import { CollectionConfig } from "payload";
 
-export const Events: CollectionConfig = {
+export const UpcomingEvents: CollectionConfig = {
   slug: "upcoming-events",
   admin: {
     useAsTitle: "eventTitle",
@@ -31,6 +31,13 @@ export const Events: CollectionConfig = {
       required: true,
     },
     {
+      name: "coverImage",
+      label: "Event Cover Image",
+      type: "upload",
+      required: true,
+      relationTo: "media",
+    },
+    {
       name: "date",
       label: "Date",
       type: "date",
@@ -45,6 +52,17 @@ export const Events: CollectionConfig = {
     {
       name: "location",
       label: "Location",
+      type: "text",
+      required: true,
+    },
+    {
+      name: "callToAction",
+      label: "Call To Action",
+      type: "text",
+    },
+    {
+      name: "eventLink",
+      label: "Event Link",
       type: "text",
       required: true,
     },

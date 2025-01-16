@@ -86,7 +86,7 @@ const Home = () => {
     <>
       {/* Hero Section */}
       <Container className="container grid grid-cols-1 lg:grid-cols-2 gap-5 py-10 md:py-32 content-center">
-        <div className="space-y-3 md:space-y-5 flex-col flex  justify-center">
+        <div className="space-y-3 md:space-y-5 flex-col flex justify-center">
           <SpaceBadge>Version 2.0</SpaceBadge>
           <h1 className="font-medium text-2xl sm:text-3xl md:text-5xl leading-normal">
             Connecting African Gen Zs for Growth, Impact, and Success.
