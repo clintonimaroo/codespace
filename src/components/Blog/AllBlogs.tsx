@@ -13,7 +13,7 @@ export default function AllBlogs({
       <h3 className="text-2xl md:text-3xl font-medium mb-4 md:mb-6">
         All Blogs
       </h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
         {blogs?.docs?.length ? (
           blogs.docs.map((blog) => (
             <div key={blog.id} className="relative">
@@ -44,7 +44,7 @@ export default function AllBlogs({
                 </p>
                 <Link
                   href={`/blog/${blog.id}`}
-                  className="bg-primary py-2 md:py-3 px-6 md:px-8 rounded-full group text-white w-fit mt-4 flex items-center space-x-2 text-sm md:text-base"
+                  className="flex md:hidden bg-primary py-3 px-6 md:px-8 rounded-full group text-white w-fit mt-4 items-center space-x-2 text-sm md:text-base"
                 >
                   <span>Read More</span>
                   <svg
