@@ -124,9 +124,10 @@ export default async function BlogPage(props: Props) {
           <h1 className="text-3xl md:text-4xl font-bold text-black">
             {blog.title}
           </h1>
-          <div className="flex items-center gap-x-[5.5px] text-gray text-base md:text-lg mt-2">
+          <div className="flex items-center gap-x-[2.5px] text-gray text-base md:text-lg mt-2">
             <p>{blog.author?.name || "Anonymous"}</p>
             <div className="h-[3px] w-[3px] rounded-full bg-secondary" />
+            <p>•</p>
             <p>{formatDate(blog.createdAt)}</p>
           </div>
         </div>
@@ -142,7 +143,7 @@ export default async function BlogPage(props: Props) {
           )}
         </div>
 
-        <div className="mt-6 md:mt-8">
+        <div className="mt-6 md:mt-8 text-lg md:text-xl text-[#475467] leading-relaxed">
           <LexicalRenderer content={blog.content} />
         </div>
 
