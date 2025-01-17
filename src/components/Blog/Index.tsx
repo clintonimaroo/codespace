@@ -24,7 +24,7 @@ export default function Blog({
     if (!blogs?.totalPages) return null;
 
     const pages = [];
-    const maxVisible = 7;
+    const maxVisible = 10;
     const halfVisible = Math.floor(maxVisible / 2);
 
     let start = Math.max(1, currentPage - halfVisible);
@@ -72,7 +72,7 @@ export default function Blog({
           <span>Previous</span>
         </button>
 
-        <div className="flex items-center gap-x-2">{pages}</div>
+        <div className="hidden sm:flex items-center gap-x-2">{pages}</div>
 
         <button
           onClick={() => handlePageChange(currentPage + 1)}

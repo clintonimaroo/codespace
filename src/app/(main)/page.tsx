@@ -1,5 +1,5 @@
 "use client";
-
+import useSwr from "swr";
 import BrandsSection from "@/components/brands-section";
 import GoalsCard from "@/components/goals-card";
 import { HeroImageCards } from "@/components/image-cards";
@@ -7,16 +7,16 @@ import ImageCard from "@/components/image-card";
 import JoinSection from "@/components/join-section";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { stats, upcoming_events, what_we_do } from "@/data";
-import { CirclePlayIcon } from "lucide-react";
+import { stats, what_we_do } from "@/data";
+import { CalendarClock, CirclePlayIcon } from "lucide-react";
 import SpaceBadge from "@/components/space-badge";
-import { EventType } from "@/data";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn, fetcher, formatDateWithComma } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 import Container from "@/components/container";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { UpcomingEvent, UpcomingEvents } from "@/types";
 
 interface Stat {
   name: string;
@@ -83,6 +83,11 @@ const AnimatedValue = ({ value, suffix = "" }: AnimatedValueProps) => {
 };
 
 const Home = () => {
+  const { data: upcomingEvents, isLoading } = useSwr<UpcomingEvents>(
+    "/api/upcoming-events",
+    fetcher
+  );
+
   return (
     <>
       {/* Hero Section */}
@@ -124,7 +129,9 @@ const Home = () => {
             transition={{ delay: 0.5 }}
             className="flex items-center gap-5 md:flex-row flex-col"
           >
-            <Button className="w-full md:w-fit hover:scale-105 transition-transform">Join the Community</Button>
+            <Button className="w-full md:w-fit hover:scale-105 transition-transform">
+              Join the Community
+            </Button>
             <Button
               variant={"ghost"}
               className="[&_svg]:size-6 w-full md:w-fit hover:scale-105 transition-transform"
@@ -264,19 +271,47 @@ const Home = () => {
           learn, and elevate your tech journey!
         </p>
         <div className="w-full space-y-10 !mt-10">
-          {upcoming_events.map((event) => (
+          {isLoading ? (
+            <div role="status">
+              <svg
+                aria-hidden="true"
+                className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                viewBox="0 0 100 101"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                  fill="currentFill"
+                />
+              </svg>
+              <span className="sr-only">Loading...</span>
+            </div>
+          ) : upcomingEvents?.docs?.length ? (
             <EventCard
-              key={event.action_link}
-              {...event}
-              stats={event.stats || []}
+              key={upcomingEvents?.docs[0]?.id}
+              event={upcomingEvents?.docs[0] as UpcomingEvent}
             />
-          ))}
+          ) : (
+            <div className="flex items-center space-x-2">
+              <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary text-white">
+                <CalendarClock />
+              </div>
+              <p className="text-2xl font-medium text-primary">
+                No Upcoming Events
+              </p>
+            </div>
+          )}
         </div>
       </Container>
 
-      {/* <div className="!my-18 w-full flex justify-center">
+      <div className="!my-18 w-full flex justify-center">
         <Button className="mx-auto">View Events</Button>
-      </div> */}
+      </div>
 
       {/* milestones */}
       <Container className="container py-20 space-y-20">
@@ -432,11 +467,11 @@ const Home = () => {
         <div className="w-full aspect-video relative mt-20">
           <ImageCard
             src={"/images/hackathon.png"}
-            className="w-1/2 absolute top-1/2 right-14 aspect-[6/4] -mt-20 rotate-[9deg] [&>#image-card]:h-[90%]"
+            className="sm:w-1/2 absolute top-1/2 right-4 sm:right-14 aspect-[6/4] -mt-20 rotate-[9deg] [&>#image-card]:h-[90%] shadow-2xl"
           />
           <ImageCard
             src={"/images/hackathon.png"}
-            className="w-1/2 absolute top-0 left-14 aspect-[6/4] -rotate-3 [&>#image-card]:h-[90%]"
+            className="sm:w-1/2 absolute -top-16 sm:top-0 left-4 sm:left-14 aspect-[6/4] -rotate-3 [&>#image-card]:h-[90%] shadow-2xl"
           />
         </div>
       </Container>
@@ -450,40 +485,34 @@ const Home = () => {
 
 export default Home;
 
-const EventCard = ({
-  title,
-  date,
-  description,
-  action_link,
-  action_text,
-  location,
-  image,
-  stats = [],
-}: EventType & { stats?: Stat[] }) => {
+const EventCard = ({ event }: { event: UpcomingEvent }) => {
   return (
     <div className="w-full flex md:flex-row flex-col gap-10">
-      <div className="w-full md:max-w-sm max-w-full lg:max-h-full mx-auto flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 md:max-h-[440px] object-cover">
+      <div className="w-full md:max-w-sm max-w-full lg:max-h-full mx-auto flex-shrink-0 shadow-xl aspect-square bg-white p-3 md:max-h-[440px] object-cover">
         <div className="w-full h-full relative">
           <Image
-            src={image}
-            alt={title}
+            src={event?.coverImage?.url}
+            alt={event?.eventTitle}
             fill
             className="object-cover h-full w-auto"
           />
         </div>
       </div>
       <div className="py-5 flex flex-col space-y-4">
-        <h2 className="text-2xl font-normal">{title}</h2>
-        <p className="text-xl text-gray-700 font-light">{description}</p>
+        <h2 className="text-2xl font-normal">{event?.eventTitle}</h2>
+        <p className="text-xl text-gray-700 font-light">{event?.description}</p>
         <p className="text-lg">
-          Date <span className="text-gray-600 ml-2">{date}</span>
+          Date{" "}
+          <span className="text-gray-600 ml-2">
+            {formatDateWithComma(event?.date)}
+          </span>
         </p>
         <p className="text-lg">
-          Location <span className="text-gray-600 ml-2">{location}</span>
+          Location <span className="text-gray-600 ml-2">{event?.location}</span>
         </p>
-        {stats && (
+        {event?.stats && (
           <div className="w-full max-w-xs flex flex-row items-center divide-x">
-            {stats.map((stat, i) => (
+            {event?.stats.map((stat, i) => (
               <div
                 key={i}
                 className={cn("flex-grow", {
@@ -492,19 +521,19 @@ const EventCard = ({
               >
                 <div>
                   <h4 className="text-xl font-semibold">
-                    {stat.value}{" "}
-                    <span className="text-primary text-base">
-                      {stat.suffix}
-                    </span>
+                    {stat.statValue}{" "}
+                    <span className="text-primary text-base">+</span>
                   </h4>
-                  <p className="subtitle">{stat.name}</p>
+                  <p className="subtitle">{stat.statTitle}</p>
                 </div>
               </div>
             ))}
           </div>
         )}
         <Button asChild className="w-fit">
-          <Link href={action_link}>{action_text}</Link>
+          <Link href={event?.eventLink}>
+            {event?.callToAction || "Register Now"}
+          </Link>
         </Button>
       </div>
     </div>

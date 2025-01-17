@@ -42,7 +42,7 @@ export default function ScrollToTop() {
           <Button
             onClick={scrollToTop}
             size="icon-sm"
-            className="bg-primary hover:bg-primary/90 text-white w-[20px] h-[20px] p-0 rounded-full"
+            className="bg-primary hover:bg-primary/90 text-white w-[40px] h-[40px] p-0 rounded-full"
             aria-label="Scroll to top"
           >
             <svg
