@@ -49,7 +49,7 @@ export default async function GalleryPage() {
               style={{ backgroundImage: `url(${album.coverImage.url})` }}
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black to-black/0 flex flex-col justify-end p-5 rounded-3xl">
-                <h1 className="text-4xl font-semibold text-white">
+                <h1 className="text-xl sm:text-2xl lg:text-4xl font-semibold text-white">
                   {album?.event}
                 </h1>
                 <Link href={album?.albumLink}>
