@@ -45,10 +45,6 @@ export default buildConfig({
         },
       ],
     },
-    autoRefresh: {
-      maxInterval: 10000, // 10 seconds
-      minInterval: 5000,  // 5 seconds
-    },
   },
   collections: [Users, Media, Blog, Gallery, UpcomingEvents, PastEvents],
   editor: lexicalEditor(),
