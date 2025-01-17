@@ -1,14 +1,14 @@
 import React from "react";
 import { LogoLarge } from "./brand";
-import { Button } from "./ui/button";
-import { other_links, quick_links, socials } from "@/data";
 import Link from "next/link";
 import Container from "@/components/container";
+import NewsletterForm from "@/components/newsletter-form";
+import { other_links, quick_links, socials } from "@/data";
 
 
 const Footer = () => {
   return (
-    <Container  className="container grid grid-cols-2 md:grid-cols-7 gap-10">
+    <Container className="container grid grid-cols-2 md:grid-cols-7 gap-10">
       <div className="col-span-2 w-full space-y-5 ">
         <LogoLarge />
         <p className="text-base text-gray-500">
@@ -52,22 +52,7 @@ const Footer = () => {
         <h4 className="text-primary text-lg font-medium">
           Subscribe to our Newsletter
         </h4>
-        <div className="gap-4">
-          <label htmlFor="email" className="font-medium">
-            Email
-          </label>
-          <div className="w-full bg-gray-100 relative h-12 p-1 rounded-2xl flex flex-row items-center justify-between">
-            <input
-              type="email"
-              id="email"
-              placeholder="Email"
-              className=" bg-gray-100 p-2  outline-none h-full w-3/4"
-            />
-            <Button className="w-1/4 !text-xs !rounded-xl" size={"sm"}>
-              Subscribe
-            </Button>
-          </div>
-        </div>
+        <NewsletterForm />
       </div>
       <div className="col-span-2 md:col-span-7 py-5 border-t">
         <p className="text-center text-gray-500 font-normal">
