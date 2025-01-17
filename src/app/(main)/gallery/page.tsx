@@ -2,17 +2,30 @@ import BrandsSection from "@/components/brands-section";
 import { HeroImageCards } from "@/components/image-cards";
 import JoinSection from "@/components/join-section";
 import SpaceBadge from "@/components/space-badge";
-import { cn } from "@/lib/utils";
 import React from "react";
 import Container from "@/components/container";
+import { Galleries } from "@/types";
+import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
+async function getAlbums() {
+  const BASE_URL = process.env.BASE_URL;
 
-const Page = () => {
+  const response = await fetch(`${BASE_URL}/api/gallery`);
+  const data: Galleries = await response.json();
+
+  return data;
+}
+
+export default async function GalleryPage() {
+  const albums = await getAlbums();
+
   return (
     <>
       {/* Hero Section */}
       <Container className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-5 md:py-20 content-center">
-        <div className="space-y-3 md:space-y-5 flex-col flex  justify-center">
+        <div className="space-y-3 md:space-y-5 flex-col flex justify-center">
           <SpaceBadge>CODE SPACE GALLERY</SpaceBadge>
           <h1 className="font-medium text-2xl md:text-5xl leading-normal">
             Who Can You Spot <br /> Here?
@@ -27,20 +40,27 @@ const Page = () => {
         </div>
       </Container>
 
-      <Container className="container gap-5 py-5 md:py-20 ">
-        <h1 className="font-normal text-xl md:text-3xl leading-snug text-center">
-          Events Highlight
-        </h1>
-      </Container>
-      <Container className="container">
-        <div className="p-5 sm:p-8 bg-gray-50 rounded-lg space-y-10">
-          <h1 className="text-2xl font-light">Fusion Tech fest 2024</h1>
-          <div className="columns-1 gap-4 sm:columns-2 sm:gap-5 md:columns-3 lg:columns-4 [&>div:not(:first-child)]:mt-8">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <GalleryCard key={i} index={i} />
-            ))}
-          </div>
-          <h1 className="text-xl font-light text-center">View more</h1>
+      <Container className="container gap-5 py-5 md:pb-20 md:pt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 relative">
+          {albums?.docs?.map((album) => (
+            <div
+              key={album?.id}
+              className="relative bg-cover bg-center rounded-3xl w-full h-[35rem] transition-transform duration-300 ease-in-out hover:scale-105"
+              style={{ backgroundImage: `url(${album.coverImage.url})` }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-black to-black/0 flex flex-col justify-end p-5 rounded-3xl">
+                <h1 className="text-4xl font-semibold text-white">
+                  {album?.event}
+                </h1>
+                <Link href={album?.albumLink}>
+                  <Button variant={"default"} size={"lg"} className="mt-5">
+                    View Album{" "}
+                    <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
       </Container>
 
@@ -50,19 +70,4 @@ const Page = () => {
       <JoinSection />
     </>
   );
-};
-
-export default Page;
-
-const GalleryCard = ({ index }: { index: number }) => (
-  <div
-    className={cn("w-full aspect-square  bg-gray-100 p-2 rounded-md", {
-      // "aspect-square": index > 3 && index % 2 === 0,
-      // "aspect-video": index > 3 && index % 2 === 1
-    })}
-  >
-    <div className="bg-white w-full h-4/5 rounded-sm flex items-center justify-center font-light text-3xl">
-      {index}
-    </div>
-  </div>
-);
+}

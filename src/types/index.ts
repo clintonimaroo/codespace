@@ -77,13 +77,13 @@ export interface LexicalNode {
   version?: number;
   url?: string;
   tag?: string;
-  listType?: 'number' | 'bullet';
+  listType?: "number" | "bullet";
 }
 
 export interface LexicalContent {
   root: {
     children: LexicalNode[];
-    direction: null | 'ltr' | 'rtl';
+    direction: null | "ltr" | "rtl";
     format: string;
     indent: number;
     type: string;
@@ -152,3 +152,17 @@ export type UpcomingEvents = {
 export interface BlogsAPIResponse extends Pagination {
   docs: BlogDoc[];
 }
+
+export type Gallery = {
+  id: string;
+  event: string;
+  coverImage: FeaturedImage;
+  date: string;
+  albumLink: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type Galleries = {
+  docs: Gallery[];
+} & Pagination;
