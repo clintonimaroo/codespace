@@ -18,6 +18,10 @@ pnpm-lock.yaml
 /.next/
 /out/
 
+# Editor
+/.vscode/
+/.idea/
+
 # production
 /build
 

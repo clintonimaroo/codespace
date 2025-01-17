@@ -1,12 +1,19 @@
+import { checkIsCodespaceUser } from "@/lib/utils";
 import { CollectionConfig } from "payload";
 
 export const UpcomingEvents: CollectionConfig = {
   slug: "upcoming-events",
   admin: {
     useAsTitle: "eventTitle",
+    hidden(args) {
+      return !checkIsCodespaceUser(args.user);
+    },
   },
   access: {
     read: () => true,
+    create: ({ req: { user } }) => checkIsCodespaceUser(user),
+    update: ({ req: { user } }) => checkIsCodespaceUser(user),
+    delete: ({ req: { user } }) => checkIsCodespaceUser(user),
   },
   fields: [
     {
