@@ -296,9 +296,7 @@ const Brand = () => {
         </div>
       </Container>
 
-      {/* Brands */}
       <BrandsSection />
-      {/* Join the community */}
       <JoinSection />
     </>
   );

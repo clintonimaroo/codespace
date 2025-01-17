@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/nav-bar";
 import Footer from "@/components/footer";
 import SmoothScroll from "@/components/smoothscroll";
+import ScrollToTop from "@/components/scroll-to-top";
 
 const duplicateSans = localFont({
   src: [
@@ -53,6 +54,7 @@ export default function RootLayout({
       >
         <SmoothScroll />
         <NavBar />
+        <ScrollToTop />
         {children}
         <Footer />
       </body>

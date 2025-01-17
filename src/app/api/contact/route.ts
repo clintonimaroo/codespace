@@ -18,6 +18,10 @@ function extractFirstName(email: string): string {
 }
 
 async function addSubscriberToSender(email: string) {
+  if (!process.env.SENDER_API_TOKEN) {
+    throw new Error("Missing Sender API token");
+  }
+
   try {
     const firstName = extractFirstName(email);
 
@@ -78,6 +82,10 @@ async function addSubscriberToSender(email: string) {
 }
 
 async function sendContactEmail(formData: any) {
+  if (!process.env.RESEND_API_KEY) {
+    throw new Error("Missing Resend API key");
+  }
+
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
@@ -94,12 +102,12 @@ async function sendContactEmail(formData: any) {
         message: formData.message,
       }),
       text: `Contact Form Submission\n\nName: ${formData.firstName || ""} ${formData.lastName || ""}\nEmail: ${formData.email}\nPhone: ${formData.phoneNumber || "Not provided"}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`,
-      replyTo: formData.email,
+      reply_to: formData.email,
     });
     return true;
   } catch (error) {
     console.error("Error sending email:", error);
-    return false;
+    throw error;
   }
 }
 
@@ -108,7 +116,6 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { email, subject, message } = body;
 
-    // If it's a contact form submission (has subject and message)
     if (subject && message) {
       await sendContactEmail(body);
       return NextResponse.json(
@@ -116,20 +123,11 @@ export async function POST(request: Request) {
         { status: 200 }
       );
     }
-    // If it's a newsletter subscription
     else {
       if (!email) {
         return NextResponse.json(
           { error: "Email is required" },
           { status: 400 }
-        );
-      }
-
-      if (!process.env.SENDER_API_TOKEN) {
-        console.error("Missing Sender API token");
-        return NextResponse.json(
-          { error: "Server configuration error" },
-          { status: 500 }
         );
       }
 
@@ -149,6 +147,15 @@ export async function POST(request: Request) {
       error instanceof Error
         ? error.message
         : "An error occurred. Please try again.";
+    
+    // Return a more specific error message for configuration issues
+    if (errorMessage.includes("Missing")) {
+      return NextResponse.json(
+        { error: "Server configuration error. Please contact support." },
+        { status: 500 }
+      );
+    }
+    
     return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
