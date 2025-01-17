@@ -5,9 +5,9 @@ export const Users: CollectionConfig = {
   slug: "users",
   admin: {
     useAsTitle: "name",
-    // hidden(args) {
-    //   return !checkIsCodespaceUser(args.user);
-    // },
+    hidden(args) {
+      return !checkIsCodespaceUser(args.user);
+    },
   },
   auth: true,
   access: {
