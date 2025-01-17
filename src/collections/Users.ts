@@ -12,7 +12,7 @@ export const Users: CollectionConfig = {
   auth: true,
   access: {
     read: () => true,
-    // create: ({ req: { user } }) => checkIsCodespaceUser(user),
+    create: ({ req: { user } }) => checkIsCodespaceUser(user),
     update: ({ req: { user } }) => {
       return {
         email: {
