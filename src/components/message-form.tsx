@@ -1,6 +1,55 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { useState, useRef } from "react";
 
 const MessageForm = () => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [errorMessage, setErrorMessage] = useState<string>('');
+    const formRef = useRef<HTMLFormElement>(null);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setFormStatus('idle');
+        setErrorMessage('');
+
+        const formData = new FormData(e.currentTarget);
+        const data = {
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            email: formData.get('email'),
+            subject: formData.get('subject'),
+            phoneNumber: `${formData.get('countryCode')} ${formData.get('phoneNumber')}`,
+            message: formData.get('message')
+        };
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.error || 'Failed to send message');
+            }
+
+            setFormStatus('success');
+            formRef.current?.reset();
+        } catch (error) {
+            setFormStatus('error');
+            setErrorMessage(error instanceof Error ? error.message : 'Failed to send message. Please try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <div className="w-full max-w-[640px] mx-auto px-6 md:px-0 space-y-8">
             <div className="text-center space-y-2">
@@ -8,13 +57,14 @@ const MessageForm = () => {
                 <p className="text-[#6B7280]">Fill up the form and our team will get back to you within 24 hours</p>
             </div>
 
-            <form className="space-y-4">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
                         <label className="text-sm">
                             First Name <span className="text-red-500">*</span>
                         </label>
                         <input
+                            name="firstName"
                             type="text"
                             placeholder="First Name"
                             required
@@ -26,6 +76,7 @@ const MessageForm = () => {
                             Last Name <span className="text-red-500">*</span>
                         </label>
                         <input
+                            name="lastName"
                             type="text"
                             placeholder="Last Name"
                             required
@@ -39,6 +90,7 @@ const MessageForm = () => {
                         Email Address <span className="text-red-500">*</span>
                     </label>
                     <input
+                        name="email"
                         type="email"
                         placeholder="you@gmail.com"
                         required
@@ -51,6 +103,7 @@ const MessageForm = () => {
                         Subject <span className="text-red-500">*</span>
                     </label>
                     <input
+                        name="subject"
                         type="text"
                         placeholder="What is this about?"
                         required
@@ -61,7 +114,10 @@ const MessageForm = () => {
                 <div className="space-y-1">
                     <label className="text-sm">Phone Number</label>
                     <div className="flex space-x-2">
-                        <select className="w-1/4 px-4 py-3 rounded-lg bg-[#F9FAFB] border-0">
+                        <select
+                            name="countryCode"
+                            className="w-1/4 px-4 py-3 rounded-lg bg-[#F9FAFB] border-0"
+                        >
                             <option value="+1">+1 (USA)</option>
                             <option value="+93">+93 (Afghanistan)</option>
                             <option value="+355">+355 (Albania)</option>
@@ -294,6 +350,7 @@ const MessageForm = () => {
                             <option value="+263">+263 (Zimbabwe)</option>
                         </select>
                         <input
+                            name="phoneNumber"
                             type="tel"
                             placeholder="123-456-7890"
                             className="w-full px-4 py-3 rounded-lg bg-[#F9FAFB] border-0"
@@ -306,6 +363,7 @@ const MessageForm = () => {
                         Message <span className="text-red-500">*</span>
                     </label>
                     <textarea
+                        name="message"
                         placeholder="Leave us a message"
                         rows={6}
                         required
@@ -313,8 +371,19 @@ const MessageForm = () => {
                     />
                 </div>
 
-                <Button className="w-full py-6 rounded-lg text-base">
-                    Send Message
+                {formStatus === 'success' && (
+                    <p className="text-green-600 text-sm">Message sent successfully! We&apos;ll get back to you soon.</p>
+                )}
+                {formStatus === 'error' && (
+                    <p className="text-red-600 text-sm">{errorMessage}</p>
+                )}
+
+                <Button
+                    type="submit"
+                    className="w-full py-6 rounded-lg text-base"
+                    disabled={isSubmitting}
+                >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
             </form>
         </div>
