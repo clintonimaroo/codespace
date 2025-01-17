@@ -12,7 +12,9 @@ import Link from "next/link";
 async function getAlbums() {
   const BASE_URL = process.env.BASE_URL;
 
-  const response = await fetch(`${BASE_URL}/api/gallery`);
+  const response = await fetch(`${BASE_URL}/api/gallery`, {
+    next: { revalidate: 0 },
+  });
   const data: Galleries = await response.json();
 
   return data;
