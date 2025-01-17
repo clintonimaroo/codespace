@@ -68,6 +68,15 @@ export const Blog: CollectionConfig = {
       },
     },
     {
+      name: "tags",
+      label: "Tags",
+      type: "text",
+      hasMany: true,
+      admin: {
+        position: "sidebar",
+      },
+    },
+    {
       name: "isFeatured",
       label: "Set as featured post",
       type: "checkbox",

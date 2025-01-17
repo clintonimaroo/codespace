@@ -147,10 +147,24 @@ export default async function BlogPage(props: Props) {
           <LexicalRenderer content={blog.content} />
         </div>
 
-        {/* Share article section */}
-        <div className="flex flex-col md:flex-row gap-8 md:gap-14 mt-8 md:mt-12">
+        {/* Tags section */}
+        {blog.tags && blog.tags.length > 0 && (
+          <div className="mt-8 flex flex-wrap gap-2 ml-[288px]">
+            {blog.tags.map((tag, index) => (
+              <span
+                key={index}
+                className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary hover:text-white transition-all duration-200 cursor-pointer"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* Share article and subscribe section */}
+        <div className="mt-4 md:mt-12 flex flex-col md:flex-row gap-8 md:gap-14">
           <div className="w-full md:w-[232px]">
-            <h4 className="text-[#101828] mt-6 md:mt-10 mb-4">Share article</h4>
+            <h4 className="text-[#101828] mb-4">Share article</h4>
             <div className="flex gap-4">
               <a
                 href={twitterShareUrl}

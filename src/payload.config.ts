@@ -23,6 +23,29 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    livePreview: {
+      breakpoints: [
+        {
+          label: 'Mobile',
+          width: 375,
+          height: 667,
+        },
+        {
+          label: 'Tablet',
+          width: 768,
+          height: 1024,
+        },
+        {
+          label: 'Desktop',
+          width: 1440,
+          height: 900,
+        },
+      ],
+    },
+    autoRefresh: {
+      maxInterval: 10000, // 10 seconds
+      minInterval: 5000,  // 5 seconds
+    },
   },
   collections: [Users, Media, Blog, Gallery, UpcomingEvents, PastEvents],
   editor: lexicalEditor(),

@@ -102,17 +102,22 @@ export interface Author {
   name: string;
 }
 
-export interface BlogDoc {
+export type BlogDoc = {
   id: string;
   title: string;
-  content: LexicalContent;
-  featuredImage: Media;
-  author?: Author;
+  content: any;
+  excerpt?: string;
+  featuredImage?: {
+    url: string;
+    alt?: string;
+  };
+  author?: {
+    name: string;
+  };
   createdAt: string;
-  updatedAt: string;
-  excerpt: string;
-  isFeatured: boolean;
-}
+  tags?: string[];
+  isFeatured?: boolean;
+};
 
 export interface Event {
   id: string;

@@ -135,6 +135,7 @@ export interface Blog {
     [k: string]: unknown;
   };
   excerpt: string;
+  tags?: string[] | null;
   isFeatured?: boolean | null;
   author?: (string | null) | User;
   updatedBy?: (string | null) | User;
@@ -404,6 +405,7 @@ export interface BlogSelect<T extends boolean = true> {
   featuredImage?: T;
   content?: T;
   excerpt?: T;
+  tags?: T;
   isFeatured?: T;
   author?: T;
   updatedBy?: T;
