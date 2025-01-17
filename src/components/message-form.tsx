@@ -352,8 +352,20 @@ const MessageForm = () => {
                         <input
                             name="phoneNumber"
                             type="tel"
+                            pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+                            maxLength={10}
                             placeholder="123-456-7890"
                             className="w-full px-4 py-3 rounded-lg bg-[#F9FAFB] border-0"
+                            onKeyPress={(e) => {
+                                if (!/[0-9]/.test(e.key)) {
+                                    e.preventDefault();
+                                }
+                            }}
+                            onChange={(e) => {
+                                const value = e.target.value.replace(/\D/g, '');
+                                e.target.value = value;
+                            }}
+                            required
                         />
                     </div>
                 </div>
