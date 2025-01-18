@@ -68,7 +68,7 @@ const SubscribeCard = () => {
       }}
     >
       <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-        Looking to Connect with Other Gen-Zs
+        Looking to Connect with Other&nbsp;Gen Zs&nbsp;
         <br className="hidden md:block" /> in Tech?
       </h3>
 
