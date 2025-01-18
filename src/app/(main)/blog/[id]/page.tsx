@@ -102,16 +102,17 @@ export default async function BlogPage(props: Props) {
   }
 
   // Prepare sharing URLs
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://codespace-psi.vercel.app';
+  const baseUrl =
+    process.env.NEXT_PUBLIC_APP_URL || "https://codespace-psi.vercel.app";
   const currentUrl = `${baseUrl}/blog/${params.id}`;
   const encodedUrl = encodeURIComponent(currentUrl);
-  const encodedTitle = encodeURIComponent(blog.title || '');
+  const encodedTitle = encodeURIComponent(blog.title || "");
   const twitterShareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`;
   const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`;
 
   return (
-    <Container className="container space-y-2 py-8 md:py-20 px-4 md:px-0">
-      <div className="max-w-7xl mx-auto py-4 md:py-8">
+    <Container className="container space-y-2 py-4 px-4 md:px-0">
+      <div className="mx-auto py-4 md:py-8">
         <Link
           href="/blog"
           className="text-neutral text-[15px] flex items-center gap-2 w-fit relative z-10"

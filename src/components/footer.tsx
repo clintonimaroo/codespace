@@ -5,14 +5,14 @@ import Container from "@/components/container";
 import NewsletterForm from "@/components/newsletter-form";
 import { other_links, quick_links, socials } from "@/data";
 
-
 const Footer = () => {
   return (
     <Container className="container grid grid-cols-2 md:grid-cols-7 gap-10">
-      <div className="col-span-2 w-full space-y-5 ">
+      <div className="col-span-2 w-full space-y-5">
         <LogoLarge />
         <p className="text-base text-gray-500">
-          Code Space is a nonprofit community fiscally sponsored by The Hack Foundation Nonprofit EIN: 81-2908499.
+          Code Space is a nonprofit community fiscally sponsored by The Hack
+          Foundation Nonprofit EIN: 81-2908499.
         </p>
       </div>
       <ul className="space-y-2 col-span-1">
@@ -56,7 +56,8 @@ const Footer = () => {
       </div>
       <div className="col-span-2 md:col-span-7 py-5 border-t">
         <p className="text-center text-gray-500 font-normal">
-          Copyright ©{" "} {new Date().getFullYear()} Code Space |  All rights reserved.
+          Copyright © {new Date().getFullYear()} Code Space | All rights
+          reserved.
         </p>
       </div>
     </Container>
