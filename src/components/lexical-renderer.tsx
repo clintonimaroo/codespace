@@ -62,15 +62,6 @@ interface TableOfContentsItem {
     level: number;
 }
 
-interface VideoNode {
-    type: "video";
-    fields: {
-        url: string;
-        type: "youtube";
-    };
-    children: LexicalNode[];
-}
-
 const extractTableOfContents = (nodes: LexicalNode[]): TableOfContentsItem[] => {
     const toc: TableOfContentsItem[] = [];
 
@@ -142,24 +133,29 @@ const ShareableTakeaway = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-function YouTubeEmbed({ url }: { url: string }) {
+const YouTubeEmbed = ({ url }: { url: string }) => {
     // Extract video ID from YouTube URL
-    const videoId = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/)?.[1];
+    const getYouTubeVideoId = (url: string) => {
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+        const match = url.match(regExp);
+        return match && match[2].length === 11 ? match[2] : null;
+    };
 
+    const videoId = getYouTubeVideoId(url);
     if (!videoId) return null;
 
     return (
         <div className="relative w-full aspect-video my-8">
             <iframe
+                className="absolute top-0 left-0 w-full h-full rounded-lg"
                 src={`https://www.youtube.com/embed/${videoId}`}
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                className="absolute top-0 left-0 w-full h-full rounded-lg"
             />
         </div>
     );
-}
+};
 
 const renderNode = (node: LexicalNode): JSX.Element | string | null => {
     switch (node.type) {
@@ -320,9 +316,8 @@ const renderNode = (node: LexicalNode): JSX.Element | string | null => {
         }
 
         case 'video':
-            const videoNode = node as VideoNode;
-            if (videoNode.fields.type === 'youtube') {
-                return <YouTubeEmbed url={videoNode.fields.url} />;
+            if (node.fields?.video?.type === 'youtube') {
+                return <YouTubeEmbed url={node.fields.video.url} />;
             }
             return null;
 

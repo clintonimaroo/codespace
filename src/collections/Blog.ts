@@ -1,32 +1,42 @@
 import { CollectionConfig } from "payload";
-import { checkIsCodespaceUser } from "@/lib/utils";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
-import {
-  HeadingFeature,
-  BlockquoteFeature,
-  LinkFeature,
-  UploadFeature,
-  BoldTextFeature,
-  ItalicTextFeature,
-  UnderlineTextFeature,
-  StrikethroughTextFeature,
-  CodeTextFeature,
-  ListFeature,
-} from "@payloadcms/richtext-lexical";
 
 export const Blog: CollectionConfig = {
   slug: "blog",
+  hooks: {
+    beforeChange: [
+      ({ req, operation, data }) => {
+        if (req.user) {
+          if (operation === "create") {
+            data.author = req.user.id;
+            data.updatedBy = req.user.id;
+          } else if (operation === "update") {
+            data.updatedBy = req.user.id;
+          }
+
+          return data;
+        }
+      },
+    ],
+  },
   admin: {
     useAsTitle: "title",
-    hidden(args) {
-      return !checkIsCodespaceUser(args.user);
-    },
   },
   access: {
-    read: () => true,
-    create: ({ req: { user } }) => checkIsCodespaceUser(user),
-    update: ({ req: { user } }) => checkIsCodespaceUser(user),
-    delete: ({ req: { user } }) => checkIsCodespaceUser(user),
+    read: ({ req }) => {
+      if (req.user) return true;
+
+      return {
+        _status: {
+          equals: "published",
+        },
+      };
+    },
+  },
+  versions: {
+    drafts: {
+      autosave: true,
+      schedulePublish: true,
+    },
   },
   fields: [
     {
@@ -36,62 +46,73 @@ export const Blog: CollectionConfig = {
       required: true,
     },
     {
+      name: "featuredImage",
+      label: "Featured Image",
+      type: "upload",
+      required: true,
+      relationTo: "media",
+    },
+    {
       name: "content",
       label: "Content",
       type: "richText",
       required: true,
-      editor: lexicalEditor({
-        features: [
-          HeadingFeature(),
-          BlockquoteFeature(),
-          LinkFeature(),
-          UploadFeature(),
-          BoldTextFeature(),
-          ItalicTextFeature(),
-          UnderlineTextFeature(),
-          StrikethroughTextFeature(),
-          CodeTextFeature(),
-          ListFeature(),
-        ],
-      }),
     },
     {
       name: "excerpt",
       label: "Excerpt",
       type: "textarea",
-    },
-    {
-      name: "featuredImage",
-      label: "Featured Image",
-      type: "upload",
-      relationTo: "media",
       required: true,
-    },
-    {
-      name: "author",
-      label: "Author",
-      type: "relationship",
-      relationTo: "users",
-      required: true,
+      admin: {
+        position: "sidebar",
+      },
     },
     {
       name: "tags",
       label: "Tags",
-      type: "array",
-      minRows: 1,
-      maxRows: 5,
-      fields: [
-        {
-          name: "tag",
-          type: "text",
-        },
-      ],
+      type: "text",
+      hasMany: true,
+      admin: {
+        position: "sidebar",
+      },
     },
     {
       name: "isFeatured",
-      label: "Featured",
+      label: "Set as featured post",
       type: "checkbox",
       defaultValue: false,
+      admin: {
+        position: "sidebar",
+      },
+    },
+    {
+      name: "author",
+      type: "relationship",
+      access: {
+        update: () => false,
+        read: () => true,
+      },
+      relationTo: "users",
+      admin: {
+        readOnly: true,
+        position: "sidebar",
+        condition: (data) => !!data?.author,
+      },
+      required: true,
+    },
+    {
+      name: "updatedBy",
+      type: "relationship",
+      access: {
+        update: () => false,
+      },
+      relationTo: "users",
+      admin: {
+        readOnly: true,
+        position: "sidebar",
+        condition: (data) => !!data?.updatedBy,
+      },
+      required: true,
     },
   ],
 };
