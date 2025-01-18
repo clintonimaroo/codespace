@@ -61,14 +61,14 @@ export async function generateMetadata(
 const SubscribeCard = () => {
   return (
     <div
-      className="mt-12 rounded-[10px] p-6 md:p-12 text-center min-h-[250px] md:h-[300px] flex flex-col justify-center"
+      className="rounded-[10px] p-6 md:p-12 text-center min-h-[250px] md:h-[300px] flex flex-col justify-center mb-16"
       style={{
         backgroundImage: "url(https://i.postimg.cc/htZ2Q45M/subscribe-bg.png)",
         backgroundSize: "cover",
       }}
     >
       <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-        Looking to Connect with Other Gen-Zs
+        Looking to Connect with Other&nbsp;Gen Zs&nbsp;
         <br className="hidden md:block" /> in Tech?
       </h3>
 
@@ -127,12 +127,12 @@ export default async function BlogPage(props: Props) {
       name: "Code Space",
       logo: {
         "@type": "ImageObject",
-        url: `${baseUrl}/images/logo.png`
-      }
+        url: `${baseUrl}/images/logo.png`,
+      },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": currentUrl
+      "@id": currentUrl,
     },
     keywords: blog.tags?.join(", "),
   };

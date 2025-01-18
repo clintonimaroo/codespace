@@ -133,7 +133,7 @@ export default async function Events() {
       />
       {/* Hero Section */}
       <Container className="container gap-5 py-5 md:py-20 ">
-        <div className="space-y-5 flex-col flex  justify-center items-center text-center sm:w-1/2 mx-auto">
+        <div className="space-y-5 flex-col flex justify-center items-center text-center sm:w-1/2 mx-auto">
           <Logo className="scale-75" />
           <SpaceBadge>CODE SPACE EVENTS</SpaceBadge>
           <h1 className="font-medium text-3xl md:text-5xl leading-snug">
@@ -187,7 +187,7 @@ export default async function Events() {
 const EventCard = ({ event }: { event: PastEvent }) => {
   return (
     <div className="w-full flex md:flex-row flex-col gap-10">
-      <div className="w-full max-w-sm flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 rounded-sm">
+      <div className="w-full max-w-sm flex-shrink-0 shadow-[0_0_20px_0_rgba(34,34,34,0.05)] aspect-square bg-white p-3 rounded-sm">
         <div className="w-full h-full relative">
           <Image
             src={event?.coverImage?.url}
@@ -214,7 +214,7 @@ const EventCard = ({ event }: { event: PastEvent }) => {
 const UpcomingEvent = ({ event }: { event: UpcomingEvent }) => {
   return (
     <div className="w-full flex md:flex-row flex-col gap-10">
-      <div className="w-full md:max-w-sm max-w-full lg:max-h-full mx-auto flex-shrink-0 drop-shadow-md shadow-gray-50/45 aspect-square bg-white p-3 md:max-h-[440px] object-cover">
+      <div className="w-full md:max-w-sm max-w-full lg:max-h-full mx-auto flex-shrink-0 shadow-[0_0_20px_0_rgba(34,34,34,0.05)] aspect-square bg-white p-3 md:max-h-[440px] object-cover">
         <div className="w-full h-full relative">
           <Image
             src={event?.coverImage.url}

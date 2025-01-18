@@ -1,11 +1,13 @@
-import React from "react";
+import ImageCard from "./image-card";
 import { Button } from "./ui/button";
-import { JoinUsImageCards } from "./image-cards";
 import Container from "@/components/container";
 
 const JoinSection = () => {
   return (
-    <Container className="container flex flex-col lg:flex-row items-center py-20 mt-7 mb-20 h-[900px]">
+    <Container className="container flex flex-col lg:flex-row items-center py-20 mt-7 mb-20 gap-x-20 gap-y-10">
+      <div className="w-full md:w-80">
+        <ImageCard className="w-full shadow-[0_0_20px_0_rgba(34,34,34,0.05)]" />
+      </div>
       <div className="space-y-5 flex flex-col max-w-xl">
         <h3 className="text-xl text-primary font-medium">JOIN CODE SPACE!!</h3>
         <p className="text-gray-800 text-2xl sm:text-3xl">
@@ -13,9 +15,6 @@ const JoinSection = () => {
           channel and getting periodic updates.
         </p>
         <Button className="w-fit">Join the community</Button>
-      </div>
-      <div className="aspect-square min-h-60 md:min-h-96 md:aspect-[16/10] lg:mt-0 mt-20">
-        <JoinUsImageCards />
       </div>
     </Container>
   );
