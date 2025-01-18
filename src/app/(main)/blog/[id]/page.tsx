@@ -169,7 +169,7 @@ export default async function BlogPage(props: Props) {
               <p>•</p>
               <p>{formatDate(blog.createdAt)}</p>
             </div>
-            <div className="text-[20px] leading-[1.5] text-[#475467] mt-6 md:hidden line-clamp-2">
+            <div className="text-[16px] leading-[1.5] text-[#475467] mt-6 md:hidden line-clamp-2">
               {blog.excerpt}
             </div>
           </div>

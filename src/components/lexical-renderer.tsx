@@ -24,6 +24,9 @@ interface LexicalNode {
     width?: number;
     target?: string;
     rel?: string;
+    // Additional fields for video embeds
+    videoUrl?: string;
+    videoType?: 'youtube' | 'vimeo';
     // Additional fields for Payload CMS Lexical format
     fields?: {
         url?: {
@@ -33,6 +36,10 @@ interface LexicalNode {
         rel?: string;
         target?: string;
         image?: MediaValue;
+        video?: {
+            url: string;
+            type: 'youtube' | 'vimeo';
+        };
     };
     relationTo?: string;
     value?: MediaValue;
@@ -53,6 +60,15 @@ interface TableOfContentsItem {
     text: string;
     id: string;
     level: number;
+}
+
+interface VideoNode {
+    type: "video";
+    fields: {
+        url: string;
+        type: "youtube";
+    };
+    children: LexicalNode[];
 }
 
 const extractTableOfContents = (nodes: LexicalNode[]): TableOfContentsItem[] => {
@@ -125,6 +141,25 @@ const ShareableTakeaway = ({ children }: { children: React.ReactNode }) => {
         </div>
     );
 };
+
+function YouTubeEmbed({ url }: { url: string }) {
+    // Extract video ID from YouTube URL
+    const videoId = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/)?.[1];
+
+    if (!videoId) return null;
+
+    return (
+        <div className="relative w-full aspect-video my-8">
+            <iframe
+                src={`https://www.youtube.com/embed/${videoId}`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute top-0 left-0 w-full h-full rounded-lg"
+            />
+        </div>
+    );
+}
 
 const renderNode = (node: LexicalNode): JSX.Element | string | null => {
     switch (node.type) {
@@ -283,6 +318,13 @@ const renderNode = (node: LexicalNode): JSX.Element | string | null => {
                 </figure>
             );
         }
+
+        case 'video':
+            const videoNode = node as VideoNode;
+            if (videoNode.fields.type === 'youtube') {
+                return <YouTubeEmbed url={videoNode.fields.url} />;
+            }
+            return null;
 
         default:
             if (node.children?.length) {

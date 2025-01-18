@@ -1,42 +1,19 @@
 import { CollectionConfig } from "payload";
+import { checkIsCodespaceUser } from "@/lib/utils";
 
 export const Blog: CollectionConfig = {
   slug: "blog",
-  hooks: {
-    beforeChange: [
-      ({ req, operation, data }) => {
-        if (req.user) {
-          if (operation === "create") {
-            data.author = req.user.id;
-            data.updatedBy = req.user.id;
-          } else if (operation === "update") {
-            data.updatedBy = req.user.id;
-          }
-
-          return data;
-        }
-      },
-    ],
-  },
   admin: {
     useAsTitle: "title",
+    hidden(args) {
+      return !checkIsCodespaceUser(args.user);
+    },
   },
   access: {
-    read: ({ req }) => {
-      if (req.user) return true;
-
-      return {
-        _status: {
-          equals: "published",
-        },
-      };
-    },
-  },
-  versions: {
-    drafts: {
-      autosave: true,
-      schedulePublish: true,
-    },
+    read: () => true,
+    create: ({ req: { user } }) => checkIsCodespaceUser(user),
+    update: ({ req: { user } }) => checkIsCodespaceUser(user),
+    delete: ({ req: { user } }) => checkIsCodespaceUser(user),
   },
   fields: [
     {
@@ -46,73 +23,91 @@ export const Blog: CollectionConfig = {
       required: true,
     },
     {
-      name: "featuredImage",
-      label: "Featured Image",
-      type: "upload",
-      required: true,
-      relationTo: "media",
-    },
-    {
       name: "content",
       label: "Content",
       type: "richText",
       required: true,
+      admin: {
+        elements: [
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+          "blockquote",
+          "link",
+          "ol",
+          "ul",
+          "indent",
+          "upload",
+          {
+            name: "video",
+            Button: () => "Video",
+            Element: ({ children }) => children,
+            fields: [
+              {
+                name: "url",
+                label: "YouTube URL",
+                type: "text",
+                required: true,
+              },
+              {
+                name: "type",
+                label: "Video Type",
+                type: "select",
+                required: true,
+                defaultValue: "youtube",
+                options: [
+                  {
+                    label: "YouTube",
+                    value: "youtube",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+        leaves: ["bold", "italic", "underline", "strikethrough", "code"],
+      },
     },
     {
       name: "excerpt",
       label: "Excerpt",
       type: "textarea",
+    },
+    {
+      name: "featuredImage",
+      label: "Featured Image",
+      type: "upload",
+      relationTo: "media",
       required: true,
-      admin: {
-        position: "sidebar",
-      },
+    },
+    {
+      name: "author",
+      label: "Author",
+      type: "relationship",
+      relationTo: "users",
+      required: true,
     },
     {
       name: "tags",
       label: "Tags",
-      type: "text",
-      hasMany: true,
-      admin: {
-        position: "sidebar",
-      },
+      type: "array",
+      minRows: 1,
+      maxRows: 5,
+      fields: [
+        {
+          name: "tag",
+          type: "text",
+        },
+      ],
     },
     {
       name: "isFeatured",
-      label: "Set as featured post",
+      label: "Featured",
       type: "checkbox",
       defaultValue: false,
-      admin: {
-        position: "sidebar",
-      },
-    },
-    {
-      name: "author",
-      type: "relationship",
-      access: {
-        update: () => false,
-        read: () => true,
-      },
-      relationTo: "users",
-      admin: {
-        readOnly: true,
-        position: "sidebar",
-        condition: (data) => !!data?.author,
-      },
-      required: true,
-    },
-    {
-      name: "updatedBy",
-      type: "relationship",
-      access: {
-        update: () => false,
-      },
-      relationTo: "users",
-      admin: {
-        readOnly: true,
-        position: "sidebar",
-        condition: (data) => !!data?.updatedBy,
-      },
-      required: true,
     },
   ],
 };
