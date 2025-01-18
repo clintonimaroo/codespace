@@ -1,6 +1,18 @@
 import { CollectionConfig } from "payload";
 import { checkIsCodespaceUser } from "@/lib/utils";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import {
+  HeadingFeature,
+  BlockquoteFeature,
+  LinkFeature,
+  UploadFeature,
+  BoldTextFeature,
+  ItalicTextFeature,
+  UnderlineTextFeature,
+  StrikethroughTextFeature,
+  CodeTextFeature,
+  ListFeature,
+} from "@payloadcms/richtext-lexical";
 
 export const Blog: CollectionConfig = {
   slug: "blog",
@@ -29,35 +41,18 @@ export const Blog: CollectionConfig = {
       type: "richText",
       required: true,
       editor: lexicalEditor({
-        features: {
-          blocks: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul'],
-          marks: ['bold', 'italic', 'underline', 'strikethrough', 'code'],
-          links: true,
-          upload: true,
-          video: {
-            fields: [
-              {
-                name: "url",
-                label: "YouTube URL",
-                type: "text",
-                required: true,
-              },
-              {
-                name: "type",
-                label: "Video Type",
-                type: "select",
-                required: true,
-                defaultValue: "youtube",
-                options: [
-                  {
-                    label: "YouTube",
-                    value: "youtube",
-                  },
-                ],
-              },
-            ],
-          },
-        },
+        features: [
+          HeadingFeature(),
+          BlockquoteFeature(),
+          LinkFeature(),
+          UploadFeature(),
+          BoldTextFeature(),
+          ItalicTextFeature(),
+          UnderlineTextFeature(),
+          StrikethroughTextFeature(),
+          CodeTextFeature(),
+          ListFeature(),
+        ],
       }),
     },
     {
