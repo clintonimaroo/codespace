@@ -467,11 +467,11 @@ const Home = () => {
         <div className="w-full aspect-video relative mt-20">
           <ImageCard
             src={"/images/hackathon.png"}
-            className="sm:w-1/2 absolute top-1/2 right-4 sm:right-14 aspect-[6/4] -mt-20 rotate-[9deg] [&>#image-card]:h-[90%] shadow-2xl"
+            className="sm:w-1/2 absolute top-1/2 right-4 sm:right-14 aspect-[6/4] -mt-20 rotate-[9deg] [&>#image-card]:h-[90%] shadow-[0_0_50px_0_rgba(34,34,34,0.05)]"
           />
           <ImageCard
             src={"/images/hackathon.png"}
-            className="sm:w-1/2 absolute -top-16 sm:top-0 left-4 sm:left-14 aspect-[6/4] -rotate-3 [&>#image-card]:h-[90%] shadow-2xl"
+            className="sm:w-1/2 absolute -top-16 sm:top-0 left-4 sm:left-14 aspect-[6/4] -rotate-3 [&>#image-card]:h-[90%] shadow-[0_0_50px_0_rgba(34,34,34,0.05)]"
           />
         </div>
       </Container>
@@ -488,7 +488,7 @@ export default Home;
 const EventCard = ({ event }: { event: UpcomingEvent }) => {
   return (
     <div className="w-full flex md:flex-row flex-col gap-10">
-      <div className="w-full md:max-w-sm max-w-full lg:max-h-full mx-auto flex-shrink-0 shadow-xl aspect-square bg-white p-3 md:max-h-[440px] object-cover">
+      <div className="w-full md:max-w-sm max-w-full lg:max-h-full mx-auto flex-shrink-0 shadow-[0_0_20px_0_rgba(34,34,34,0.05)] aspect-square bg-white p-3 md:max-h-[440px] object-cover">
         <div className="w-full h-full relative">
           <Image
             src={event?.coverImage?.url}
