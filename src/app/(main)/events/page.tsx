@@ -14,6 +14,7 @@ import {
   type UpcomingEvent,
   type UpcomingEvents,
 } from "@/types";
+import Script from "next/script";
 
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
@@ -61,11 +62,75 @@ async function getUpcomingEvents() {
 }
 
 export default async function Events() {
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://codespace-psi.vercel.app";
+
+  // Fetch events using the existing functions
   const upcomingEvents = await getUpcomingEvents();
   const pastEvents = await getPastEvents();
 
+  // Prepare JSON-LD structured data for events
+  const eventsJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: [
+      ...upcomingEvents.docs.map((event: UpcomingEvent, index: number) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Event",
+          name: event.eventTitle,
+          description: event.description,
+          startDate: event.date,
+          endDate: event.date,
+          location: {
+            "@type": "VirtualLocation",
+            url: event.eventLink
+          },
+          organizer: {
+            "@type": "Organization",
+            name: "Code Space",
+            url: baseUrl
+          },
+          image: event.coverImage?.url,
+          url: `${baseUrl}/events#${event.id}`,
+          eventStatus: "https://schema.org/EventScheduled",
+          eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+        }
+      })),
+      ...pastEvents.docs.map((event: PastEvent, index: number) => ({
+        "@type": "ListItem",
+        position: upcomingEvents.docs.length + index + 1,
+        item: {
+          "@type": "Event",
+          name: event.eventTitle,
+          description: event.description,
+          startDate: event.date,
+          endDate: event.date,
+          location: {
+            "@type": "VirtualLocation",
+            url: event.recapLink
+          },
+          organizer: {
+            "@type": "Organization",
+            name: "Code Space",
+            url: baseUrl
+          },
+          image: event.coverImage?.url,
+          url: `${baseUrl}/events#${event.id}`,
+          eventStatus: "https://schema.org/EventScheduled",
+          eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+        }
+      }))
+    ]
+  };
+
   return (
     <>
+      <Script
+        id="events-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventsJsonLd) }}
+      />
       {/* Hero Section */}
       <Container className="container gap-5 py-5 md:py-20 ">
         <div className="space-y-5 flex-col flex justify-center items-center text-center sm:w-1/2 mx-auto">

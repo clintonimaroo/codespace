@@ -5,6 +5,7 @@ import NavBar from "@/components/nav-bar";
 import Footer from "@/components/footer";
 import SmoothScroll from "@/components/smoothscroll";
 import ScrollToTop from "@/components/scroll-to-top";
+import Script from "next/script";
 
 const duplicateSans = localFont({
   src: [
@@ -37,9 +38,62 @@ const duplicateSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Code Space",
-  description:
-    "Building a Tech Career Alone is Hard. But with us, the journey becomes a lot smoother for techies like you!",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://codespace-psi.vercel.app'),
+  title: {
+    default: "Code Space - Building Africa's Largest Gen Z Tech Community",
+    template: "%s | Code Space"
+  },
+  description: "Code Space is Africa's largest Gen Z tech community, connecting young tech talents for growth, impact, and success. Join our vibrant community to accelerate your tech career.",
+  keywords: ["Code Space", "Tech Community", "Gen Z", "Africa Tech", "Tech Career", "Tech Events", "Tech Network", "Tech Education"],
+  authors: [{ name: "Code Space" }],
+  creator: "Code Space",
+  publisher: "Code Space",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: process.env.NEXT_PUBLIC_APP_URL || 'https://codespace-psi.vercel.app',
+    title: "Code Space - Building Africa's Largest Gen Z Tech Community",
+    description: "Code Space is Africa's largest Gen Z tech community, connecting young tech talents for growth, impact, and success. Join our vibrant community to accelerate your tech career.",
+    siteName: "Code Space",
+    images: [
+      {
+        url: "/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Code Space - Africa's Largest Gen Z Tech Community"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Code Space - Building Africa's Largest Gen Z Tech Community",
+    description: "Code Space is Africa's largest Gen Z tech community, connecting young tech talents for growth, impact, and success. Join our vibrant community to accelerate your tech career.",
+    images: ["/images/og-image.jpg"],
+    creator: "@codespace",
+    site: "@codespace"
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: "your-google-verification-code",
+  },
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_APP_URL,
+  },
 };
 
 export default function RootLayout({
@@ -47,8 +101,69 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Code Space",
+    description: "Africa's largest Gen Z tech community, connecting young tech talents for growth, impact, and success.",
+    url: process.env.NEXT_PUBLIC_APP_URL || 'https://codespace-psi.vercel.app',
+    logo: `${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png`,
+    foundingDate: "2021",
+    founders: [
+      {
+        "@type": "Person",
+        name: "Clinton Imaro"
+      }
+    ],
+    sameAs: [
+      "https://x.com/CodeSpaceHQ",
+      "https://www.linkedin.com/company/codespacehq",
+      "https://instagram.com/codesspace"
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "Nigeria",
+      addressLocality: "Lagos"
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: "hello@codespaces.org"
+    },
+    knowsAbout: [
+      "Tech Community",
+      "Software Development",
+      "Tech Events",
+      "Tech Education",
+      "African Tech",
+      "Gen Z Tech",
+      "Hackathons",
+      "Tech Conferences",
+      "Tech Meetups",
+      "Tech Workshops",
+      "Tech Workshops",
+      "Tech Conferences",
+      "Tech Meetups",
+      "Tech Workshops",
+    ]
+  };
+
   return (
     <html lang="en">
+      <head>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
+        <Script
+          id="json-ld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${duplicateSans.className} antialiased lenis lenis-smooth`}
       >
