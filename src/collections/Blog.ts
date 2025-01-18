@@ -1,5 +1,6 @@
 import { CollectionConfig } from "payload";
 import { checkIsCodespaceUser } from "@/lib/utils";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
 
 export const Blog: CollectionConfig = {
   slug: "blog",
@@ -27,24 +28,13 @@ export const Blog: CollectionConfig = {
       label: "Content",
       type: "richText",
       required: true,
-      admin: {
-        elements: [
-          "h1",
-          "h2",
-          "h3",
-          "h4",
-          "h5",
-          "h6",
-          "blockquote",
-          "link",
-          "ol",
-          "ul",
-          "indent",
-          "upload",
-          {
-            name: "video",
-            Button: () => "Video",
-            Element: ({ children }) => children,
+      editor: lexicalEditor({
+        features: {
+          blocks: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'ol', 'ul'],
+          marks: ['bold', 'italic', 'underline', 'strikethrough', 'code'],
+          links: true,
+          upload: true,
+          video: {
             fields: [
               {
                 name: "url",
@@ -67,9 +57,8 @@ export const Blog: CollectionConfig = {
               },
             ],
           },
-        ],
-        leaves: ["bold", "italic", "underline", "strikethrough", "code"],
-      },
+        },
+      }),
     },
     {
       name: "excerpt",
