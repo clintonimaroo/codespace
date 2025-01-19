@@ -75,12 +75,11 @@ export const Blog: CollectionConfig = {
       // If no user, only show published posts
       if (!req.user) {
         return {
-          _status: {
-            equals: "published",
-          },
-          author: {
-            equals: "",
-          },
+          and: [{
+            _status: {
+              equals: "published"
+            }
+          }]
         };
       }
 
@@ -91,12 +90,11 @@ export const Blog: CollectionConfig = {
 
       // Otherwise, only show user's own posts
       return {
-        author: {
-          equals: req.user.id,
-        },
-        _status: {
-          equals: "published",
-        },
+        and: [{
+          author: {
+            equals: req.user.id
+          }
+        }]
       };
     },
     create: ({ req }) => {
