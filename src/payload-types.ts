@@ -93,12 +93,15 @@ export interface User {
   password?: string | null;
 }
 /**
+ * Upload and manage media files.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
   id: string;
   alt: string;
+  uploadedBy: string | User;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -136,7 +139,12 @@ export interface Blog {
   };
   excerpt: string;
   tags?: string[] | null;
+  /**
+   * Display this post in the featured section. Only one post can be featured at a time.
+   */
   isFeatured?: boolean | null;
+  postType: 'regular' | 'top' | 'featured';
+  category: 'tech' | 'people' | 'community' | 'events';
   author?: (string | null) | User;
   updatedBy?: (string | null) | User;
   updatedAt: string;
@@ -384,6 +392,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  uploadedBy?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -407,6 +416,8 @@ export interface BlogSelect<T extends boolean = true> {
   excerpt?: T;
   tags?: T;
   isFeatured?: T;
+  postType?: T;
+  category?: T;
   author?: T;
   updatedBy?: T;
   updatedAt?: T;

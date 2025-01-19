@@ -106,17 +106,28 @@ export type BlogDoc = {
   id: string;
   title: string;
   content: any;
-  excerpt?: string;
-  featuredImage?: {
+  excerpt: string;
+  featuredImage: {
     url: string;
-    alt?: string;
+    alt: string;
   };
-  author?: {
+  tags: string[];
+  category: "tech" | "people" | "community" | "events";
+  postType: "regular" | "top" | "featured";
+  isFeatured: boolean;
+  author: {
+    id: string;
     name: string;
+    username: string;
   };
+  updatedBy: {
+    id: string;
+    name: string;
+    username: string;
+  };
+  _status?: string;
   createdAt: string;
-  tags?: string[];
-  isFeatured?: boolean;
+  updatedAt: string;
 };
 
 export interface Event {
