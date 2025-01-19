@@ -16,7 +16,7 @@ export default function AllBlogs({
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 md:gap-x-16 md:gap-y-20">
         {blogs?.docs?.length ? (
           blogs.docs.map((blog) => (
-            <div key={blog.id} className="relative flex flex-col h-full">
+            <div key={blog.id} className="relative">
               {blog.featuredImage && (
                 <Image
                   className="aspect-[16/9] bg-[#f8f8f8] rounded-xl md:rounded-none w-full object-cover"
@@ -26,7 +26,7 @@ export default function AllBlogs({
                   alt={blog.featuredImage.alt || blog.title}
                 />
               )}
-              <div className="flex flex-col flex-grow gap-y-3 mt-4 md:mt-6">
+              <div className="flex flex-col gap-y-1 mt-4 md:mt-6">
                 <div className="flex items-center gap-x-[5.5px] text-neutral text-base">
                   <p>{blog.author?.name || "Anonymous"}</p>
                   <div className="h-[3px] w-[3px] rounded-full bg-neutral" />
@@ -35,11 +35,11 @@ export default function AllBlogs({
                 <div className="flex flex-col flex-grow justify-between">
                   <Link
                     href={`/blog/${blog.id}`}
-                    className="text-xl md:text-[28px] font-bold hover:text-primary line-clamp-2 md:leading-tight"
+                    className="text-xl md:text-[28px] font-bold hover:text-primary line-clamp-2 md:leading-tight group"
                   >
                     {blog.title}
                   </Link>
-                  <p className="text-base text-neutral line-clamp-2 md:text-lg mt-3">
+                  <p className={`text-base text-neutral md:text-lg mt-3 ${blog.title.length < 50 ? 'line-clamp-3' : 'line-clamp-2'}`}>
                     {blog.excerpt ||
                       "A practical guide for Gen Z coders on the most popular tools used in the industry."}
                   </p>
