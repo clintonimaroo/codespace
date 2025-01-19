@@ -175,7 +175,7 @@ export default async function BlogPage(props: Props) {
                   src={blog.featuredImage.url}
                   alt={blog.featuredImage.alt || blog.title}
                   fill
-                  className="object-contain"
+                  className="object-cover w-full h-full"
                   priority
                 />
               )}
