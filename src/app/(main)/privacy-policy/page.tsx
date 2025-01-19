@@ -2,43 +2,18 @@ import Container from "@/components/container";
 import React from "react";
 
 const PrivacyPolicy = () => {
-    const tableOfContents = [
-        { id: 'about', text: 'About this policy' },
-        { id: 'basics', text: '1. The Basics' },
-        { id: 'information', text: '2. Information we collect' },
-        { id: 'protection', text: '3. How we protect your data' },
-        { id: 'contact', text: '4. Contact us' }
-    ];
 
     return (
         <Container>
             <div className="min-h-screen bg-white">
                 <div className="flex flex-col lg:flex-row gap-12">
-                    {/* Side Navigation - Fixed */}
-                    <aside className="hidden lg:block w-64 shrink-0">
-                        <div className="sticky top-8 px-6 md:px-8 lg:px-12">
-                            <h2 className="text-sm font-medium text-gray-900 mb-4">On this page</h2>
-                            <nav className="flex flex-col space-y-3">
-                                {tableOfContents.map((item) => (
-                                    <a
-                                        key={item.id}
-                                        href={`#${item.id}`}
-                                        className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
-                                    >
-                                        {item.text}
-                                    </a>
-                                ))}
-                            </nav>
-                        </div>
-                    </aside>
-
                     {/* Main Content - Scrollable */}
-                    <main className="flex-1 max-w-3xl px-6 md:px-8 lg:px-12 py-10">
-                        <h1 className="font-graphik text-[51px] font-bold tracking-tight mb-8">Privacy Policy</h1>
+                    <main className="flex-1 max-w-3xl py-10 md:py-20">
+                        <h1 className="font-graphik text-[32px] md:text-[51px] font-bold tracking-tight mb-8 animate-fade-in">Privacy Policy</h1>
 
                         <div className="space-y-12">
                             {/* About Section */}
-                            <section id="about">
+                            <section id="about" className="animate-slide-up opacity-0 [animation-delay:200ms] [animation-fill-mode:forwards]">
                                 <h2 className="text-xl font-semibold mb-4">About this policy</h2>
                                 <p className="font-graphik text-[17px] text-gray-600 leading-relaxed">
                                     Our goal with this Policy is to provide a simple and straightforward explanation of what information CodeSpace collects from and about users, and how we use and protect that information. While we rely upon our users to build and share code, we also aim to provide notice and obtain necessary consent for processing your information. We value transparency and want to provide you with a clear description of how we treat your information.
@@ -46,7 +21,7 @@ const PrivacyPolicy = () => {
                             </section>
 
                             {/* The Basics */}
-                            <section id="basics">
+                            <section id="basics" className="animate-slide-up opacity-0 [animation-delay:400ms] [animation-fill-mode:forwards]">
                                 <h2 className="text-xl font-semibold mb-4">1. The Basics</h2>
                                 <div className="space-y-6">
                                     <div>
@@ -65,7 +40,7 @@ const PrivacyPolicy = () => {
                             </section>
 
                             {/* Information Collection */}
-                            <section id="information">
+                            <section id="information" className="animate-slide-up opacity-0 [animation-delay:600ms] [animation-fill-mode:forwards]">
                                 <h2 className="text-xl font-semibold mb-4">2. Information we collect</h2>
                                 <div className="space-y-6">
                                     <div>
@@ -74,11 +49,11 @@ const PrivacyPolicy = () => {
                                             When you create an account or use our services, we collect:
                                         </p>
                                         <ul className="list-disc pl-6 mt-2 space-y-2 font-graphik text-[17px] text-gray-600">
-                                            <li>Basic profile information (name, email, profile picture)</li>
-                                            <li>Authentication credentials (securely stored)</li>
-                                            <li>Project and repository data</li>
-                                            <li>Code and collaboration content</li>
-                                            <li>Communication preferences</li>
+                                            <li className="hover:translate-x-1 transition-transform duration-200">Basic profile information (name, email, profile picture)</li>
+                                            <li className="hover:translate-x-1 transition-transform duration-200">Authentication credentials (securely stored)</li>
+                                            <li className="hover:translate-x-1 transition-transform duration-200">Project and repository data</li>
+                                            <li className="hover:translate-x-1 transition-transform duration-200">Code and collaboration content</li>
+                                            <li className="hover:translate-x-1 transition-transform duration-200">Communication preferences</li>
                                         </ul>
                                     </div>
                                     <div>
@@ -87,18 +62,18 @@ const PrivacyPolicy = () => {
                                             When you use our platform, we automatically collect:
                                         </p>
                                         <ul className="list-disc pl-6 mt-2 space-y-2 font-graphik text-[17px] text-gray-600">
-                                            <li>Usage statistics and interactions</li>
-                                            <li>Device and browser information</li>
-                                            <li>IP address and location data</li>
-                                            <li>Performance and error data</li>
-                                            <li>Cookies and similar tracking technologies</li>
+                                            <li className="hover:translate-x-1 transition-transform duration-200">Usage statistics and interactions</li>
+                                            <li className="hover:translate-x-1 transition-transform duration-200">Device and browser information</li>
+                                            <li className="hover:translate-x-1 transition-transform duration-200">IP address and location data</li>
+                                            <li className="hover:translate-x-1 transition-transform duration-200">Performance and error data</li>
+                                            <li className="hover:translate-x-1 transition-transform duration-200">Cookies and similar tracking technologies</li>
                                         </ul>
                                     </div>
                                 </div>
                             </section>
 
                             {/* Usage and Protection */}
-                            <section id="protection">
+                            <section id="protection" className="animate-slide-up opacity-0 [animation-delay:800ms] [animation-fill-mode:forwards]">
                                 <h2 className="text-xl font-semibold mb-4">3. How we protect your data</h2>
                                 <div className="space-y-6">
                                     <div>
@@ -107,31 +82,31 @@ const PrivacyPolicy = () => {
                                             We implement industry-standard security measures:
                                         </p>
                                         <ul className="list-disc pl-6 mt-2 space-y-2 font-graphik text-[17px] text-gray-600">
-                                            <li>End-to-end encryption for code and data</li>
-                                            <li>Secure, isolated development environments</li>
-                                            <li>Regular security audits and testing</li>
-                                            <li>Access controls and authentication</li>
-                                            <li>24/7 monitoring and threat detection</li>
+                                            <li className="hover:translate-x-1 transition-transform duration-200">End-to-end encryption for code and data</li>
+                                            <li className="hover:translate-x-1 transition-transform duration-200">Secure, isolated development environments</li>
+                                            <li className="hover:translate-x-1 transition-transform duration-200">Regular security audits and testing</li>
+                                            <li className="hover:translate-x-1 transition-transform duration-200">Access controls and authentication</li>
+                                            <li className="hover:translate-x-1 transition-transform duration-200">24/7 monitoring and threat detection</li>
                                         </ul>
                                     </div>
                                 </div>
                             </section>
 
                             {/* Contact Information */}
-                            <section id="contact">
+                            <section id="contact" className="animate-slide-up opacity-0 [animation-delay:1000ms] [animation-fill-mode:forwards]">
                                 <h2 className="text-xl font-semibold mb-4">4. Contact us</h2>
                                 <p className="font-graphik text-[17px] text-gray-600 leading-relaxed">
                                     If you have any questions about this Privacy Policy or our practices:
                                 </p>
                                 <ul className="mt-4 space-y-2 font-graphik text-[17px] text-gray-600">
-                                    <li>Email: privacy@codespace.com</li>
-                                    <li>Support: help.codespace.com</li>
-                                    <li>Security: security@codespace.com</li>
+                                    <li className="hover:translate-x-1 transition-transform duration-200">Email: privacy@codespace.com</li>
+                                    <li className="hover:translate-x-1 transition-transform duration-200">Support: help.codespace.com</li>
+                                    <li className="hover:translate-x-1 transition-transform duration-200">Security: security@codespace.com</li>
                                 </ul>
                             </section>
 
-                            <div className="text-sm text-gray-500 pt-8 border-t">
-                                Last Updated: March 15, 2024
+                            <div className="text-sm text-gray-500 pt-8 border-t animate-fade-in [animation-delay:1200ms]">
+                                Last Updated: December 15, 2024
                             </div>
                         </div>
                     </main>
