@@ -115,13 +115,13 @@ const Brand = () => {
             next generation of tech innovators. To ensure consistency. Download our logo on both white and color backgrounds. We just ask you to please not make any changes.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 mt-10">
-            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-gray-50 p-5 md:p-10 transition-transform hover:scale-95">
+            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-gray-50 p-5 md:p-10">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={560}
                   height={71}
                   alt="logo-large"
-                  className="object-contain w-full h-full"
+                  className="object-contain w-full h-full transition-transform group-hover:scale-95"
                   src={LogoLarge}
                 />
               </div>
@@ -132,13 +132,13 @@ const Brand = () => {
                 <Download size={20} className="text-primary" />
               </button>
             </div>
-            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-primary p-5 md:p-10 transition-transform hover:scale-95">
+            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-primary p-5 md:p-10">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={920}
                   height={200}
                   alt="logo-large-white"
-                  className="object-contain w-full h-full"
+                  className="object-contain w-full h-full transition-transform group-hover:scale-95"
                   src={LogoLargeWhite}
                 />
               </div>
@@ -149,13 +149,13 @@ const Brand = () => {
                 <Download size={20} className="text-primary" />
               </button>
             </div>
-            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-gray-50 p-5 md:p-10 transition-transform hover:scale-95">
+            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-gray-50 p-5 md:p-10">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={920}
                   height={200}
                   alt="logo-large-black"
-                  className="object-contain w-full h-full"
+                  className="object-contain w-full h-full transition-transform group-hover:scale-95"
                   src={LogoLargeBlack}
                 />
               </div>
@@ -185,13 +185,13 @@ const Brand = () => {
             Icons Variation
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 mt-10">
-            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-gray-50 p-5 md:p-10 transition-transform hover:scale-95">
+            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-gray-50 p-5 md:p-10">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={280}
                   height={280}
                   alt="logo"
-                  className="object-contain w-full h-full"
+                  className="object-contain w-full h-full transition-transform group-hover:scale-95"
                   src={Logo}
                 />
               </div>
@@ -202,13 +202,13 @@ const Brand = () => {
                 <Download size={20} className="text-primary" />
               </button>
             </div>
-            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-primary p-5 md:p-10 transition-transform hover:scale-95">
+            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-primary p-5 md:p-10">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={280}
                   height={280}
                   alt="logo-white"
-                  className="object-contain w-full h-full"
+                  className="object-contain w-full h-full transition-transform group-hover:scale-95"
                   src={LogoWhite}
                 />
               </div>
@@ -219,13 +219,13 @@ const Brand = () => {
                 <Download size={20} className="text-primary" />
               </button>
             </div>
-            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-gray-50 p-5 md:p-10 transition-transform hover:scale-95">
+            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-gray-50 p-5 md:p-10">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={280}
                   height={280}
                   alt="logo-black"
-                  className="object-contain w-full h-full"
+                  className="object-contain w-full h-full transition-transform group-hover:scale-95"
                   src={LogoBlack}
                 />
               </div>
