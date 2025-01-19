@@ -147,47 +147,45 @@ export default async function BlogPage(props: Props) {
       <Container className="container space-y-2 py-2 px-6 md:px-8">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="flex-1">
-            {/* <Link href="/blog" className="inline-flex items-center gap-2 text-[#475467] text-sm mb-6">
-              <ArrowLeft className="w-4 h-4" />
-              Back to Blog
-            </Link> */}
-
             <div className="mt-2 md:mt-20">
               <div className="text-[#475467] text-[14px] mb-3 md:hidden flex items-center gap-2">
                 <span>{blog.author?.name || "Anonymous"}</span>
                 <span>•</span>
                 <span>{formatDate(blog.createdAt)}</span>
               </div>
-              <h1 className="text-[32px] leading-[1.15] tracking-[-0.02em] md:text-4xl font-bold text-[#101828]">
-                {blog.title}
-              </h1>
-              <div className="hidden md:flex items-center gap-x-[2.5px] text-[16px] md:text-base text-gray mt-2">
-                <p>{blog.author?.name || "Anonymous"}</p>
-                <div className="h-[3px] w-[3px] rounded-full bg-secondary" />
-                <p>•</p>
-                <p>{formatDate(blog.createdAt)}</p>
+              <div className="flex flex-col gap-4">
+                <div className="text-[#475467] text-base hidden md:block">
+                  Clinton Imaro • Jan 4 2025
+                </div>
+                <h1 className="text-[32px] leading-[1.15] tracking-[-0.02em] md:text-4xl font-bold text-[#101828]">
+                  {blog.title}
+                </h1>
+                <div className="hidden md:block text-[#475467] text-xl">
+                  {blog.excerpt}
+                </div>
               </div>
               <div className="text-[16px] leading-[1.5] text-[#475467] mt-6 md:hidden line-clamp-2">
                 {blog.excerpt}
               </div>
             </div>
 
-            <div className="mt-4 md:mt-8 h-[250px] md:h-[400px] lg:h-[550px] bg-[#f8f8f8] md:rounded-[22px] relative overflow-hidden">
+            <div className="mt-4 md:mt-8 h-[250px] md:h-[600px] bg-[#f8f8f8] relative overflow-hidden">
               {blog.featuredImage && (
                 <Image
                   src={blog.featuredImage.url}
                   alt={blog.featuredImage.alt || blog.title}
                   fill
-                  className="object-cover"
+                  className="object-contain"
+                  priority
                 />
               )}
             </div>
 
-            <div className="mt-6 md:mt-8 text-[18px] md:text-lg text-[#475467] leading-relaxed">
+            <div className="mt-6 md:mt-12 text-[18px] md:text-xl text-[#475467] leading-relaxed">
               <LexicalRenderer content={blog.content} />
             </div>
 
-            <div className="mt-6 md:mt-8">
+            <div className="mt-6 md:mt-12">
               {blog.tags && blog.tags.length > 0 && (
                 <div className="flex flex-wrap gap-2">
                   {blog.tags.map((tag, index) => (
@@ -203,9 +201,9 @@ export default async function BlogPage(props: Props) {
             </div>
 
             {/* Share article and subscribe section */}
-            <div className="mt-4 md:mt-12 flex flex-col md:flex-row gap-8 md:gap-14">
+            <div className="mt-4 md:mt-16 flex flex-col md:flex-row gap-8 md:gap-14">
               <div className="w-full md:w-[232px]">
-                <h4 className="text-[#101828] mb-4">Share article</h4>
+                <h4 className="text-[#101828] mb-4 font-medium">Share article</h4>
                 <div className="flex gap-4">
                   <a
                     href={twitterShareUrl}
