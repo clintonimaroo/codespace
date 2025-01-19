@@ -309,10 +309,6 @@ const Home = () => {
         </div>
       </Container>
 
-      <div className="!my-18 w-full flex justify-center">
-        <Button className="mx-auto">View Events</Button>
-      </div>
-
       {/* milestones */}
       <Container className="container py-20 space-y-20">
         <div className="space-y-3 relative flex flex-col items-center justify-center text-center w-full sm:w-3/4 md:w-1/2 mx-auto">
@@ -421,7 +417,6 @@ const Home = () => {
           <p className="text-lg sm:text-xl">
             Your Tech Journey is much <br /> Smoother with Us!
           </p>
-          <Button className="w-fit">Become a Member</Button>
         </div>
         {/* milestones */}
 
