@@ -75,7 +75,7 @@ export default async function BlogPage(props: Props) {
       </section>
 
       <div className="bg-white">
-        <Container className="space-y-5">
+        <Container>
           <Blog blogs={blogs} currentPage={currentPage} />
         </Container>
         <BrandsSection />

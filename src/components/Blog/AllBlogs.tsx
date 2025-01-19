@@ -9,7 +9,7 @@ export default function AllBlogs({
   blogs: BlogsAPIResponse | undefined;
 }) {
   return (
-    <div className="mt-8 md:mt-20 px-8 sm:px-12 md:px-0">
+    <div className="mt-8 md:mt-20">
       <h3 className="text-2xl md:text-3xl font-medium mb-4 md:mb-10">
         All Blogs
       </h3>
@@ -19,7 +19,7 @@ export default function AllBlogs({
             <div key={blog.id} className="relative">
               {blog.featuredImage && (
                 <Image
-                  className="aspect-[16/9] bg-[#f8f8f8] rounded-xl md:rounded-none w-full object-cover"
+                  className="aspect-[16/9] bg-[#f8f8f8] rounded-[20px] w-full object-cover"
                   src={blog.featuredImage.url}
                   width={800}
                   height={600}
@@ -35,7 +35,7 @@ export default function AllBlogs({
                 <div className="flex flex-col flex-grow justify-between">
                   <Link
                     href={`/blog/${blog.id}`}
-                    className="text-xl md:text-[28px] font-bold hover:text-primary line-clamp-2 md:leading-tight group"
+                    className="text-2xl md:text-[28px] font-bold hover:text-primary line-clamp-2 md:leading-tight group"
                   >
                     {blog.title}
                   </Link>
