@@ -1,5 +1,13 @@
+'use client';
+
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
+import { Download } from 'lucide-react';
+import SpaceBadge from '@/components/space-badge';
+import JoinSection from '@/components/join-section';
+import Container from '@/components/container';
+import BrandsSection from '@/components/brands-section';
 import { Logo as LogoSvg } from "@/components/brand";
-import SpaceBadge from "@/components/space-badge";
 import Image from "next/image";
 import React from "react";
 
@@ -10,9 +18,65 @@ import LogoLargeBlack from "@/assets/images/logo-large-black.png";
 import Logo from "@/assets/images/logo.png";
 import LogoWhite from "@/assets/images/logo-white.png";
 import LogoBlack from "@/assets/images/logo-black.png";
-import Container from "@/components/container";
-import BrandsSection from "@/components/brands-section";
-import JoinSection from "@/components/join-section";
+
+interface ImageDownloadProps {
+  url: string;
+  name: string;
+}
+
+const downloadImage = async ({ url, name }: ImageDownloadProps): Promise<void> => {
+  try {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    saveAs(blob, name);
+  } catch (error) {
+    console.error('Error downloading image:', error);
+  }
+};
+
+const downloadAllLogos = async (): Promise<void> => {
+  try {
+    const zip = new JSZip();
+    const logos = [
+      { url: LogoLarge.src, name: 'logo-large.png' },
+      { url: LogoLargeWhite.src, name: 'logo-large-white.png' },
+      { url: LogoLargeBlack.src, name: 'logo-large-black.png' }
+    ];
+
+    for (const logo of logos) {
+      const response = await fetch(logo.url);
+      const blob = await response.blob();
+      zip.file(logo.name, blob);
+    }
+
+    const content = await zip.generateAsync({ type: 'blob' });
+    saveAs(content, 'codespace-logos.zip');
+  } catch (error) {
+    console.error('Error downloading logos:', error);
+  }
+};
+
+const downloadAllIcons = async (): Promise<void> => {
+  try {
+    const zip = new JSZip();
+    const icons = [
+      { url: Logo.src, name: 'icon.png' },
+      { url: LogoWhite.src, name: 'icon-white.png' },
+      { url: LogoBlack.src, name: 'icon-black.png' }
+    ];
+
+    for (const icon of icons) {
+      const response = await fetch(icon.url);
+      const blob = await response.blob();
+      zip.file(icon.name, blob);
+    }
+
+    const content = await zip.generateAsync({ type: 'blob' });
+    saveAs(content, 'codespace-icons.zip');
+  } catch (error) {
+    console.error('Error downloading icons:', error);
+  }
+};
 
 const Brand = () => {
   return (
@@ -35,14 +99,23 @@ const Brand = () => {
       <Container className="py-10 md:py-20 space-y-10 md:space-y-20 px-6 md:px-0">
         {/* Logo Usage */}
         <div className="space-y-5">
-          <SpaceBadge>Logo usage</SpaceBadge>
+          <div className="flex items-center justify-between">
+            <SpaceBadge>Logo usage</SpaceBadge>
+            <button
+              onClick={downloadAllLogos}
+              className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity"
+            >
+              <Download size={20} />
+              <span>Download all</span>
+            </button>
+          </div>
           <h1 className="font-normal text-xl md:text-2xl leading-normal">Our Logo</h1>
           <p className="text-lg md:text-xl subtitle w-full sm:w-4/5">
             The Code Space logo represents our vision to connect and empower the
             next generation of tech innovators. To ensure consistency. Download our logo on both white and color backgrounds. We just ask you to please not make any changes.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 mt-10">
-            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-gray-50 p-5 md:p-10">
+            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-gray-50 p-5 md:p-10 transition-transform hover:scale-95">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={560}
@@ -52,8 +125,14 @@ const Brand = () => {
                   src={LogoLarge}
                 />
               </div>
+              <button
+                onClick={() => downloadImage({ url: LogoLarge.src, name: 'logo-large.png' })}
+                className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity bg-white p-2 rounded-full shadow-md"
+              >
+                <Download size={20} className="text-primary" />
+              </button>
             </div>
-            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-primary p-5 md:p-10">
+            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-primary p-5 md:p-10 transition-transform hover:scale-95">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={920}
@@ -63,8 +142,14 @@ const Brand = () => {
                   src={LogoLargeWhite}
                 />
               </div>
+              <button
+                onClick={() => downloadImage({ url: LogoLargeWhite.src, name: 'logo-large-white.png' })}
+                className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity bg-white p-2 rounded-full shadow-md"
+              >
+                <Download size={20} className="text-primary" />
+              </button>
             </div>
-            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-gray-50 p-5 md:p-10">
+            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-gray-50 p-5 md:p-10 transition-transform hover:scale-95">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={920}
@@ -74,18 +159,33 @@ const Brand = () => {
                   src={LogoLargeBlack}
                 />
               </div>
+              <button
+                onClick={() => downloadImage({ url: LogoLargeBlack.src, name: 'logo-large-black.png' })}
+                className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity bg-white p-2 rounded-full shadow-md"
+              >
+                <Download size={20} className="text-primary" />
+              </button>
             </div>
           </div>
         </div>
 
         {/* Icons Usage */}
         <div className="space-y-5">
-          <SpaceBadge>Icons usage</SpaceBadge>
+          <div className="flex items-center justify-between">
+            <SpaceBadge>Icons usage</SpaceBadge>
+            <button
+              onClick={downloadAllIcons}
+              className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity"
+            >
+              <Download size={20} />
+              <span>Download all</span>
+            </button>
+          </div>
           <h1 className="font-normal text-xl md:text-2xl leading-normal">
             Icons Variation
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 mt-10">
-            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-gray-50 p-5 md:p-10">
+            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-gray-50 p-5 md:p-10 transition-transform hover:scale-95">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={280}
@@ -95,8 +195,14 @@ const Brand = () => {
                   src={Logo}
                 />
               </div>
+              <button
+                onClick={() => downloadImage({ url: Logo.src, name: 'icon.png' })}
+                className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity bg-white p-2 rounded-full shadow-md"
+              >
+                <Download size={20} className="text-primary" />
+              </button>
             </div>
-            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-primary p-5 md:p-10">
+            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-primary p-5 md:p-10 transition-transform hover:scale-95">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={280}
@@ -106,8 +212,14 @@ const Brand = () => {
                   src={LogoWhite}
                 />
               </div>
+              <button
+                onClick={() => downloadImage({ url: LogoWhite.src, name: 'icon-white.png' })}
+                className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity bg-white p-2 rounded-full shadow-md"
+              >
+                <Download size={20} className="text-primary" />
+              </button>
             </div>
-            <div className="w-full aspect-video rounded-xl flex items-center justify-center relative bg-gray-50 p-5 md:p-10">
+            <div className="group relative w-full aspect-video rounded-xl flex items-center justify-center bg-gray-50 p-5 md:p-10 transition-transform hover:scale-95">
               <div className="w-4/5 h-full relative">
                 <Image
                   width={280}
@@ -117,6 +229,12 @@ const Brand = () => {
                   src={LogoBlack}
                 />
               </div>
+              <button
+                onClick={() => downloadImage({ url: LogoBlack.src, name: 'icon-black.png' })}
+                className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity bg-white p-2 rounded-full shadow-md"
+              >
+                <Download size={20} className="text-primary" />
+              </button>
             </div>
           </div>
         </div>
@@ -128,8 +246,6 @@ const Brand = () => {
           <p className="text-lg md:text-xl subtitle w-full sm:w-4/5">
             Our color palette reflects our bold and vibrant mission. These
             colors are used across all brand assets and communications. We like to keep our Code Space brand feeling happy, playful and friendly by using the following color palette.
-
-
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10 mt-10">
             <div className="w-full aspect-video rounded-xl flex flex-col text-white font-light text-lg md:text-xl text-center items-center justify-center relative bg-[#5B5AD1] p-5 md:p-10">

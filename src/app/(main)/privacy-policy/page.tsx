@@ -1,3 +1,5 @@
+'use client';
+
 import Container from "@/components/container";
 import React from "react";
 
@@ -6,7 +8,7 @@ const PrivacyPolicy = () => {
         <div className="min-h-screen bg-white">
             <Container>
                 {/* Main Content - Scrollable */}
-                <main className="flex-1 py-6 sm:py-10 md:py-20">
+                <div className="flex-1 max-w-3xl mx-auto py-6 sm:py-10 md:py-20">
                     <h1 className="font-graphik text-[24px] sm:text-[32px] md:text-[51px] font-bold tracking-tight mb-6 sm:mb-8 opacity-0 animate-[fadeIn_0.5s_ease-out_forwards]">Privacy Policy</h1>
 
                     <div className="space-y-8 sm:space-y-12">
@@ -107,7 +109,7 @@ const PrivacyPolicy = () => {
                             Last Updated: December 15, 2024
                         </div>
                     </div>
-                </main>
+                </div>
             </Container>
         </div>
     );
