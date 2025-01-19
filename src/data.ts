@@ -211,8 +211,8 @@ export const quick_links = [
   { name: "Our Initiatives", href: "/about-us" },
   { name: "Donate", href: "/donate" },
   { name: "Brand Guideline", href: "/brand-guidelines" },
-  { name: "Privacy Policy", href: "/privacy-policy" },
-  { name: "Terms and Condition", href: "/terms" },
+  { name: "Privacy & Terms", href: "/privacy-policy" },
+  { name: "Press", href: "/press" },
 ];
 
 export const other_links = [

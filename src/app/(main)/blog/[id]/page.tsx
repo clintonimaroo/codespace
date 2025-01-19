@@ -152,7 +152,7 @@ export default async function BlogPage(props: Props) {
               Back to Blog
             </Link> */}
 
-            <div className="mt-2 md:mt-4">
+            <div className="mt-2 md:mt-20">
               <div className="text-[#475467] text-[14px] mb-3 md:hidden flex items-center gap-2">
                 <span>{blog.author?.name || "Anonymous"}</span>
                 <span>•</span>
