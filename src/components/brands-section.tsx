@@ -20,11 +20,11 @@ const BrandsSection = () => {
           {/* First set */}
           <div className="flex shrink-0">
             {brands.map((brand) => (
-              <div key={brand} className="relative flex-shrink-0 h-7 mx-6">
+              <div key={brand} className="relative flex-shrink-0 h-8 mx-6">
                 <Image
-                  src={`/images/brands/${brand}.png`}
+                  src={`/images/brands/${brand}`}
                   alt={brand}
-                  className="h-7 w-auto object-contain"
+                  className="h-full w-auto object-contain"
                   width={170}
                   height={31}
                 />
@@ -39,7 +39,7 @@ const BrandsSection = () => {
                 className="relative flex-shrink-0 h-7 mx-6"
               >
                 <Image
-                  src={`/images/brands/${brand}.png`}
+                  src={`/images/brands/${brand}`}
                   alt={brand}
                   className="h-7 w-auto object-contain"
                   width={170}

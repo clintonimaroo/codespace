@@ -183,19 +183,19 @@ export const stats = [
 export type StatsType = (typeof stats)[number];
 
 export const brands = [
-  "couchbase",
-  "technext",
-  "theguardian",
-  "paystack",
-  "aws",
-  "pallax",
-  "genztechies",
-  "vercel",
-  "wix-studio",
-  "kora",
-  "tuliban",
-  "ntit-community",
-  "inside-the-tech",
+  "couchbase.png",
+  "technext.png",
+  "inside-the-tech.jpg",
+  "paystack.png",
+  "aws.png",
+  "pallax.png",
+  "theguardian.png",
+  "vercel.png",
+  "kora.png",
+  "genztechies.png",
+  "tuliban.png",
+  "ntit-community.png",
+  "wix-studio.png",
 ];
 
 export const links = [

@@ -136,7 +136,7 @@ body {
   }
 
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
@@ -157,10 +157,10 @@ html.lenis {
 }
 
 .animate-marquee {
-  animation: marquee 20s linear infinite;
+  animation: marquee 60s linear infinite;
+  width: 400%;
 }
 
 .animate-marquee:hover {
   animation-play-state: paused;
 }
-/*  */
