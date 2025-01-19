@@ -9,7 +9,7 @@ const ImageCard = ({
 }: React.HTMLAttributes<HTMLDivElement> & { src?: ImageProps["src"] }) => {
   return (
     <div
-      className={cn("w-[280px] bg-white aspect-[10/11] shadow  p-2", className)}
+      className={cn("w-[280px] bg-white aspect-[10/11] shadow p-2", className)}
       {...props}
     >
       <div id="image-card" className="w-full h-4/5 bg-gray-50 relative">
