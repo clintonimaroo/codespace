@@ -77,7 +77,6 @@ export const Media: CollectionConfig = {
     description: 'Upload and manage media files.',
   },
   upload: {
-    // staticURL: '/media',
     staticDir: 'media',
     mimeTypes: ['image/*'],
   },
