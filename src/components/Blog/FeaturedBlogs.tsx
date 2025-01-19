@@ -1,7 +1,7 @@
 import { BlogsAPIResponse } from "@/types";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
-import { MailIcon } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 
 export default function FeaturedBlogs({
@@ -10,60 +10,47 @@ export default function FeaturedBlogs({
   blogs: BlogsAPIResponse | undefined;
 }) {
   return (
-    <div className="mt-8 md:mt-20 px-4 md:px-0">
-      <div className="flex justify-between items-center">
-        <h3 className="text-black text-lg md:text-xl font-medium">Featured</h3>
-        <Link
-          href="#footer"
-          className="flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
-        >
-          <span className="text-sm md:text-base font-bold">
-            Subscribe to our blog
-          </span>
-          <MailIcon size={20} />
-        </Link>
-      </div>
+    <div className="w-full">
       {blogs?.docs?.length ? (
-        <div className="mt-6">
+        <div className="grid grid-cols-1 gap-4">
           {blogs.docs.slice(0, 1).map((blog) => (
             <div
               key={blog.id}
-              className="bg-[#FAFAFA] rounded-[22px] p-8 md:p-12"
+              className="relative bg-primary rounded-2xl overflow-hidden"
             >
-              <div className="space-y-4">
-                <div className="flex items-center gap-x-[5.5px] text-neutral">
-                  <p>{formatDate(blog.createdAt)}</p>
-                  <div className="h-[3px] w-[3px] rounded-full bg-neutral" />
-                  <p>{blog.author?.name || "Anonymous"}</p>
+              <div className="flex flex-col md:flex-row">
+                <div className="w-full md:w-1/2 p-6 md:p-12 flex flex-col justify-center">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2">
+                      <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm">
+                        People
+                      </span>
+                      <span className="bg-yellow-400/90 text-black px-3 py-1 rounded-full text-sm">
+                        Top Stories
+                      </span>
+                    </div>
+                    <Link href={`/blog/${blog.id}`} className="block">
+                      <h2 className="text-3xl md:text-4xl lg:text-5xl text-white font-bold leading-tight hover:opacity-90 transition-opacity">
+                        {blog.title}
+                      </h2>
+                    </Link>
+                    <div className="flex items-center gap-x-2 text-white/80 text-sm">
+                      <p>{formatDate(blog.createdAt)}</p>
+                      <div className="h-1 w-1 rounded-full bg-white/80" />
+                      <p>by {blog.author?.name || "Anonymous"}</p>
+                    </div>
+                  </div>
                 </div>
-                <Link href={`/blog/${blog.id}`} className="block">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold hover:text-primary transition-colors">
-                    {blog.title}
-                  </h2>
-                </Link>
-                <p className="text-neutral text-lg md:text-2xl lg:text-[26px] leading-relaxed line-clamp-3 md:line-clamp-none">
-                  {blog.excerpt}
-                </p>
-                <Link
-                  href={`/blog/${blog.id}`}
-                  className="group sm:hidden inline-flex items-center text-primary hover:text-primary/90 transition-colors font-bold"
-                >
-                  Read the story
-                  <svg
-                    width={20}
-                    height={20}
-                    viewBox="0 0 14 10"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="ml-2 rotate-180 transition-all duration-300 transform group-hover:translate-x-2 stroke-2"
-                  >
-                    <path
-                      strokeWidth="3"
-                      d="M13 5.6C13.3314 5.6 13.6 5.33137 13.6 5C13.6 4.66863 13.3314 4.4 13 4.4V5.6ZM0.575736 4.57574C0.341421 4.81005 0.341421 5.18995 0.575736 5.42426L4.39411 9.24264C4.62843 9.47696 5.00833 9.47696 5.24264 9.24264C5.47696 9.00833 5.47696 8.62843 5.24264 8.39411L1.84853 5L5.24264 1.60589C5.47696 1.37157 5.47696 0.991674 5.24264 0.757359C5.00833 0.523045 4.62843 0.523045 4.39411 0.757359L0.575736 4.57574ZM13 4.4H1V5.6H13V4.4Z"
-                      fill="currentColor"
+                {blog.featuredImage && (
+                  <div className="w-full md:w-1/2 h-[300px] md:h-auto relative">
+                    <Image
+                      src={blog.featuredImage.url}
+                      alt={blog.featuredImage.alt || blog.title}
+                      fill
+                      className="w-full h-full object-cover"
                     />
-                  </svg>
-                </Link>
+                  </div>
+                )}
               </div>
             </div>
           ))}

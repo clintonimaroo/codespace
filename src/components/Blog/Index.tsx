@@ -39,11 +39,10 @@ export default function Blog({
         <button
           key={i}
           onClick={() => handlePageChange(i)}
-          className={`w-11 h-11 rounded-xl ${
-            currentPage === i
+          className={`w-11 h-11 rounded-xl ${currentPage === i
               ? "bg-primary text-[#F8F8F8]"
               : "border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all bg-[#F8F8F8]"
-          }`}
+            }`}
         >
           {i}
         </button>
