@@ -3,6 +3,7 @@ import JoinSection from "@/components/join-section";
 import Container from "@/components/container";
 import Blog from "@/components/Blog/Index";
 import { BlogsAPIResponse } from "@/types";
+import BlogNewsletterForm from "@/components/Blog/BlogNewsletterForm";
 
 async function getBlogs(
   currentPage: number,
@@ -54,16 +55,7 @@ export default async function BlogPage(props: Props) {
             <p className="text-[#4F6484] text-lg md:text-xl mb-6">
               Dive into our Insights, stories, and updates from the heart of our community.
             </p>
-            <div className="flex flex-col md:flex-row gap-3 max-w-xl">
-              <input
-                type="email"
-                placeholder="Enter email"
-                className="flex-1 px-4 py-2.5 text-base border border-[#E5E9F2] rounded-lg focus:outline-none focus:border-primary"
-              />
-              <button className="bg-primary text-white px-6 py-2.5 rounded-lg font-medium hover:bg-primary/90 transition-colors">
-                Subscribe
-              </button>
-            </div>
+            <BlogNewsletterForm />
             <p className="text-[#4F6484] text-sm mt-2">
               You can unsubscribe at any time. Learn more about our{" "}
               <a href="/privacy-policy" className="text-primary hover:underline">
