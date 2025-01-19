@@ -7,7 +7,7 @@ import SmoothScroll from "@/components/smoothscroll";
 import ScrollToTop from "@/components/scroll-to-top";
 import Script from "next/script";
 
-localFont({
+const duplicateSans = localFont({
   src: [
     {
       path: "../fonts/DuplicateSans-Light.ttf",
@@ -225,7 +225,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${graphikSans.className} antialiased lenis lenis-smooth`}
+        className={`${graphikSans.className} ${duplicateSans.variable} antialiased lenis lenis-smooth`}
       >
         <SmoothScroll />
         <NavBar />

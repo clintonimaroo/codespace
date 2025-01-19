@@ -109,7 +109,7 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="font-medium text-2xl sm:text-3xl md:text-5xl leading-normal"
+            className="font-medium font-duplicateSans text-2xl sm:text-3xl md:text-5xl leading-normal"
           >
             Connecting African Gen Zs for Growth, Impact, and Success.
           </motion.h1>
