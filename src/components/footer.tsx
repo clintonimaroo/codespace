@@ -55,7 +55,7 @@ const Footer = () => {
         <NewsletterForm />
       </div>
       <div className="col-span-2 md:col-span-7 py-5 border-t">
-        <p className="text-center text-gray-500 font-normal">
+        <p className="text-center text-gray-500 font-normal text-sm">
           Copyright © {new Date().getFullYear()} Code Space | All rights
           reserved.
         </p>
