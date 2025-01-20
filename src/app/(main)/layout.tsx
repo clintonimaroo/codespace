@@ -70,7 +70,7 @@ const graphikSans = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL || "https://codespace-psi.vercel.app"
+    process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org"
   ),
   title: {
     default: "Code Space - Building Africa's Largest Gen Z Tech Community",
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_PUBLIC_APP_URL || "https://codespace-psi.vercel.app",
+    url: process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org",
     title: "Code Space - Building Africa's Largest Gen Z Tech Community",
     description:
       "Code Space is Africa's largest Gen Z tech community, connecting young tech talents for growth, impact, and success. Join our vibrant community to accelerate your tech career.",
@@ -134,7 +134,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "YOUR_VERIFICATION_CODE",
   },
   alternates: {
     canonical: process.env.NEXT_PUBLIC_APP_URL,
@@ -152,7 +152,7 @@ export default function RootLayout({
     name: "Code Space",
     description:
       "Africa's largest Gen Z tech community, connecting young tech talents for growth, impact, and success.",
-    url: process.env.NEXT_PUBLIC_APP_URL || "https://codespace-psi.vercel.app",
+    url: process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org",
     logo: `${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png`,
     foundingDate: "2021",
     founders: [

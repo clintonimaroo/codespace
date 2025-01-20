@@ -62,7 +62,7 @@ async function getUpcomingEvents() {
 }
 
 export default async function Events() {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://codespace-psi.vercel.app";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org";
 
   // Fetch events using the existing functions
   const upcomingEvents = await getUpcomingEvents();

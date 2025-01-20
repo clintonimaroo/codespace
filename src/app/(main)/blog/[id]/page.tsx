@@ -106,7 +106,7 @@ export default async function BlogPage(props: Props) {
 
   // Prepare sharing URLs
   const baseUrl =
-    process.env.NEXT_PUBLIC_APP_URL || "https://codespace-psi.vercel.app";
+    process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org";
   const currentUrl = `${baseUrl}/blog/${params.id}`;
   const encodedUrl = encodeURIComponent(currentUrl);
   const encodedTitle = encodeURIComponent(blog.title || "");
