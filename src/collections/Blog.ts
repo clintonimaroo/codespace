@@ -191,9 +191,10 @@ export const Blog: CollectionConfig = {
         { label: "Top Story", value: "top" },
         { label: "Featured Post", value: "featured" }
       ],
-      required: true,
+      required: false,
       admin: {
         position: "sidebar",
+        condition: (data: { isFeatured?: boolean }) => Boolean(data?.isFeatured),
       },
     },
     {
@@ -206,9 +207,10 @@ export const Blog: CollectionConfig = {
         { label: "Community", value: "community" },
         { label: "Events", value: "events" }
       ],
-      required: true,
+      required: false,
       admin: {
         position: "sidebar",
+        condition: (data: { isFeatured?: boolean }) => Boolean(data?.isFeatured),
       },
     },
     {

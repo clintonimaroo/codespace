@@ -143,8 +143,8 @@ export interface Blog {
    * Display this post in the featured section. Only one post can be featured at a time.
    */
   isFeatured?: boolean | null;
-  postType: 'regular' | 'top' | 'featured';
-  category: 'tech' | 'people' | 'community' | 'events';
+  postType?: ('regular' | 'top' | 'featured') | null;
+  category?: ('tech' | 'people' | 'community' | 'events') | null;
   author?: (string | null) | User;
   updatedBy?: (string | null) | User;
   updatedAt: string;

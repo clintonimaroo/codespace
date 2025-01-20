@@ -83,7 +83,10 @@ const SubscribeCard = () => {
 async function getBlog(id: string): Promise<BlogDoc> {
   const BASE_URL = process.env.BASE_URL;
 
-  const response = await fetch(`${BASE_URL}/api/blog/${id}`);
+  const response = await fetch(`${BASE_URL}/api/blog/${id}`, {
+    cache: 'no-store',
+    next: { revalidate: 0 }
+  });
   const data = await response.json();
 
   return data;

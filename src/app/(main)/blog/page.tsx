@@ -12,7 +12,11 @@ async function getBlogs(
   const BASE_URL = process.env.BASE_URL;
 
   const response = await fetch(
-    `${BASE_URL}/api/blog?page=${currentPage}&limit=${limit}`
+    `${BASE_URL}/api/blog?page=${currentPage}&limit=${limit}`,
+    {
+      cache: 'no-store',
+      next: { revalidate: 0 }
+    }
   );
   const data = await response.json();
 

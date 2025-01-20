@@ -5,7 +5,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Get all blog posts
   const BASE_URL = process.env.BASE_URL;
-  const response = await fetch(`${BASE_URL}/api/blog`);
+  const response = await fetch(`${BASE_URL}/api/blog`, {
+    cache: 'no-store',
+    next: { revalidate: 0 }
+  });
   const blogs = await response.json();
 
   // Generate blog post URLs
