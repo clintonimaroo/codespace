@@ -84,8 +84,8 @@ async function getBlog(id: string): Promise<BlogDoc> {
   const BASE_URL = process.env.BASE_URL;
 
   const response = await fetch(`${BASE_URL}/api/blog/${id}`, {
-    cache: 'no-store',
-    next: { revalidate: 0 }
+    cache: "no-store",
+    next: { revalidate: 0 },
   });
   const data = await response.json();
 
@@ -157,8 +157,10 @@ export default async function BlogPage(props: Props) {
                 <span>{formatDate(blog.createdAt)}</span>
               </div>
               <div className="flex flex-col gap-4">
-                <div className="text-[#475467] text-base hidden md:block">
-                  Clinton Imaro • Jan 4 2025
+                <div className="text-[#475467] text-base hidden md:flex gap-2">
+                  <span>{blog.author?.name || "Anonymous"}</span>
+                  <span>•</span>
+                  <span>{formatDate(blog.createdAt)}</span>
                 </div>
                 <h1 className="text-[32px] leading-[1.15] tracking-[-0.02em] md:text-4xl font-bold text-[#101828]">
                   {blog.title}
@@ -188,25 +190,12 @@ export default async function BlogPage(props: Props) {
               <LexicalRenderer content={blog.content} />
             </div>
 
-            <div className="mt-6 md:mt-12">
-              {blog.tags && blog.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {blog.tags.map((tag, index) => (
-                    <span
-                      key={index}
-                      className="px-3 py-1.5 text-[16px] md:text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-primary hover:text-white transition-all duration-200 cursor-pointer"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
-
             {/* Share article and subscribe section */}
-            <div className="mt-4 md:mt-16 flex flex-col md:flex-row gap-8 md:gap-14">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-14">
               <div className="w-full md:w-[232px]">
-                <h4 className="text-[#101828] mb-4 font-medium">Share article</h4>
+                <h4 className="text-[#101828] mb-4 font-medium">
+                  Share article
+                </h4>
                 <div className="flex gap-4">
                   <a
                     href={twitterShareUrl}
@@ -229,6 +218,20 @@ export default async function BlogPage(props: Props) {
                 </div>
               </div>
               <div className="flex-1">
+                <div className="mb-8">
+                  {blog.tags && blog.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {blog.tags.map((tag, index) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1.5 text-[16px] md:text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-primary hover:text-white transition-all duration-200 cursor-pointer"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
                 <SubscribeCard />
               </div>
             </div>
