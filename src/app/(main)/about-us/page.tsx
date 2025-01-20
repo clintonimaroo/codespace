@@ -34,7 +34,7 @@ const AboutUs = () => {
           <HeroImageCards />
         </div>
       </Container>
-      <section className="min-h-screen bg-foreground mb-20">
+      <section className="min-h-screen bg-foreground">
         <Container className="container  h-full flex flex-col justify-between bg-cover py-10 md:py-20 bg-top bg-no-repeat gap-x-5 gap-y-12">
           <div className="space-y-4 w-full sm:w-1/2">
             <h3 className="text-3xl text-white font-normal">Our Mission</h3>

@@ -231,7 +231,7 @@ export default function RootLayout({
         <NavBar />
         <ScrollToTop />
         {children}
-        <Footer />
+        <Footer variant="dark" />
       </body>
     </html>
   );
