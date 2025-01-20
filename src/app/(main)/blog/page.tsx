@@ -50,7 +50,7 @@ export default async function BlogPage(props: Props) {
   return (
     <div className="">
       {/* Hero Section */}
-      <section className="py-12 md:py-20 bg-[#F9FBFD]">
+      <section className="py-12 md:py-20">
         <Container className="space-y-5">
           <div className="max-w-2xl">
             <h1 className="font-graphik text-[2rem] md:text-[2.75rem] font-bold text-[#0A1F44] leading-tight mb-3">
