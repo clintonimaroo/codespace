@@ -531,7 +531,7 @@ const EventCard = ({ event }: { event: UpcomingEvent }) => {
       </div>
       <div className="py-5 flex flex-col space-y-4">
         <h2 className="text-2xl font-normal">{event?.eventTitle}</h2>
-        <p className="lg:text-xl text-gray-700 font-light">
+        <p className="lg:text-lg text-gray-700 font-light">
           {event?.description}
         </p>
         <p className="text-lg">

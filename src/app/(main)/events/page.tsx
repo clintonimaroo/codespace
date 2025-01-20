@@ -62,7 +62,8 @@ async function getUpcomingEvents() {
 }
 
 export default async function Events() {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org";
 
   // Fetch events using the existing functions
   const upcomingEvents = await getUpcomingEvents();
@@ -84,18 +85,18 @@ export default async function Events() {
           endDate: event.date,
           location: {
             "@type": "VirtualLocation",
-            url: event.eventLink
+            url: event.eventLink,
           },
           organizer: {
             "@type": "Organization",
             name: "Code Space",
-            url: baseUrl
+            url: baseUrl,
           },
           image: event.coverImage?.url,
           url: `${baseUrl}/events#${event.id}`,
           eventStatus: "https://schema.org/EventScheduled",
           eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
-        }
+        },
       })),
       ...pastEvents.docs.map((event: PastEvent, index: number) => ({
         "@type": "ListItem",
@@ -108,20 +109,20 @@ export default async function Events() {
           endDate: event.date,
           location: {
             "@type": "VirtualLocation",
-            url: event.recapLink
+            url: event.recapLink,
           },
           organizer: {
             "@type": "Organization",
             name: "Code Space",
-            url: baseUrl
+            url: baseUrl,
           },
           image: event.coverImage?.url,
           url: `${baseUrl}/events#${event.id}`,
           eventStatus: "https://schema.org/EventScheduled",
           eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
-        }
-      }))
-    ]
+        },
+      })),
+    ],
   };
 
   return (
@@ -226,7 +227,7 @@ const UpcomingEvent = ({ event }: { event: UpcomingEvent }) => {
       </div>
       <div className="py-5 flex flex-col space-y-2 justify-around">
         <h2 className="text-2xl font-normal">{event?.eventTitle}</h2>
-        <p className="text-xl text-gray-700 font-light">{event?.description}</p>
+        <p className="text-lg text-gray-700 font-light">{event?.description}</p>
         <p className="text-lg">
           Date{" "}
           <span className="text-gray-600 ml-2">{formatDate(event?.date)}</span>

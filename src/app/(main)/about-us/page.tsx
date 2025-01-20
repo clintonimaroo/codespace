@@ -1,5 +1,4 @@
 import GoalsCard from "@/components/goals-card";
-import { HeroImageCards } from "@/components/image-cards";
 import {
   Accordion,
   AccordionContent,
@@ -12,17 +11,12 @@ import { values, WhatWeDo, why_us } from "@/data";
 import { ArrowRightIcon } from "lucide-react";
 import Container from "@/components/container";
 
-import React from "react";
-
 const AboutUs = () => {
   return (
     <>
-      <Container className="container grid grid-cols-1 md:grid-cols-2 gap-5 py-5 md:py-20 content-center">
-        <div className="space-y-5 flex-col flex  justify-center">
-          <Badge>
-            <div className="size-1.5 rounded-full bg-primary" />
-            ABOUT US
-          </Badge>
+      <Container className="container flex space-x-20 py-5 md:py-20">
+        <div className="space-y-3 flex-col flex justify-center max-w-[620px]">
+          <span className="text-primary font-semibold">ABOUT US</span>
 
           <p className="text-xl md:text-2xl text-gray-800 text-balance leading-normal">
             Code Space is a tech-driven community empowering Gen Z tech talents
@@ -30,12 +24,9 @@ const AboutUs = () => {
             fostering a supportive ecosystem for growth and career success.
           </p>
         </div>
-        <div className="w-full relative aspect-[16/10]">
-          <HeroImageCards />
-        </div>
       </Container>
       <section className="min-h-screen bg-foreground">
-        <Container className="container  h-full flex flex-col justify-between bg-cover py-10 md:py-20 bg-top bg-no-repeat gap-x-5 gap-y-12">
+        <Container className="container h-full flex flex-col justify-between bg-cover py-10 md:py-20 bg-top bg-no-repeat gap-x-5 gap-y-12">
           <div className="space-y-4 w-full sm:w-1/2">
             <h3 className="text-3xl text-white font-normal">Our Mission</h3>
             <p className="text-white w-full sm:w-4/5">
