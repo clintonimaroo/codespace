@@ -61,7 +61,7 @@ export async function generateMetadata(
 const SubscribeCard = () => {
   return (
     <div
-      className="rounded-[10px] p-6 md:p-12 text-center min-h-[250px] md:h-[300px] flex flex-col justify-center mb-16"
+      className="rounded-[10px] p-6 md:p-12 text-center min-h-[250px] md:h-[300px] flex flex-col justify-center mb-8"
       style={{
         backgroundImage: "url(https://i.postimg.cc/htZ2Q45M/subscribe-bg.png)",
         backgroundSize: "cover",
@@ -191,7 +191,7 @@ export default async function BlogPage(props: Props) {
             </div>
 
             {/* Share article and subscribe section */}
-            <div className="flex flex-col md:flex-row gap-8 md:gap-14">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-14 mt-6">
               <div className="w-full md:w-[232px]">
                 <h4 className="text-[#101828] mb-4 font-medium">
                   Share article
