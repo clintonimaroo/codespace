@@ -16,9 +16,7 @@ const Footer = () => {
         </p>
       </div>
       <ul className="space-y-2 col-span-1">
-        <li className="text-primary text-lg font-medium mb-3">
-          Reach out to us
-        </li>
+        <li className="text-primary font-medium mb-3">Reach out to us</li>
         {socials.map((social) => (
           <li key={social.name} className="hover:text-primary">
             <Link href={social.url} className="capitalize">
@@ -28,7 +26,7 @@ const Footer = () => {
         ))}
       </ul>
       <ul className="space-y-2">
-        <li className="text-primary text-lg font-medium mb-3">Quick Links</li>
+        <li className="text-primary font-medium mb-3">Quick Links</li>
         {quick_links.map((social) => (
           <li key={social.name} className="hover:text-primary">
             <Link href={social.href} className="capitalize">
@@ -38,7 +36,7 @@ const Footer = () => {
         ))}
       </ul>
       <ul className="space-y-2">
-        <li className="text-primary text-lg font-medium mb-3">Others</li>
+        <li className="text-primary font-medium mb-3">Others</li>
         {other_links.map((social) => (
           <li key={social.name} className="hover:text-primary">
             <Link href={social.href} className="capitalize">
@@ -49,7 +47,7 @@ const Footer = () => {
       </ul>
 
       <div className="col-span-2 space-y-5">
-        <h4 className="text-primary text-lg font-medium">
+        <h4 className="text-primary font-medium">
           Subscribe to our Newsletter
         </h4>
         <NewsletterForm />

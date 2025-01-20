@@ -210,7 +210,9 @@ const Home = () => {
       </Container>
       {/* Goals */}
       <Container className="container md:grid grid-cols-1 md:grid-cols-3 gap-5 hidden">
-        <h1 className="md:text-5xl text-4xl col-span-1">Our Goals</h1>
+        <h1 className="md:text-5xl text-4xl col-span-1 font-duplicateSans">
+          Our Goals
+        </h1>
         <div className="flex col-span-2">
           <svg
             className="inline flex-shrink-0 md:scale-100 scale-50"
@@ -263,10 +265,12 @@ const Home = () => {
         </div>
       </Container>
       {/* Upcoming Events */}
-      <Container className="container space-y-2 py-20">
+      <Container className="container space-y-2">
         <SpaceBadge>UPCOMING</SpaceBadge>
-        <h1 className="font-normal text-2xl leading-normal">Upcoming Events</h1>
-        <p className="text-xl subtitle sm:w-1/2">
+        <h1 className="font-normal text-xl md:text-2xl lg:text-3xl leading-normal font-duplicateSans">
+          Upcoming Events
+        </h1>
+        <p className="sm:text-lg subtitle sm:w-1/2">
           Join us for our upcoming events at Code Space, where you can connect,
           learn, and elevate your tech journey!
         </p>
