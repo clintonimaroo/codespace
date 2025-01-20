@@ -14,52 +14,63 @@ export const Blog: CollectionConfig = {
             data.updatedBy = req.user.id;
           }
 
-          // If setting this post as top story, update any existing top story to regular
-          if (data.postType === 'top') {
-            await req.payload.update({
-              collection: 'blog',
-              where: {
-                and: [
-                  {
-                    postType: {
-                      equals: 'top'
+          try {
+            // If setting this post as top story, update any existing top story to regular
+            if (data.postType === 'top') {
+              await req.payload.update({
+                collection: 'blog',
+                where: {
+                  and: [
+                    {
+                      postType: {
+                        equals: 'top'
+                      }
+                    },
+                    {
+                      id: {
+                        not_equals: data.id
+                      }
                     }
-                  },
-                  {
-                    id: {
-                      not_equals: data.id
-                    }
-                  }
-                ]
-              },
-              data: {
-                postType: 'regular'
-              }
-            });
-          }
+                  ]
+                },
+                data: {
+                  postType: 'regular'
+                }
+              }).catch(err => {
+                console.warn('Failed to update other top stories:', err);
+                // Continue with the operation even if this update fails
+              });
+            }
 
-          // If setting this post as featured, unset featured from other posts
-          if (data.isFeatured) {
-            await req.payload.update({
-              collection: 'blog',
-              where: {
-                and: [
-                  {
-                    isFeatured: {
-                      equals: true
+            // If setting this post as featured, unset featured from other posts
+            if (data.isFeatured) {
+              await req.payload.update({
+                collection: 'blog',
+                where: {
+                  and: [
+                    {
+                      isFeatured: {
+                        equals: true
+                      }
+                    },
+                    {
+                      id: {
+                        not_equals: data.id
+                      }
                     }
-                  },
-                  {
-                    id: {
-                      not_equals: data.id
-                    }
-                  }
-                ]
-              },
-              data: {
-                isFeatured: false
-              }
-            });
+                  ]
+                },
+                data: {
+                  isFeatured: false
+                }
+              }).catch(err => {
+                console.warn('Failed to update other featured posts:', err);
+                // Continue with the operation even if this update fails
+              });
+            }
+          } catch (error) {
+            console.error('Error in beforeChange hook:', error);
+            // Continue with the operation even if the updates fail
           }
 
           return data;
