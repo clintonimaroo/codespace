@@ -31,7 +31,7 @@ export default function FeaturedBlogs({
                             featuredBlog.category === "events" ? "Events" : "Tech & Processes"}
                     </span>
                     {featuredBlog.postType !== "regular" && (
-                      <span className="bg-[#fef0c2] text-black px-3 py-1 rounded-full text-sm">
+                      <span className="bg-yellow-400/90 text-black px-3 py-1 rounded-full text-sm">
                         {featuredBlog.postType === "top" ? "Top Stories" : "Featured"}
                       </span>
                     )}
@@ -41,7 +41,7 @@ export default function FeaturedBlogs({
                       {featuredBlog.title}
                     </h2>
                   </Link>
-                  <div className="flex items-center gap-x-2 text-white/80 text-sm">
+                  <div className="flex items-center gap-x-2 text-white/80 text-sm"></div>
                     <p>{formatDate(featuredBlog.createdAt)}</p>
                     <div className="h-1 w-1 rounded-full bg-white/80" />
                     <p>by {featuredBlog.author?.name || "Anonymous"}</p>
