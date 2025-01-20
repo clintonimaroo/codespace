@@ -40,8 +40,8 @@ export default function Blog({
           key={i}
           onClick={() => handlePageChange(i)}
           className={`w-11 h-11 rounded-xl ${currentPage === i
-              ? "bg-primary text-[#F8F8F8]"
-              : "border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all bg-[#F8F8F8]"
+            ? "bg-primary text-[#F8F8F8]"
+            : "border border-[#E3E3E3] hover:bg-primary hover:text-white transition-all bg-[#F8F8F8]"
             }`}
         >
           {i}
@@ -99,7 +99,9 @@ export default function Blog({
 
   return (
     <div>
-      <FeaturedBlogs blogs={blogs} />
+      <div className="mt-8 md:mt-16">
+        <FeaturedBlogs blogs={blogs} />
+      </div>
       <AllBlogs blogs={blogs} />
       <div className="w-full h-px bg-[#A6A6A6]/30 my-14" />
       {renderPagination()}

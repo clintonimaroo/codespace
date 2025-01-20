@@ -48,7 +48,7 @@ export default async function BlogPage(props: Props) {
       </>
     );
   return (
-    <div className="bg-[#F9FBFD]">
+    <div className="">
       {/* Hero Section */}
       <section className="py-12 md:py-20">
         <Container className="space-y-5">
@@ -70,7 +70,7 @@ export default async function BlogPage(props: Props) {
         </Container>
       </section>
 
-      <div className="bg-white">
+      <div className="bg-white mt-8 md:mt-16">
         <Container>
           <Blog blogs={blogs} currentPage={currentPage} />
         </Container>
