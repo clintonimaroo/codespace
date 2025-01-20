@@ -41,7 +41,7 @@ export default function FeaturedBlogs({
                       {featuredBlog.title}
                     </h2>
                   </Link>
-                  <div className="flex items-center gap-x-2 text-white/80 text-sm"></div>
+                  <div className="flex items-center gap-x-2 text-white/80 text-sm">
                     <p>{formatDate(featuredBlog.createdAt)}</p>
                     <div className="h-1 w-1 rounded-full bg-white/80" />
                     <p>by {featuredBlog.author?.name || "Anonymous"}</p>
