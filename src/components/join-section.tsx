@@ -4,7 +4,7 @@ import Container from "@/components/container";
 
 const JoinSection = () => {
   return (
-    <Container className="container flex flex-col lg:flex-row items-center mb-20 gap-x-20 gap-y-10">
+    <Container className="container md:flex flex-col lg:flex-row items-center mb-20 gap-x-20 gap-y-10 hidden">
       <div className="w-full md:max-w-80 max-w-full lg:max-h-full flex-shrink-0 shadow-[0_0_20px_0_rgba(34,34,34,0.05)] aspect-[10/11] bg-white p-3 md:max-h-[440px] object-cover">
         <div className="w-full h-full relative">
           <Image
