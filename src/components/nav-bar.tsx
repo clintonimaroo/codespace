@@ -47,7 +47,7 @@ const NavBar = () => {
           <LogoLarge />
         </Link>
 
-        <ul className="lg:flex flex-row items-center gap-x-5 hidden">
+        <ul className="lg:flex flex-row items-center gap-x-5 hidden font-duplicateSans">
           {links.map((link) => (
             <li
               key={link.name}

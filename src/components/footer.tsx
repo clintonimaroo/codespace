@@ -12,13 +12,13 @@ interface FooterProps {
 
 const Footer = ({ variant = "light" }: FooterProps) => {
   const pathname = usePathname();
-  const bgColor =
-    variant === "dark" || pathname === "about-us"
-      ? "bg-foreground"
-      : "bg-white";
-  const textColor = variant === "dark" ? "text-[#B6B6BC]" : "text-gray-500";
-  const linkColor =
-    variant === "dark" ? "text-white hover:text-primary" : "hover:text-primary";
+
+  const isDark = variant === "dark" || pathname === "/about-us";
+  const bgColor = isDark ? "bg-foreground" : "bg-white";
+  const textColor = isDark ? "text-[#B6B6BC]" : "text-gray-500";
+  const linkColor = isDark
+    ? "text-white hover:text-primary"
+    : "hover:text-primary";
 
   return (
     <Container
@@ -66,9 +66,11 @@ const Footer = ({ variant = "light" }: FooterProps) => {
         <h4 className="text-primary font-medium">
           Subscribe to our Newsletter
         </h4>
-        <NewsletterForm />
+        <NewsletterForm isDark={isDark} />
       </div>
-      <div className="col-span-2 md:col-span-7 py-5 border-t">
+      <div
+        className={`col-span-2 md:col-span-7 py-5 border-t ${isDark && "border-[#222235]"}`}
+      >
         <p className={`text-center ${textColor} font-normal text-sm`}>
           Copyright © {new Date().getFullYear()} Code Space | All rights
           reserved.
