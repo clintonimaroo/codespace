@@ -50,9 +50,7 @@ const AboutUs = () => {
           </div>
 
           <div className="space-y-4 w-full sm:w-2/5 self-end">
-            <h3 className="text-3xl text-white font-normal">
-              Our Vision
-            </h3>
+            <h3 className="text-3xl text-white font-normal">Our Vision</h3>
             <p className="text-white w-full ">
               A thriving ecosystem where every Gen Z tech talent in Africa has
               the support, resources, and global opportunities to build

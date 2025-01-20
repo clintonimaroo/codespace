@@ -13,7 +13,7 @@ const JoinSection = () => {
       </div>
       <div className="space-y-5 flex flex-col max-w-xl">
         <h3 className="text-xl text-primary font-medium">JOIN CODE SPACE!!</h3>
-        <p className="text-gray-800 text-2xl sm:text-3xl">
+        <p className="text-gray-800 text-2xl sm:text-3xl font-duplicateSans">
           Be a part of our ever growing community by joining our Telegram
           channel and getting periodic updates.
         </p>

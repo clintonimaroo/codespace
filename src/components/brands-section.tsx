@@ -5,11 +5,12 @@ import React from "react";
 const BrandsSection = () => {
   return (
     <section className="container py-20 space-y-10">
-      <div className="space-y-5 flex flex-col items-center justify-center mx-auto text-center">
-        <h3 className="text-3xl font-medium">
-          Brands we&apos;ve loved working with
+      <div className="space-y-2 flex flex-col items-center justify-center mx-auto text-center">
+        <h3 className="text-2xl sm:text-3xl md:text-3xl font-medium font-duplicateSans">
+          Brands we&apos;ve{" "}
+          <span className="whitespace-nowrap">loved working with</span>
         </h3>
-        <p className="subtitle md:text-lg max-w-lg">
+        <p className="subtitle sm:text-base text-sm max-w-lg">
           When brands collaborate with us, they empower thousands of young
           African tech talents. Here are the innovative brands that make our
           mission even more rewarding!
