@@ -216,7 +216,7 @@ export const quick_links = [
 ];
 
 export const other_links = [
-  { name: "Ambassador", href: "/ambassador-program" },
+  { name: "Ambassador", href: "/ambassador-program", comingSoon: true },
   { name: "Press", href: "/press" },
 ];
 

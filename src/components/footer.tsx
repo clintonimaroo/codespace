@@ -23,9 +23,9 @@ const Footer = ({ variant = "light" }: FooterProps) => {
   return (
     <div className={bgColor}>
       <Container
-        className={`container grid grid-cols-2 md:grid-cols-7 gap-10 pt-20`}
+        className={`container grid grid-cols-1  lg:grid-cols-7 gap-10 pt-20 text-[15px]`}
       >
-        <div className="col-span-2 w-full space-y-5">
+        <div className="col-span-1 md:col-span-2 w-full space-y-5">
           <LogoLarge />
           <p className={`text-base ${textColor}`}>
             Code Space is a nonprofit community fiscally sponsored by The Hack
@@ -42,7 +42,7 @@ const Footer = ({ variant = "light" }: FooterProps) => {
             </li>
           ))}
         </ul>
-        <ul className="space-y-2">
+        <ul className="space-y-2 col-span-1">
           <li className="text-primary font-medium mb-3">Quick Links</li>
           {quick_links.map((social) => (
             <li key={social.name} className={linkColor}>
@@ -52,25 +52,31 @@ const Footer = ({ variant = "light" }: FooterProps) => {
             </li>
           ))}
         </ul>
-        <ul className="space-y-2">
+        <ul className="space-y-2 col-span-1">
           <li className="text-primary font-medium mb-3">Others</li>
           {other_links.map((social) => (
             <li key={social.name} className={linkColor}>
               <Link href={social.href} className="capitalize">
                 {social.name}
               </Link>
+
+              {social.comingSoon ? (
+                <span className="ml-2 border text-xs text-primary font-medium bg-primary/10 rounded-full px-2 py-1 border-primary/50 whitespace-nowrap">
+                  Soon
+                </span>
+              ) : null}
             </li>
           ))}
         </ul>
 
-        <div className="col-span-2 space-y-5">
+        <div className="col-span-1 md:col-span-2 space-y-5">
           <h4 className="text-primary font-medium">
             Subscribe to our Newsletter
           </h4>
           <NewsletterForm isDark={isDark} />
         </div>
         <div
-          className={`col-span-2 md:col-span-7 py-5 border-t ${isDark && "border-[#222235]"}`}
+          className={`col-span-1 md:col-span-7 py-5 border-t ${isDark && "border-[#222235]"}`}
         >
           <p className={`text-center ${textColor} font-normal text-sm`}>
             Copyright © {new Date().getFullYear()} Code Space | All rights
