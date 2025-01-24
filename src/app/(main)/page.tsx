@@ -2,7 +2,6 @@
 import useSwr from "swr";
 import BrandsSection from "@/components/brands-section";
 import GoalsCard from "@/components/goals-card";
-import { HeroImageCards } from "@/components/image-cards";
 import ImageCard from "@/components/image-card";
 import JoinSection from "@/components/join-section";
 import { Badge } from "@/components/ui/badge";
@@ -91,12 +90,12 @@ const Home = () => {
   return (
     <>
       {/* Hero Section */}
-      <Container className="container grid grid-cols-1 lg:grid-cols-2 gap-5 py-10 md:py-32 content-center">
+      <Container className="text-center flex flex-col items-center max-w-6xl container gap-5 py-10 md:py-32 content-center">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="space-y-3 md:space-y-5 flex-col flex justify-center"
+          className="space-y-3 md:space-y-5 flex-col flex justify-center w-full items-center"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -109,7 +108,7 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="font-medium font-duplicateSans text-2xl sm:text-3xl md:text-5xl leading-normal"
+            className="font-bold text-5xl sm:text-3xl md:text-6xl leading-normal"
           >
             Connecting African Gen Zs for Growth, Impact, and Success.
           </motion.h1>
@@ -117,7 +116,7 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="text-base sm:text-lg md:text-xl subtitle"
+            className="text-base sm:text-lg md:text-xl subtitle max-w-2xl"
           >
             We unite Gen Zs in tech across Africa, creating a vibrant community
             where you can thrive with like-minded peers, share insights, and
@@ -140,14 +139,6 @@ const Home = () => {
               Watch 2024 Events
             </Button>
           </motion.div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="w-full relative aspect-[16/10] mt-8 lg:mt-0"
-        >
-          <HeroImageCards />
         </motion.div>
       </Container>
 
