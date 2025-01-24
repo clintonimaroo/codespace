@@ -16,6 +16,7 @@ import Container from "@/components/container";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { UpcomingEvent, UpcomingEvents } from "@/types";
+import VideoPlayer from "@/components/ui/video";
 
 interface Stat {
   name: string;
@@ -90,7 +91,7 @@ const Home = () => {
   return (
     <>
       {/* Hero Section */}
-      <Container className="text-center flex flex-col items-center max-w-6xl container gap-5 py-10 md:py-32 content-center">
+      <Container className="text-center flex flex-col items-center max-w-4xl container gap-5 py-10 md:pb-32 md:pt-16 content-center">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -108,7 +109,7 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="font-bold text-5xl sm:text-3xl md:text-6xl leading-normal"
+            className="font-bold text-5xl sm:text-3xl md:text-5xl"
           >
             Connecting African Gen Zs for Growth, Impact, and Success.
           </motion.h1>
@@ -139,6 +140,17 @@ const Home = () => {
               Watch 2024 Events
             </Button>
           </motion.div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="relative w-full mt-8"
+        >
+          <VideoPlayer
+            src="https://dl181.dmate13.online/?file=M3R4SUNiN3JsOHJ6WWQ2a3NQS1Y5ZGlxVlZIOCtyZ0NqY1l6eUI1b05hNVByc1lKMHZlMGFKc2ZmUE5FNVlPbEdkSmQ4amJNWXUvYVlGZlpwcjRPY0QyTTU0Sjd2emJEOXJFd1dOMTVDMU9xdmYrc2d5Vmppd0t3TFA3QUJld1RQMUVxNWhKRmlqRzN6OVdDalVQWG9rU1M5aDNiUERRc21nbEZNT1dFdDVoTjJqVCtYTEhoeTRBTXZ5T0w2NWRNaDZISzUxYWhsZUptNFlvelRVMXVkczBPZ2Mra2o2bVk5d0VLbHNRWTJCND0%3D"
+            autoPlay
+          />
         </motion.div>
       </Container>
 
