@@ -38,6 +38,7 @@ export default function VideoPlayer({
         autoPlay={autoPlay}
         controls={false}
         muted
+        loop
       />
 
       <button
