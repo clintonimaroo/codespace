@@ -91,12 +91,12 @@ const Home = () => {
   return (
     <>
       {/* Hero Section */}
-      <Container className="text-center flex flex-col items-center max-w-6xl container gap-5 py-10 md:pb-32 md:pt-16 content-center">
+      <Container className="text-center flex flex-col max-w-6xl container gap-5 py-10 md:pb-32 md:pt-16 content-center">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="space-y-3 md:space-y-5 flex-col flex justify-center w-full items-center"
+          className="space-y-3 md:space-y-5 flex-col flex items-start text-left md:text-center md:justify-center w-full md:items-center"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -109,7 +109,7 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="font-bold text-5xl sm:text-3xl md:text-6xl"
+            className="font-bold text-4xl sm:text-5xl lg:text-6xl"
           >
             Connecting African Gen Zs for Growth, Impact, and Success.
           </motion.h1>
@@ -127,7 +127,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="flex items-center gap-5 md:flex-row flex-col"
+            className="flex items-center gap-5 md:flex-row flex-row"
           >
             <Button className="w-full md:w-fit hover:scale-105 transition-transform">
               Join the Community
