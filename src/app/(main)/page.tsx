@@ -91,7 +91,7 @@ const Home = () => {
   return (
     <>
       {/* Hero Section */}
-      <Container className="text-center flex flex-col max-w-6xl container gap-5 py-10 md:pb-32 md:pt-16 content-center">
+      <Container className="text-center flex flex-col container gap-5 py-10 md:pb-32 md:pt-16 content-center">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -109,7 +109,7 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="font-bold text-4xl sm:text-5xl lg:text-6xl"
+            className="font-bold text-3xl sm:text-4xl lg:text-5xl max-w-4xl"
           >
             Connecting African Gen Zs for Growth, Impact, and Success.
           </motion.h1>
