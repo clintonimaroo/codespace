@@ -127,7 +127,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="flex items-center gap-5 sm:flex-row flex-col w-full"
+            className="flex items-center gap-5 sm:flex-row flex-col sm:w-auto w-full"
           >
             <Button className="w-full md:w-fit hover:scale-105 transition-transform">
               Join the Community
