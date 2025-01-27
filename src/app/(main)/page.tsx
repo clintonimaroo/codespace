@@ -148,8 +148,9 @@ const Home = () => {
           className="relative w-full mt-8"
         >
           <VideoPlayer
-            src="https://rr4---sn-a5mekn6d.googlevideo.com/videoplayback?expire=1737786432&ei=4C-UZ_HKItOLsfIPxZDp4QM&ip=146.70.174.68&id=o-AEqXfop7enAoeNGnZ9uXgm6NBY7fPpVG44BslzEHBthP&itag=299&aitags=133%2C134%2C135%2C136%2C160%2C242%2C243%2C244%2C247%2C278%2C298%2C299%2C302%2C303%2C308&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&met=1737764832%2C&mh=mG&mm=31%2C26&mn=sn-a5mekn6d%2Csn-n4v7sns7&ms=au%2Conr&mv=m&mvi=4&pl=24&rms=au%2Cau&initcwndbps=1087500&bui=AY2Et-MygH4zjFAfzrH8jSYWETxM6zYUfXLj3_-EFFt31Nm72GqyVkigq0EziFKounZ6K_enotVWxXbr&vprv=1&svpuc=1&mime=video%2Fmp4&ns=MjKxMk571a6liJUuWDAlIoQQ&rqh=1&gir=yes&clen=38510942&dur=82.183&lmt=1726298101572240&mt=1737764442&fvip=2&keepalive=yes&lmw=1&fexp=51326932%2C51335594%2C51353498%2C51371294&c=TVHTML5&sefc=1&txp=6209224&n=EN5GdnJsrwzpoQ&sparams=expire%2Cei%2Cip%2Cid%2Caitags%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&lsig=AGluJ3MwRgIhALQ4CmLlHH-C8EPM8bQWR-aiDCR_MWhNvLDHU2vXs7wOAiEA_rvCPWIx61mw1-X3EleHEoDQi0mzE32hiqmnDEUYA4U%3D&sig=AJfQdSswRQIhAI5PQPGWZ6jRoaQD00dTd3W5Pi4egbRr0kox0zbarlsbAiAxrl7upiAiv6FriUadrL_FLjxY6GYsxpX9j1yyzFlkSg%3D%3D"
+            src="https://res.cloudinary.com/djar0mexx/video/upload/v1737986864/D6334415-BADD-4CB5-8BD0-2F1D03D7060C_thtdas.mp4"
             autoPlay
+            youtubeLink="https://www.youtube.com/watch?v=9wDcD6T6OqY&t=2s"
           />
         </motion.div>
       </Container>
