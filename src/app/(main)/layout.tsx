@@ -6,6 +6,8 @@ import Footer from "@/components/footer";
 import SmoothScroll from "@/components/smoothscroll";
 import ScrollToTop from "@/components/scroll-to-top";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const duplicateSans = localFont({
   src: [
@@ -237,6 +239,8 @@ export default function RootLayout({
         <ScrollToTop />
         {children}
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

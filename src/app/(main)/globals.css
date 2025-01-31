@@ -188,3 +188,13 @@ html.lenis {
   font-style: normal;
   font-display: swap;
 }
+
+::selection {
+  background-color: #6d6cd6;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #6d6cd6;
+  color: white;
+}
