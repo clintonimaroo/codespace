@@ -61,7 +61,7 @@ const NavBar = () => {
             </li>
           ))}
         </ul>
-        <Button size={"sm"} className="hidden lg:block" asChild>
+        <Button size={"sm"} className="hidden lg:block">
           <a href="https://forms.gle/hhuLVupnm2F1AGa96" target="_blank" rel="noopener noreferrer">
             Join the Community
           </a>
@@ -112,7 +112,7 @@ const NavBar = () => {
                     </div>
                   ))}
                 </nav>
-                <Button size="lg" className="w-full rounded-xl mt-8" asChild>
+                <Button size="lg" className="w-full rounded-xl mt-8">
                   <a href="https://forms.gle/hhuLVupnm2F1AGa96" target="_blank" rel="noopener noreferrer">
                     Join the Community
                   </a>
