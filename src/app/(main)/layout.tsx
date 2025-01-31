@@ -219,6 +219,11 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
         <Script
+          defer
+          data-domain="codespaces.org"
+          src="https://plausible.io/js/script.js"
+        />
+        <Script
           id="json-ld"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

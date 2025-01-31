@@ -199,7 +199,7 @@ export const brands = [
 ];
 
 export const links = [
-  { name: "Our Initiatives", href: "/about-us" },
+  { name: "About Us", href: "/about-us" },
   { name: "Donate", href: "/donate" },
   { name: "Events", href: "/events" },
   { name: "Gallery", href: "/gallery" },
@@ -208,7 +208,7 @@ export const links = [
 ];
 
 export const quick_links = [
-  { name: "Our Initiatives", href: "/about-us" },
+  { name: "About Us", href: "/about-us" },
   { name: "Donate", href: "/donate" },
   { name: "Brand Guideline", href: "/brand-guidelines" },
   { name: "Privacy & Terms", href: "/privacy-policy" },
