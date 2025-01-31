@@ -40,38 +40,44 @@ const AnimatedValue = ({ value, suffix = "" }: AnimatedValueProps) => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
   }, []);
 
   useEffect(() => {
     if (!isVisible) return;
 
-    let start = 0;
-    const end = Number(value);
-    const duration = 2000;
-    const increment = (end / duration) * 16;
+    const endValue = Number(value);
+    const duration = 2000; // 2 seconds
+    const frameDuration = 1000 / 60; // 60fps
+    const totalFrames = Math.round(duration / frameDuration);
+    const valueIncrement = endValue / totalFrames;
 
-    const timer = setInterval(() => {
-      start += increment;
-      if (start > end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
+    let currentFrame = 0;
+    const counter = setInterval(() => {
+      currentFrame++;
+      const currentValue = Math.min(Math.round(valueIncrement * currentFrame), endValue);
+      setCount(currentValue);
+
+      if (currentFrame === totalFrames) {
+        clearInterval(counter);
       }
-    }, 16);
+    }, frameDuration);
 
-    return () => clearInterval(timer);
+    return () => clearInterval(counter);
   }, [value, isVisible]);
 
   return (
@@ -129,15 +135,20 @@ const Home = () => {
             transition={{ delay: 0.5 }}
             className="flex items-center gap-5 sm:flex-row flex-col sm:w-auto w-full"
           >
-            <Button className="w-full md:w-fit hover:scale-105 transition-transform">
-              Join the Community
+            <Button className="w-full md:w-fit hover:scale-105 transition-transform" asChild>
+              <a href="https://forms.gle/hhuLVupnm2F1AGa96" target="_blank" rel="noopener noreferrer">
+                Join the Community
+              </a>
             </Button>
             <Button
               variant={"ghost"}
               className="[&_svg]:size-6 w-full md:w-fit hover:scale-105 transition-transform"
+              asChild
             >
-              <CirclePlayIcon strokeWidth={1.5} size={30} />
-              Watch 2024 Events
+              <a href="https://www.youtube.com/live/DNI2ewOZMTo?si=Vc7QacMn8C9jrQvQ" target="_blank" rel="noopener noreferrer">
+                <CirclePlayIcon strokeWidth={1.5} size={30} />
+                Watch 2024 Events
+              </a>
             </Button>
           </motion.div>
         </motion.div>

@@ -73,8 +73,10 @@ const SubscribeCard = () => {
       </h3>
 
       <button className="bg-white text-primary px-4 md:px-6 py-3 rounded-full font-medium mt-4 hover:bg-gray-100 transition-colors flex items-center gap-2 mx-auto group">
-        Join the Community
-        <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        <a href="https://forms.gle/hhuLVupnm2F1AGa96" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+          Join the Community
+          <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        </a>
       </button>
     </div>
   );

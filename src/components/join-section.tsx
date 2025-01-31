@@ -23,7 +23,11 @@ const JoinSection = () => {
           Be a part of our ever growing community by joining our Telegram
           channel and getting periodic updates.
         </p>
-        <Button className="w-fit mt-7">Join the community</Button>
+        <Button className="w-fit mt-7" asChild>
+          <a href="https://forms.gle/hhuLVupnm2F1AGa96" target="_blank" rel="noopener noreferrer">
+            Join the community
+          </a>
+        </Button>
       </div>
     </Container>
   );

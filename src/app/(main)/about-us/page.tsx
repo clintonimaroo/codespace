@@ -108,7 +108,11 @@ const AboutUs = () => {
               growth. Join us, and connect with thousands of African tech
               talents on their journey.
             </p>
-            <Button variant={"white"}>Join Us</Button>
+            <Button variant={"white"} asChild>
+              <a href="https://forms.gle/hhuLVupnm2F1AGa96" target="_blank" rel="noopener noreferrer">
+                Join Us
+              </a>
+            </Button>
           </div>
         </section>
       </section>
