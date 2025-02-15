@@ -419,7 +419,6 @@ const Home = () => {
             Your Tech Journey is much <br /> Smoother with Us!
           </p>
         </div>
-        {/* milestones */}
 
         {stats.map((stat: Stat) => (
           <div
