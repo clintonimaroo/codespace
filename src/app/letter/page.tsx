@@ -109,6 +109,39 @@ export default function LetterPage() {
 
                     <h2>2024 also saw the birth of our annual HackFest, Our second consecutive year and first time hosting it physically in Lagos Nigeria. The event brought together over a thousand Gen Z in tech in person and even more virtually for a day packed with insightful and fun activities, making it&apos;s way to history as one of the largest Gen Z-focused conferences gathering here in Nigeria. Beyond the numbers, Fusion Tech Fest 2024 introduced some of the best and biggest problem solver to handle various tracks we had.</h2>
 
+                    <div className="image-grid">
+                        <div className="image-wrapper">
+                            <Image
+                                src="/images/letter/img-1.jpg"
+                                alt="Moonshot swag in nature"
+                                width={1000}
+                                height={1500}
+                                className="main-image"
+                                priority
+                            />
+                        </div>
+                        <div className="image-wrapper">
+                            <Image
+                                src="/images/letter/img-2.jpg"
+                                alt="Moonshot podcast recording session"
+                                width={1000}
+                                height={562}
+                                className="secondary-image"
+                                priority
+                            />
+                        </div>
+                        <div className="image-wrapper">
+                            <Image
+                                src="/images/letter/img-3.jpg"
+                                alt="Moonshot team with mustaches"
+                                width={1000}
+                                height={562}
+                                className="secondary-image"
+                                priority
+                            />
+                        </div>
+                    </div>
+
                     <h2>Saw teams tackle everything from rural healthcare to financial inclusion. They weren&apos;t just coding side projects - they were solving actual problems Nigeria faces and affect millions of Nigerians daily.</h2>
 
                     <h2>One key thing about this was the practical focus. These developers weren&apos;t just chasing trendy tech - they were building solutions tailored for Nigerian realities. It was innovation with purpose.</h2>
