@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500&display=swap');
+
+:root {
+  --font-selector: R0Y7TWFucm9wZS01MDA=;
+  --framer-font-family: "Manrope", "Manrope Placeholder", sans-serif;
+  --framer-font-size: 18px;
+  --framer-font-weight: 500;
+  --framer-line-height: 1.6em;
+  --framer-text-alignment: left;
+  --framer-text-color: rgb(122, 122, 122);
+}
+
+.letter-container {
+  min-height: 100vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+.content {
+  width: 100%;
+  max-width: 640px;
+  padding: 24px;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 16px;
+  }
+}
+
+.logo {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 84px;
+  align-self: flex-start;
+
+  @media (max-width: 768px) {
+    margin-bottom: 64px;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 48px;
+  }
+}
+
+.audio-player {
+  width: 100%;
+  height: 48px;
+  background: rgb(239, 239, 239);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  margin-bottom: 16px;
+  border-radius: 0;
+  box-sizing: border-box;
+
+  @media (max-width: 480px) {
+    height: 40px;
+    padding: 0 10px;
+  }
+}
+
+.audio-controls {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+
+  @media (max-width: 480px) {
+    gap: 12px;
+  }
+}
+
+.play-button {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.8;
+
+  span {
+    color: #000;
+    font-size: 12px;
+    transform: translateX(0.5px);
+  }
+
+  @media (max-width: 480px) {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.progress-bar {
+  flex: 1;
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin-left: 8px;
+  min-width: 70px;
+
+  @media (max-width: 480px) {
+    font-size: 10px;
+    min-width: 60px;
+  }
+}
+
+.meta-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 24px 0 48px;
+  color: var(--framer-text-color);
+  font-family: var(--framer-font-family);
+  font-size: var(--framer-font-size);
+  line-height: var(--framer-line-height);
+
+  p {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+
+    &:first-child {
+      margin-bottom: 24px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin: 20px 0 40px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    margin: 16px 0 32px;
+    font-size: 15px;
+
+    p:first-child {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.text-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+
+  h2 {
+    font-family: var(--framer-font-family);
+    font-size: var(--framer-font-size);
+    font-weight: var(--framer-font-weight);
+    line-height: var(--framer-line-height);
+    color: var(--framer-text-color);
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  @media (max-width: 768px) {
+    gap: 20px;
+    margin-bottom: 28px;
+
+    h2 {
+      font-size: 16px;
+      line-height: 1.5em;
+    }
+  }
+
+  @media (max-width: 480px) {
+    gap: 16px;
+    margin-bottom: 24px;
+
+    h2 {
+      font-size: 15px;
+      line-height: 1.5em;
+    }
+  }
+}
+
+.letter {
+  width: 100%;
+  font-family: var(--framer-font-family);
+  font-size: var(--framer-font-size);
+  font-weight: var(--framer-font-weight);
+  line-height: var(--framer-line-height);
+  color: var(--framer-text-color);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  p {
+    margin: 0 0 24px 0;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    color: inherit;
+  }
+}
+
+.image-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 280px);
+  gap: 8px;
+  margin: 32px 0;
+}
+
+.image-container {
+  position: relative;
+  background: rgb(242, 242, 242);
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+} 
