@@ -15,6 +15,16 @@ export const UpcomingEvents: CollectionConfig = {
     update: ({ req: { user } }) => checkIsCodespaceUser(user),
     delete: ({ req: { user } }) => checkIsCodespaceUser(user),
   },
+  hooks: {
+    afterRead: [
+      ({ doc }) => {
+        if (doc.id) {
+          doc.embedCode = `<iframe src="${process.env.NEXT_PUBLIC_APP_URL}/embed/upcoming-events/${doc.id}" width="100%" height="600" frameborder="0"></iframe>`;
+        }
+        return doc;
+      },
+    ],
+  },
   fields: [
     {
       name: "eventTitle",
@@ -78,6 +88,27 @@ export const UpcomingEvents: CollectionConfig = {
           type: "number",
         },
       ],
+    },
+    {
+      name: "embedCode",
+      type: "textarea",
+      admin: {
+        position: "sidebar",
+        description: "Copy this code to embed the event on external websites",
+        readOnly: true,
+        style: {
+          fontFamily: "monospace",
+          fontSize: "12px",
+          whiteSpace: "pre-wrap",
+          wordBreak: "break-all",
+          minHeight: "100px",
+          padding: "8px",
+          backgroundColor: "var(--theme-elevation-50)",
+          border: "1px solid var(--theme-elevation-150)",
+          borderRadius: "4px",
+          color: "var(--theme-elevation-800)",
+        },
+      },
     },
   ],
 };

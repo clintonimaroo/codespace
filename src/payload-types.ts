@@ -188,6 +188,10 @@ export interface UpcomingEvent {
     statValue?: number | null;
     id?: string | null;
   }[];
+  /**
+   * Copy this code to embed the event on external websites
+   */
+  embedCode?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -203,6 +207,10 @@ export interface PastEvent {
   date: string;
   callToAction?: string | null;
   recapLink: string;
+  /**
+   * Copy this code to embed the event on external websites
+   */
+  embedCode?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -485,6 +493,7 @@ export interface UpcomingEventsSelect<T extends boolean = true> {
         statValue?: T;
         id?: T;
       };
+  embedCode?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -499,6 +508,7 @@ export interface PastEventsSelect<T extends boolean = true> {
   date?: T;
   callToAction?: T;
   recapLink?: T;
+  embedCode?: T;
   updatedAt?: T;
   createdAt?: T;
 }
