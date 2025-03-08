@@ -16,7 +16,7 @@ async function getPastEvent(id: string) {
         }
 
         const data = await response.json();
-        return data;
+        return data as PastEvent;
     } catch (error) {
         console.error("Error fetching past event:", error);
         return null;
