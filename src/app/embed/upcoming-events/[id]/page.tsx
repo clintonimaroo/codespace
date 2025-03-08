@@ -23,14 +23,11 @@ async function getUpcomingEvent(id: string) {
     }
 }
 
-interface PageProps {
-    params: {
-        id: string;
-    };
-    searchParams: Record<string, string | string[] | undefined>;
+type Props = {
+    params: { id: string }
 }
 
-export default async function EmbedPage({ params }: PageProps) {
+export default async function EmbedPage({ params }: Props) {
     const event = await getUpcomingEvent(params.id);
 
     if (!event) {
