@@ -23,11 +23,14 @@ async function getPastEvent(id: string) {
     }
 }
 
-export default async function EmbedPage({
-    params,
-}: {
-    params: { id: string };
-}) {
+interface PageProps {
+    params: {
+        id: string;
+    };
+    searchParams: Record<string, string | string[] | undefined>;
+}
+
+export default async function EmbedPage({ params }: PageProps) {
     const event = await getPastEvent(params.id);
 
     if (!event) {
