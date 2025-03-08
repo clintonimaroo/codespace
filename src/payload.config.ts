@@ -13,6 +13,7 @@ import { Blog } from "./collections/Blog";
 import { Gallery } from "./collections/Gallery";
 import { UpcomingEvents } from "./collections/UpcomingEvents";
 import { PastEvents } from "./collections/PastEvents";
+import { Press } from "./collections/Press";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -20,6 +21,9 @@ const dirname = path.dirname(filename);
 export default buildConfig({
   admin: {
     user: Users.slug,
+    components: {
+      avatar: './components/admin/CustomAvatar',
+    },
     importMap: {
       baseDir: path.resolve(dirname),
     },
@@ -46,7 +50,7 @@ export default buildConfig({
       ],
     },
   },
-  collections: [Users, Media, Blog, Gallery, UpcomingEvents, PastEvents],
+  collections: [Users, Media, Blog, Gallery, UpcomingEvents, PastEvents, Press],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {

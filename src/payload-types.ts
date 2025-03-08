@@ -17,6 +17,7 @@ export interface Config {
     gallery: Gallery;
     'upcoming-events': UpcomingEvent;
     'past-events': PastEvent;
+    press: Press;
     'payload-jobs': PayloadJob;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -30,6 +31,7 @@ export interface Config {
     gallery: GallerySelect<false> | GallerySelect<true>;
     'upcoming-events': UpcomingEventsSelect<false> | UpcomingEventsSelect<true>;
     'past-events': PastEventsSelect<false> | PastEventsSelect<true>;
+    press: PressSelect<false> | PressSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -81,6 +83,10 @@ export interface User {
   id: string;
   name: string;
   username: string;
+  /**
+   * Upload a profile picture (recommended size: 400x400 pixels)
+   */
+  profilePicture?: (string | null) | Media;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -197,6 +203,25 @@ export interface PastEvent {
   date: string;
   callToAction?: string | null;
   recapLink: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "press".
+ */
+export interface Press {
+  id: string;
+  title: string;
+  coverImage: string | Media;
+  url: string;
+  source: string;
+  date: string;
+  excerpt: string;
+  /**
+   * Display this press item prominently
+   */
+  featured?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -324,6 +349,10 @@ export interface PayloadLockedDocument {
         value: string | PastEvent;
       } | null)
     | ({
+        relationTo: 'press';
+        value: string | Press;
+      } | null)
+    | ({
         relationTo: 'payload-jobs';
         value: string | PayloadJob;
       } | null);
@@ -376,6 +405,7 @@ export interface PayloadMigration {
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
   username?: T;
+  profilePicture?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -469,6 +499,21 @@ export interface PastEventsSelect<T extends boolean = true> {
   date?: T;
   callToAction?: T;
   recapLink?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "press_select".
+ */
+export interface PressSelect<T extends boolean = true> {
+  title?: T;
+  coverImage?: T;
+  url?: T;
+  source?: T;
+  date?: T;
+  excerpt?: T;
+  featured?: T;
   updatedAt?: T;
   createdAt?: T;
 }

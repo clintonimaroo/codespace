@@ -14,9 +14,12 @@ export const Users: CollectionConfig = {
     read: () => true,
     create: ({ req: { user } }) => checkIsCodespaceUser(user),
     update: ({ req: { user } }) => {
+      if (checkIsCodespaceUser(user)) {
+        return true;
+      }
       return {
-        email: {
-          equals: user?.email,
+        id: {
+          equals: user?.id,
         },
       };
     },
@@ -35,6 +38,15 @@ export const Users: CollectionConfig = {
       type: "text",
       required: true,
       unique: true,
+    },
+    {
+      name: "profilePicture",
+      label: "Profile Picture",
+      type: "upload",
+      relationTo: "media",
+      admin: {
+        description: "Upload a profile picture (recommended size: 400x400 pixels)",
+      },
     },
   ],
 };

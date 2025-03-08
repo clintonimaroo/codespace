@@ -109,7 +109,7 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <SpaceBadge>Version 2.0</SpaceBadge>
+            <SpaceBadge>Read clinton&apos;s letter</SpaceBadge>
           </motion.div>
           <motion.h1
             initial={{ opacity: 0 }}

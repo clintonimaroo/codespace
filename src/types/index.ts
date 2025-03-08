@@ -39,6 +39,11 @@ export interface Author {
   name: string;
   username: string;
   loginAttempts: number;
+  profilePicture?: {
+    id: string;
+    url: string;
+    alt: string;
+  } | null;
 }
 
 export interface Block {
@@ -100,6 +105,11 @@ export interface Media {
 export interface Author {
   id: string;
   name: string;
+  profilePicture?: {
+    id: string;
+    url: string;
+    alt: string;
+  } | null;
 }
 
 export type BlogDoc = {
@@ -119,11 +129,21 @@ export type BlogDoc = {
     id: string;
     name: string;
     username: string;
+    profilePicture?: {
+      id: string;
+      url: string;
+      alt: string;
+    } | null;
   };
   updatedBy: {
     id: string;
     name: string;
     username: string;
+    profilePicture?: {
+      id: string;
+      url: string;
+      alt: string;
+    } | null;
   };
   _status?: string;
   createdAt: string;
@@ -181,4 +201,21 @@ export type Gallery = {
 
 export type Galleries = {
   docs: Gallery[];
+} & Pagination;
+
+export type Press = {
+  id: string;
+  title: string;
+  coverImage: FeaturedImage;
+  url: string;
+  source: string;
+  date: string;
+  excerpt: string;
+  featured: boolean;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type PressResponse = {
+  docs: Press[];
 } & Pagination;
