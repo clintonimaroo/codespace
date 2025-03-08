@@ -23,12 +23,11 @@ async function getPastEvent(id: string) {
     }
 }
 
-type Props = {
-    params: { id: string }
-    searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export default async function Page({ params }: Props) {
+export default async function Page({
+    params,
+}: {
+    params: { id: string };
+}) {
     const event = await getPastEvent(params.id);
 
     if (!event) {
