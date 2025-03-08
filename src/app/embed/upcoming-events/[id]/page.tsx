@@ -23,11 +23,7 @@ async function getUpcomingEvent(id: string) {
     }
 }
 
-type Props = {
-    params: { id: string }
-}
-
-export default async function EmbedPage({ params }: Props) {
+export default async function Page({ params }: { params: { id: string } }) {
     const event = await getUpcomingEvent(params.id);
 
     if (!event) {
