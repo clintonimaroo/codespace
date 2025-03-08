@@ -23,11 +23,12 @@ async function getUpcomingEvent(id: string) {
     }
 }
 
-type Props = {
+export default async function Page({
+    params,
+}: {
     params: { id: string };
-}
-
-export default async function Page({ params }: Props) {
+    searchParams?: { [key: string]: string | string[] | undefined };
+}) {
     const event = await getUpcomingEvent(params.id);
 
     if (!event) {
