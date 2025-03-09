@@ -23,12 +23,14 @@ async function getPastEvent(id: string) {
     }
 }
 
-interface PageProps {
-    params: { id: string };
-}
+type Props = {
+    params: Promise<{ id: string }>;
+    searchParams?: { [key: string]: string | string[] | undefined };
+};
 
-export default async function Page({ params }: PageProps) {
-    const event = await getPastEvent(params.id);
+export default async function Page({ params }: Props) {
+    const resolvedParams = await params;
+    const event = await getPastEvent(resolvedParams.id);
 
     if (!event) {
         notFound();
