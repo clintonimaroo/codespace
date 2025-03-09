@@ -16,8 +16,8 @@ const formatDate = (dateString: string) => {
     .replace(",", "");
 };
 
-const formatAuthors = (blog: BlogDoc) => {
-  if (!blog.collaborators || blog.collaborators.length === 0) {
+const formatAuthors = (blog: BlogDoc, isMobile: boolean = false) => {
+  if (isMobile || !blog.collaborators || blog.collaborators.length === 0) {
     return blog.author.name;
   }
 
@@ -179,7 +179,7 @@ export default async function BlogPage(props: Props) {
           <div className="flex-1">
             <div className="mt-2 md:mt-20">
               <div className="text-[#475467] text-[14px] mb-3 md:hidden flex items-center gap-2">
-                <span>{formatAuthors(blog)}</span>
+                <span>{formatAuthors(blog, true)}</span>
                 <span>•</span>
                 <span>{formatDate(blog.createdAt)}</span>
               </div>
