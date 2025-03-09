@@ -95,7 +95,21 @@ export const Blog: CollectionConfig = {
     useAsTitle: "title",
   },
   access: {
-    read: ({ req }) => {
+    read: ({ req }): boolean | { 
+      and?: Array<{ 
+        _status: { 
+          equals: string 
+        } 
+      }>,
+      or?: Array<{
+        author?: {
+          equals: string
+        },
+        collaborators?: {
+          contains: string
+        }
+      }>
+    } => {
       // If no user, only show published posts
       if (!req.user) {
         return {
