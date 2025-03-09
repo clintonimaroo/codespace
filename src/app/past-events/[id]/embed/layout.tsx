@@ -1,5 +1,3 @@
-import '@/styles/globals.css';
-
 export const metadata = {
     title: 'Past Event | Code Space',
     description: 'View details about this past Code Space event.',
