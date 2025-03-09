@@ -1,3 +1,5 @@
+import '@/styles/globals.css';
+
 export const metadata = {
     title: 'Past Event | Code Space',
     description: 'View details about this past Code Space event.',
@@ -10,7 +12,7 @@ export default function Layout({
 }) {
     return (
         <html lang="en">
-            <body>
+            <body className="bg-transparent">
                 <main className="min-h-screen bg-white">
                     {children}
                 </main>
