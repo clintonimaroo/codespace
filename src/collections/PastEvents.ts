@@ -17,9 +17,10 @@ export const PastEvents: CollectionConfig = {
   },
   hooks: {
     afterRead: [
-      ({ doc }) => {
+      async ({ doc }) => {
+        const APP_URL = process.env.NEXT_PUBLIC_APP_URL || process.env.APP_URL || "https://codespace.africa";
         if (doc.id) {
-          doc.embedCode = `<iframe src="${process.env.NEXT_PUBLIC_APP_URL}/embed/past-events/${doc.id}" width="100%" height="600" frameborder="0"></iframe>`;
+          doc.embedCode = `<iframe src="${APP_URL}/embed/past-events/${doc.id}" width="100%" height="600" frameborder="0"></iframe>`;
         }
         return doc;
       },
