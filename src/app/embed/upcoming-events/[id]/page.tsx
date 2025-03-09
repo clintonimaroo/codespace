@@ -23,11 +23,11 @@ async function getUpcomingEvent(id: string) {
     }
 }
 
-export default async function Page({
-    params,
-}: {
+interface PageProps {
     params: { id: string };
-}) {
+}
+
+export default async function Page({ params }: PageProps) {
     const event = await getUpcomingEvent(params.id);
 
     if (!event) {
