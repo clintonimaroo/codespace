@@ -19,7 +19,7 @@ export const UpcomingEvents: CollectionConfig = {
     afterRead: [
       async ({ doc }) => {
         if (doc.id) {
-          doc.embedCode = `<iframe src="https://codespace.africa/upcoming-events/${doc.id}/embed" width="100%" height="600" frameborder="0" style="border: none; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></iframe>`;
+          doc.embedCode = `<iframe src="https://codespaces.org/upcoming-events/${doc.id}/embed" width="100%" height="600" frameborder="0" style="border: none; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></iframe>`;
         }
         return doc;
       },

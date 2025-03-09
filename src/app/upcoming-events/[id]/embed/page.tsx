@@ -4,7 +4,7 @@ import { formatDateWithComma } from "@/lib/utils";
 import { UpcomingEvent } from "@/types";
 
 async function getUpcomingEvent(id: string) {
-    const APP_URL = process.env.APP_URL || "https://codespace.africa";
+    const APP_URL = process.env.APP_URL || "https://codespaces.org";
 
     try {
         const response = await fetch(`${APP_URL}/api/upcoming-events/${id}`, {
