@@ -11,7 +11,7 @@ export default function Layout({
     return (
         <html lang="en">
             <body className="bg-transparent">
-                <main className="min-h-screen bg-white">
+                <main className="min-h-screen py-20">
                     {children}
                 </main>
             </body>
