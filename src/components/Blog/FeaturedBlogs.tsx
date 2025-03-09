@@ -4,8 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 
-const formatAuthors = (blog: BlogDoc) => {
-  if (!blog.collaborators || blog.collaborators.length === 0) {
+const formatAuthors = (blog: BlogDoc, isMobile: boolean = false) => {
+  if (isMobile || !blog.collaborators || blog.collaborators.length === 0) {
     return blog.author.name;
   }
 
@@ -59,13 +59,11 @@ export default function FeaturedBlogs({
                     </h2>
                   </Link>
                   <div className="flex items-center gap-2 text-white/80">
-                    <span>{formatAuthors(featuredBlog)}</span>
+                    <span className="md:hidden">{formatAuthors(featuredBlog, true)}</span>
+                    <span className="hidden md:inline">{formatAuthors(featuredBlog)}</span>
                     <span>•</span>
                     <span>{formatDate(featuredBlog.createdAt)}</span>
                   </div>
-                  <p className="text-white/80 text-lg line-clamp-3">
-                    {featuredBlog.excerpt}
-                  </p>
                 </div>
               </div>
               <div className="w-full md:w-1/2 relative">

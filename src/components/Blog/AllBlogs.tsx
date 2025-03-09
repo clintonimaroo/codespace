@@ -3,8 +3,8 @@ import { BlogsAPIResponse, BlogDoc } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
-const formatAuthors = (blog: BlogDoc) => {
-  if (!blog.collaborators || blog.collaborators.length === 0) {
+const formatAuthors = (blog: BlogDoc, isMobile: boolean = false) => {
+  if (isMobile || !blog.collaborators || blog.collaborators.length === 0) {
     return blog.author.name;
   }
 
@@ -45,7 +45,8 @@ export default function AllBlogs({
               )}
               <div className="flex flex-col gap-y-1 mt-4 md:mt-6">
                 <div className="flex items-center gap-x-[5.5px] text-neutral text-base">
-                  <p>{formatAuthors(blog)}</p>
+                  <p className="md:hidden">{formatAuthors(blog, true)}</p>
+                  <p className="hidden md:block">{formatAuthors(blog)}</p>
                   <div className="h-[3px] w-[3px] rounded-full bg-neutral" />
                   <p>{formatDate(blog.createdAt)}</p>
                 </div>
