@@ -1,6 +1,21 @@
 import { checkIsCodespaceUser } from "@/lib/utils";
 import { CollectionConfig } from "payload";
 
+const retryOperation = async (operation: () => Promise<any>, maxRetries = 3, delay = 1000) => {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      return await operation();
+    } catch (error: any) {
+      if (i === maxRetries - 1) throw error;
+      if (error.code === 112 || error.code === 251) {
+        await new Promise(resolve => setTimeout(resolve, delay));
+        continue;
+      }
+      throw error;
+    }
+  }
+};
+
 export const Blog: CollectionConfig = {
   slug: "blog",
   hooks: {
@@ -17,55 +32,53 @@ export const Blog: CollectionConfig = {
           try {
             // If setting this post as top story, update any existing top story to regular
             if (data.postType === 'top') {
-              await req.payload.update({
-                collection: 'blog',
-                where: {
-                  and: [
-                    {
-                      postType: {
-                        equals: 'top'
+              await retryOperation(async () => {
+                await req.payload.update({
+                  collection: 'blog',
+                  where: {
+                    and: [
+                      {
+                        postType: {
+                          equals: 'top'
+                        }
+                      },
+                      {
+                        id: {
+                          not_equals: data.id
+                        }
                       }
-                    },
-                    {
-                      id: {
-                        not_equals: data.id
-                      }
-                    }
-                  ]
-                },
-                data: {
-                  postType: 'regular'
-                }
-              }).catch(err => {
-                console.warn('Failed to update other top stories:', err);
-                // Continue with the operation even if this update fails
+                    ]
+                  },
+                  data: {
+                    postType: 'regular'
+                  }
+                });
               });
             }
 
             // If setting this post as featured, unset featured from other posts
             if (data.isFeatured) {
-              await req.payload.update({
-                collection: 'blog',
-                where: {
-                  and: [
-                    {
-                      isFeatured: {
-                        equals: true
+              await retryOperation(async () => {
+                await req.payload.update({
+                  collection: 'blog',
+                  where: {
+                    and: [
+                      {
+                        isFeatured: {
+                          equals: true
+                        }
+                      },
+                      {
+                        id: {
+                          not_equals: data.id
+                        }
                       }
-                    },
-                    {
-                      id: {
-                        not_equals: data.id
-                      }
-                    }
-                  ]
-                },
-                data: {
-                  isFeatured: false
-                }
-              }).catch(err => {
-                console.warn('Failed to update other featured posts:', err);
-                // Continue with the operation even if this update fails
+                    ]
+                  },
+                  data: {
+                    isFeatured: false
+                  }
+                });
               });
             }
           } catch (error) {

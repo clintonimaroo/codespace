@@ -17,19 +17,19 @@ const formatDate = (dateString: string) => {
 };
 
 const formatAuthors = (blog: BlogDoc) => {
-  const authors = [blog.author];
-  if (blog.collaborators && blog.collaborators.length > 0) {
-    authors.push(...blog.collaborators);
+  if (!blog.collaborators || blog.collaborators.length === 0) {
+    return blog.author.name;
   }
 
-  if (authors.length === 1) {
-    return authors[0].name;
-  } else if (authors.length === 2) {
-    return `${authors[0].name} and ${authors[1].name}`;
+  const collaboratorNames = blog.collaborators.map(c => c.name);
+  if (collaboratorNames.length === 1) {
+    return `${blog.author.name} and ${collaboratorNames[0]}`;
+  } else if (collaboratorNames.length === 2) {
+    return `${blog.author.name}, ${collaboratorNames[0]} and ${collaboratorNames[1]}`;
   } else {
-    const lastAuthor = authors[authors.length - 1];
-    const otherAuthors = authors.slice(0, -1).map(a => a.name).join(", ");
-    return `${otherAuthors}, and ${lastAuthor.name}`;
+    const lastCollaborator = collaboratorNames[collaboratorNames.length - 1];
+    const otherCollaborators = collaboratorNames.slice(0, -1).join(", ");
+    return `${blog.author.name}, ${otherCollaborators}, and ${lastCollaborator}`;
   }
 };
 
