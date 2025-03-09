@@ -201,13 +201,13 @@ export default async function BlogPage(props: Props) {
               </div>
             </div>
 
-            <div className="mt-4 md:mt-8 h-[250px] md:h-[600px] bg-[#f8f8f8] relative overflow-hidden">
+            <div className="mt-4 md:mt-8 h-[250px] md:h-[600px] bg-[#f8f8f8] relative overflow-hidden rounded-lg">
               {blog.featuredImage && (
                 <Image
                   src={blog.featuredImage.url}
                   alt={blog.featuredImage.alt || blog.title}
                   fill
-                  className="object-cover w-full h-full"
+                  className="object-cover w-full h-full rounded-lg"
                   priority
                 />
               )}
