@@ -24,11 +24,13 @@ async function getUpcomingEvent(id: string) {
 }
 
 type Props = {
-    params: { id: string };
+    params: Promise<{ id: string }>;
+    searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export default async function Page({ params }: Props) {
-    const event = await getUpcomingEvent(params.id);
+    const resolvedParams = await params;
+    const event = await getUpcomingEvent(resolvedParams.id);
 
     if (!event) {
         notFound();
