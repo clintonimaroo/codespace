@@ -18,7 +18,7 @@ export const UpcomingEvents: CollectionConfig = {
   hooks: {
     afterRead: [
       async ({ doc }) => {
-        const APP_URL = process.env.NEXT_PUBLIC_APP_URL || process.env.APP_URL || "https://codespace.africa";
+        const APP_URL = process.env.APP_URL || "https://codespace.africa";
         if (doc.id) {
           doc.embedCode = `<iframe src="${APP_URL}/embed/upcoming-events/${doc.id}" width="100%" height="600" frameborder="0"></iframe>`;
         }
