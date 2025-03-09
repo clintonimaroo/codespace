@@ -95,57 +95,33 @@ export const Blog: CollectionConfig = {
     useAsTitle: "title",
   },
   access: {
-    read: ({ req }): boolean | { 
-      and?: Array<{ 
-        _status: { 
-          equals: string 
-        } 
-      }>,
-      or?: Array<{
-        author?: {
-          equals: string
-        },
-        collaborators?: {
-          contains: string
-        }
-      }>
+    read: ({ req }): boolean | {
+      and?: Array<{ _status: { equals: string } }>;
+      or?: Array<{ [key: string]: { equals?: string; contains?: string } }>;
     } => {
-      // If no user, only show published posts
       if (!req.user) {
         return {
-          and: [{
-            _status: {
-              equals: "published"
-            }
-          }]
+          and: [{ _status: { equals: "published" } }]
         };
       }
 
-      // If Code Space admin, show all posts
       if (checkIsCodespaceUser(req.user)) {
         return true;
       }
 
-      // Otherwise, only show user's own posts or posts they collaborate on
       return {
         or: [
-          {
-            author: {
-              equals: req.user.id
-            }
-          },
-          {
-            collaborators: {
-              contains: req.user.id
-            }
-          }
+          { author: { equals: req.user.id } },
+          { collaborators: { contains: req.user.id } }
         ]
       };
     },
-    create: ({ req }) => {
+    create: ({ req }): boolean => {
       return !!req.user;
     },
-    update: ({ req }) => {
+    update: ({ req }): boolean | {
+      or?: Array<{ [key: string]: { equals?: string; contains?: string } }>;
+    } => {
       if (!req.user) return false;
       
       if (checkIsCodespaceUser(req.user)) {
@@ -154,20 +130,14 @@ export const Blog: CollectionConfig = {
 
       return {
         or: [
-          {
-            author: {
-              equals: req.user.id,
-            }
-          },
-          {
-            collaborators: {
-              contains: req.user.id
-            }
-          }
+          { author: { equals: req.user.id } },
+          { collaborators: { contains: req.user.id } }
         ]
       };
     },
-    delete: ({ req }) => {
+    delete: ({ req }): boolean | {
+      [key: string]: { equals: string };
+    } => {
       if (!req.user) return false;
       
       if (checkIsCodespaceUser(req.user)) {
@@ -175,9 +145,7 @@ export const Blog: CollectionConfig = {
       }
 
       return {
-        author: {
-          equals: req.user.id,
-        },
+        author: { equals: req.user.id }
       };
     },
   },
