@@ -1,8 +1,25 @@
-import { BlogsAPIResponse } from "@/types";
+import { BlogsAPIResponse, BlogDoc } from "@/types";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+
+const formatAuthors = (blog: BlogDoc) => {
+  const authors = [blog.author];
+  if (blog.collaborators && blog.collaborators.length > 0) {
+    authors.push(...blog.collaborators);
+  }
+
+  if (authors.length === 1) {
+    return authors[0].name;
+  } else if (authors.length === 2) {
+    return `${authors[0].name} and ${authors[1].name}`;
+  } else {
+    const lastAuthor = authors[authors.length - 1];
+    const otherAuthors = authors.slice(0, -1).map(a => a.name).join(", ");
+    return `${otherAuthors}, and ${lastAuthor.name}`;
+  }
+};
 
 export default function FeaturedBlogs({
   blogs,
@@ -41,29 +58,31 @@ export default function FeaturedBlogs({
                       {featuredBlog.title}
                     </h2>
                   </Link>
-                  <div className="flex items-center gap-x-2 text-white/80 text-sm">
-                    <p>{formatDate(featuredBlog.createdAt)}</p>
-                    <div className="h-1 w-1 rounded-full bg-white/80" />
-                    <p>by {featuredBlog.author?.name || "Anonymous"}</p>
+                  <div className="flex items-center gap-2 text-white/80">
+                    <span>{formatAuthors(featuredBlog)}</span>
+                    <span>•</span>
+                    <span>{formatDate(featuredBlog.createdAt)}</span>
                   </div>
+                  <p className="text-white/80 text-lg line-clamp-3">
+                    {featuredBlog.excerpt}
+                  </p>
                 </div>
               </div>
-              {featuredBlog.featuredImage && (
-                <div className="w-full md:w-1/2 h-[300px] md:h-auto relative">
+              <div className="w-full md:w-1/2 relative">
+                {featuredBlog.featuredImage && (
                   <Image
                     src={featuredBlog.featuredImage.url}
                     alt={featuredBlog.featuredImage.alt || featuredBlog.title}
-                    fill
+                    width={800}
+                    height={600}
                     className="w-full h-full object-cover"
                   />
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         </div>
-      ) : (
-        <p>No featured blogs available.</p>
-      )}
+      ) : null}
     </div>
   );
 }

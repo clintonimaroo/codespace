@@ -135,6 +135,16 @@ export type BlogDoc = {
       alt: string;
     } | null;
   };
+  collaborators?: {
+    id: string;
+    name: string;
+    username: string;
+    profilePicture?: {
+      id: string;
+      url: string;
+      alt: string;
+    } | null;
+  }[];
   updatedBy: {
     id: string;
     name: string;

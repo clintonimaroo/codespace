@@ -1,7 +1,24 @@
 import { formatDate } from "@/lib/utils";
-import { BlogsAPIResponse } from "@/types";
+import { BlogsAPIResponse, BlogDoc } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
+
+const formatAuthors = (blog: BlogDoc) => {
+  const authors = [blog.author];
+  if (blog.collaborators && blog.collaborators.length > 0) {
+    authors.push(...blog.collaborators);
+  }
+
+  if (authors.length === 1) {
+    return authors[0].name;
+  } else if (authors.length === 2) {
+    return `${authors[0].name} and ${authors[1].name}`;
+  } else {
+    const lastAuthor = authors[authors.length - 1];
+    const otherAuthors = authors.slice(0, -1).map(a => a.name).join(", ");
+    return `${otherAuthors}, and ${lastAuthor.name}`;
+  }
+};
 
 export default function AllBlogs({
   blogs,
@@ -28,7 +45,7 @@ export default function AllBlogs({
               )}
               <div className="flex flex-col gap-y-1 mt-4 md:mt-6">
                 <div className="flex items-center gap-x-[5.5px] text-neutral text-base">
-                  <p>{blog.author?.name || "Anonymous"}</p>
+                  <p>{formatAuthors(blog)}</p>
                   <div className="h-[3px] w-[3px] rounded-full bg-neutral" />
                   <p>{formatDate(blog.createdAt)}</p>
                 </div>

@@ -16,6 +16,23 @@ const formatDate = (dateString: string) => {
     .replace(",", "");
 };
 
+const formatAuthors = (blog: BlogDoc) => {
+  const authors = [blog.author];
+  if (blog.collaborators && blog.collaborators.length > 0) {
+    authors.push(...blog.collaborators);
+  }
+
+  if (authors.length === 1) {
+    return authors[0].name;
+  } else if (authors.length === 2) {
+    return `${authors[0].name} and ${authors[1].name}`;
+  } else {
+    const lastAuthor = authors[authors.length - 1];
+    const otherAuthors = authors.slice(0, -1).map(a => a.name).join(", ");
+    return `${otherAuthors}, and ${lastAuthor.name}`;
+  }
+};
+
 type Props = {
   params: Promise<{ id: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -107,8 +124,7 @@ export default async function BlogPage(props: Props) {
   }
 
   // Prepare sharing URLs
-  const baseUrl =
-    process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org";
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org";
   const currentUrl = `${baseUrl}/blog/${params.id}`;
   const encodedUrl = encodeURIComponent(currentUrl);
   const encodedTitle = encodeURIComponent(blog.title || "");
@@ -123,9 +139,18 @@ export default async function BlogPage(props: Props) {
     description: blog.excerpt,
     image: blog.featuredImage?.url,
     datePublished: blog.createdAt,
-    author: {
+    author: blog.collaborators?.length ? [
+      {
+        "@type": "Person",
+        name: blog.author.name,
+      },
+      ...blog.collaborators.map(collaborator => ({
+        "@type": "Person",
+        name: collaborator.name,
+      }))
+    ] : {
       "@type": "Person",
-      name: blog.author?.name || "Code Space",
+      name: blog.author.name,
     },
     publisher: {
       "@type": "Organization",
@@ -154,13 +179,13 @@ export default async function BlogPage(props: Props) {
           <div className="flex-1">
             <div className="mt-2 md:mt-20">
               <div className="text-[#475467] text-[14px] mb-3 md:hidden flex items-center gap-2">
-                <span>{blog.author?.name || "Anonymous"}</span>
+                <span>{formatAuthors(blog)}</span>
                 <span>•</span>
                 <span>{formatDate(blog.createdAt)}</span>
               </div>
               <div className="flex flex-col gap-4">
                 <div className="text-[#475467] text-base hidden md:flex gap-2">
-                  <span>{blog.author?.name || "Anonymous"}</span>
+                  <span>{formatAuthors(blog)}</span>
                   <span>•</span>
                   <span>{formatDate(blog.createdAt)}</span>
                 </div>

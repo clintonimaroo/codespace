@@ -99,13 +99,20 @@ export const Blog: CollectionConfig = {
         return true;
       }
 
-      // Otherwise, only show user's own posts
+      // Otherwise, only show user's own posts or posts they collaborate on
       return {
-        and: [{
-          author: {
-            equals: req.user.id
+        or: [
+          {
+            author: {
+              equals: req.user.id
+            }
+          },
+          {
+            collaborators: {
+              contains: req.user.id
+            }
           }
-        }]
+        ]
       };
     },
     create: ({ req }) => {
@@ -119,9 +126,18 @@ export const Blog: CollectionConfig = {
       }
 
       return {
-        author: {
-          equals: req.user.id,
-        },
+        or: [
+          {
+            author: {
+              equals: req.user.id,
+            }
+          },
+          {
+            collaborators: {
+              contains: req.user.id
+            }
+          }
+        ]
       };
     },
     delete: ({ req }) => {
@@ -238,6 +254,16 @@ export const Blog: CollectionConfig = {
         condition: (data) => !!data?.author,
       },
       required: true,
+    },
+    {
+      name: "collaborators",
+      type: "relationship",
+      relationTo: "users",
+      hasMany: true,
+      admin: {
+        description: "Select co-authors for this blog post",
+        position: "sidebar",
+      },
     },
     {
       name: "updatedBy",
