@@ -48,12 +48,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Blog, Gallery, UpcomingEvents, PastEvents, Press],
-  editor: lexicalEditor({
-    features: {
-      links: true,
-      lists: true,
-    },
-  }),
+  editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
