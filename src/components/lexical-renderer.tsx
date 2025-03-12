@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import Image from 'next/image';
 import { SyntaxHighlighter } from './syntax-highlighter';
+import Link from 'next/link';
 
 interface MediaValue {
     id: string;
@@ -25,13 +26,9 @@ interface LexicalNode {
     width?: number;
     target?: string;
     rel?: string;
-    // Code block fields
-    language?: string;
-    code?: string;
-    // Video embed fields
+    // Additional fields for video embeds
     videoUrl?: string;
-    videoType?: 'youtube' | 'vimeo' | 'custom';
-    videoThumbnail?: string;
+    videoType?: 'youtube' | 'vimeo';
     // Additional fields for Payload CMS Lexical format
     fields?: {
         url?: {
@@ -43,16 +40,12 @@ interface LexicalNode {
         image?: MediaValue;
         video?: {
             url: string;
-            type: 'youtube' | 'vimeo' | 'custom';
-            thumbnail?: string;
-        };
-        code?: {
-            language: string;
-            code: string;
+            type: 'youtube' | 'vimeo';
         };
     };
     relationTo?: string;
     value?: MediaValue;
+    language?: string;
 }
 
 interface LexicalContent {
@@ -135,62 +128,28 @@ const ShareableTakeaway = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-const CodeBlock = ({ language, code }: { language: string; code: string }) => {
-    return <SyntaxHighlighter code={code} language={language} />;
-};
+const YouTubeEmbed = ({ url }: { url: string }) => {
+    // Extract video ID from YouTube URL
+    const getYouTubeVideoId = (url: string) => {
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+        const match = url.match(regExp);
+        return match && match[2].length === 11 ? match[2] : null;
+    };
 
-const VideoEmbed = ({ url, type, thumbnail }: { url: string; type: string; thumbnail?: string }) => {
-    if (type === 'youtube') {
-        const videoId = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/)?.[1];
-        if (!videoId) return null;
+    const videoId = getYouTubeVideoId(url);
+    if (!videoId) return null;
 
-        return (
-            <div className="my-6 aspect-video rounded-lg overflow-hidden">
-                <iframe
-                    src={`https://www.youtube.com/embed/${videoId}`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-full"
-                />
-            </div>
-        );
-    }
-
-    if (type === 'vimeo') {
-        const videoId = url.match(/vimeo\.com\/(?:video\/)?([0-9]+)/)?.[1];
-        if (!videoId) return null;
-
-        return (
-            <div className="my-6 aspect-video rounded-lg overflow-hidden">
-                <iframe
-                    src={`https://player.vimeo.com/video/${videoId}`}
-                    allow="autoplay; fullscreen; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-full"
-                />
-            </div>
-        );
-    }
-
-    if (type === 'custom' && thumbnail) {
-        return (
-            <div className="my-6 aspect-video rounded-lg overflow-hidden relative group cursor-pointer">
-                <Image
-                    src={thumbnail}
-                    alt="Video thumbnail"
-                    fill
-                    className="object-cover"
-                />
-                <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <svg className="w-16 h-16 text-white" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M8 5v14l11-7z" />
-                    </svg>
-                </div>
-            </div>
-        );
-    }
-
-    return null;
+    return (
+        <div className="relative w-full aspect-video my-8">
+            <iframe
+                className="absolute top-0 left-0 w-full h-full rounded-lg"
+                src={`https://www.youtube.com/embed/${videoId}`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+            />
+        </div>
+    );
 };
 
 const renderNode = (node: LexicalNode): JSX.Element | string | null => {
@@ -308,6 +267,15 @@ const renderNode = (node: LexicalNode): JSX.Element | string | null => {
                 </blockquote>
             );
 
+        case 'code':
+            return (
+                <div className="my-4">
+                    <SyntaxHighlighter language={node.language || 'javascript'}>
+                        {node.text || ''}
+                    </SyntaxHighlighter>
+                </div>
+            );
+
         case 'upload':
         case 'image': {
             let src = '';
@@ -351,16 +319,11 @@ const renderNode = (node: LexicalNode): JSX.Element | string | null => {
             );
         }
 
-        case 'code':
-            const codeLanguage = node.fields?.code?.language || node.language || 'plaintext';
-            const codeContent = node.fields?.code?.code || node.code || '';
-            return <CodeBlock language={codeLanguage} code={codeContent} />;
-
         case 'video':
-            const videoUrl = node.fields?.video?.url || node.videoUrl || '';
-            const videoType = node.fields?.video?.type || node.videoType || 'youtube';
-            const videoThumbnail = node.fields?.video?.thumbnail || node.videoThumbnail;
-            return <VideoEmbed url={videoUrl} type={videoType} thumbnail={videoThumbnail} />;
+            if (node.fields?.video?.type === 'youtube') {
+                return <YouTubeEmbed url={node.fields.video.url} />;
+            }
+            return null;
 
         default:
             if (node.children?.length) {

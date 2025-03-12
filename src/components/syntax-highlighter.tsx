@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { Prism as SyntaxHighlighterPrism } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface Props {
@@ -9,9 +9,9 @@ interface Props {
     children: string;
 }
 
-export default function CodeHighlighter({ language, children }: Props) {
+export function SyntaxHighlighter({ language, children }: Props) {
     return (
-        <SyntaxHighlighter
+        <SyntaxHighlighterPrism
             language={language}
             style={vscDarkPlus}
             customStyle={{
@@ -23,6 +23,8 @@ export default function CodeHighlighter({ language, children }: Props) {
             }}
         >
             {children}
-        </SyntaxHighlighter>
+        </SyntaxHighlighterPrism>
     );
-} 
+}
+
+export default SyntaxHighlighter; 
