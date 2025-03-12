@@ -50,54 +50,12 @@ export default buildConfig({
   collections: [Users, Media, Blog, Gallery, UpcomingEvents, PastEvents, Press],
   editor: lexicalEditor({
     features: {
-      // Default features
-      blocks: true,
-      links: true,
+      link: true,
       list: true,
       upload: {
         collections: {
           media: true,
         },
-      },
-      // Enhanced features
-      codeBlock: {
-        languages: [
-          { label: 'Plain Text', value: 'plaintext' },
-          { label: 'HTML', value: 'html' },
-          { label: 'CSS', value: 'css' },
-          { label: 'JavaScript', value: 'javascript' },
-          { label: 'TypeScript', value: 'typescript' },
-          { label: 'Python', value: 'python' },
-          { label: 'Java', value: 'java' },
-          { label: 'C++', value: 'cpp' },
-          { label: 'Ruby', value: 'ruby' },
-          { label: 'PHP', value: 'php' },
-          { label: 'Go', value: 'go' },
-          { label: 'Rust', value: 'rust' },
-          { label: 'SQL', value: 'sql' },
-          { label: 'Shell', value: 'shell' },
-          { label: 'Markdown', value: 'markdown' },
-          { label: 'JSON', value: 'json' },
-          { label: 'YAML', value: 'yaml' },
-        ],
-      },
-      video: {
-        types: [
-          { label: 'YouTube', value: 'youtube' },
-          { label: 'Vimeo', value: 'vimeo' },
-          { label: 'Custom', value: 'custom' },
-        ],
-        fields: [
-          {
-            name: 'thumbnail',
-            type: 'upload',
-            relationTo: 'media',
-            required: false,
-            admin: {
-              condition: (data) => data?.type === 'custom',
-            },
-          },
-        ],
       },
     },
   }),
@@ -116,7 +74,6 @@ export default buildConfig({
       collections: {
         media: true,
       },
-      token: process.env.BLOB_READ_WRITE_TOKEN,
     }),
   ],
 });
