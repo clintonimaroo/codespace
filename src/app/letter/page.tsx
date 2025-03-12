@@ -95,27 +95,27 @@ export default function LetterPage() {
                 </div>
 
                 <div className="text-content">
-                    <h2>A New Year, A new beginning for everyone.</h2>
+                    <h2>A New Year, A New Beginning for Everyone.</h2>
 
-                    <h2>It&apos;s been a very long time since I last wrote to you, and honestly 2024 was one hell of a year!</h2>
+                    <h2>It&apos;s been a very long time since I last wrote to you. Honestly, 2024 was one hell of a year!</h2>
 
-                    <h2>The end of 2024 had us reflecting on the year, we recorded a 79% increase in membership, impacted over a thousand Gen Z individuals in tech, and organized our first physical conference with more than 1,000 attendees.</h2>
+                    <h2>The end of 2024 had us reflecting on the year; we recorded a 79% increase in membership, impacted over a thousand Gen Z individuals in tech, and organized our first physical conference with more than 1,000 attendees.</h2>
 
-                    <h2>I remember when we kicked off in 2021 with a single goal at heart: reaching and connecting with more Gen Z in tech. While growing into one of Africa&apos;s fastest-growing communities for Gen Z in tech, we&apos;ve stayed true to our core values as both a community and organization.</h2>
+                    <h2>I remember we kicked off Code Space in 2021 with a single goal: reaching and connecting with more Gen Z in tech. While growing into one of Africa&apos;s fastest-growing communities for Gen Z in tech, we&apos;ve stayed true to our core values as a community and organization.</h2>
 
-                    <h2>In 2024, We launched our laptop initiatives. We started by giving laptops to few community members in Q1 to boost productivity and support them through. We organized interactive sessions with some of the industry&apos;s brightest minds (including Peace Itimi, Chisom Nwokwu, Emmy Cao, Nyah Macklin) among many others. Organized two major hackathons: Fusion Tech Fest and Wix Studio Hack (in partnership with Wix). We also held our International Women&apos;s Day event, celebrating African Gen Z women breaking bias in tech.</h2>
+                    <h2>In 2024, we launched our laptop initiatives. We empowered a few community members in Q1 to boost their productivity and support their careers. We organized interactive sessions with some of the industry&apos;s brightest minds (including Peace Itimi, Chisom Nwokwu, Emmy Cao, Nyah Macklin, and many others). We also held our International Day of the Girl Child event, celebrating African Gen Z women breaking the bias in tech.</h2>
 
-                    <h2>And guess what? We were also at Moonshot this year with plenty of swag!</h2>
+                    <h2>And guess what? We were also at Moonshot with plenty of swag!</h2>
 
-                    <h2>2024 also saw the birth of our annual HackFest, Our second consecutive year and first time hosting it physically in Lagos Nigeria. The event brought together over a thousand Gen Z in tech in person and even more virtually for a day packed with insightful and fun activities, making it&apos;s way to history as one of the largest Gen Z-focused conferences gathering here in Nigeria. Beyond the numbers, Fusion Tech Fest 2024 introduced some of the best and biggest problem solver to handle various tracks we had.</h2>
+                    <h2>In 2024, we celebrated our annual HackConf with two major hackathons: Fusion Tech Fest and Wix Studio Hack (in partnership with Wix).</h2>
 
                     <div className="image-grid">
                         <div className="image-wrapper">
                             <Image
                                 src="/images/letter/img-1.jpg"
                                 alt="Moonshot swag in nature"
-                                width={1000}
-                                height={1500}
+                                width={1600}
+                                height={900}
                                 className="main-image"
                                 priority
                             />
@@ -124,8 +124,8 @@ export default function LetterPage() {
                             <Image
                                 src="/images/letter/img-2.jpg"
                                 alt="Moonshot podcast recording session"
-                                width={1000}
-                                height={562}
+                                width={800}
+                                height={450}
                                 className="secondary-image"
                                 priority
                             />
@@ -134,25 +134,23 @@ export default function LetterPage() {
                             <Image
                                 src="/images/letter/img-3.jpg"
                                 alt="Moonshot team with mustaches"
-                                width={1000}
-                                height={562}
+                                width={800}
+                                height={450}
                                 className="secondary-image"
                                 priority
                             />
                         </div>
                     </div>
 
-                    <h2>Saw teams tackle everything from rural healthcare to financial inclusion. They weren&apos;t just coding side projects - they were solving actual problems Nigeria faces and affect millions of Nigerians daily.</h2>
+                    <h2>Fusion Tech Fest marked our second consecutive year of organizing a large-scale hackathon and our first-ever in-person edition in Lagos, Nigeria. The event brought together over a thousand Gen Zs in tech, both in person and virtually, making history as one of Nigeria&apos;s largest Gen Z-focused tech conferences.</h2>
 
-                    <h2>One key thing about this was the practical focus. These developers weren&apos;t just chasing trendy tech - they were building solutions tailored for Nigerian realities. It was innovation with purpose.</h2>
+                    <h2>Aside from providing a platform for members of our community to connect, we will always remember Fusion Tech Fest for the quality of problem solvers who participated in various hackathon tracks. For the first time, we categorized our hackathon into software and hardware tracks. We saw teams develop mind-blowing AI and hardware solutions, tackling predominant issues affecting millions of Nigerians daily.</h2>
 
-                    <h2>While all this also count toward our goal for 2025 making it even more bigger, We&apos;re building a community that can make a tangible impact in Nigeria through technology and this is just another step forward!</h2>
+                    <h2>In 2024, we saw hackers and their teams innovate with purpose. All of these fuel our goals for Spacers HackConf 2025. This year, we hope to bring you and everyone in the community a bigger annual hackathon and conference. Spacers HackConf 2025 will provide a platform where you can ideate, innovate, and build world-class solutions.</h2>
 
-                    <h2>Our efforts and results this year have not just helped us realize how far we&apos;ve come, but helped us prove that even with challenges, we cannot be stopped. Code Space is more than just a community, it&apos;s a movement. Looking back, this whole space you see today started as a simple WhatsApp conversation in 2021.</h2>
+                    <h2>Our efforts and results last year not only showed us how far we&apos;ve come but also proved that no challenge can stop us. Looking back, I&apos;m incredibly proud of the progress we&apos;ve made as a community. It&apos;s incredible to think that everything you see today started as a simple WhatsApp conversation in 2021. Since then, we&apos;ve made small decisions that continue to impact the careers of Gen Zs across Africa.</h2>
 
-                    <h2>We had some big moments that defined the year!</h2>
-
-                    <h2>Looking back on the year, I&apos;m incredibly proud of the progress we&apos;ve been able to accomplish as a team. Each passing day, we learn more about our efforts and the incredible partners, sponsors, and individuals who supported and embraced our vision. They continue to support us in empowering thousands of young African tech talents. Thanks to the amazing brands that make our mission even more rewarding!</h2>
+                    <h2>We remain eternally grateful to our partners, sponsors, and individuals who unfailingly join us in our walk to create not just a community but a launchpad for Gen Zs who are dreamers, innovators, and builders. Thank you to everyone for believing in our vision and empowering us to transform the lives of thousands of young African tech talents.</h2>
                 </div>
             </div>
         </div>
