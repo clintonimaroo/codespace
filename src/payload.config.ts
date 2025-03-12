@@ -50,9 +50,9 @@ export default buildConfig({
   collections: [Users, Media, Blog, Gallery, UpcomingEvents, PastEvents, Press],
   editor: lexicalEditor({
     features: {
-      link: true,
-      list: true,
-      upload: {
+      links: true,
+      lists: true,
+      uploads: {
         collections: {
           media: true,
         },
