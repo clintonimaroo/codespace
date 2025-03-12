@@ -52,11 +52,6 @@ export default buildConfig({
     features: {
       links: true,
       lists: true,
-      uploads: {
-        collections: {
-          media: true,
-        },
-      },
     },
   }),
   secret: process.env.PAYLOAD_SECRET || "",
