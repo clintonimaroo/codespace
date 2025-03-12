@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 import Image from 'next/image';
 import { SyntaxHighlighter } from './syntax-highlighter';
-import Link from 'next/link';
 
 interface MediaValue {
     id: string;
