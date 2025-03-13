@@ -75,22 +75,34 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org"
   ),
   title: {
-    default: "Code Space - Building Africa's Largest Gen Z Tech Community",
+    default: "Code Space - Africa's Premier Gen Z Tech Community & Innovation Hub",
     template: "%s | Code Space",
   },
   description:
-    "Code Space is Africa's largest Gen Z tech community, connecting young tech talents for growth, impact, and success. Join our vibrant community to accelerate your tech career.",
+    "Code Space is Africa's leading Gen Z tech community, empowering young tech talents through mentorship, events, and networking. Join our vibrant ecosystem of innovators, developers, and tech enthusiasts to accelerate your tech career and shape Africa's digital future.",
   keywords: [
     "Code Space",
-    "Tech Community",
-    "Gen Z",
-    "Africa Tech",
-    "Tech Career",
-    "Tech Events",
-    "Tech Network",
-    "Tech Education",
+    "Tech Community Africa",
+    "Gen Z Tech",
+    "African Tech Community",
+    "Tech Events Africa",
+    "Tech Mentorship",
+    "Tech Network Nigeria",
+    "Tech Education Africa",
+    "African Tech Ecosystem",
+    "Tech Innovation Hub",
+    "Tech Talent Africa",
+    "African Tech Events",
+    "Tech Community Lagos",
+    "African Tech Network",
+    "Tech Skills Development",
+    "African Tech Mentorship",
+    "Tech Career Africa",
+    "African Tech Resources",
+    "Tech Community Development",
+    "African Tech Innovation"
   ],
-  authors: [{ name: "Code Space" }],
+  authors: [{ name: "Code Space", url: "https://www.codespaces.org" }],
   creator: "Code Space",
   publisher: "Code Space",
   formatDetection: {
@@ -102,24 +114,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org",
-    title: "Code Space - Building Africa's Largest Gen Z Tech Community",
+    title: "Code Space - Africa's Premier Gen Z Tech Community & Innovation Hub",
     description:
-      "Code Space is Africa's largest Gen Z tech community, connecting young tech talents for growth, impact, and success. Join our vibrant community to accelerate your tech career.",
+      "Code Space is Africa's leading Gen Z tech community, empowering young tech talents through mentorship, events, and networking. Join our vibrant ecosystem of innovators, developers, and tech enthusiasts.",
     siteName: "Code Space",
     images: [
       {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Code Space - Africa's Largest Gen Z Tech Community",
+        alt: "Code Space - Africa's Premier Gen Z Tech Community",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Code Space - Building Africa's Largest Gen Z Tech Community",
+    title: "Code Space - Africa's Premier Gen Z Tech Community & Innovation Hub",
     description:
-      "Code Space is Africa's largest Gen Z tech community, connecting young tech talents for growth, impact, and success. Join our vibrant community to accelerate your tech career.",
+      "Code Space is Africa's leading Gen Z tech community, empowering young tech talents through mentorship, events, and networking. Join our vibrant ecosystem of innovators, developers, and tech enthusiasts.",
     images: ["/images/og-image.jpg"],
     creator: "@codespace",
     site: "@codespace",
@@ -137,6 +149,8 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "YOUR_VERIFICATION_CODE",
+    yandex: "YOUR_YANDEX_CODE",
+    bing: "YOUR_BING_CODE",
   },
   alternates: {
     canonical: process.env.NEXT_PUBLIC_APP_URL,
@@ -153,7 +167,7 @@ export default function RootLayout({
     "@type": "Organization",
     name: "Code Space",
     description:
-      "Africa's largest Gen Z tech community, connecting young tech talents for growth, impact, and success.",
+      "Africa's leading Gen Z tech community, empowering young tech talents through mentorship, events, and networking.",
     url: process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org",
     logo: `${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png`,
     foundingDate: "2021",
@@ -179,21 +193,39 @@ export default function RootLayout({
       email: "hello@codespaces.org",
     },
     knowsAbout: [
-      "Tech Community",
+      "African Tech Community",
+      "Tech Innovation Hub",
       "Software Development",
-      "Tech Events",
+      "Tech Events Africa",
       "Tech Education",
-      "African Tech",
-      "Gen Z Tech",
-      "Hackathons",
-      "Tech Conferences",
-      "Tech Meetups",
-      "Tech Workshops",
-      "Tech Workshops",
-      "Tech Conferences",
-      "Tech Meetups",
-      "Tech Workshops",
+      "Gen Z Tech Community",
+      "African Tech Ecosystem",
+      "Tech Mentorship",
+      "Tech Career Development",
+      "African Tech Network",
+      "Tech Skills Development",
+      "Tech Innovation",
+      "African Tech Resources",
+      "Tech Community Building",
+      "Digital Skills Training",
     ],
+    areaServed: {
+      "@type": "Continent",
+      name: "Africa"
+    },
+    audience: {
+      "@type": "Audience",
+      audienceType: "Generation Z Tech Enthusiasts"
+    },
+    offers: {
+      "@type": "Offer",
+      category: [
+        "Tech Community",
+        "Tech Education",
+        "Tech Events",
+        "Mentorship"
+      ]
+    }
   };
 
   return (

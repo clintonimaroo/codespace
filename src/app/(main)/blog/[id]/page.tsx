@@ -48,29 +48,52 @@ export async function generateMetadata(
 
   if (!blog) {
     return {
-      title: "Blog Not Found",
-      description: "The requested blog post could not be found.",
+      title: "Blog Not Found | Code Space",
+      description: "The requested blog post could not be found on Code Space's blog.",
     };
   }
 
   const previousImages = (await parent).openGraph?.images || [];
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org";
+
+  // Generate keywords based on blog content
+  const keywords = [
+    "Code Space",
+    "African Tech",
+    "Tech Community",
+    blog.title,
+    ...(blog.tags || []),
+    blog.category,
+  ].filter(Boolean);
 
   return {
-    title: blog.title,
-    description: blog.excerpt || "Read this article on Code Space",
+    title: `${blog.title} | Code Space Blog`,
+    description: blog.excerpt || `Read "${blog.title}" on Code Space - Africa's Premier Gen Z Tech Community`,
+    keywords: keywords,
+    authors: blog.author?.name ? [{ name: blog.author.name, url: `${baseUrl}/team/${blog.author.username}` }] : undefined,
     openGraph: {
       title: blog.title,
-      description: blog.excerpt || "Read this article on Code Space",
+      description: blog.excerpt || `Read "${blog.title}" on Code Space - Africa's Premier Gen Z Tech Community`,
       type: "article",
       publishedTime: blog.createdAt,
+      modifiedTime: blog.updatedAt,
       authors: blog.author?.name ? [blog.author.name] : undefined,
       images: [blog.featuredImage?.url || "", ...previousImages],
+      url: `${baseUrl}/blog/${blog.id}`,
+      siteName: "Code Space Blog",
+      locale: "en_US",
+      tags: blog.tags,
     },
     twitter: {
       card: "summary_large_image",
       title: blog.title,
-      description: blog.excerpt || "Read this article on Code Space",
+      description: blog.excerpt || `Read "${blog.title}" on Code Space - Africa's Premier Gen Z Tech Community`,
       images: [blog.featuredImage?.url || ""],
+      creator: "@codespace",
+      site: "@CodeSpaceHQ",
+    },
+    alternates: {
+      canonical: `${baseUrl}/blog/${blog.id}`,
     },
   };
 }
