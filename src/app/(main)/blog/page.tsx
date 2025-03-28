@@ -4,6 +4,16 @@ import Container from "@/components/container";
 import Blog from "@/components/Blog/Index";
 import { BlogsAPIResponse } from "@/types";
 import BlogNewsletterForm from "@/components/Blog/BlogNewsletterForm";
+import { Suspense } from "react";
+
+// Loading fallback component
+const BlogListingSkeleton = () => (
+  <div className="space-y-6">
+    <div className="animate-pulse bg-gray-200 h-48 rounded-lg w-full"></div>
+    <div className="animate-pulse bg-gray-200 h-48 rounded-lg w-full"></div>
+    <div className="animate-pulse bg-gray-200 h-48 rounded-lg w-full"></div>
+  </div>
+);
 
 async function getBlogs(
   currentPage: number,
@@ -14,8 +24,8 @@ async function getBlogs(
   const response = await fetch(
     `${BASE_URL}/api/blog?page=${currentPage}&limit=${limit}`,
     {
-      cache: 'no-store',
-      next: { revalidate: 0 }
+      // Cache data for 10 minutes instead of disabling cache
+      next: { revalidate: 600 }
     }
   );
   const data = await response.json();
@@ -34,19 +44,6 @@ export default async function BlogPage(props: Props) {
   const LIMIT = 10;
   const currentPage = Number(searchParams?.page) || 1;
 
-  const blogs = await getBlogs(currentPage, LIMIT);
-
-  if (blogs.totalDocs < 1)
-    return (
-      <>
-        <div className="h-[calc(100vh-100px)] flex flex-col items-center justify-center">
-          <p>No blogs yet</p>
-          <p className="text-xl">We are cooking a masterpiece 🧑🏾‍🍳</p>
-        </div>
-        <BrandsSection />
-        <JoinSection />
-      </>
-    );
   return (
     <div className="">
       {/* Hero Section */}
@@ -72,11 +69,30 @@ export default async function BlogPage(props: Props) {
 
       <div className="bg-white pb-20">
         <Container className="mt-12 md:mt-24">
-          <Blog blogs={blogs} currentPage={currentPage} />
+          <Suspense fallback={<BlogListingSkeleton />}>
+            <BlogContent currentPage={currentPage} limit={LIMIT} />
+          </Suspense>
         </Container>
         <BrandsSection />
         <JoinSection />
       </div>
     </div>
   );
+}
+
+// Move blog content fetching into a separate component
+// This allows React to suspend while data is loading
+async function BlogContent({ currentPage, limit }: { currentPage: number, limit: number }) {
+  const blogs = await getBlogs(currentPage, limit);
+
+  if (blogs.totalDocs < 1) {
+    return (
+      <div className="h-[calc(100vh-500px)] flex flex-col items-center justify-center">
+        <p>No blogs yet</p>
+        <p className="text-xl">We are cooking a masterpiece 🧑🏾‍🍳</p>
+      </div>
+    );
+  }
+
+  return <Blog blogs={blogs} currentPage={currentPage} />;
 }
