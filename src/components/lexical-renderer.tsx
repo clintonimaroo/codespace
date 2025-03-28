@@ -28,6 +28,8 @@ interface LexicalNode {
     // Additional fields for video embeds
     videoUrl?: string;
     videoType?: 'youtube' | 'vimeo';
+    youtubeUrl?: string; // For direct YouTube URLs
+    videoID?: string; // Some editors store just the ID
     // Additional fields for Payload CMS Lexical format
     fields?: {
         url?: {
@@ -151,10 +153,21 @@ const YouTubeEmbed = ({ url }: { url: string }) => {
     );
 };
 
+// Helper to detect YouTube URLs in text
+const isYouTubeUrl = (text: string): boolean => {
+    return /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+/.test(text);
+};
+
 const renderNode = (node: LexicalNode): JSX.Element | string | null => {
     switch (node.type) {
         case 'text': {
             let content: string | JSX.Element = node.text || '';
+
+            // Check if this is just a YouTube URL as text - we'll handle it in the paragraph case
+            if (isYouTubeUrl(content.toString()) && node.format === 0) {
+                return content;
+            }
+
             const format = node.format || 0;
 
             if (format & 1) content = <strong key="bold" className="font-semibold">{content}</strong>;
@@ -165,8 +178,10 @@ const renderNode = (node: LexicalNode): JSX.Element | string | null => {
             return content;
         }
 
-        case 'paragraph':
+        case 'paragraph': {
             const text = node.children?.map(child => child.text).join('') || '';
+
+            // Handle TAKEAWAY special case
             if (text.startsWith('TAKEAWAY:')) {
                 const takeawayContent = text.replace('TAKEAWAY:', '').trim();
                 return (
@@ -175,6 +190,12 @@ const renderNode = (node: LexicalNode): JSX.Element | string | null => {
                     </ShareableTakeaway>
                 );
             }
+
+            // Handle standalone YouTube URL in paragraph
+            if (node.children?.length === 1 && node.children[0].type === 'text' && isYouTubeUrl(node.children[0].text || '')) {
+                return <YouTubeEmbed url={node.children[0].text || ''} />;
+            }
+
             return (
                 <p className="mb-4 md:mb-6 text-[#4B5563] leading-relaxed text-[18px] md:text-base">
                     {node.children?.map((child, i) => (
@@ -182,6 +203,7 @@ const renderNode = (node: LexicalNode): JSX.Element | string | null => {
                     ))}
                 </p>
             );
+        }
 
         case 'heading': {
             const level = node.tag || '2';
@@ -321,8 +343,52 @@ const renderNode = (node: LexicalNode): JSX.Element | string | null => {
         }
 
         case 'video':
+            // Support for Payload CMS fields
             if (node.fields?.video?.type === 'youtube') {
                 return <YouTubeEmbed url={node.fields.video.url} />;
+            }
+            // Support for direct video fields
+            if (node.videoType === 'youtube' && node.videoUrl) {
+                return <YouTubeEmbed url={node.videoUrl} />;
+            }
+            // Support for youtubeUrl property
+            if (node.youtubeUrl) {
+                return <YouTubeEmbed url={node.youtubeUrl} />;
+            }
+            // Support for videoID property
+            if (node.videoID) {
+                return <YouTubeEmbed url={`https://youtube.com/watch?v=${node.videoID}`} />;
+            }
+            // Support for video URL as direct property
+            if (node.url && isYouTubeUrl(node.url)) {
+                return <YouTubeEmbed url={node.url} />;
+            }
+            // Support for src property with youtube URL
+            if (node.src && isYouTubeUrl(node.src)) {
+                return <YouTubeEmbed url={node.src} />;
+            }
+            return null;
+
+        // Add a new case for YouTube embeds
+        case 'youtube':
+            if (node.url) {
+                return <YouTubeEmbed url={node.url} />;
+            }
+            if (node.videoID) {
+                return <YouTubeEmbed url={`https://youtube.com/watch?v=${node.videoID}`} />;
+            }
+            if (node.src) {
+                return <YouTubeEmbed url={node.src} />;
+            }
+            return null;
+
+        // Support Lexical iframe nodes that might contain YouTube
+        case 'iframe':
+            if (node.url && isYouTubeUrl(node.url)) {
+                return <YouTubeEmbed url={node.url} />;
+            }
+            if (node.src && isYouTubeUrl(node.src)) {
+                return <YouTubeEmbed url={node.src} />;
             }
             return null;
 
