@@ -78,7 +78,12 @@ export async function generateMetadata(
       publishedTime: blog.createdAt,
       modifiedTime: blog.updatedAt,
       authors: blog.author?.name ? [blog.author.name] : undefined,
-      images: [blog.featuredImage?.url || "", ...previousImages],
+      images: [
+        blog.featuredImage?.url.startsWith('http')
+          ? blog.featuredImage.url
+          : `${baseUrl}${blog.featuredImage?.url}`,
+        ...previousImages
+      ].filter(Boolean),
       url: `${baseUrl}/blog/${blog.id}`,
       siteName: "Code Space Blog",
       locale: "en_US",
@@ -88,7 +93,11 @@ export async function generateMetadata(
       card: "summary_large_image",
       title: blog.title,
       description: blog.excerpt || `Read "${blog.title}" on Code Space - Africa's Premier Gen Z Tech Community`,
-      images: [blog.featuredImage?.url || ""],
+      images: [
+        blog.featuredImage?.url.startsWith('http')
+          ? blog.featuredImage.url
+          : `${baseUrl}${blog.featuredImage?.url}`
+      ].filter(Boolean),
       creator: "@codespace",
       site: "@CodeSpaceHQ",
     },

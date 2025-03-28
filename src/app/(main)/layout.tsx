@@ -120,7 +120,7 @@ export const metadata: Metadata = {
     siteName: "Code Space",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: `${process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org"}/images/icon.png`,
         width: 1200,
         height: 630,
         alt: "Code Space - Africa's Premier Gen Z Tech Community",
@@ -132,9 +132,9 @@ export const metadata: Metadata = {
     title: "Code Space - Africa's Premier Gen Z Tech Community & Innovation Hub",
     description:
       "Code Space is Africa's leading Gen Z tech community, empowering young tech talents through mentorship, events, and networking. Join our vibrant ecosystem of innovators, developers, and tech enthusiasts.",
-    images: ["/images/og-image.jpg"],
+    images: [`${process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org"}/images/icon.png`],
     creator: "@codespace",
-    site: "@codespace",
+    site: "@CodeSpaceHQ",
   },
   robots: {
     index: true,
