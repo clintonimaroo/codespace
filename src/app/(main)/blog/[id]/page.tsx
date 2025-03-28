@@ -1,10 +1,11 @@
 import Container from "@/components/container";
 import Image from "next/image";
-import { BlogDoc } from "@/types";
+import { BlogDoc, LexicalNode } from "@/types";
 import { LexicalRenderer } from "@/components/lexical-renderer";
 import { ArrowUpRight } from "lucide-react";
 import { Metadata, ResolvingMetadata } from "next";
 import Script from "next/script";
+import YouTubeEmbed from "@/components/YouTubeEmbed";
 
 const formatDate = (dateString: string) => {
   return new Date(dateString)
@@ -198,6 +199,16 @@ export default async function BlogPage(props: Props) {
     keywords: blog.tags?.join(", "),
   };
 
+  // Check for the specific YouTube URL in the blog content
+  const hasSpecificYouTubeLink = blog.content?.root?.children?.some(
+    (node: any) =>
+      node.type === 'paragraph' &&
+      node.children?.some((child: any) =>
+        child.type === 'text' &&
+        child.text?.includes('https://youtu.be/EOJULGWx4zA')
+      )
+  );
+
   return (
     <>
       <Script
@@ -247,6 +258,25 @@ export default async function BlogPage(props: Props) {
             <div className="mt-6 md:mt-12 text-[18px] md:text-xl text-[#475467] leading-relaxed">
               <LexicalRenderer content={blog.content} />
             </div>
+
+            {/* Ensure the YouTube link is displayed as an embed */}
+            {hasSpecificYouTubeLink && (
+              <div className="my-8">
+                <YouTubeEmbed url="https://youtu.be/EOJULGWx4zA?si=yUvgy9I8zJoPlKb6" />
+              </div>
+            )}
+
+            {/* General handling for YouTube links */}
+            {blog.content?.root?.children?.map((node: LexicalNode, idx: number) => {
+              if (node.type === 'paragraph' && node.children?.length === 1 && node.children[0].type === 'text') {
+                const text = node.children[0].text || '';
+                if ((text.startsWith('https://youtu.be/') || text.startsWith('https://www.youtube.com/')) &&
+                  !text.includes('EOJULGWx4zA')) { // Skip the specific one we handled above
+                  return <YouTubeEmbed key={idx} url={text} />;
+                }
+              }
+              return null;
+            })}
 
             {/* Share article and subscribe section */}
             <div className="flex flex-col md:flex-row gap-8 md:gap-14 mt-6">
