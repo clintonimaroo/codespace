@@ -5,7 +5,7 @@ import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext
 import { Button } from '@payloadcms/ui';
 import { $createParagraphNode, $createTextNode, $getSelection, $isRangeSelection } from 'lexical';
 import { $createYouTubeNode } from './YouTubeNode';
-import { YouTubePlugin } from './YouTubePlugin';
+import { YouTubePlugin } from './YouTubePlugin.tsx';
 
 export const YouTubeFeature = () => {
     const [editor] = useLexicalComposerContext();
