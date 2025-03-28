@@ -150,7 +150,9 @@ export const metadata: Metadata = {
   verification: {
     google: "YOUR_VERIFICATION_CODE",
     yandex: "YOUR_YANDEX_CODE",
-    bing: "YOUR_BING_CODE",
+    other: {
+      bing: "YOUR_BING_CODE"
+    }
   },
   alternates: {
     canonical: process.env.NEXT_PUBLIC_APP_URL,

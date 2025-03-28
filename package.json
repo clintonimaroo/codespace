@@ -11,7 +11,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.27.2",
     "@payloadcms/db-mongodb": "3.27.0",
-    "@payloadcms/next": "3.27.0",
+    "@payloadcms/next": "^3.27.0",
     "@payloadcms/payload-cloud": "3.27.0",
     "@payloadcms/plugin-cloud-storage": "3.27.0",
     "@payloadcms/richtext-lexical": "3.27.0",
