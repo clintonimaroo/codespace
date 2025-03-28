@@ -300,13 +300,15 @@ const renderNode = (node: LexicalNode): JSX.Element | string | null => {
 
             return (
                 <figure className="my-8">
-                    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg">
+                    <div className="md:relative md:aspect-[16/9] w-full overflow-hidden rounded-lg">
                         <Image
                             src={src}
                             alt={alt}
-                            fill
-                            className="object-cover"
+                            className="object-contain md:object-cover w-full h-auto rounded-lg"
+                            width={800}
+                            height={450}
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 85vw"
+                            style={{ position: 'relative', maxWidth: '100%' }}
                         />
                     </div>
                     {alt && (
