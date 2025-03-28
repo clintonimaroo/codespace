@@ -1,3 +1,5 @@
+"use client";
+
 import React, { Suspense } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
@@ -81,6 +83,6 @@ export const LazyLexicalRenderer = dynamic(
   () => import('./lexical-renderer').then((mod) => mod.LexicalRenderer),
   {
     loading: () => <LoadingSkeleton className="h-96" />,
-    ssr: false,
+    ssr: true,
   }
 ); 
