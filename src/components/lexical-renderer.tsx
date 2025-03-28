@@ -191,9 +191,30 @@ const renderNode = (node: LexicalNode): JSX.Element | string | null => {
                 );
             }
 
-            // Handle standalone YouTube URL in paragraph
-            if (node.children?.length === 1 && node.children[0].type === 'text' && isYouTubeUrl(node.children[0].text || '')) {
-                return <YouTubeEmbed url={node.children[0].text || ''} />;
+            // Check if the paragraph contains a YouTube URL
+            const youtubeRegex = /(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[a-zA-Z0-9_-]{11}(\?[^#]*)?/;
+            const youtubeMatch = text.match(youtubeRegex);
+
+            // Handle standalone YouTube URL in paragraph (with or without other text)
+            if (youtubeMatch) {
+                const youtubeUrl = youtubeMatch[0];
+
+                // If it's just the YouTube URL alone, return only the embed
+                if (text.trim() === youtubeUrl) {
+                    return <YouTubeEmbed url={youtubeUrl} />;
+                }
+
+                // If there's other text, return the paragraph with the embed below it
+                return (
+                    <>
+                        <p className="mb-4 md:mb-6 text-[#4B5563] leading-relaxed text-[18px] md:text-base">
+                            {node.children?.map((child, i) => (
+                                <Fragment key={i}>{renderNode(child)}</Fragment>
+                            ))}
+                        </p>
+                        <YouTubeEmbed url={youtubeUrl} />
+                    </>
+                );
             }
 
             return (

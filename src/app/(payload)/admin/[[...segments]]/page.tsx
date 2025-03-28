@@ -6,6 +6,9 @@ import config from "@payload-config";
 import { RootPage, generatePageMetadata } from "@payloadcms/next/views";
 import { importMap } from "../importMap";
 
+// Make sure YouTube URLs are handled in the admin interface
+import "../youtube-handler";
+
 type Args = {
   params: Promise<{
     segments: string[];

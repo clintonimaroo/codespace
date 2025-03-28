@@ -199,15 +199,36 @@ export default async function BlogPage(props: Props) {
     keywords: blog.tags?.join(", "),
   };
 
-  // Check for the specific YouTube URL in the blog content
-  const hasSpecificYouTubeLink = blog.content?.root?.children?.some(
-    (node: any) =>
-      node.type === 'paragraph' &&
-      node.children?.some((child: any) =>
-        child.type === 'text' &&
-        child.text?.includes('https://youtu.be/EOJULGWx4zA')
-      )
-  );
+  // Extract YouTube URLs from the content
+  const extractYouTubeUrls = (content: any): string[] => {
+    const youtubeUrls: string[] = [];
+
+    // Function to search for YouTube URLs in text nodes
+    const findYouTubeUrls = (node: any) => {
+      if (node.type === 'text' && typeof node.text === 'string') {
+        const regex = /(https?:\/\/)?(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)[a-zA-Z0-9_-]{11}(\?[^#]*)?/g;
+        const matches = [...node.text.matchAll(regex)];
+        matches.forEach(match => youtubeUrls.push(match[0]));
+      }
+
+      if (node.children && Array.isArray(node.children)) {
+        node.children.forEach(findYouTubeUrls);
+      }
+    };
+
+    if (content?.root?.children && Array.isArray(content.root.children)) {
+      content.root.children.forEach(findYouTubeUrls);
+    }
+
+    return youtubeUrls;
+  };
+
+  // Find all YouTube URLs in the content
+  const youtubeUrls = extractYouTubeUrls(blog.content);
+
+  // The specific YouTube URL we're looking for
+  const specificYouTubeUrl = "https://youtu.be/EOJULGWx4zA?si=yUvgy9I8zJoPlKb6";
+  const hasSpecificYouTubeUrl = youtubeUrls.some(url => url.includes("EOJULGWx4zA"));
 
   return (
     <>
@@ -259,24 +280,21 @@ export default async function BlogPage(props: Props) {
               <LexicalRenderer content={blog.content} />
             </div>
 
-            {/* Ensure the YouTube link is displayed as an embed */}
-            {hasSpecificYouTubeLink && (
+            {/* If we didn't detect the YouTube embed in the Lexical renderer, add it explicitly */}
+            {hasSpecificYouTubeUrl && (
               <div className="my-8">
-                <YouTubeEmbed url="https://youtu.be/EOJULGWx4zA?si=yUvgy9I8zJoPlKb6" />
+                <YouTubeEmbed url={specificYouTubeUrl} />
               </div>
             )}
 
-            {/* General handling for YouTube links */}
-            {blog.content?.root?.children?.map((node: LexicalNode, idx: number) => {
-              if (node.type === 'paragraph' && node.children?.length === 1 && node.children[0].type === 'text') {
-                const text = node.children[0].text || '';
-                if ((text.startsWith('https://youtu.be/') || text.startsWith('https://www.youtube.com/')) &&
-                  !text.includes('EOJULGWx4zA')) { // Skip the specific one we handled above
-                  return <YouTubeEmbed key={idx} url={text} />;
-                }
-              }
-              return null;
-            })}
+            {/* Display any other YouTube URLs found in the content */}
+            {youtubeUrls
+              .filter(url => !url.includes("EOJULGWx4zA")) // Skip the specific one handled above
+              .map((url, idx) => (
+                <div key={idx} className="my-8">
+                  <YouTubeEmbed url={url} />
+                </div>
+              ))}
 
             {/* Share article and subscribe section */}
             <div className="flex flex-col md:flex-row gap-8 md:gap-14 mt-6">
