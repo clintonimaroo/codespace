@@ -1,6 +1,6 @@
 import Container from "@/components/container";
 import Image from "next/image";
-import { BlogDoc, LexicalNode } from "@/types";
+import { BlogDoc } from "@/types";
 import { LexicalRenderer } from "@/components/lexical-renderer";
 import { ArrowUpRight } from "lucide-react";
 import { Metadata, ResolvingMetadata } from "next";

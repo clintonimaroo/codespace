@@ -14,6 +14,7 @@ import { Gallery } from "./collections/Gallery";
 import { UpcomingEvents } from "./collections/UpcomingEvents";
 import { PastEvents } from "./collections/PastEvents";
 import { Press } from "./collections/Press";
+import { YouTubeNode } from "./features/lexical/youtube";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -48,7 +49,24 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Blog, Gallery, UpcomingEvents, PastEvents, Press],
-  editor: lexicalEditor(),
+  editor: lexicalEditor({
+    features: {
+      customFeatures: [
+        {
+          key: 'youtube',
+          feature: async () => ({
+            plugins: [
+              {
+                Feature: (await import('./features/lexical/youtube')).YouTubeFeatureClient,
+                position: 'toolbar'
+              }
+            ],
+            nodes: [YouTubeNode]
+          })
+        }
+      ]
+    }
+  }),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),

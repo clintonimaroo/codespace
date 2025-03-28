@@ -83,6 +83,24 @@ export interface LexicalNode {
   url?: string;
   tag?: string;
   listType?: "number" | "bullet";
+  src?: string;
+  altText?: string;
+  videoUrl?: string;
+  videoType?: "youtube" | "vimeo";
+  youtubeUrl?: string;
+  videoID?: string;
+  fields?: {
+    url?: {
+      url: string;
+      linkType?: string;
+    };
+    rel?: string;
+    target?: string;
+    video?: {
+      url: string;
+      type: "youtube" | "vimeo";
+    };
+  };
 }
 
 export interface LexicalContent {
