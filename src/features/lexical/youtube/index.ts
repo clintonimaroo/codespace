@@ -1,6 +1,4 @@
-import { YouTubeNode } from './YouTubeNode';
-
-export { YouTubeNode };
-export { default as YouTubeFeatureClient } from './YouTubeFeature.client';
-export { $createYouTubeNode, $isYouTubeNode } from './YouTubeNode';
-export { YouTubePlugin } from './YouTubePlugin.tsx'; 
+// Export the components and utility functions
+export { YouTubeNode, $createYouTubeNode, $isYouTubeNode } from './YouTubeNode';
+export { YouTubePlugin } from './YouTubePlugin';
+export { default as YouTubeFeature } from './YouTubeFeature.client'; 

@@ -1,7 +1,6 @@
 "use client";
 
-import { NodeKey, EditorConfig, LexicalNode, SerializedLexicalNode, Spread } from 'lexical';
-import { DecoratorNode } from '@lexical/react/LexicalDecoratorNode.js';
+import { NodeKey, EditorConfig, LexicalNode, SerializedLexicalNode, Spread, DecoratorNode } from 'lexical';
 import React from 'react';
 
 export type SerializedYouTubeNode = Spread<
