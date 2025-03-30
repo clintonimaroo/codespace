@@ -61,6 +61,23 @@ const ImageFallback = () => (
     </div>
 );
 
+// Set metadata for iframes
+export const metadata = {
+    robots: {
+        index: false,
+        follow: false,
+    },
+    viewport: {
+        width: 'device-width',
+        initialScale: 1,
+    },
+    title: 'Code Space Event',
+    referrer: 'no-referrer',
+};
+
+// Configure dynamic rendering for embed
+export const dynamic = 'force-dynamic';
+
 type Props = {
     params: Promise<{ id: string }>;
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -74,7 +91,7 @@ export default async function Page({ params }: Props) {
         notFound();
     }
 
-    // Add appropriate CORS headers for embedded content
+    // Extract image URL with fallback
     const imageUrl = event.coverImage?.url || '';
 
     return (
@@ -88,6 +105,7 @@ export default async function Page({ params }: Props) {
                                     src={imageUrl}
                                     alt={event.eventTitle}
                                     fill
+                                    unoptimized={true}
                                     sizes="(max-width: 768px) 100vw, 400px"
                                     priority={true}
                                     className="object-cover h-full w-auto"
