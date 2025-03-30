@@ -1,7 +1,32 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { formatDateWithComma } from "@/lib/utils";
 import { UpcomingEvent } from "@/types";
+import { Button } from "@/components/ui/button";
+import classNames from "classnames";
+
+// Format date function to match the one in events page
+const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.toLocaleString("en-US", { month: "short" });
+    const year = date.getFullYear();
+
+    const daySuffix = (day: number) => {
+        if (day > 3 && day < 21) return "th";
+        switch (day % 10) {
+            case 1:
+                return "st";
+            case 2:
+                return "nd";
+            case 3:
+                return "rd";
+            default:
+                return "th";
+        }
+    };
+
+    return `${day}${daySuffix(day)} ${month}, ${year}`;
+};
 
 async function getUpcomingEvent(id: string) {
     const APP_URL = process.env.NEXT_PUBLIC_APP_URL;
@@ -38,8 +63,8 @@ export default async function Page({ params }: Props) {
 
     return (
         <div className="w-full p-6 bg-white">
-            <div className="flex md:flex-row flex-col gap-6">
-                <div className="w-full md:max-w-sm max-w-full flex-shrink-0 shadow-[0_0_20px_0_rgba(34,34,34,0.05)] aspect-square bg-white p-3">
+            <div className="w-full flex md:flex-row flex-col gap-10">
+                <div className="w-full md:max-w-sm max-w-full lg:max-h-full mx-auto flex-shrink-0 shadow-[0_0_20px_0_rgba(34,34,34,0.05)] aspect-square bg-white p-3 md:max-h-[440px] object-cover">
                     <div className="w-full h-full relative">
                         <Image
                             src={event.coverImage.url}
@@ -49,47 +74,45 @@ export default async function Page({ params }: Props) {
                         />
                     </div>
                 </div>
-                <div className="py-5 flex flex-col space-y-4">
+                <div className="py-5 flex flex-col space-y-2 justify-around">
                     <h2 className="text-2xl font-normal">{event.eventTitle}</h2>
-                    <p className="lg:text-lg text-gray-700 font-light">
-                        {event.description}
-                    </p>
+                    <p className="text-lg text-gray-700 font-light">{event.description}</p>
                     <p className="text-lg">
                         Date{" "}
-                        <span className="text-gray-600 ml-2">
-                            {formatDateWithComma(event.date)}
-                        </span>
+                        <span className="text-gray-600 ml-2">{formatDate(event.date)}</span>
                     </p>
                     <p className="text-lg">
                         Location <span className="text-gray-600 ml-2">{event.location}</span>
                     </p>
                     {event.stats && (
                         <div className="w-full max-w-xs flex flex-row items-center divide-x">
-                            {event.stats.map((stat: { statValue: number; statTitle: string }, i: number) => (
+                            {event.stats.map((stat, i) => (
                                 <div
                                     key={i}
-                                    className={`flex-grow ${i !== 0 ? "flex flex-col items-center justify-center" : ""
-                                        }`}
+                                    className={classNames("flex-grow", {
+                                        "flex flex-col items-center justify-center": i !== 0,
+                                    })}
                                 >
                                     <div>
                                         <h4 className="text-xl font-semibold">
                                             {stat.statValue}{" "}
                                             <span className="text-primary text-base">+</span>
                                         </h4>
-                                        <p className="text-gray-500 text-sm">{stat.statTitle}</p>
+                                        <p className="subtitle">{stat.statTitle}</p>
                                     </div>
                                 </div>
                             ))}
                         </div>
                     )}
-                    <a
-                        href={event.eventLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-fit"
-                    >
-                        {event.callToAction || "Register Now"}
-                    </a>
+                    <Button asChild className="w-fit">
+                        <a
+                            href={event.eventLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            {event.callToAction || "Register Now"}
+                        </a>
+                    </Button>
                 </div>
             </div>
         </div>
