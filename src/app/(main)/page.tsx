@@ -219,7 +219,9 @@ const Home = () => {
             ))}
           </div>
           <div className="!my-20 w-full flex justify-center">
-            <Button className="mx-auto">Explore more</Button>
+            <Button className="mx-auto" asChild>
+              <Link href="/about-us">Explore more</Link>
+            </Button>
           </div>
         </div>
       </Container>
@@ -443,7 +445,9 @@ const Home = () => {
             <h1 className="text-3xl text-center sm:text-left">
               Sponsor a Code Spacer
             </h1>
-            <Button className="font-normal">Donate Today</Button>
+            <Button className="font-normal" asChild>
+              <Link href="/donate">Donate Today</Link>
+            </Button>
           </div>
           <p className="md:text-right sm:text-left sm:mx-0 text-sm sm:text-base md:text-lg text-balance font-light lg:max-w-lg mx-auto text-center mt-8 md:mt-0 md:max-w-md">
             A lack of resources should never stand in the way of reaching
