@@ -159,7 +159,7 @@ const Home = () => {
           className="relative w-full mt-8"
         >
           <VideoPlayer
-            src="https://res.cloudinary.com/djar0mexx/video/upload/v1737986864/D6334415-BADD-4CB5-8BD0-2F1D03D7060C_thtdas.mp4"
+            src="https://res.cloudinary.com/djar0mexx/video/upload/v1749445414/cla8vipy2kkaaquicexh.mp4"
             autoPlay
             youtubeLink="https://www.youtube.com/watch?v=9wDcD6T6OqY&t=2s"
           />
