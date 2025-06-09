@@ -14,8 +14,9 @@ async function getBlogs(
   const response = await fetch(
     `${BASE_URL}/api/blog?page=${currentPage}&limit=${limit}`,
     {
-      cache: 'no-store',
-      next: { revalidate: 0 }
+      next: { 
+        revalidate: 60 // Cache for 1 minute
+      }
     }
   );
   const data = await response.json();

@@ -13,7 +13,9 @@ async function getAlbums() {
   const BASE_URL = process.env.BASE_URL;
 
   const response = await fetch(`${BASE_URL}/api/gallery`, {
-    next: { revalidate: 0 },
+    next: { 
+      revalidate: 60 // Cache for 1 minute
+    }
   });
   const data: Galleries = await response.json();
 
@@ -37,7 +39,7 @@ export default async function GalleryPage() {
             you built live on. We keep those moments alive, right here.
           </p>
         </div>
-        <div className="w-full relative aspect-[16/10] ">
+        <div className="w-full relative aspect-[16/9] ">
           <HeroImageCards />
         </div>
       </Container>
@@ -48,11 +50,11 @@ export default async function GalleryPage() {
             <Link
               href={album?.albumLink}
               key={album?.id}
-              className="group relative overflow-hidden rounded-2xl bg-white shadow-md"
+              className="group relative overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-lg transition-shadow duration-300"
             >
               <div className="aspect-[4/5] w-full">
                 <div
-                  className="h-full w-full bg-cover bg-center"
+                  className="h-full w-full bg-cover bg-center transform transition-transform duration-300 group-hover:scale-105"
                   style={{ backgroundImage: `url(${album.coverImage.url})` }}
                 />
               </div>
@@ -64,7 +66,7 @@ export default async function GalleryPage() {
                   <Button
                     variant="secondary"
                     size="sm"
-                    className="bg-white/90 hover:bg-white text-black"
+                    className="bg-white/90 hover:bg-white text-black transform transition-transform duration-300 hover:scale-105"
                   >
                     View Album
                     <ArrowUpRight className="w-4 h-4 ml-1" />

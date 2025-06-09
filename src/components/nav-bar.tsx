@@ -24,6 +24,20 @@ const NavBar = () => {
     setOpen(false);
   }, [pathname]);
 
+  // Prefetch the most common routes
+  React.useEffect(() => {
+    const prefetchLinks = async () => {
+      const linksToPreload = ['/blog', '/gallery', '/events'];
+      linksToPreload.forEach(async (href) => {
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = href;
+        document.head.appendChild(link);
+      });
+    };
+    prefetchLinks();
+  }, []);
+
   return (
     <>
       {/* Hackfest 2024 Banner */}

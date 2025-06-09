@@ -3,6 +3,7 @@ import { BlogsAPIResponse } from "@/types";
 import AllBlogs from "./AllBlogs";
 import { useRouter, useSearchParams } from "next/navigation";
 import FeaturedBlogs from "./FeaturedBlogs";
+import { useState, useEffect } from "react";
 
 export default function Blog({
   blogs,
@@ -13,12 +14,37 @@ export default function Blog({
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const handleStart = () => setIsLoading(true);
+    const handleComplete = () => setIsLoading(false);
+
+    window.addEventListener('routeChangeStart', handleStart);
+    window.addEventListener('routeChangeComplete', handleComplete);
+    window.addEventListener('routeChangeError', handleComplete);
+
+    return () => {
+      window.removeEventListener('routeChangeStart', handleStart);
+      window.removeEventListener('routeChangeComplete', handleComplete);
+      window.removeEventListener('routeChangeError', handleComplete);
+    };
+  }, []);
 
   const handlePageChange = (page: number) => {
+    setIsLoading(true);
     const params = new URLSearchParams(searchParams);
     params.set("page", page.toString());
     router.push(`?${params.toString()}`);
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
 
   const renderPagination = () => {
     if (!blogs?.totalPages) return null;
