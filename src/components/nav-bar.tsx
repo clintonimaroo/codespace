@@ -41,7 +41,7 @@ const NavBar = () => {
 
   // Sync mobile browser theme color with the announcement banner visibility on home
   React.useEffect(() => {
-    const defaultThemeColor = "#ffffff";
+    const defaultThemeColor = "#6d6cd6";
     const bannerThemeColor = "#6d6cd6";
     const setThemeColor = (color: string) => {
       const meta = document.querySelector('meta[name="theme-color"]');
