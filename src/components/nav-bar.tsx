@@ -39,6 +39,25 @@ const NavBar = () => {
     prefetchLinks();
   }, []);
 
+  // Sync mobile browser theme color with the announcement banner visibility on home
+  React.useEffect(() => {
+    const defaultThemeColor = "#ffffff";
+    const bannerThemeColor = "#6d6cd6";
+    const setThemeColor = (color: string) => {
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) {
+        meta.setAttribute("content", color);
+      }
+    };
+
+    const shouldUseBannerColor = pathname === "/" && isAnnouncementBannerVisible;
+    setThemeColor(shouldUseBannerColor ? bannerThemeColor : defaultThemeColor);
+
+    return () => {
+      setThemeColor(defaultThemeColor);
+    };
+  }, [pathname, isAnnouncementBannerVisible]);
+
   return (
     <>
       {/* Hackfest 2024 Banner */}
@@ -57,7 +76,7 @@ const NavBar = () => {
               type="button"
               aria-label="Close banner"
               onClick={() => setIsAnnouncementBannerVisible(false)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-white/90 hover:text-white hidden sm:inline-block"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-white/90 hover:text-white"
             >
               <X size={16} />
             </button>
