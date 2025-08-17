@@ -45,17 +45,14 @@ const NavBar = () => {
     const bannerThemeColor = "#6d6cd6";
     const setThemeColor = (color: string) => {
       const meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) {
-        meta.setAttribute("content", color);
-      }
+      if (meta) meta.setAttribute("content", color);
+      // iOS Safari uses the apple-mobile-web-app-status-bar-style in standalone mode
+      const appleMeta = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+      if (appleMeta) appleMeta.setAttribute("content", color);
     };
 
     const shouldUseBannerColor = pathname === "/" && isAnnouncementBannerVisible;
     setThemeColor(shouldUseBannerColor ? bannerThemeColor : defaultThemeColor);
-
-    return () => {
-      setThemeColor(defaultThemeColor);
-    };
   }, [pathname, isAnnouncementBannerVisible]);
 
   return (
