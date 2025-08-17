@@ -60,25 +60,32 @@ const NavBar = () => {
       {/* Hackfest 2024 Banner */}
 
       {isAnnouncementBannerVisible && pathname === "/" && (
-        <div className="w-full bg-[#6d6cd6] text-base">
-          <Container className="relative">
-            <Link
-              href="https://photos.app.goo.gl/7rsrtg3xNwd5VFqw5"
-              className="w-full py-3.5 text-white block hover:opacity-90 transition-opacity text-left sm:text-center pr-8"
-              style={{ fontSize: "16px", lineHeight: "24px", fontWeight: 400 }}
-            >
-              Celebrating 5 Years of Impact: Help Us Reach Our $100K Goal!
-            </Link>
-            <button
-              type="button"
-              aria-label="Close banner"
-              onClick={() => setIsAnnouncementBannerVisible(false)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-white/90 hover:text-white"
-            >
-              <X size={16} />
-            </button>
-          </Container>
-        </div>
+        <>
+          <div
+            aria-hidden
+            className="fixed inset-x-0 top-0 z-50 pointer-events-none"
+            style={{ height: "env(safe-area-inset-top)", backgroundColor: "#6d6cd6" }}
+          />
+          <div className="w-full bg-[#6d6cd6] text-base">
+            <Container className="relative">
+              <Link
+                href="https://photos.app.goo.gl/7rsrtg3xNwd5VFqw5"
+                className="w-full py-3.5 text-white block hover:opacity-90 transition-opacity text-left sm:text-center pr-8"
+                style={{ fontSize: "16px", lineHeight: "24px", fontWeight: 400 }}
+              >
+                Celebrating 5 Years of Impact: Help Us Reach Our $100K Goal!
+              </Link>
+              <button
+                type="button"
+                aria-label="Close banner"
+                onClick={() => setIsAnnouncementBannerVisible(false)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/90 hover:text-white"
+              >
+                <X size={16} />
+              </button>
+            </Container>
+          </div>
+        </>
       )}
 
       {/* NavBar */}
