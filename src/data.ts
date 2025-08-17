@@ -159,10 +159,10 @@ export const stats = [
   },
   {
     name: "Hackathons",
-    value: 2,
+    value: 3,
     suffix: "",
     description:
-      "We've hosted two dynamic hackathons where participants collaborated to solve real-world problems through technology.",
+      "We've hosted three dynamic hackathons where participants collaborated to solve real-world problems through technology.",
   },
   {
     name: "Physical Events",
