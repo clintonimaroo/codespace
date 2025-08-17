@@ -19,6 +19,7 @@ import Container from "@/components/container";
 const NavBar = () => {
   const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
+  const [isAnnouncementBannerVisible, setIsAnnouncementBannerVisible] = React.useState(true);
 
   React.useEffect(() => {
     setOpen(false);
@@ -42,18 +43,27 @@ const NavBar = () => {
     <>
       {/* Hackfest 2024 Banner */}
 
-      {/* <div className="w-full bg-[#6d6cd6] text-sm">
-        <Container>
-          <Link
-            href="https://photos.app.goo.gl/7rsrtg3xNwd5VFqw5"
-            className="w-full py-2 text-white text-center block hover:opacity-90 transition-opacity"
-            style={{ fontSize: "14px", lineHeight: "20px", fontWeight: 600 }}
-          >
-            We&apos;ve rebranded our website 🎉 Discover what&apos;s new here
-            👀.
-          </Link>
-        </Container>
-      </div> */}
+      {isAnnouncementBannerVisible && pathname === "/" && (
+        <div className="w-full bg-[#6d6cd6] text-base">
+          <Container className="relative">
+            <Link
+              href="https://photos.app.goo.gl/7rsrtg3xNwd5VFqw5"
+              className="w-full py-3.5 text-white block hover:opacity-90 transition-opacity text-left sm:text-center pr-8"
+              style={{ fontSize: "16px", lineHeight: "24px", fontWeight: 400 }}
+            >
+              Celebrating 5 Years of Impact: Help Us Reach Our $100K Goal!
+            </Link>
+            <button
+              type="button"
+              aria-label="Close banner"
+              onClick={() => setIsAnnouncementBannerVisible(false)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-white/90 hover:text-white hidden sm:inline-block"
+            >
+              <X size={16} />
+            </button>
+          </Container>
+        </div>
+      )}
 
       {/* NavBar */}
       <Container className="container flex items-center justify-between py-8 md:pb-8 md:pt-4">
