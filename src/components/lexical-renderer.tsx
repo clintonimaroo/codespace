@@ -403,24 +403,25 @@ const renderNode = (node: LexicalNode): JSX.Element | string | null => {
 };
 
 const TableOfContents = ({ items }: { items: TableOfContentsItem[] }) => {
-    if (items.length === 0) return null;
-
     return (
         <div className="hidden md:block w-full md:w-64 md:shrink-0">
             <div className="sticky top-8 rounded-lg bg-white">
                 <h3 className="font-medium mb-4">On this page</h3>
-                <nav className="flex flex-col space-y-2">
-                    {items.map((item, i) => (
-                        <a
-                            key={i}
-                            href={`#${item.id}`}
-                            className={`text-sm text-neutral hover:text-primary transition-colors ${item.level > 2 ? 'ml-4' : ''
-                                }`}
-                        >
-                            {item.text}
-                        </a>
-                    ))}
-                </nav>
+                {items.length > 0 ? (
+                    <nav className="flex flex-col space-y-2">
+                        {items.map((item, i) => (
+                            <a
+                                key={i}
+                                href={`#${item.id}`}
+                                className={`text-sm text-neutral hover:text-primary transition-colors ${item.level > 2 ? 'ml-4' : ''}`}
+                            >
+                                {item.text}
+                            </a>
+                        ))}
+                    </nav>
+                ) : (
+                    <div className="h-12" aria-hidden />
+                )}
             </div>
         </div>
     );
