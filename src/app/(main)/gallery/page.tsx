@@ -44,7 +44,7 @@ export default async function GalleryPage() {
         </div>
       </Container>
 
-      <Container className="container gap-5 py-5 md:pb-20 md:pt-8">
+      <Container className="container gap-5 py-5 md:pb-20 md:pt-8 mt-10 md:mt-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative">
           {albums?.docs?.map((album) => (
             <Link
