@@ -10,7 +10,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 async function getAlbums() {
-  const BASE_URL = process.env.BASE_URL;
+  const BASE_URL = process.env.BASE_URL || process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
 
   const response = await fetch(`${BASE_URL}/api/gallery`, {
     next: { 
