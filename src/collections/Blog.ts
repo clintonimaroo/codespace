@@ -89,7 +89,7 @@ export const Blog: CollectionConfig = {
       },
     ],
     afterChange: [
-      async ({ doc, previousDoc, operation, req }) => {
+      async ({ doc, previousDoc, req }) => {
         try {
           const isNowPublished = doc?._status === "published";
           const wasPublishedBefore = previousDoc?._status === "published";
