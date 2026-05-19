@@ -19,7 +19,7 @@ import { Press } from "./collections/Press";
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-const defaultFromAddress = "contact@codespaces.org";
+const defaultFromAddress = "noreply@codespaces.org";
 const defaultFromName = "Code Space";
 
 function formatAddress(address: unknown): string | undefined {
@@ -105,20 +105,20 @@ export default buildConfig({
     livePreview: {
       breakpoints: [
         {
-          name: 'mobile',
-          label: 'Mobile',
+          name: "mobile",
+          label: "Mobile",
           width: 375,
           height: 667,
         },
         {
-          name: 'tablet',
-          label: 'Tablet',
+          name: "tablet",
+          label: "Tablet",
           width: 768,
           height: 1024,
         },
         {
-          name: 'desktop',
-          label: 'Desktop',
+          name: "desktop",
+          label: "Desktop",
           width: 1440,
           height: 900,
         },

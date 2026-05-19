@@ -4,9 +4,9 @@ import {
   Button,
   Container,
   Head,
-  Heading,
   Hr,
   Html,
+  Img,
   Link,
   Preview,
   Section,
@@ -14,169 +14,245 @@ import {
 } from "@react-email/components";
 
 interface AdminWelcomeEmailProps {
+  email?: string | null;
   name?: string | null;
   resetUrl: string;
 }
 
-const purple = "#5a55df";
-const darkText = "#242331";
-const mutedText = "#686677";
+const appUrl = "https://www.codespaces.org";
+const accountUrl = `${appUrl}/admin/account`;
+const logoUrl =
+  "https://cdn.sender.net/email_images/233413/images/all/group_48.png";
+const fontFamily = '"Helvetica Neue", Helvetica, Arial, sans-serif';
+const purple = "#5b5ad1";
+const linkBlue = "#4477bd";
 
 export const AdminWelcomeEmail: React.FC<AdminWelcomeEmailProps> = ({
+  email,
   name,
   resetUrl,
 }) => {
-  const greetingName = name?.trim() || "there";
+  const greetingName = getFirstName(name);
+  const username = email?.trim();
 
   return (
     <Html>
-      <Head />
-      <Preview>
-        Welcome to Code Space. Set your password to access your account.
-      </Preview>
+      <Head>
+        <meta name="color-scheme" content="light dark" />
+        <meta name="supported-color-schemes" content="light dark" />
+        <style>
+          {`
+            :root {
+              color-scheme: light dark;
+              supported-color-schemes: light dark;
+            }
+
+            @media screen and (max-width: 480px) {
+              .email-container {
+                padding: 20px !important;
+                width: 100% !important;
+              }
+
+              .email-button {
+                min-width: 180px !important;
+              }
+            }
+
+            @media (prefers-color-scheme: dark) {
+              .email-body {
+                background-color: #111111 !important;
+              }
+
+              .email-container {
+                background-color: #191919 !important;
+              }
+
+              .email-text {
+                color: #f1f1f1 !important;
+              }
+
+              .email-muted {
+                color: #a9a9a9 !important;
+              }
+
+              .email-link {
+                color: #8f8cff !important;
+              }
+
+              .email-button {
+                background-color: #7774ff !important;
+                color: #ffffff !important;
+              }
+            }
+          `}
+        </style>
+      </Head>
+      <Preview>You have a new Admin account for codespaces.org.</Preview>
       <Body
+        className="email-body"
         style={{
-          backgroundColor: "#f4f4f8",
-          fontFamily:
-            '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-          margin: 0,
-          padding: "40px 0",
+          backgroundColor: "#f6f6f6",
+          margin: "0",
+          padding: "0",
         }}
       >
         <Container
+          className="email-container"
           style={{
             backgroundColor: "#ffffff",
-            maxWidth: "600px",
-            padding: "48px",
+            margin: "0 auto",
+            maxWidth: "640px",
+            padding: "20px 40px 36px",
+            width: "100%",
           }}
         >
-          <Section
-            style={{
-              backgroundColor: purple,
-              borderRadius: "2px",
-              padding: "42px 24px",
-              textAlign: "center" as const,
-            }}
-          >
-            <Text
-              style={{
-                color: "#ffffff",
-                fontSize: "28px",
-                fontWeight: 700,
-                margin: 0,
-              }}
-            >
-              CODE SPACE
-            </Text>
+          <Section style={{ padding: "10px 0 20px" }}>
+            <Link href={appUrl} target="_blank">
+              <Img
+                alt="Code Space"
+                src={logoUrl}
+                style={{
+                  display: "block",
+                  height: "auto",
+                  maxWidth: "172px",
+                  width: "172px",
+                }}
+              />
+            </Link>
           </Section>
 
-          <Section style={{ paddingTop: "36px" }}>
-            <Heading
-              style={{
-                color: darkText,
-                fontSize: "20px",
-                fontWeight: 700,
-                lineHeight: "1.35",
-                margin: "0 0 18px",
-              }}
-            >
-              Hey {greetingName},
-            </Heading>
+          <Section
+            className="email-text"
+            style={{
+              color: "#222222",
+              fontFamily,
+              fontSize: "14px",
+              lineHeight: "1.5",
+            }}
+          >
+            <Text style={paragraphStyle}>Hello {greetingName},</Text>
 
-            <Text
-              style={{
-                color: darkText,
-                fontSize: "15px",
-                lineHeight: "1.7",
-                margin: "0 0 16px",
-              }}
-            >
+            <Text style={paragraphStyle}>
+              You have a new Admin account with the{" "}
+              <Link className="email-link" href={appUrl} style={linkStyle}>
+                codespaces.org
+              </Link>{" "}
+              organization.
+            </Text>
+
+            <Text style={paragraphStyle}>
               Welcome to Code Space. An admin has created an account for you so
               you can access the admin area and help manage the community
               website.
             </Text>
 
-            <Text
-              style={{
-                color: darkText,
-                fontSize: "15px",
-                lineHeight: "1.7",
-                margin: "0 0 24px",
-              }}
-            >
-              Use the button below to set your own password. This link is
-              generated securely and should only be used by you.
+            {username ? (
+              <Text style={paragraphStyle}>
+                <strong>Your username:</strong>{" "}
+                <Link
+                  className="email-link"
+                  href={`mailto:${username}`}
+                  style={linkStyle}
+                >
+                  {username}
+                </Link>
+              </Text>
+            ) : null}
+
+            <Text style={paragraphStyle}>
+              Click the button below to set your password and sign in. For your
+              security, this reset password link expires after 48 hours.
             </Text>
 
-            <Section style={{ textAlign: "center" as const }}>
+            <Section style={{ padding: "8px 0 18px", textAlign: "center" }}>
               <Button
+                className="email-button"
                 href={resetUrl}
                 style={{
                   backgroundColor: purple,
-                  borderRadius: "4px",
+                  borderRadius: "6px",
                   color: "#ffffff",
                   display: "inline-block",
-                  fontSize: "15px",
-                  fontWeight: 700,
-                  padding: "14px 26px",
+                  fontFamily,
+                  fontSize: "14px",
+                  fontWeight: "bold",
+                  lineHeight: "1.5",
+                  minWidth: "210px",
+                  padding: "13px 24px",
+                  textAlign: "center" as const,
                   textDecoration: "none",
                 }}
               >
-                Set your password
+                Set password
               </Button>
             </Section>
 
-            <Text
-              style={{
-                color: mutedText,
-                fontSize: "13px",
-                lineHeight: "1.6",
-                margin: "26px 0 0",
-                textAlign: "center" as const,
-              }}
-            >
-              If the button does not work, open this link:
+            <Text style={paragraphStyle}>
+              If the button does not work, copy and paste this link into your
+              browser:
               <br />
-              <Link
-                href={resetUrl}
-                style={{
-                  color: purple,
-                  wordBreak: "break-all" as const,
-                }}
-              >
+              <Link className="email-link" href={resetUrl} style={linkStyle}>
                 {resetUrl}
               </Link>
+            </Text>
+
+            <Text style={paragraphStyle}>
+              Warm regards,
+              <br />
+              Developer Relations team
             </Text>
           </Section>
 
           <Hr
             style={{
-              borderColor: "#e7e5f0",
+              borderColor: "#dedede",
               borderStyle: "solid",
               borderWidth: "1px 0 0",
-              margin: "36px 0 20px",
+              margin: "25px 0 10px",
             }}
           />
 
           <Text
+            className="email-muted"
             style={{
-              color: mutedText,
-              fontSize: "13px",
-              lineHeight: "1.6",
-              margin: 0,
-              textAlign: "center" as const,
+              color: "#bfbfbf",
+              fontFamily,
+              fontSize: "12px",
+              lineHeight: "1.5",
+              margin: "0 0 20px",
             }}
           >
-            Need help, or have questions?
-            <br />
-            Please visit our{" "}
+            To make sure you keep getting these emails, please add{" "}
             <Link
-              href="https://www.codespaces.org/contact-us"
-              style={{ color: purple }}
+              className="email-link"
+              href="mailto:hello@codespaces.org"
+              style={linkStyle}
             >
-              contact us page
+              hello@codespaces.org
+            </Link>{" "}
+            to your address book or allow list. Want to control the kind of
+            emails you receive from Code Space?{" "}
+            <Link
+              className="email-link"
+              href={accountUrl}
+              style={{ ...linkStyle, textDecoration: "none" }}
+            >
+              Update your email preferences
             </Link>
-            , or reply to this message.
+            . Want out of the loop? <u>Unsubscribe</u>.
+          </Text>
+
+          <Text
+            className="email-muted"
+            style={{
+              color: "#bfbfbf",
+              fontFamily,
+              fontSize: "12px",
+              lineHeight: "1.5",
+              margin: "0 0 26px",
+            }}
+          >
+            You're getting this email because you are a member of Code Space.
           </Text>
         </Container>
       </Body>
@@ -184,20 +260,51 @@ export const AdminWelcomeEmail: React.FC<AdminWelcomeEmailProps> = ({
   );
 };
 
+const paragraphStyle = {
+  fontFamily,
+  fontSize: "14px",
+  fontWeight: "normal",
+  lineHeight: "1.5",
+  margin: "0 0 14px",
+};
+
+const linkStyle = {
+  color: linkBlue,
+  fontFamily,
+  fontSize: "14px",
+  lineHeight: "1.5",
+  textDecoration: "underline",
+};
+
 export function getAdminWelcomeEmailText({
+  email,
   name,
   resetUrl,
 }: AdminWelcomeEmailProps) {
-  const greetingName = name?.trim() || "there";
+  const greetingName = getFirstName(name);
 
   return [
-    `Hey ${greetingName},`,
+    `Hello ${greetingName},`,
+    "",
+    "You have a new Admin account with the codespaces.org organization.",
     "",
     "Welcome to Code Space. An admin has created an account for you so you can access the admin area and help manage the community website.",
     "",
-    "Set your password using this link:",
+    ...(email ? [`Your username: ${email}`, ""] : []),
+    "Click the link below to set your password and sign in. For your security, this reset password link expires after 48 hours.",
+    "",
     resetUrl,
     "",
-    "Need help? Reply to this message or visit https://www.codespaces.org/contact-us.",
+    "Warm regards,",
+    "Developer Relations team",
+    "",
+    "To make sure you keep getting these emails, please add hello@codespaces.org to your address book or allow list.",
+    "Update your email preferences: https://www.codespaces.org/admin/account",
+    "",
+    "You're getting this email because you are a member of Code Space.",
   ].join("\n");
+}
+
+function getFirstName(name?: string | null) {
+  return name?.trim().split(/\s+/)[0] || "there";
 }

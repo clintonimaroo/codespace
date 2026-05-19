@@ -22,11 +22,11 @@ export async function sendAdminWelcomeEmail({
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   return resend.emails.send({
-    from: "Code Space <contact@codespaces.org>",
+    from: "Code Space <noreply@codespaces.org>",
     to: email,
-    subject: "Welcome to Code Space",
-    react: AdminWelcomeEmail({ name, resetUrl }),
-    text: getAdminWelcomeEmailText({ name, resetUrl }),
+    subject: "Action required: You have a new Admin account for codespaces.org",
+    react: AdminWelcomeEmail({ email, name, resetUrl }),
+    text: getAdminWelcomeEmailText({ email, name, resetUrl }),
     replyTo: "hello@codespaces.org",
   });
 }

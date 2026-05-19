@@ -96,7 +96,8 @@ export const Users: CollectionConfig = {
       type: "upload",
       relationTo: "media",
       admin: {
-        description: "Upload a profile picture (recommended size: 400x400 pixels)",
+        description:
+          "Upload a profile picture (recommended size: 400x400 pixels)",
       },
     },
   ],
