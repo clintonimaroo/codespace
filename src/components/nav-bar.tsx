@@ -70,8 +70,8 @@ const NavBar = () => {
             className="fixed inset-x-0 top-0 z-50 pointer-events-none bg-white sm:bg-[#6d6cd6]"
             style={{ height: "env(safe-area-inset-top)" }}
           />
-          <div className="w-full bg-white sm:bg-[#6d6cd6] text-base">
-            <Container className="relative">
+          <div className="relative w-full bg-white sm:bg-[#6d6cd6] text-base">
+            <Container>
               <Link
                 href="/gallery"
                 className="w-full py-3.5 text-black sm:text-white block hover:opacity-90 transition-opacity text-left sm:text-center pr-8"
@@ -83,15 +83,15 @@ const NavBar = () => {
               >
                 Fusion Tech Fest - Recap
               </Link>
-              <button
-                type="button"
-                aria-label="Close banner"
-                onClick={() => setIsAnnouncementBannerVisible(false)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-black/60 hover:text-black sm:text-white/90 sm:hover:text-white"
-              >
-                <X size={16} />
-              </button>
             </Container>
+            <button
+              type="button"
+              aria-label="Close banner"
+              onClick={() => setIsAnnouncementBannerVisible(false)}
+              className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 text-black/60 hover:text-black sm:text-white/90 sm:hover:text-white"
+            >
+              <X size={16} />
+            </button>
           </div>
         </>
       )}
