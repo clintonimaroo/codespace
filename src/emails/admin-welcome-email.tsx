@@ -57,13 +57,20 @@ export const AdminWelcomeEmail: React.FC<AdminWelcomeEmailProps> = ({
               }
             }
 
+            @media screen and (min-width: 481px) {
+              .email-body,
+              .email-container {
+                background-color: transparent !important;
+              }
+            }
+
             @media (prefers-color-scheme: dark) {
               .email-body {
-                background-color: transparent !important;
+                background-color: #111111 !important;
               }
 
               .email-container {
-                background-color: transparent !important;
+                background-color: #191919 !important;
               }
 
               .email-text {
@@ -83,6 +90,13 @@ export const AdminWelcomeEmail: React.FC<AdminWelcomeEmailProps> = ({
                 color: #ffffff !important;
               }
             }
+
+            @media screen and (min-width: 481px) and (prefers-color-scheme: dark) {
+              .email-body,
+              .email-container {
+                background-color: transparent !important;
+              }
+            }
           `}
         </style>
       </Head>
@@ -90,7 +104,7 @@ export const AdminWelcomeEmail: React.FC<AdminWelcomeEmailProps> = ({
       <Body
         className="email-body"
         style={{
-          backgroundColor: "transparent",
+          backgroundColor: "#f6f6f6",
           margin: "0",
           padding: "0",
         }}
@@ -98,7 +112,7 @@ export const AdminWelcomeEmail: React.FC<AdminWelcomeEmailProps> = ({
         <Container
           className="email-container"
           style={{
-            backgroundColor: "transparent",
+            backgroundColor: "#ffffff",
             margin: "0 auto",
             maxWidth: "640px",
             padding: "20px 40px 36px",
