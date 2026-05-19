@@ -25,7 +25,6 @@ const logoUrl =
   "https://cdn.sender.net/email_images/233413/images/all/group_48.png";
 const fontFamily = '"Helvetica Neue", Helvetica, Arial, sans-serif';
 const purple = "#5b5ad1";
-const linkBlue = "#4477bd";
 
 export const AdminWelcomeEmail: React.FC<AdminWelcomeEmailProps> = ({
   email,
@@ -76,7 +75,7 @@ export const AdminWelcomeEmail: React.FC<AdminWelcomeEmailProps> = ({
               }
 
               .email-link {
-                color: #8f8cff !important;
+                color: #5b5ad1 !important;
               }
 
               .email-button {
@@ -269,7 +268,7 @@ const paragraphStyle = {
 };
 
 const linkStyle = {
-  color: linkBlue,
+  color: purple,
   fontFamily,
   fontSize: "14px",
   lineHeight: "1.5",
