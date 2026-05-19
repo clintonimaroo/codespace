@@ -45,7 +45,9 @@ export const UpcomingEvents: CollectionConfig = {
       label: "Date",
       type: "date",
       validate: (value, { siblingData }) => {
-        if (siblingData?.dateTBA || value) {
+        const eventData = siblingData as { dateTBA?: boolean };
+
+        if (eventData?.dateTBA || value) {
           return true;
         }
 
