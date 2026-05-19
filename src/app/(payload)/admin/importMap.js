@@ -27,6 +27,7 @@ import {
   PastEventEmbedCodeField as PastEventEmbedCodeField_9bbf1cc086bd5f3fd0f8ac0799cbfdb4,
   UpcomingEventEmbedCodeField as UpcomingEventEmbedCodeField_9bbf1cc086bd5f3fd0f8ac0799cbfdb4,
 } from "@/components/admin/event-embed-code-field";
+import { ResendEmailField as ResendEmailField_0e8a6fb307b9930f394a84a34f7e421d } from "@/components/admin/resend-email-field";
 
 export const importMap = {
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell":
@@ -83,4 +84,6 @@ export const importMap = {
     PastEventEmbedCodeField_9bbf1cc086bd5f3fd0f8ac0799cbfdb4,
   "@/components/admin/event-embed-code-field#UpcomingEventEmbedCodeField":
     UpcomingEventEmbedCodeField_9bbf1cc086bd5f3fd0f8ac0799cbfdb4,
+  "@/components/admin/resend-email-field#ResendEmailField":
+    ResendEmailField_0e8a6fb307b9930f394a84a34f7e421d,
 };

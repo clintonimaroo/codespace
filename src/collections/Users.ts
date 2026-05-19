@@ -1,6 +1,54 @@
 import { sendAdminWelcomeEmail } from "@/lib/send-admin-welcome-email";
 import { checkIsCodespaceUser } from "@/lib/utils";
-import type { CollectionAfterChangeHook, CollectionConfig } from "payload";
+import type {
+  CollectionAfterChangeHook,
+  CollectionConfig,
+  PayloadRequest,
+} from "payload";
+
+const welcomeResetExpiration = 1000 * 60 * 60 * 48;
+
+async function sendAdminWelcomeInvite({
+  email,
+  name,
+  req,
+  userID,
+}: {
+  email: string;
+  name?: null | string;
+  req: PayloadRequest;
+  userID: number | string;
+}) {
+  const token = await req.payload.forgotPassword({
+    collection: "users",
+    data: {
+      email,
+    },
+    disableEmail: true,
+    expiration: welcomeResetExpiration,
+    req,
+  });
+
+  if (!token) {
+    req.payload.logger.warn({
+      msg: "Could not generate welcome reset token for admin user.",
+      userID,
+    });
+    return false;
+  }
+
+  const baseUrl =
+    process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org";
+  const resetUrl = `${baseUrl.replace(/\/$/, "")}/admin/reset/${token}`;
+
+  await sendAdminWelcomeEmail({
+    email,
+    name: typeof name === "string" ? name : null,
+    resetUrl,
+  });
+
+  return true;
+}
 
 const sendWelcomeEmailAfterCreate: CollectionAfterChangeHook = async ({
   doc,
@@ -12,31 +60,11 @@ const sendWelcomeEmailAfterCreate: CollectionAfterChangeHook = async ({
   }
 
   try {
-    const token = await req.payload.forgotPassword({
-      collection: "users",
-      data: {
-        email: doc.email,
-      },
-      disableEmail: true,
-      req,
-    });
-
-    if (!token) {
-      req.payload.logger.warn({
-        msg: "Could not generate welcome reset token for new admin user.",
-        userID: doc.id,
-      });
-      return doc;
-    }
-
-    const baseUrl =
-      process.env.NEXT_PUBLIC_APP_URL || "https://www.codespaces.org";
-    const resetUrl = `${baseUrl.replace(/\/$/, "")}/admin/reset/${token}`;
-
-    await sendAdminWelcomeEmail({
+    await sendAdminWelcomeInvite({
       email: doc.email,
       name: typeof doc.name === "string" ? doc.name : null,
-      resetUrl,
+      req,
+      userID: doc.id,
     });
   } catch (error) {
     req.payload.logger.error({
@@ -73,6 +101,50 @@ export const Users: CollectionConfig = {
     },
     delete: ({ req: { user } }) => checkIsCodespaceUser(user),
   },
+  endpoints: [
+    {
+      path: "/:id/resend-welcome-email",
+      method: "post",
+      handler: async (req) => {
+        if (!checkIsCodespaceUser(req.user)) {
+          return Response.json({ message: "Unauthorized" }, { status: 401 });
+        }
+
+        const id = req.routeParams?.id;
+
+        if (typeof id !== "string") {
+          return Response.json(
+            { message: "Missing user id." },
+            { status: 400 },
+          );
+        }
+
+        const user = await req.payload.findByID({
+          collection: "users",
+          id,
+          req,
+        });
+
+        if (!user?.email) {
+          return Response.json(
+            { message: "This user does not have an email address." },
+            { status: 400 },
+          );
+        }
+
+        await sendAdminWelcomeInvite({
+          email: user.email,
+          name: typeof user.name === "string" ? user.name : null,
+          req,
+          userID: user.id,
+        });
+
+        return Response.json({
+          message: `Invite email sent to ${user.email}.`,
+        });
+      },
+    },
+  ],
   hooks: {
     afterChange: [sendWelcomeEmailAfterCreate],
   },
@@ -98,6 +170,15 @@ export const Users: CollectionConfig = {
       admin: {
         description:
           "Upload a profile picture (recommended size: 400x400 pixels)",
+      },
+    },
+    {
+      name: "resendWelcomeEmail",
+      type: "ui",
+      admin: {
+        components: {
+          Field: "@/components/admin/resend-email-field#ResendEmailField",
+        },
       },
     },
   ],
