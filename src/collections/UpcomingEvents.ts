@@ -1,5 +1,6 @@
 import { checkIsCodespaceUser } from "@/lib/utils";
 import { CollectionConfig } from "payload";
+import { buildUpcomingEventEmbedCode } from "@/lib/event-display";
 
 export const UpcomingEvents: CollectionConfig = {
   slug: "upcoming-events",
@@ -19,7 +20,7 @@ export const UpcomingEvents: CollectionConfig = {
     afterRead: [
       async ({ doc }) => {
         if (doc.id) {
-          doc.embedCode = `<iframe src="https://codespaces.org/upcoming-events/${doc.id}/embed" width="100%" height="600" frameborder="0" style="border: none; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></iframe>`;
+          doc.embedCode = buildUpcomingEventEmbedCode(doc.id);
         }
         return doc;
       },
@@ -43,7 +44,23 @@ export const UpcomingEvents: CollectionConfig = {
       name: "date",
       label: "Date",
       type: "date",
-      required: true,
+      validate: (value, { siblingData }) => {
+        if (siblingData?.dateTBA || value) {
+          return true;
+        }
+
+        return "Date is required unless Date To Be Announced is enabled.";
+      },
+    },
+    {
+      name: "dateTBA",
+      label: "Date To Be Announced (TBA)",
+      type: "checkbox",
+      defaultValue: false,
+      admin: {
+        description:
+          "Enable this when the event date should display as TBA instead of a calendar date.",
+      },
     },
     {
       name: "description",
@@ -91,23 +108,13 @@ export const UpcomingEvents: CollectionConfig = {
     },
     {
       name: "embedCode",
-      type: "textarea",
+      type: "ui",
       admin: {
-        position: "sidebar",
-        description: "Copy this code to embed the event on external websites",
-        readOnly: true,
-        style: {
-          fontFamily: "monospace",
-          fontSize: "12px",
-          whiteSpace: "pre-wrap",
-          wordBreak: "break-all",
-          minHeight: "100px",
-          padding: "8px",
-          backgroundColor: "var(--theme-elevation-50)",
-          border: "1px solid var(--theme-elevation-150)",
-          borderRadius: "4px",
-          color: "var(--theme-elevation-800)",
+        components: {
+          Field:
+            "@/components/admin/event-embed-code-field#UpcomingEventEmbedCodeField",
         },
+        position: "sidebar",
       },
     },
   ],

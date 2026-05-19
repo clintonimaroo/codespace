@@ -8,6 +8,7 @@ import Link from "next/link";
 import classNames from "classnames";
 import Image from "next/image";
 import Container from "@/components/container";
+import { getEventDateLabel } from "@/lib/event-display";
 import {
   PastEvent,
   PastEvents,
@@ -81,8 +82,12 @@ export default async function Events() {
           "@type": "Event",
           name: event.eventTitle,
           description: event.description,
-          startDate: event.date,
-          endDate: event.date,
+          ...(event.dateTBA || !event.date
+            ? {}
+            : {
+                startDate: event.date,
+                endDate: event.date,
+              }),
           location: {
             "@type": "VirtualLocation",
             url: event.eventLink,
@@ -157,7 +162,11 @@ export default async function Events() {
         </p>
         <div className="w-full space-y-10 !mt-10">
           {upcomingEvents?.docs?.map((event, index) => (
-            <UpcomingEvent key={event.id} event={event} priority={index === 0} />
+            <UpcomingEvent
+              key={event.id}
+              event={event}
+              priority={index === 0}
+            />
           ))}
         </div>
       </Container>
@@ -213,7 +222,13 @@ const EventCard = ({ event }: { event: PastEvent }) => {
   );
 };
 
-const UpcomingEvent = ({ event, priority = false }: { event: UpcomingEvent; priority?: boolean }) => {
+const UpcomingEvent = ({
+  event,
+  priority = false,
+}: {
+  event: UpcomingEvent;
+  priority?: boolean;
+}) => {
   return (
     <div className="w-full flex md:flex-row flex-col gap-10">
       <div className="w-full md:max-w-sm max-w-full lg:max-h-full mx-auto flex-shrink-0 shadow-[0_0_20px_0_rgba(34,34,34,0.05)] aspect-square bg-white p-3 md:max-h-[440px] object-cover">
@@ -233,7 +248,9 @@ const UpcomingEvent = ({ event, priority = false }: { event: UpcomingEvent; prio
         <p className="text-lg text-gray-700 font-light">{event?.description}</p>
         <p className="text-lg">
           Date{" "}
-          <span className="text-gray-600 ml-2">{formatDate(event?.date)}</span>
+          <span className="text-gray-600 ml-2">
+            {getEventDateLabel(event?.date, event?.dateTBA)}
+          </span>
         </p>
         <p className="text-lg">
           Location <span className="text-gray-600 ml-2">{event?.location}</span>

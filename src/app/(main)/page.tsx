@@ -10,7 +10,8 @@ import { stats, what_we_do } from "@/data";
 import { CalendarClock, CirclePlayIcon } from "lucide-react";
 import SpaceBadge from "@/components/space-badge";
 import Link from "next/link";
-import { cn, fetcher, formatDateWithComma } from "@/lib/utils";
+import { cn, fetcher } from "@/lib/utils";
+import { getEventDateLabel } from "@/lib/event-display";
 import { useEffect, useRef, useState } from "react";
 import Container from "@/components/container";
 import Image from "next/image";
@@ -42,7 +43,7 @@ const AnimatedValue = ({ value, suffix = "" }: AnimatedValueProps) => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     const currentRef = ref.current;
@@ -69,7 +70,10 @@ const AnimatedValue = ({ value, suffix = "" }: AnimatedValueProps) => {
     let currentFrame = 0;
     const counter = setInterval(() => {
       currentFrame++;
-      const currentValue = Math.min(Math.round(valueIncrement * currentFrame), endValue);
+      const currentValue = Math.min(
+        Math.round(valueIncrement * currentFrame),
+        endValue,
+      );
       setCount(currentValue);
 
       if (currentFrame === totalFrames) {
@@ -91,7 +95,7 @@ const AnimatedValue = ({ value, suffix = "" }: AnimatedValueProps) => {
 const Home = () => {
   const { data: upcomingEvents, isLoading } = useSwr<UpcomingEvents>(
     "/api/upcoming-events",
-    fetcher
+    fetcher,
   );
 
   return (
@@ -137,8 +141,15 @@ const Home = () => {
             transition={{ delay: 0.5 }}
             className="flex items-center gap-5 sm:flex-row flex-col sm:w-auto w-full"
           >
-            <Button className="w-full md:w-fit hover:scale-105 transition-transform" asChild>
-              <a href="https://forms.gle/hhuLVupnm2F1AGa96" target="_blank" rel="noopener noreferrer">
+            <Button
+              className="w-full md:w-fit hover:scale-105 transition-transform"
+              asChild
+            >
+              <a
+                href="https://forms.gle/hhuLVupnm2F1AGa96"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Join the Community
               </a>
             </Button>
@@ -147,7 +158,11 @@ const Home = () => {
               className="[&_svg]:size-6 w-full md:w-fit hover:scale-105 transition-transform"
               asChild
             >
-              <a href="https://www.youtube.com/live/DNI2ewOZMTo?si=Vc7QacMn8C9jrQvQ" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.youtube.com/live/DNI2ewOZMTo?si=Vc7QacMn8C9jrQvQ"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <CirclePlayIcon strokeWidth={1.5} size={30} />
                 Watch 2024 Events
               </a>
@@ -559,7 +574,7 @@ const EventCard = ({ event }: { event: UpcomingEvent }) => {
         <p className="text-lg">
           Date{" "}
           <span className="text-gray-600 ml-2">
-            {formatDateWithComma(event?.date)}
+            {getEventDateLabel(event?.date, event?.dateTBA)}
           </span>
         </p>
         <p className="text-lg">

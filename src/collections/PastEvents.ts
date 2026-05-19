@@ -1,4 +1,5 @@
 import { checkIsCodespaceUser } from "@/lib/utils";
+import { buildPastEventEmbedCode } from "@/lib/event-display";
 import { CollectionConfig } from "payload";
 
 export const PastEvents: CollectionConfig = {
@@ -19,7 +20,7 @@ export const PastEvents: CollectionConfig = {
     afterRead: [
       async ({ doc }) => {
         if (doc.id) {
-          doc.embedCode = `<iframe src="https://codespaces.org/past-events/${doc.id}/embed" width="100%" height="600" frameborder="0" style="border: none; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);"></iframe>`;
+          doc.embedCode = buildPastEventEmbedCode(doc.id);
         }
         return doc;
       },
@@ -64,23 +65,13 @@ export const PastEvents: CollectionConfig = {
     },
     {
       name: "embedCode",
-      type: "textarea",
+      type: "ui",
       admin: {
-        position: "sidebar",
-        description: "Copy this code to embed the event on external websites",
-        readOnly: true,
-        style: {
-          fontFamily: "monospace",
-          fontSize: "12px",
-          whiteSpace: "pre-wrap",
-          wordBreak: "break-all",
-          minHeight: "100px",
-          padding: "8px",
-          backgroundColor: "var(--theme-elevation-50)",
-          border: "1px solid var(--theme-elevation-150)",
-          borderRadius: "4px",
-          color: "var(--theme-elevation-800)",
+        components: {
+          Field:
+            "@/components/admin/event-embed-code-field#PastEventEmbedCodeField",
         },
+        position: "sidebar",
       },
     },
   ],

@@ -19,7 +19,8 @@ import Container from "@/components/container";
 const NavBar = () => {
   const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
-  const [isAnnouncementBannerVisible, setIsAnnouncementBannerVisible] = React.useState(true);
+  const [isAnnouncementBannerVisible, setIsAnnouncementBannerVisible] =
+    React.useState(true);
 
   React.useEffect(() => {
     setOpen(false);
@@ -28,10 +29,10 @@ const NavBar = () => {
   // Prefetch the most common routes
   React.useEffect(() => {
     const prefetchLinks = async () => {
-      const linksToPreload = ['/blog', '/gallery', '/events'];
+      const linksToPreload = ["/blog", "/gallery", "/events"];
       linksToPreload.forEach(async (href) => {
-        const link = document.createElement('link');
-        link.rel = 'prefetch';
+        const link = document.createElement("link");
+        link.rel = "prefetch";
         link.href = href;
         document.head.appendChild(link);
       });
@@ -47,11 +48,14 @@ const NavBar = () => {
       const meta = document.querySelector('meta[name="theme-color"]');
       if (meta) meta.setAttribute("content", color);
       // iOS Safari uses the apple-mobile-web-app-status-bar-style in standalone mode
-      const appleMeta = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+      const appleMeta = document.querySelector(
+        'meta[name="apple-mobile-web-app-status-bar-style"]',
+      );
       if (appleMeta) appleMeta.setAttribute("content", color);
     };
 
-    const shouldUseBannerColor = pathname === "/" && isAnnouncementBannerVisible;
+    const shouldUseBannerColor =
+      pathname === "/" && isAnnouncementBannerVisible;
     setThemeColor(shouldUseBannerColor ? bannerThemeColor : defaultThemeColor);
   }, [pathname, isAnnouncementBannerVisible]);
 
@@ -69,11 +73,15 @@ const NavBar = () => {
           <div className="w-full bg-white sm:bg-[#6d6cd6] text-base">
             <Container className="relative">
               <Link
-                href="https://www.codespaces.org/donate"
+                href="/gallery"
                 className="w-full py-3.5 text-black sm:text-white block hover:opacity-90 transition-opacity text-left sm:text-center pr-8"
-                style={{ fontSize: "16px", lineHeight: "24px", fontWeight: 400 }}
+                style={{
+                  fontSize: "16px",
+                  lineHeight: "24px",
+                  fontWeight: 400,
+                }}
               >
-                Celebrating 5 Years of Impact: Help Us Reach Our Goal!
+                Fusion Tech Fest - Recap
               </Link>
               <button
                 type="button"
@@ -109,7 +117,11 @@ const NavBar = () => {
           ))}
         </ul>
         <Button size={"sm"} className="hidden lg:block">
-          <a href="https://forms.gle/hhuLVupnm2F1AGa96" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://forms.gle/hhuLVupnm2F1AGa96"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Join the Community
           </a>
         </Button>
@@ -151,7 +163,7 @@ const NavBar = () => {
                           "block text-2xl hover:text-primary transition-colors",
                           pathname.startsWith(link.href)
                             ? "text-primary"
-                            : "text-black"
+                            : "text-black",
                         )}
                       >
                         {link.name}
@@ -160,7 +172,11 @@ const NavBar = () => {
                   ))}
                 </nav>
                 <Button size="lg" className="w-full rounded-xl mt-8">
-                  <a href="https://forms.gle/hhuLVupnm2F1AGa96" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://forms.gle/hhuLVupnm2F1AGa96"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Join the Community
                   </a>
                 </Button>

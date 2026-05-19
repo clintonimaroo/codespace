@@ -173,6 +173,8 @@ export interface Event {
 }
 
 export type UpcomingEvent = {
+  date?: string;
+  dateTBA?: boolean;
   stats: [
     {
       statTitle: string;
@@ -181,7 +183,7 @@ export type UpcomingEvent = {
     },
   ];
   eventLink: string;
-} & Event;
+} & Omit<Event, "date">;
 
 export type PastEvent = {
   recapLink: string;

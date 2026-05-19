@@ -1,10 +1,9 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import { UpcomingEvent } from "@/types";
 import { Button } from "@/components/ui/button";
-import classNames from "classnames";
-import { Suspense } from "react";
 import { getEventDateLabel, getPublicSiteUrl } from "@/lib/event-display";
+import { cn } from "@/lib/utils";
+import { UpcomingEvent } from "@/types";
 
 async function getUpcomingEvent(id: string) {
   try {
@@ -12,7 +11,6 @@ async function getUpcomingEvent(id: string) {
       `${getPublicSiteUrl()}/api/upcoming-events/${id}`,
       {
         next: { revalidate: 0 },
-        cache: "no-store",
       },
     );
 
@@ -28,91 +26,47 @@ async function getUpcomingEvent(id: string) {
   }
 }
 
-// Image fallback component
-const ImageFallback = () => (
-  <div className="w-full h-full flex items-center justify-center bg-gray-100">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="120"
-      height="120"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="text-gray-400"
-    >
-      <rect width="18" height="18" x="3" y="3" rx="2" />
-      <circle cx="9" cy="9" r="2" />
-      <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-    </svg>
-  </div>
-);
-
-// Set metadata for iframes
-export const metadata = {
-  robots: {
-    index: false,
-    follow: false,
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-  },
-  title: "Code Space Event",
-  referrer: "no-referrer",
-};
-
-// Configure dynamic rendering for embed
-export const dynamic = "force-dynamic";
-
-type Props = {
+interface Props {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{ transparent?: string }>;
+}
+
+export const metadata = {
+  title: "Upcoming Event | Code Space",
+  description: "View details about this upcoming Code Space event.",
 };
 
-export default async function Page({ params }: Props) {
+export default async function Page({ params, searchParams }: Props) {
   const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
   const event = await getUpcomingEvent(resolvedParams.id);
+  const transparent = resolvedSearchParams.transparent === "true";
 
   if (!event) {
     notFound();
   }
 
-  // Extract image URL with fallback
-  const imageUrl = event.coverImage?.url || "";
-
   return (
-    <div className="w-full p-6 bg-white">
+    <main
+      className={cn(
+        "min-h-screen w-full px-6 py-10",
+        transparent ? "bg-transparent" : "bg-white",
+      )}
+    >
       <div className="w-full flex md:flex-row flex-col gap-10">
         <div className="w-full md:max-w-sm max-w-full lg:max-h-full mx-auto flex-shrink-0 shadow-[0_0_20px_0_rgba(34,34,34,0.05)] aspect-square bg-white p-3 md:max-h-[440px] object-cover">
-          <Suspense fallback={<ImageFallback />}>
-            <div className="w-full h-full relative overflow-hidden">
-              {imageUrl ? (
-                <Image
-                  src={imageUrl}
-                  alt={event.eventTitle}
-                  fill
-                  unoptimized={true}
-                  sizes="(max-width: 768px) 100vw, 400px"
-                  priority={true}
-                  className="object-cover h-full w-auto"
-                  onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = "none";
-                    target.parentElement?.classList.add("image-error");
-                  }}
-                />
-              ) : (
-                <ImageFallback />
-              )}
-            </div>
-          </Suspense>
+          <div className="w-full h-full relative">
+            <Image
+              src={event.coverImage.url}
+              alt={event.eventTitle}
+              fill
+              className="object-cover h-full w-auto"
+            />
+          </div>
         </div>
-        <div className="py-5 flex flex-col space-y-2 justify-around">
+        <div className="py-5 flex flex-col space-y-4">
           <h2 className="text-2xl font-normal">{event.eventTitle}</h2>
-          <p className="text-lg text-gray-700 font-light">
+          <p className="lg:text-lg text-gray-700 font-light">
             {event.description}
           </p>
           <p className="text-lg">
@@ -130,7 +84,7 @@ export default async function Page({ params }: Props) {
               {event.stats.map((stat, i) => (
                 <div
                   key={i}
-                  className={classNames("flex-grow", {
+                  className={cn("flex-grow", {
                     "flex flex-col items-center justify-center": i !== 0,
                   })}
                 >
@@ -152,6 +106,6 @@ export default async function Page({ params }: Props) {
           </Button>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
